@@ -1,0 +1,762 @@
+---
+title: Myanmar Census Analysis - Outline of Tables Available
+author: mz
+output:
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+  word_document:
+    fig_caption: yes
+    fig_height: 4.5
+    fig_width: 5
+    reference_docx: StyleReference.docx
+    toc: yes
+classoption: landscape    
+---
+# Varible Lists
+
+## List of variables as provided by the census office
+
+As a rule of thumb, variables names beginning with "h" are household level, and ones begining with "p" are individual level ones. 
+
+ID|Variable Code | Name, description | notes  |
+--|-----------------------|------------------------------------|--------------------|
+1| batch_state_region| ||
+2| batch_district|||
+3| batch_township|||
+4| batch_ward|||
+5| batch_urban_rural| | |
+6| batch_ea| | |
+7| household_number| | |
+8 | barcode| | |
+9 | scanned_date| | |
+10 | scanner_id| | |
+11 | batch_number| | |
+12 | qnh| | |
+13 |nqh| | |
+14 |h32_type_residence| 8 -Condominium,	Apartment/Flat,	Bungalow/Brick house,	Semi-pacca house,	Wooden house,	Bamboo	Hut 2 - 3 years,	Hut 1 year,	9
+| |
+15 |h33_type_ownership| 6 - Owner,	Renter,	Provided free (individually),	Government Quarters,	Private Company Quarters,	Other | |
+16 |h34_lighting| 8 - Electricity, Kerosene, Candle, Battery, Generator (private), Water mill (private), Solar system/energy, Other| |
+17 |h35a_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other| |
+18 |h35b_non_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other | |
+19 |h36_cooking_fuel| 9 - Electricity, LPG, Kerosene, BioGas, Firewood, Charcoal, Coal, Straw/Grass, Other| |
+20 |h37_toilet| 7 - Flush, Water seal (Improved pit latrine), Pit (Traditional pit latrine), Bucket (Surface latrine), Other, None | |
+21 |h38a_roof| 7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
+22 |h38b_walls|7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
+23 |h38c_floor| 6 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Tile/Brick/Concrete, Other| |
+24 |h39a_radio| 2 - Yes, No | |
+25 |h39b_television| 2 - Yes, No| |
+26 |h39c_land_line_phone| 2 - Yes, No | |
+27 |h39d_mobile_phone| 2 - Yes, No| |
+28 |h39e_computer| 2 - Yes, No| |
+29 |h39f_internet_at_home| 2 - Yes, No| |
+30 |h39g_car_truck_van| 2 - Yes, No| |
+31 |h39h_motorcycle_moped| 2 - Yes, No| |
+32 |h39i_bicycle| 2 - Yes, No| |
+33 |h39j_4_wheel_tractor| 2 - Yes, No| |
+34 |h39k_canoe_boat| 2 - Yes, No| |
+35 |h39l_motor_boat| 2 - Yes, No| |
+36 |h39m_cart_bullock| 2 - Yes, No| |
+37 |h40_number_abroad| | |
+38 |h41_number_of_deaths| | |
+39 |number_of_males| | |
+40 |number_of_females| | |
+41 |number_of_people| | |
+42 |form_type| | |
+43 |per_scan_form_seq| | |
+44 |qnp| | |
+45 |nqp| | |
+46 |p01_person_number| | |
+47 |p02_line_number |  | |
+48 |p03_relationship | Relationship to head of HH |     |
+49 |p04_sex|  Sex |   |
+50 |p05_age| Age  | up to 98 or older  |
+51 |p06_marital_status | Marital status | four categories   |
+52 |p09a_disability_seeing| Disability Seeing |   |
+53 |p09b_disability_hearing | Disability Hearing |   |
+54 |p09c_disability_walking| Disability Walking |   |
+55 |p09d_disability_remembering| Disability Remembering or concentrating |   |
+56 |p11_birth_township | Township code of place of birth - 000 for here |  |
+57 |p12_birth_ur  | Place of birth rural or urban |   |
+58 |p13_usual_res_township  | Township code of usual residence - 000 for here | |
+59 |p14_usual_res_ur | Q14-Ind-ResRuUr-c2 | Usual residence rural or urban |  |
+60 |p15_duration_of_residence  | Years in place of usual residence |  |
+61 |p16_reason_for_movement  | Reason for move here  |   |
+62 |p17_prev_res_township  | Township of previous place of residence ||
+63 |p18_prev_res_ur | Previous place of residence rural or urban ||
+64 |p19_read_and_write   | Can read and write | (age 5 and above) |
+65 |p20_school_attendance |  Ever/currently attended school |  (age 5 and above)|
+66 |p21_highest_grade | Highest level of education attained | (age 5 and above) grouping? |
+67 |p22_activity_status | Activity Status | (age 10 and above)  |
+68 |p23_occupation | Occupation (ILO)| age 10 and above AND Q22 == employed or self-employed |
+69 |p24_industry  | Industry (ILO) | age 10 and above AND Q22 == employed or self-employed |
+70 |p25a_children_born_male | Number of children born alive male | (ever married women over 15) |
+71 |p25b_children_born_female| Number of children born alive female | (ever married women over 15) |
+72 |p26a_children_in_hh_male | Number of children in HH male | (ever married women over 15) |
+73 |p26b_children_in_hh_female| Number of children in HH female | (ever married women over 15) |
+74 |p27a_children_else_male | Number of children elsewhere male | (ever married women over 15) |
+75 |p27b_children_else_female | Number of children elsewhere female | (ever married women over 15) |
+76 |p28a_children_died_male | Number of children died male | (ever married women over 15) |
+77 |p28b_children_died_female | Number of children died female | (ever married women over 15) |
+78 |p29a_last_live_birth_month | |
+79 |p29b_last_live_birth_year | |
+80 |p30_last_live_birth_sex | |
+81 |p31_last_live_birth_alive | |
+82 |px32_birth_township_full | |
+83 |px33_usual_township_full | |
+84 |px34_previous_township_full | |
+
+## List of variables derived by me:
+
+
+ID | Variable Code | description | level | derived from  |
+--|--------------------------|-----------------------------------|-------|-----------------|
+m01 | number_of_people_bound | Number of people in hh up to 14, then "15 +" | hh | number_of_people
+m02 | HH_ID | unique HH ID | hh | 1,2,3,4,6,7|
+m03 | relationship_generation |  generation relative to HoH |ind | p03_relationship | 
+m04 | unique_generations | number of generations in HH | hh | relationship_generation, HH_ID|
+m05 | sex_head | gender of head of HH | hh | p04_sex, HH_ID|
+m06 | age_head | age of head od HH | hh | p05_age, HH_ID|
+m07 | marital_status_head | marital status of Jead of HH | hh | p06_marital_status, HH_ID|
+m08 | p05_age_binned | age in five year categories | ind | p05_age |
+m09 | p11_birth_township_c2 | born in this township or elswhere (dichotomous) | ind | p11_birth_township|
+m10 | p15_duration_of_residence_5 | duration of residence in give year categories | ind | p15_duration_of_residence|
+m12 | p17_prev_res_township_c2 | previous residence in this township or elswhere (dichotomous) | ind | p17_prev_res_township|
+m13 | p25_children_born_bound | total children born, up to 10, then 11+ | ind (f+15) | p25_children_born_male, p25_children_born_female|
+m14 | p25a_children_born_male_bound | total boys born, up to 10, then 11+ | ind (f+15) | p25a_children_born_male|
+m15 | p25b_children_born_female_bound | total girls born, up tp 10, then 11+ | ind (f+15) | p25b_children_born_female|
+m16 | p26_children_in_hh_bound | total children still in household, up to 10, then 11+ | ind (f+15) | p26a_children_in_hh_male, p26b_children_in_hh_female|
+m17 | p26a_children_in_hh_male_bound | total boys still in household, up to 10, then 11+ | ind (f+15) | p26a_children_in_hh_male|
+m18 | p26b_children_in_hh_female_bound | total girls still in household, up tp 10, then 11+ | ind (f+15) | p26b_children_in_hh_female|
+m19 | p27_children_else_bound | total children living elsewhere, up to 10, then 11+ | ind (f+15) | p27a_children_else_male, p27b_children_else_female|
+m20 | p27a_children_else_male_bound | total boys living elsewhere, up to 10, then 11+ | ind (f+15) | p27a_children_else_male|
+m21 | p27b_children_else_female_bound | total girls still in household, up tp 10, then 11+ | ind (f+15) | p27b_children_else_female |
+m22 | p28_children_died_bound | total children died, up to 10, then 11+ | ind (f+15) | p28a_children_died_male, p28b_children_died_female |
+m23 | p28a_children_died_male_bound | total boys dead, up to 10, then 11+ | ind (f+15) | p28a_children_died_male|
+m24 | p28b_children_died_female_bound | total girls dead, up tp 10, then 11+ | ind (f+15) | p28b_children_died_female |
+m25 | p09_disablity_sum | sum of all four disabilities, max 12| ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
+m26 | p09_disablity_rescaled_sum | sum of all four disabilities rescaled , max 8|ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
+m27 | p09_disablity_dummy_sum | sum of all four disabilities as dummies , max 4 |ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
+m28 | p21_highest_grade_c7| recategorised education into 7 cats. | ind |  p21_highest_grade |
+
+
+
+## First set of George's tables - GL01 
+
+ID | Variable one  | Variable two | table size | population |
+-------|--------------------------|----------------------------|------|-----------------------|
+GL01-01 | p09a_disability_seeing [*52*] | p05_age_binned  [*m08*]| 4 x 18 | Heads of Household (10,877,832)|
+GL01-02 | p09a_disability_seeing [*52*] | sex_head  [*m05*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-03 | p09a_disability_seeing [*52*] | marital_status_head  [*m06*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-04 | p09a_disability_seeing [*52*] | number_of_people_bound  [*m01*]| 4 x 15 | Heads of Household (10,877,832)|
+GL01-05 | p09a_disability_seeing [*52*] |  unique_generations [*m04*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-06 | p09a_disability_seeing [*52*] | p21_highest_grade_c7  [*m28*]| 4 x 7 | Heads of Household (10,877,832)|
+GL01-07 | p09a_disability_seeing [*52*] | p22_activity_status  [*67*]| 4 x 12 | Heads of Household (10,877,832)|
+GL01-08 | p09a_disability_seeing [*52*] | batch_urban_rural  [*5*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-09 | p09b_disability_hearing [*53*] | p05_age_binned  [*m08*]| 4 x 18 | Heads of Household (10,877,832)|
+GL01-10 | p09b_disability_hearing [*53*] | sex_head  [*m05*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-11 | p09b_disability_hearing [*53*] | marital_status_head  [*m06*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-12 | p09b_disability_hearing [*53*] | number_of_people_bound  [*m01*]| 4 x 15 | Heads of Household (10,877,832)|
+GL01-13 | p09b_disability_hearing [*53*] |  unique_generations [*m04*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-14 | p09b_disability_hearing [*53*] | p21_highest_grade_c7  [*m28*]| 4 x 7 | Heads of Household (10,877,832)|
+GL01-15 | p09b_disability_hearing [*53*] | p22_activity_status  [*67*]| 4 x 12 | Heads of Household (10,877,832)|
+GL01-16 | p09b_disability_hearing [*53*] | batch_urban_rural  [*5*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-17 | p09c_disability_walking [*54*] | p05_age_binned  [*m08*]| 4 x 18 | Heads of Household (10,877,832)|
+GL01-18 | p09c_disability_walking [*54*] | sex_head  [*m05*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-19 | p09c_disability_walking [*54*] | marital_status_head  [*m06*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-20 | p09c_disability_walking [*54*] | number_of_people_bound  [*m01*]| 4 x 15 | Heads of Household (10,877,832)|
+GL01-21 | p09c_disability_walking [*54*] |  unique_generations [*m04*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-22 | p09c_disability_walking [*54*] | p21_highest_grade_c7  [*m28*]| 4 x 7 | Heads of Household (10,877,832)|
+GL01-23 | p09c_disability_walking [*54*] | p22_activity_status  [*67*]| 4 x 12 | Heads of Household (10,877,832)|
+GL01-24 | p09c_disability_walking [*54*] | batch_urban_rural  [*5*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-25 | p09d_disability_remembering [*55*] | p05_age_binned  [*m08*]| 4 x 18 | Heads of Household (10,877,832)|
+GL01-26 | p09d_disability_remembering [*55*] | sex_head  [*m05*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-27 | p09d_disability_remembering [*55*] | marital_status_head  [*m06*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-28 | p09d_disability_remembering [*55*] | number_of_people_bound  [*m01*]| 4 x 15 | Heads of Household (10,877,832)|
+GL01-29 | p09d_disability_remembering [*55*] |  unique_generations [*m04*]| 4 x 5 | Heads of Household (10,877,832)|
+GL01-30 | p09d_disability_remembering [*55*] | p21_highest_grade_c7  [*m28*]| 4 x 7 | Heads of Household (10,877,832)|
+GL01-31 | p09d_disability_remembering [*55*] | p22_activity_status  [*67*]| 4 x 12 | Heads of Household (10,877,832)|
+GL01-32 | p09d_disability_remembering [*55*] | batch_urban_rural  [*5*]| 4 x 2 | Heads of Household (10,877,832)|
+GL01-33 | p09_disablity_sum [*m25*] | p05_age_binned  [*m08*]| 13 x 18 | Heads of Household (10,877,832)|
+GL01-34 | p09_disablity_sum [*m25*] | sex_head  [*m05*]| 13 x 2 | Heads of Household (10,877,832)|
+GL01-35 | p09_disablity_sum [*m25*] | marital_status_head  [*m06*]| 13 x 5 | Heads of Household (10,877,832)|
+GL01-36 | p09_disablity_sum [*m25*] | number_of_people_bound  [*m01*]| 13 x 15 | Heads of Household (10,877,832)|
+GL01-37 | p09_disablity_sum [*m25*] |  unique_generations [*m04*]| 13 x 5 | Heads of Household (10,877,832)|
+GL01-38 | p09_disablity_sum [*m25*] | p21_highest_grade_c7  [*m28*]| 13 x 7 | Heads of Household (10,877,832)|
+GL01-39 | p09_disablity_sum [*m25*] | p22_activity_status  [*67*]| 13 x 12 | Heads of Household (10,877,832)|
+GL01-40 | p09_disablity_sum [*m25*] | batch_urban_rural  [*5*]| 13 x 2 | Heads of Household (10,877,832)|
+GL01-41 | p09_disablity_rescaled_sum [*m26*] | p05_age_binned  [*m08*]| 16 x 18 | Heads of Household (10,877,832)|
+GL01-42 | p09_disablity_rescaled_sum [*m26*] | sex_head  [*m05*]| 16 x 2 | Heads of Household (10,877,832)|
+GL01-43 | p09_disablity_rescaled_sum [*m26*] | marital_status_head  [*m06*]| 16 x 5 | Heads of Household (10,877,832)|
+GL01-44 | p09_disablity_rescaled_sum [*m26*] | number_of_people_bound  [*m01*]| 16 x 15 | Heads of Household (10,877,832)|
+GL01-45 | p09_disablity_rescaled_sum [*m26*] |  unique_generations [*m04*]| 16 x 5 | Heads of Household (10,877,832)|
+GL01-46 | p09_disablity_rescaled_sum [*m26*] | p21_highest_grade_c7  [*m28*]| 16 x 7 | Heads of Household (10,877,832)|
+GL01-47 | p09_disablity_rescaled_sum [*m26*] | p22_activity_status  [*67*]| 16 x 12 | Heads of Household (10,877,832)|
+GL01-48 | p09_disablity_rescaled_sum [*m26*] | batch_urban_rural  [*5*]| 16 x 2 | Heads of Household (10,877,832)|
+GL01-49 | p09_disablity_dummy_sum [*m27*] | p05_age_binned  [*m08*]| 5 x 18 | Heads of Household (10,877,832)|
+GL01-50 | p09_disablity_dummy_sum [*m27*] | sex_head  [*m05*]| 5 x 2 | Heads of Household (10,877,832)|
+GL01-51 | p09_disablity_dummy_sum [*m27*] | marital_status_head  [*m06*]| 5 x 5 | Heads of Household (10,877,832)|
+GL01-52 | p09_disablity_dummy_sum [*m27*] | number_of_people_bound  [*m01*]| 5 x 15 | Heads of Household (10,877,832)|
+GL01-53 | p09_disablity_dummy_sum [*m27*] |  unique_generations [*m04*]| 5 x 5 | Heads of Household (10,877,832)|
+GL01-54 | p09_disablity_dummy_sum [*m27*] | p21_highest_grade_c7  [*m28*]| 5 x 7 | Heads of Household (10,877,832)|
+GL01-55 | p09_disablity_dummy_sum [*m27*] | p22_activity_status  [*67*]| 5 x 12 | Heads of Household (10,877,832)|
+GL01-56 | p09_disablity_dummy_sum [*m27*] | batch_urban_rural  [*5*]| 5 x 2 | Heads of Household (10,877,832)|
+GL01-57 | p11_birth_township_c2 [*m09*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-58 | p11_birth_township_c2 [*m09*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-59 | p11_birth_township_c2 [*m09*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-60 | p11_birth_township_c2 [*m09*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-61 | p11_birth_township_c2 [*m09*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-62 | p11_birth_township_c2 [*m09*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-63 | p11_birth_township_c2 [*m09*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-64 | p11_birth_township_c2 [*m09*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-65 | p12_birth_ur [*57*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-66 | p12_birth_ur [*57*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-67 | p12_birth_ur [*57*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-68 | p12_birth_ur [*57*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-69 | p12_birth_ur [*57*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-70 | p12_birth_ur [*57*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-71 | p12_birth_ur [*57*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-72 | p12_birth_ur [*57*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-73 | p15_duration_of_residence_5 [*m10*] | p05_age_binned  [*m08*]| 20 x 18 | Heads of Household (10,877,832)|
+GL01-74 | p15_duration_of_residence_5 [*m10*] | sex_head  [*m05*]| 20 x 2 | Heads of Household (10,877,832)|
+GL01-75 | p15_duration_of_residence_5 [*m10*] | marital_status_head  [*m06*]| 20 x 5 | Heads of Household (10,877,832)|
+GL01-76 | p15_duration_of_residence_5 [*m10*] | number_of_people_bound  [*m01*]| 20 x 15 | Heads of Household (10,877,832)|
+GL01-77 | p15_duration_of_residence_5 [*m10*] |  unique_generations [*m04*]| 20 x 5 | Heads of Household (10,877,832)|
+GL01-78 | p15_duration_of_residence_5 [*m10*] | p21_highest_grade_c7  [*m28*]| 20 x 7 | Heads of Household (10,877,832)|
+GL01-79 | p15_duration_of_residence_5 [*m10*] | p22_activity_status  [*67*]| 20 x 12 | Heads of Household (10,877,832)|
+GL01-80 | p15_duration_of_residence_5 [*m10*] | batch_urban_rural  [*5*]| 20 x 2 | Heads of Household (10,877,832)|
+GL01-81 | p16_reason_for_movement [*61*] | p05_age_binned  [*m08*]| 8 x 18 | Heads of Household (10,877,832)|
+GL01-82 | p16_reason_for_movement [*61*] | sex_head  [*m05*]| 8 x 2 | Heads of Household (10,877,832)|
+GL01-83 | p16_reason_for_movement [*61*] | marital_status_head  [*m06*]| 8 x 5 | Heads of Household (10,877,832)|
+GL01-84 | p16_reason_for_movement [*61*] | number_of_people_bound  [*m01*]| 8 x 15 | Heads of Household (10,877,832)|
+GL01-85 | p16_reason_for_movement [*61*] |  unique_generations [*m04*]| 8 x 5 | Heads of Household (10,877,832)|
+GL01-86 | p16_reason_for_movement [*61*] | p21_highest_grade_c7  [*m28*]| 8 x 7 | Heads of Household (10,877,832)|
+GL01-87 | p16_reason_for_movement [*61*] | p22_activity_status  [*67*]| 8 x 12 | Heads of Household (10,877,832)|
+GL01-88 | p16_reason_for_movement [*61*] | batch_urban_rural  [*5*]| 8 x 2 | Heads of Household (10,877,832)|
+GL01-89 | p17_prev_res_township_c2 [*m12*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-90 | p17_prev_res_township_c2 [*m12*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-91 | p17_prev_res_township_c2 [*m12*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-92 | p17_prev_res_township_c2 [*m12*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-93 | p17_prev_res_township_c2 [*m12*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-94 | p17_prev_res_township_c2 [*m12*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-95 | p17_prev_res_township_c2 [*m12*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-96 | p17_prev_res_township_c2 [*m12*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-97 | p18_prev_res_ur [*63*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-98 | p18_prev_res_ur [*63*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-99 | p18_prev_res_ur [*63*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-100 | p18_prev_res_ur [*63*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-101 | p18_prev_res_ur [*63*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-102 | p18_prev_res_ur [*63*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-103 | p18_prev_res_ur [*63*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-104 | p18_prev_res_ur [*63*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-105 | h32_type_residence [*14*] | p05_age_binned  [*m08*]| 9 x 18 | Heads of Household (10,877,832)|
+GL01-106 | h32_type_residence [*14*] | sex_head  [*m05*]| 9 x 2 | Heads of Household (10,877,832)|
+GL01-107 | h32_type_residence [*14*] | marital_status_head  [*m06*]| 9 x 5 | Heads of Household (10,877,832)|
+GL01-108 | h32_type_residence [*14*] | number_of_people_bound  [*m01*]| 9 x 15 | Heads of Household (10,877,832)|
+GL01-109 | h32_type_residence [*14*] |  unique_generations [*m04*]| 9 x 5 | Heads of Household (10,877,832)|
+GL01-110 | h32_type_residence [*14*] | p21_highest_grade_c7  [*m28*]| 9 x 7 | Heads of Household (10,877,832)|
+GL01-111 | h32_type_residence [*14*] | p22_activity_status  [*67*]| 9 x 12 | Heads of Household (10,877,832)|
+GL01-112 | h32_type_residence [*14*] | batch_urban_rural  [*5*]| 9 x 2 | Heads of Household (10,877,832)|
+GL01-113 | h33_type_ownership [*15*] | p05_age_binned  [*m08*]| 6 x 18 | Heads of Household (10,877,832)|
+GL01-114 | h33_type_ownership [*15*] | sex_head  [*m05*]| 6 x 2 | Heads of Household (10,877,832)|
+GL01-115 | h33_type_ownership [*15*] | marital_status_head  [*m06*]| 6 x 5 | Heads of Household (10,877,832)|
+GL01-116 | h33_type_ownership [*15*] | number_of_people_bound  [*m01*]| 6 x 15 | Heads of Household (10,877,832)|
+GL01-117 | h33_type_ownership [*15*] |  unique_generations [*m04*]| 6 x 5 | Heads of Household (10,877,832)|
+GL01-118 | h33_type_ownership [*15*] | p21_highest_grade_c7  [*m28*]| 6 x 7 | Heads of Household (10,877,832)|
+GL01-119 | h33_type_ownership [*15*] | p22_activity_status  [*67*]| 6 x 12 | Heads of Household (10,877,832)|
+GL01-120 | h33_type_ownership [*15*] | batch_urban_rural  [*5*]| 6 x 2 | Heads of Household (10,877,832)|
+GL01-121 | h34_lighting [*16*] | p05_age_binned  [*m08*]| 8 x 18 | Heads of Household (10,877,832)|
+GL01-122 | h34_lighting [*16*] | sex_head  [*m05*]| 8 x 2 | Heads of Household (10,877,832)|
+GL01-123 | h34_lighting [*16*] | marital_status_head  [*m06*]| 8 x 5 | Heads of Household (10,877,832)|
+GL01-124 | h34_lighting [*16*] | number_of_people_bound  [*m01*]| 8 x 15 | Heads of Household (10,877,832)|
+GL01-125 | h34_lighting [*16*] |  unique_generations [*m04*]| 8 x 5 | Heads of Household (10,877,832)|
+GL01-126 | h34_lighting [*16*] | p21_highest_grade_c7  [*m28*]| 8 x 7 | Heads of Household (10,877,832)|
+GL01-127 | h34_lighting [*16*] | p22_activity_status  [*67*]| 8 x 12 | Heads of Household (10,877,832)|
+GL01-128 | h34_lighting [*16*] | batch_urban_rural  [*5*]| 8 x 2 | Heads of Household (10,877,832)|
+GL01-129 | h35a_drinking_water [*17*] | p05_age_binned  [*m08*]| 10 x 18 | Heads of Household (10,877,832)|
+GL01-130 | h35a_drinking_water [*17*] | sex_head  [*m05*]| 10 x 2 | Heads of Household (10,877,832)|
+GL01-131 | h35a_drinking_water [*17*] | marital_status_head  [*m06*]| 10 x 5 | Heads of Household (10,877,832)|
+GL01-132 | h35a_drinking_water [*17*] | number_of_people_bound  [*m01*]| 10 x 15 | Heads of Household (10,877,832)|
+GL01-133 | h35a_drinking_water [*17*] |  unique_generations [*m04*]| 10 x 5 | Heads of Household (10,877,832)|
+GL01-134 | h35a_drinking_water [*17*] | p21_highest_grade_c7  [*m28*]| 10 x 7 | Heads of Household (10,877,832)|
+GL01-135 | h35a_drinking_water [*17*] | p22_activity_status  [*67*]| 10 x 12 | Heads of Household (10,877,832)|
+GL01-136 | h35a_drinking_water [*17*] | batch_urban_rural  [*5*]| 10 x 2 | Heads of Household (10,877,832)|
+GL01-137 | h35b_non_drinking_water [*18*] | p05_age_binned  [*m08*]| 10 x 18 | Heads of Household (10,877,832)|
+GL01-138 | h35b_non_drinking_water [*18*] | sex_head  [*m05*]| 10 x 2 | Heads of Household (10,877,832)|
+GL01-139 | h35b_non_drinking_water [*18*] | marital_status_head  [*m06*]| 10 x 5 | Heads of Household (10,877,832)|
+GL01-140 | h35b_non_drinking_water [*18*] | number_of_people_bound  [*m01*]| 10 x 15 | Heads of Household (10,877,832)|
+GL01-141 | h35b_non_drinking_water [*18*] |  unique_generations [*m04*]| 10 x 5 | Heads of Household (10,877,832)|
+GL01-142 | h35b_non_drinking_water [*18*] | p21_highest_grade_c7  [*m28*]| 10 x 7 | Heads of Household (10,877,832)|
+GL01-143 | h35b_non_drinking_water [*18*] | p22_activity_status  [*67*]| 10 x 12 | Heads of Household (10,877,832)|
+GL01-144 | h35b_non_drinking_water [*18*] | batch_urban_rural  [*5*]| 10 x 2 | Heads of Household (10,877,832)|
+GL01-145 | h36_cooking_fuel [*19*] | p05_age_binned  [*m08*]| 9 x 18 | Heads of Household (10,877,832)|
+GL01-146 | h36_cooking_fuel [*19*] | sex_head  [*m05*]| 9 x 2 | Heads of Household (10,877,832)|
+GL01-147 | h36_cooking_fuel [*19*] | marital_status_head  [*m06*]| 9 x 5 | Heads of Household (10,877,832)|
+GL01-148 | h36_cooking_fuel [*19*] | number_of_people_bound  [*m01*]| 9 x 15 | Heads of Household (10,877,832)|
+GL01-149 | h36_cooking_fuel [*19*] |  unique_generations [*m04*]| 9 x 5 | Heads of Household (10,877,832)|
+GL01-150 | h36_cooking_fuel [*19*] | p21_highest_grade_c7  [*m28*]| 9 x 7 | Heads of Household (10,877,832)|
+GL01-151 | h36_cooking_fuel [*19*] | p22_activity_status  [*67*]| 9 x 12 | Heads of Household (10,877,832)|
+GL01-152 | h36_cooking_fuel [*19*] | batch_urban_rural  [*5*]| 9 x 2 | Heads of Household (10,877,832)|
+GL01-153 | h37_toilet [*20*] | p05_age_binned  [*m08*]| 7 x 18 | Heads of Household (10,877,832)|
+GL01-154 | h37_toilet [*20*] | sex_head  [*m05*]| 7 x 2 | Heads of Household (10,877,832)|
+GL01-155 | h37_toilet [*20*] | marital_status_head  [*m06*]| 7 x 5 | Heads of Household (10,877,832)|
+GL01-156 | h37_toilet [*20*] | number_of_people_bound  [*m01*]| 7 x 15 | Heads of Household (10,877,832)|
+GL01-157 | h37_toilet [*20*] |unique_generations [*m04*]| 7 x 5 | Heads of Household (10,877,832)|
+GL01-158 | h37_toilet [*20*] | p21_highest_grade_c7  [*m28*]| 7 x 7 | Heads of Household (10,877,832)|
+GL01-159 | h37_toilet [*20*] | p22_activity_status  [*67*]| 7 x 12 | Heads of Household (10,877,832)|
+GL01-160 | h37_toilet [*20*] | batch_urban_rural  [*5*]| 7 x 2 | Heads of Household (10,877,832)|
+GL01-161 | h38a_roof [*21*] | p05_age_binned  [*m08*]| 7 x 18 | Heads of Household (10,877,832)|
+GL01-162 | h38a_roof [*21*] | sex_head  [*m05*]| 7 x 2 | Heads of Household (10,877,832)|
+GL01-163 | h38a_roof [*21*] | marital_status_head  [*m06*]| 7 x 5 | Heads of Household (10,877,832)|
+GL01-164 | h38a_roof [*21*] | number_of_people_bound  [*m01*]| 7 x 15 | Heads of Household (10,877,832)|
+GL01-165 | h38a_roof [*21*] |  unique_generations [*m04*]| 7 x 5 | Heads of Household (10,877,832)|
+GL01-166 | h38a_roof [*21*] | p21_highest_grade_c7  [*m28*]| 7 x 7 | Heads of Household (10,877,832)|
+GL01-167 | h38a_roof [*21*] | p22_activity_status  [*67*]| 7 x 12 | Heads of Household (10,877,832)|
+GL01-168 | h38a_roof [*21*] | batch_urban_rural  [*5*]| 7 x 2 | Heads of Household (10,877,832)|
+GL01-169 | h38b_walls [*22*] | p05_age_binned  [*m08*]| 7 x 18 | Heads of Household (10,877,832)|
+GL01-170 | h38b_walls [*22*] | sex_head  [*m05*]| 7 x 2 | Heads of Household (10,877,832)|
+GL01-171 | h38b_walls [*22*] | marital_status_head  [*m06*]| 7 x 5 | Heads of Household (10,877,832)|
+GL01-172 | h38b_walls [*22*] | number_of_people_bound  [*m01*]| 7 x 15 | Heads of Household (10,877,832)|
+GL01-173 | h38b_walls [*22*] |  unique_generations [*m04*]| 7 x 5 | Heads of Household (10,877,832)|
+GL01-174 | h38b_walls [*22*] | p21_highest_grade_c7  [*m28*]| 7 x 7 | Heads of Household (10,877,832)|
+GL01-175 | h38b_walls [*22*] | p22_activity_status  [*67*]| 7 x 12 | Heads of Household (10,877,832)|
+GL01-176 | h38b_walls [*22*] | batch_urban_rural  [*5*]| 7 x 2 | Heads of Household (10,877,832)|
+GL01-177 | h38c_floor [*23*] | p05_age_binned  [*m08*]| 6 x 18 | Heads of Household (10,877,832)|
+GL01-178 | h38c_floor [*23*] | sex_head  [*m05*]| 6 x 2 | Heads of Household (10,877,832)|
+GL01-179 | h38c_floor [*23*] | marital_status_head  [*m06*]| 6 x 5 | Heads of Household (10,877,832)|
+GL01-180 | h38c_floor [*23*] | number_of_people_bound  [*m01*]| 6 x 15 | Heads of Household (10,877,832)|
+GL01-181 | h38c_floor [*23*] | unique_generations [*m04*]| 6 x 5 | Heads of Household (10,877,832)|
+GL01-182 | h38c_floor [*23*] | p21_highest_grade_c7  [*m28*]| 6 x 7 | Heads of Household (10,877,832)|
+GL01-183 | h38c_floor [*23*] | p22_activity_status  [*67*]| 6 x 12 | Heads of Household (10,877,832)|
+GL01-184 | h38c_floor [*23*] | batch_urban_rural  [*5*]| 6 x 2 | Heads of Household (10,877,832)|
+GL01-185 | h39a_radio [*24*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-186 | h39a_radio [*24*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-187 | h39a_radio [*24*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-188 | h39a_radio [*24*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-189 | h39a_radio [*24*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-190 | h39a_radio [*24*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-191 | h39a_radio [*24*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-192 | h39a_radio [*24*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-193 | h39b_television [*25*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-194 | h39b_television [*25*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-195 | h39b_television [*25*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-196 | h39b_television [*25*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-197 | h39b_television [*25*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-198 | h39b_television [*25*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-199 | h39b_television [*25*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-200 | h39b_television [*25*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-201 | h39c_land_line_phone [*26*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-202 | h39c_land_line_phone [*26*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-203 | h39c_land_line_phone [*26*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-204 | h39c_land_line_phone [*26*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-205 | h39c_land_line_phone [*26*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-206 | h39c_land_line_phone [*26*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-207 | h39c_land_line_phone [*26*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-208 | h39c_land_line_phone [*26*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-209 | h39d_mobile_phone [*27*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-210 | h39d_mobile_phone [*27*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-211 | h39d_mobile_phone [*27*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-212 | h39d_mobile_phone [*27*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-213 | h39d_mobile_phone [*27*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-214 | h39d_mobile_phone [*27*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-215 | h39d_mobile_phone [*27*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-216 | h39d_mobile_phone [*27*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-217 | h39e_computer [*28*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-218 | h39e_computer [*28*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-219 | h39e_computer [*28*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-220 | h39e_computer [*28*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-221 | h39e_computer [*28*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-222 | h39e_computer [*28*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-223 | h39e_computer [*28*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-224 | h39e_computer [*28*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-225 | h39g_car_truck_van [*29*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-226 | h39g_car_truck_van [*29*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-227 | h39g_car_truck_van [*29*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-228 | h39g_car_truck_van [*29*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-229 | h39g_car_truck_van [*29*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-230 | h39g_car_truck_van [*29*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-231 | h39g_car_truck_van [*29*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-232 | h39g_car_truck_van [*29*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-233 | h39h_motorcycle_moped [*30*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-234 | h39h_motorcycle_moped [*30*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-235 | h39h_motorcycle_moped [*30*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-236 | h39h_motorcycle_moped [*30*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-237 | h39h_motorcycle_moped [*30*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-238 | h39h_motorcycle_moped [*30*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-239 | h39h_motorcycle_moped [*30*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-240 | h39h_motorcycle_moped [*30*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-241 | h39i_bicycle [*31*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-242 | h39i_bicycle [*31*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-243 | h39i_bicycle [*31*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-244 | h39i_bicycle [*31*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-245 | h39i_bicycle [*31*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-246 | h39i_bicycle [*31*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-247 | h39i_bicycle [*31*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-248 | h39i_bicycle [*31*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-249 | h39j_4_wheel_tractor [*32*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-250 | h39j_4_wheel_tractor [*32*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-251 | h39j_4_wheel_tractor [*32*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-252 | h39j_4_wheel_tractor [*32*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-253 | h39j_4_wheel_tractor [*32*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-254 | h39j_4_wheel_tractor [*32*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-255 | h39j_4_wheel_tractor [*32*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-256 | h39j_4_wheel_tractor [*32*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-257 | h39k_canoe_boat [*33*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-258 | h39k_canoe_boat [*33*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-259 | h39k_canoe_boat [*33*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-260 | h39k_canoe_boat [*33*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-261 | h39k_canoe_boat [*33*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-262 | h39k_canoe_boat [*33*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-263 | h39k_canoe_boat [*33*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-264 | h39k_canoe_boat [*33*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-265 | h39l_motor_boat [*34*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-266 | h39l_motor_boat [*34*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-267 | h39l_motor_boat [*34*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-268 | h39l_motor_boat [*34*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-269 | h39l_motor_boat [*34*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-270 | h39l_motor_boat [*34*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-271 | h39l_motor_boat [*34*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-272 | h39l_motor_boat [*34*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-273 | h39m_cart_bullock [*35*] | p05_age_binned  [*m08*]| 2 x 18 | Heads of Household (10,877,832)|
+GL01-274 | h39m_cart_bullock [*35*] | sex_head  [*m05*]| 2 x 2 | Heads of Household (10,877,832)|
+GL01-275 | h39m_cart_bullock [*35*] | marital_status_head  [*m06*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-276 | h39m_cart_bullock [*35*] | number_of_people_bound  [*m01*]| 2 x 15 | Heads of Household (10,877,832)|
+GL01-277 | h39m_cart_bullock [*35*] |  unique_generations [*m04*]| 2 x 5 | Heads of Household (10,877,832)|
+GL01-278 | h39m_cart_bullock [*35*] | p21_highest_grade_c7  [*m28*]| 2 x 7 | Heads of Household (10,877,832)|
+GL01-279 | h39m_cart_bullock [*35*] | p22_activity_status  [*67*]| 2 x 12 | Heads of Household (10,877,832)|
+GL01-280 | h39m_cart_bullock [*35*] | batch_urban_rural  [*5*]| 2 x 2 | Heads of Household (10,877,832)|
+
+
+## Second set of George's tables - GL02
+
+
+ID | Variable one  | Variable two |  table size | population |
+-------|----------------------------------|---------------------------|------|---------------------|
+GL02-01| p25_children_born_bound [*m13*] | p05_age_binned  [*m08*]| 12 x 18 | F ever married (13,167,843)|
+GL02-02 | p25_children_born_bound [*m13*] | p06_marital_status  [*51*]| 12 x 5 | F ever married (13,167,843)|
+GL02-03| p25_children_born_bound [*m13*] | number_of_people_bound  [*m01*]| 12 x 15 | F ever married (13,167,843)|
+GL02-04 | p25_children_born_bound [*m13*] |  unique_generations [*m04*]| 12 x 5 |  F ever married (13,167,843)|
+GL02-05 | p25_children_born_bound [*m13*] | p21_highest_grade_c7  [*m28*]| 12 x 7 |  F ever married (13,167,018)|
+GL02-06| p25_children_born_bound [*m13*] | p22_activity_status  [*67*]| 12 x 12 | F ever married (13,165,731)|
+GL02-07| p25_children_born_bound [*m13*] | batch_urban_rural  [*5*]| 12 x 2 | F ever married (13,167,843)|
+GL02-08| p25a_children_born_male_bound [*m14*] | p05_age_binned  [*m08*]| 12 x 18 | F ever married (13,174,233)|
+GL02-09 | p25a_children_born_male_bound [*m14*] | p06_marital_status  [*51*]| 12 x 5 | F ever married (13,174,233)|
+GL02-10| p25a_children_born_male_bound [*m14*] | number_of_people_bound  [*m01*]| 12 x 15 | F ever married (13,174,233)|
+GL02-11 | p25a_children_born_male_bound [*m14*] |  unique_generations [*m04*]| 12 x 5 |  F ever married (13,174,233)|
+GL02-12 | p25a_children_born_male_bound [*m14*] | p21_highest_grade_c7  [*m28*]| 12 x 7 |  F ever married (13,173,342)|
+GL02-13 | p25a_children_born_male_bound [*m14*] | p22_activity_status  [*67*]| 12 x 12 | F ever married (13,171,960)|
+GL02-14 | p25a_children_born_male_bound [*m14*] | batch_urban_rural  [*5*]| 12 x 2 | F ever married (13,174,233)|
+GL02-15| p25b_children_born_female_bound [*m15*] | p05_age_binned  [*m08*]| 12 x 18 | F ever married (13,173,301)|
+GL02-16 | p25b_children_born_female_bound [*m15*] | p06_marital_status  [*51*]| 12 x 5 | F ever married (13,173,301)|
+GL02-17 | p25b_children_born_female_bound [*m15*] | number_of_people_bound  [*m01*]| 12 x 15 | F ever married (13,173,301)|
+GL02-18  | p25b_children_born_female_bound [*m15*] |  unique_generations [*m04*]| 12 x 5 |  F ever married (13,173,301)|
+GL02-19 | p25b_children_born_female_bound [*m15*] | p21_highest_grade_c7  [*m28*]| 12 x 7 |  F ever married (13,172,273)|
+GL02-20 | p25b_children_born_female_bound [*m15*] | p22_activity_status  [*67*]| 12 x 12 | F ever married (13,1708,29)|
+GL02-21 | p25b_children_born_female_bound [*m15*] | batch_urban_rural  [*5*]| 12 x 2 | F ever married (13,173,301)|
+GL02-22| p26_children_in_hh_bound [*m16*] | p05_age_binned  [*m08*]|  12 x 2 | F ever married (13,164,945)|
+GL02-23 | p26_children_in_hh_bound [*m16*] | p06_marital_status  [*51*]| 12 x 5 | F ever married (13,164,945)|
+GL02-24| p26_children_in_hh_bound [*m16*] | number_of_people_bound  [*m01*]| 12 x 15 | F ever married (13,164,945)|
+GL02-25 | p26_children_in_hh_bound [*m16*] |  unique_generations [*m04*]| 12 x 5 |  F ever married (13,164,945)|
+GL02-26 | p26_children_in_hh_bound [*m16*] | p21_highest_grade_c7  [*m28*]| 12 x 7 |  F ever married (13,162,942)|
+GL02-27| p26_children_in_hh_bound [*m16*] | p22_activity_status  [*67*]| 12 x 12 | F ever married (13,160,135)|
+GL02-28 | p26_children_in_hh_bound [*m16*] | batch_urban_rural  [*5*]| 12 x 2 | F ever married (13,164,945)|
+GL02-29| p26a_children_in_hh_male_bound [*m17*] | p05_age_binned  [*m08*]|  10 x 2 | F ever married (13,170,822)|
+GL02-30 | p26a_children_in_hh_male_bound [*m17*] | p06_marital_status  [*51*]| 10 x 5 | F ever married (13,170,822)|
+GL02-31| p26a_children_in_hh_male_bound [*m17*] | number_of_people_bound  [*m01*]| 10 x 15 | F ever married (13,170,822)|
+GL02-32 | p26a_children_in_hh_male_bound [*m17*] |  unique_generations [*m04*]| 10 x 5 |  F ever married (13,170,822)|
+GL02-33 | p26a_children_in_hh_male_bound [*m17*] | p21_highest_grade_c7  [*m28*]| 10 x 7 |  F ever married (13,168,028)|
+GL02-34| p26a_children_in_hh_male_bound [*m17*] | p22_activity_status  [*67*]| 10 x 12 | F ever married (13,164,415)|
+GL02-35 | p26a_children_in_hh_male_bound [*m17*] | batch_urban_rural  [*5*]| 10 x 2 | F ever married (13,170,822)|
+GL02-36| p26b_children_in_hh_female_bound [*m18*] | p05_age_binned  [*m08*]| 10 x 2 | F ever married (13,172,012)|
+GL02-37 | p26b_children_in_hh_female_bound [*m18*] | p06_marital_status  [*51*]| 10 x 5 | F ever married (13,172,012)|
+GL02-38 | p26b_children_in_hh_female_bound [*m18*] | number_of_people_bound  [*m01*]| 10 x 15 | F ever married (13,172,012)|
+GL02-39 | p26b_children_in_hh_female_bound [*m18*] |  unique_generations [*m04*]| 10 x 5 |  F ever married (13,172,012)|
+GL02-40 | p26b_children_in_hh_female_bound [*m18*] | p21_highest_grade_c7  [*m28*]| 10 x 7 |  F ever married (13,169,283)|
+GL02-41| p26b_children_in_hh_female_bound [*m18*] | p22_activity_status  [*67*]| 10 x 12 | F ever married (13,165,779)|
+GL02-42 | p26b_children_in_hh_female_bound [*m18*] | batch_urban_rural  [*5*]| 10 x 2 | F ever married (13,172,012)|
+GL02-43| p27_children_else_bound [*m19*] | p05_age_binned  [*m08*]|  12 x 2 | F ever married (13,167,843)|
+GL02-44 | p27_children_else_bound [*m19*] | p06_marital_status  [*51*]| 12 x 5 | F ever married (13,167,843)|
+GL02-45| p27_children_else_bound [*m19*] | number_of_people_bound  [*m01*]| 12 x 15 | F ever married (13,167,843)|
+GL02-46 | p27_children_else_bound [*m19*] |  unique_generations [*m04*]| 12 x 5 |  F ever married (13,167,843)|
+GL02-47 | p27_children_else_bound [*m19*] | p21_highest_grade_c7  [*m28*]| 12 x 7 |  F ever married (13,167,018)|
+GL02-48| p27_children_else_bound [*m19*] | p22_activity_status  [*67*]| 12 x 12 | F ever married (13,165,731)|
+GL02-49 | p27_children_else_bound [*m19*] | batch_urban_rural  [*5*]| 12 x 2 | F ever married (13,167,843)|
+GL02-50| p27a_children_else_male_bound [*m20*] | p05_age_binned  [*m08*]|  10 x 2 | F ever married (13,167,843)|
+GL02-51 | p27a_children_else_male_bound [*m20*] | p06_marital_status  [*51*]| 10 x 5 | F ever married (13,167,843)|
+GL02-52| p27a_children_else_male_bound [*m20*] | number_of_people_bound  [*m01*]| 10 x 15 | F ever married (13,167,843)|
+GL02-53 | p27a_children_else_male_bound [*m20*] |  unique_generations [*m04*]| 10 x 5 |  F ever married (13,167,843)|
+GL02-54 | p27a_children_else_male_bound [*m20*] | p21_highest_grade_c7  [*m28*]| 10 x 7 |  F ever married (13,167,018)|
+GL02-55| p27a_children_else_male_bound [*m20*] | p22_activity_status  [*67*]| 10 x 12 | F ever married (13,165,731)|
+GL02-56 | p27a_children_else_male_bound [*m20*] | batch_urban_rural  [*5*]| 10 x 2 | F ever married (13,167,843)|
+GL02-57| p27b_children_else_female_bound [*m21*] | p05_age_binned  [*m08*]|  10 x 2 | F ever married (13,167,843)|
+GL02-58 | p27b_children_else_female_bound [*m21*] | p06_marital_status  [*51*]| 10 x 5 | F ever married (13,167,843)|
+GL02-59| p27b_children_else_female_bound [*m21*] | number_of_people_bound  [*m01*]| 10 x 15 | F ever married (13,167,843)|
+GL02-60 | p27b_children_else_female_bound [*m21*] |  unique_generations [*m04*]| 10 x 5 |  F ever married (13,167,843)|
+GL02-61 | p27b_children_else_female_bound [*m21*] | p21_highest_grade_c7  [*m28*]| 10 x 7 |  F ever married (13,167,018)|
+GL02-62| p27b_children_else_female_bound [*m21*] | p22_activity_status  [*67*]| 10 x 12 | F ever married (13,165,731)|
+GL02-63 | p27b_children_else_female_bound [*m21*] | batch_urban_rural  [*5*]| 10 x 2 | F ever married (13,167,843)|
+GL02-64| p28_children_died_bound [*m22*] | p05_age_binned  [*m08*]|  12 x 2 | F ever married (13,167,843)|
+GL02-65 |  p28_children_died_bound [*m22*] | p06_marital_status  [*51*]| 12 x 5 | F ever married (13,167,843)|
+GL02-66|  p28_children_died_bound [*m22*] | number_of_people_bound  [*m01*]| 12 x 15 | F ever married (13,167,843)|
+GL02-67 |  p28_children_died_bound [*m22*] |  unique_generations [*m04*]| 12 x 5 |  F ever married (13,167,843)|
+GL02-68 |  p28_children_died_bound [*m22*] | p21_highest_grade_c7  [*m28*]| 12 x 7 |  F ever married (13,167,018)|
+GL02-69|  p28_children_died_bound [*m22*] | p22_activity_status  [*67*]| 12 x 12 | F ever married (13,165,731)|
+GL02-70 |  p28_children_died_bound [*m22*] | batch_urban_rural  [*5*]| 12 x 2 | F ever married (13,167,843)|
+GL02-71| p28a_children_died_male_bound [*m23*] | p05_age_binned  [*m08*]| 10 x 2 | F ever married (13,167,843)|
+GL02-72 |  p28a_children_died_male_bound [*m23*] | p06_marital_status  [*51*]| 10 x 5 | F ever married (13,167,843)|
+GL02-73|  p28a_children_died_male_bound [*m23*] | number_of_people_bound  [*m01*]| 10 x 15 | F ever married (13,167,843)|
+GL02-74 |  p28a_children_died_male_bound [*m23*] |  unique_generations [*m04*]| 10 x 5 |  F ever married (13,167,843)|
+GL02-75 |  p28a_children_died_male_bound [*m23*] | p21_highest_grade_c7  [*m28*]| 10 x 7 |  F ever married (13,167,018)|
+GL02-76|  p28a_children_died_male_bound [*m23*] | p22_activity_status  [*67*]| 10 x 12 | F ever married (13,165,731)|
+GL02-77 |  p28a_children_died_male_bound [*m23*] | batch_urban_rural  [*5*]| 10 x 2 | F ever married (13,167,843)|
+GL02-78| p28b_children_died_female_bound [*m24*] | p05_age_binned  [*m08*]|  10 x 2 | F ever married (13,167,843)|
+GL02-79 | p28b_children_died_female_bound [*m24*] | p06_marital_status  [*51*]| 10 x 5 | F ever married (13,167,843)|
+GL02-80| p28b_children_died_female_bound [*m24*] | number_of_people_bound  [*m01*]| 10 x 15 | F ever married (13,167,843)|
+GL02-81 | p28b_children_died_female_bound [*m24*] |  unique_generations [*m04*]| 10 x 5 |  F ever married (13,167,843)|
+GL02-82 | p28b_children_died_female_bound [*m24*] | p21_highest_grade_c7  [*m28*]| 10 x 7 |  F ever married (13,167,018)|
+GL02-83| p28b_children_died_female_bound [*m24*] | p22_activity_status  [*67*]| 10 x 12 | F ever married (13,165,731)|
+GL02-84 | p28b_children_died_female_bound [*m24*] | batch_urban_rural  [*5*]| 10 x 2 | F ever married (13,167,843)|
+
+## Third set of George's tables - GL03
+
+
+ID | Variable one  | Variable two |  table size | population |
+------|---------------------------|----------------------------------|-----|------------------------|
+GL03-01| p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*]| 5 x 18 | Over 18  (31,370,702)|
+GL03-02| p09_disablity_dummy_sum [*m27*] | p05_age_binned  [*m08*]| 5 x 18 | Over 18  (31,370,702)|
+GL03-03|p09_disablity_dummy_sum [*m27*] | number_of_people_bound  [*m01*]| 5 x 15 | Over 18  (31,370,702)|
+GL03-04| p09_disablity_dummy_sum [*m27*] |  unique_generations [*m04*]| 5 x 5 |  Over 18  (31,370,702)|
+GL03-05| p09_disablity_dummy_sum [*m27*] | p21_highest_grade_c7  [*m28*]| 5 x 7 |  Over 18  (31,370,702)|
+GL03-06| p09_disablity_dummy_sum [*m27*] | p22_activity_status  [*67*]| 5 x 12 | Over 18  (31,370,702)|
+GL03-07| p09_disablity_dummy_sum [*m27*] | batch_urban_rural  [*5*]| 5 x 2 | Over 18  (31,370,702)|
+GL03-08| p09_disablity_dummy_sum [*m27*] | p26_children_in_hh_bound  [*m16*]| 5 x 12 | e. wed F >18 (13,069,698)|
+GL03-09| p09_disablity_dummy_sum [*m27*] | p26a_children_in_hh_male_bound  [*m17*]| 5 x 10 | e. wed F >18 (13,069,698)|
+GL03-10| p09_disablity_dummy_sum [*m27*] | p26b_children_in_hh_female_bound  [*m18*]| 5 x 10 | e. wed F >18 (13,069,698)|
+GL03-11| p09_disablity_dummy_sum [*m27*] | p27_children_else_bound  [*m19*]| 5 x 12 | e. wed F >18 (13,069,698)|
+GL03-12| p09_disablity_dummy_sum [*m27*] | p27a_children_else_male_bound  [*m20*]| 5 x 10 | e. wed F >18 (13,069,698)|
+GL03-13| p09_disablity_dummy_sum [*m27*] | p27b_children_else_female_bound  [*m21*]| 5 x 10 | e. wed F >18 (13,069,698)|
+GL03-14| p09_disablity_dummy_sum [*m27*] | h32_type_residence [*14*]| 5 x 8 | Over 18  (31,370,702)|
+GL03-15| p09_disablity_dummy_sum [*m27*] | h33_type_ownership [*15*]| 5 x 6 | Over 18  (31,370,702)|
+GL03-16| p09_disablity_sum  [*m25*] | p04_sex  [*49*]| 13 x 18 | Over 18  (31,370,702)|
+GL03-17| p09_disablity_sum  [*m25*] | p05_age_binned  [*m08*]| 13 x 18 | Over 18  (31,370,702)|
+GL03-18|p09_disablity_sum  [*m25*] | number_of_people_bound  [*m01*]| 13 x 15 | Over 18  (31,370,702)|
+GL03-19| p09_disablity_sum  [*m25*] |  unique_generations [*m04*]| 13 x 5 |  Over 18  (31,370,702)|
+GL03-20| p09_disablity_sum  [*m25*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |  Over 18  (31,370,702)|
+GL03-21| p09_disablity_sum  [*m25*] | p22_activity_status  [*67*]| 13 x 12 | Over 18  (31,370,702)|
+GL03-22| p09_disablity_sum  [*m25*] | batch_urban_rural  [*5*]| 13 x 2 | Over 18  (31,370,702)|
+GL03-23| p09_disablity_sum  [*m25*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 | e. wed F >18 (13,069,698)|
+GL03-24| p09_disablity_sum  [*m25*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e. wed F >18 (13,069,698)|
+GL03-25| p09_disablity_sum  [*m25*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 | ee. wed F >18 (13,069,698)|
+GL03-26| p09_disablity_sum  [*m25*] | p27_children_else_bound  [*m19*]| 13 x 12 | e. wed F >18 (13,069,698)|
+GL03-27| p09_disablity_sum  [*m25*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e. wed F >18 (13,069,698)|
+GL03-28| p09_disablity_sum  [*m25*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e. wed F >18 (13,069,698)|
+GL03-29| p09_disablity_sum  [*m25*] | h32_type_residence [*14*]| 13 x 8 | Over 18  (31,370,702)|
+GL03-30| p09_disablity_sum [*m25*] | h33_type_ownership [*15*]| 13 x 6 | Over 18  (31,370,702)|
+GL03-31| p09_disablity_rescaled_sum  [*m26*] | p04_sex  [*49*]| 13 x 18 | Over 18  (31,370,702)|
+GL03-32| p09_disablity_rescaled_sum  [*m26*] | p05_age_binned  [*m08*]| 13 x 18 | Over 18  (31,370,702)|
+GL03-33|p09_disablity_rescaled_sum  [*m26*] | number_of_people_bound  [*m01*]| 13 x 15 | Over 18  (31,370,702)|
+GL03-34| p09_disablity_rescaled_sum  [*m26*] |  unique_generations [*m04*]| 13 x 5 |  Over 18  (31,370,702)|
+GL03-35| p09_disablity_rescaled_sum  [*m26*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |  Over 18  (31,370,702)|
+GL03-36| p09_disablity_rescaled_sum  [*m26*] | p22_activity_status  [*67*]| 13 x 12 | Over 18  (31,370,702)|
+GL03-37| p09_disablity_rescaled_sum  [*m26*] | batch_urban_rural  [*5*]| 13 x 2 | Over 18  (31,370,702)|
+GL03-38| p09_disablity_rescaled_sum  [*m26*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 | e. wed F >18  (13,063,827)|
+GL03-39| p09_disablity_rescaled_sum  [*m26*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e. wed F >18  (13,066,786)|
+GL03-40| p09_disablity_rescaled_sum  [*m26*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 | e. wed F >18  (13,068,100)|
+GL03-41| p09_disablity_rescaled_sum  [*m26*] | p27_children_else_bound  [*m19*]| 13 x 12 | e. wed F >18   (13,067,684)|
+GL03-42| p09_disablity_rescaled_sum  [*m26*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e. wed F >18  (13,069,562)|
+GL03-43| p09_disablity_rescaled_sum  [*m26*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e. wed F >18 (13,069,698)|
+GL03-44| p09_disablity_rescaled_sum  [*m26*] | h32_type_residence [*14*]| 13 x 8 | Over 18  (31,370,702)|
+GL03-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 | Over 18  (31,370,702)|
+
+
+
+|ID | Variable one | Variable two | Variable three | table size | population |
+|-----------|-------------------------------------|-------------|-------------------------|-----------|----------------------|
+|GL03.02-01  | p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 5 x 2 x 18  | Over 18 (31,370,702) |
+|GL03.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 18  | Over 18 (31,370,702) |
+|GL03.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 18  | Over 18 (31,370,702) |
+            
+
+## Third set of George's tables repeated for HoH over 60 - MZ01
+
+
+ID | Variable one  | Variable two |  table size | population |
+------|---------------------------|----------------------------------|-----|------------------------|
+MZ01-01| p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*]| 5 x 18 | HoH over 60 (2,530,908)|
+MZ01-02| p09_disablity_dummy_sum [*m27*] | p05_age_binned  [*m08*]| 5 x 18 | HoH over 60 (2,530,908)|
+MZ01-03|p09_disablity_dummy_sum [*m27*] | number_of_people_bound  [*m01*]| 5 x 15 | HoH over 60 (2,530,908)|
+MZ01-04| p09_disablity_dummy_sum [*m27*] |  unique_generations [*m04*]| 5 x 5 |  HoH over 60 (2,530,908)|
+MZ01-05| p09_disablity_dummy_sum [*m27*] | p21_highest_grade_c7  [*m28*]| 5 x 7 |  HoH over 60 (2,530,908)|
+MZ01-06| p09_disablity_dummy_sum [*m27*] | p22_activity_status  [*67*]| 5 x 12 | HoH over 60 (2,530,908)|
+MZ01-07| p09_disablity_dummy_sum [*m27*] | batch_urban_rural  [*5*]| 5 x 2 | HoH over 60 (2,530,908)|
+MZ01-08| p09_disablity_dummy_sum [*m27*] | p26_children_in_hh_bound  [*m16*]| 5 x 12 | e. wed F HoH  >60 (903,222)|
+MZ01-09| p09_disablity_dummy_sum [*m27*] | p26a_children_in_hh_male_bound  [*m17*]| 5 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-10| p09_disablity_dummy_sum [*m27*] | p26b_children_in_hh_female_bound  [*m18*]| 5 x 10 |e. wed F HoH  >60 (903,222)|
+MZ01-11| p09_disablity_dummy_sum [*m27*] | p27_children_else_bound  [*m19*]| 5 x 12 | e. wed F HoH  >60 (903,222)|
+MZ01-12| p09_disablity_dummy_sum [*m27*] | p27a_children_else_male_bound  [*m20*]| 5 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-13| p09_disablity_dummy_sum [*m27*] | p27b_children_else_female_bound  [*m21*]| 5 x 10 |e. wed F HoH  >60 (903,222)|
+MZ01-14| p09_disablity_dummy_sum [*m27*] | h32_type_residence [*14*]| 5 x 8 | HoH over 60 (2,530,908)|
+MZ01-15| p09_disablity_dummy_sum [*m27*] | h33_type_ownership [*15*]| 5 x 6 | HoH over 60 (2,530,908)|
+MZ01-16| p09_disablity_sum  [*m25*] | p04_sex  [*49*]| 13 x 18 | HoH over 60 (2,530,908)|
+MZ01-17| p09_disablity_sum  [*m25*] | p05_age_binned  [*m08*]| 13 x 18 | HoH over 60 (2,530,908)|
+MZ01-18|p09_disablity_sum  [*m25*] | number_of_people_bound  [*m01*]| 13 x 15 | HoH over 60 (2,530,908)|
+MZ01-19| p09_disablity_sum  [*m25*] |  unique_generations [*m04*]| 13 x 5 |  HoH over 60 (2,530,908)|
+MZ01-20| p09_disablity_sum  [*m25*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |  HoH over 60 (2,530,908)|
+MZ01-21| p09_disablity_sum  [*m25*] | p22_activity_status  [*67*]| 13 x 12 | HoH over 60 (2,530,908)|
+MZ01-22| p09_disablity_sum  [*m25*] | batch_urban_rural  [*5*]| 13 x 2 | HoH over 60 (2,530,908)|
+MZ01-23| p09_disablity_sum  [*m25*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 |e. wed F HoH  >60 (903,222)|
+MZ01-24| p09_disablity_sum  [*m25*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-25| p09_disablity_sum  [*m25*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-26| p09_disablity_sum  [*m25*] | p27_children_else_bound  [*m19*]| 13 x 12 | e. wed F HoH  >60 (903,222)|
+MZ01-27| p09_disablity_sum  [*m25*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-28| p09_disablity_sum  [*m25*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-29| p09_disablity_sum  [*m25*] | h32_type_residence [*14*]| 13 x 8 | HoH over 60 (2,530,908)|
+MZ01-30| p09_disablity_sum [*m25*] | h33_type_ownership [*15*]| 13 x 6 | HoH over 60 (2,530,908)|
+MZ01-31| p09_disablity_rescaled_sum  [*m26*] | p04_sex  [*49*]| 13 x 18 | HoH over 60 (2,530,908)|
+MZ01-32| p09_disablity_rescaled_sum  [*m26*] | p05_age_binned  [*m08*]| 13 x 18 | HoH over 60 (2,530,908)|
+MZ01-33|p09_disablity_rescaled_sum  [*m26*] | number_of_people_bound  [*m01*]| 13 x 15 | HoH over 60 (2,530,908)|
+MZ01-34| p09_disablity_rescaled_sum  [*m26*] |  unique_generations [*m04*]| 13 x 5 |  HoH over 60 (2,530,908)|
+MZ01-35| p09_disablity_rescaled_sum  [*m26*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |  HoH over 60 (2,530,908)|
+MZ01-36| p09_disablity_rescaled_sum  [*m26*] | p22_activity_status  [*67*]| 13 x 12 | HoH over 60 (2,530,908)|
+MZ01-37| p09_disablity_rescaled_sum  [*m26*] | batch_urban_rural  [*5*]| 13 x 2 | HoH over 60 (2,530,908)|
+MZ01-38| p09_disablity_rescaled_sum  [*m26*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 | e. wed F HoH  >60 (903,222)|
+MZ01-39| p09_disablity_rescaled_sum  [*m26*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-40| p09_disablity_rescaled_sum  [*m26*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 |e. wed F HoH  >60 (903,222)|
+MZ01-41| p09_disablity_rescaled_sum  [*m26*] | p27_children_else_bound  [*m19*]| 13 x 12 | e. wed F HoH  >60 (903,222)|
+MZ01-42| p09_disablity_rescaled_sum  [*m26*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-43| p09_disablity_rescaled_sum  [*m26*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e. wed F HoH  >60 (903,222)|
+MZ01-44| p09_disablity_rescaled_sum  [*m26*] | h32_type_residence [*14*]| 13 x 8 | HoH over 60 (2,530,908)|
+MZ01-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 | HoH over 60 (2,530,908)|
+
+
+|ID | Variable one | Variable two | Variable three | table size | population |
+|-----------|------------------------------------|------------|------------------------|-----------|----------------------|
+|MZ01.02-01  | p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 5 x 2 x 18  | HoH over 60 (2,530,908) |
+|MZ01.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 18  | HoH over 60 (2,530,908)  |
+|MZ01.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 18  | HoH over 60 (2,530,908) |
+            
+ 
+
+## Third set of George's tables repeated for HoH over 85 - MZ02
+
+
+ID | Variable one  | Variable two |  table size | population |
+------|---------------------------|----------------------------------|-----|------------------------|
+MZ02-01| p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*]| 5 x 18 | HoH over 60 (102,729)|
+MZ02-02| p09_disablity_dummy_sum [*m27*] | p05_age_binned  [*m08*]| 5 x 18 | HoH over 85 (102,729)|
+MZ02-03|p09_disablity_dummy_sum [*m27*] | number_of_people_bound  [*m01*]| 5 x 15 | HoH over 85 (102,729)|
+MZ02-04| p09_disablity_dummy_sum [*m27*] |  unique_generations [*m04*]| 5 x 5 |  HoH over 85 (102,729)|
+MZ02-05| p09_disablity_dummy_sum [*m27*] | p21_highest_grade_c7  [*m28*]| 5 x 7 |  HoH over 85 (102,729)|
+MZ02-06| p09_disablity_dummy_sum [*m27*] | p22_activity_status  [*67*]| 5 x 12 | HoH over 85 (102,729)|
+MZ02-07| p09_disablity_dummy_sum [*m27*] | batch_urban_rural  [*5*]| 5 x 2 | HoH over 85 (102,729)|
+MZ02-08| p09_disablity_dummy_sum [*m27*] | p26_children_in_hh_bound  [*m16*]| 5 x 12 | e. wed F HoH  >85 (52,122)|
+MZ02-09| p09_disablity_dummy_sum [*m27*] | p26a_children_in_hh_male_bound  [*m17*]| 5 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-10| p09_disablity_dummy_sum [*m27*] | p26b_children_in_hh_female_bound  [*m18*]| 5 x 10 |e. wed F HoH  >85 (52,122)|
+MZ02-11| p09_disablity_dummy_sum [*m27*] | p27_children_else_bound  [*m19*]| 5 x 12 | e. wed F HoH  >85 (52,122)|
+MZ02-12| p09_disablity_dummy_sum [*m27*] | p27a_children_else_male_bound  [*m20*]| 5 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-13| p09_disablity_dummy_sum [*m27*] | p27b_children_else_female_bound  [*m21*]| 5 x 10 |e. wed F HoH  >85 (52,122)|
+MZ02-14| p09_disablity_dummy_sum [*m27*] | h32_type_residence [*14*]| 5 x 8 | HoH over 85 (102,729)|
+MZ02-15| p09_disablity_dummy_sum [*m27*] | h33_type_ownership [*15*]| 5 x 6 | HoH over 85 (102,729)|
+MZ02-16| p09_disablity_sum  [*m25*] | p04_sex  [*49*]| 13 x 18 | HoH over 85 (102,729)|
+MZ02-17| p09_disablity_sum  [*m25*] | p05_age_binned  [*m08*]| 13 x 18 | HoH over 85 (102,729)|
+MZ02-18|p09_disablity_sum  [*m25*] | number_of_people_bound  [*m01*]| 13 x 15 | HoH over 85 (102,729)|
+MZ02-19| p09_disablity_sum  [*m25*] |  unique_generations [*m04*]| 13 x 5 |  HoH over 85 (102,729)|
+MZ02-20| p09_disablity_sum  [*m25*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |  HoH over 85 (102,729)|
+MZ02-21| p09_disablity_sum  [*m25*] | p22_activity_status  [*67*]| 13 x 12 | HoH over 85 (102,729)|
+MZ02-22| p09_disablity_sum  [*m25*] | batch_urban_rural  [*5*]| 13 x 2 | HoH over 85 (102,729)|
+MZ02-23| p09_disablity_sum  [*m25*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 |e. wed F HoH  >85 (52,122)|
+MZ02-24| p09_disablity_sum  [*m25*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-25| p09_disablity_sum  [*m25*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-26| p09_disablity_sum  [*m25*] | p27_children_else_bound  [*m19*]| 13 x 12 | e. wed F HoH  >85 (52,122)|
+MZ02-27| p09_disablity_sum  [*m25*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-28| p09_disablity_sum  [*m25*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-29| p09_disablity_sum  [*m25*] | h32_type_residence [*14*]| 13 x 8 | HoH over 85 (102,729)|
+MZ02-30| p09_disablity_sum [*m25*] | h33_type_ownership [*15*]| 13 x 6 | HoH over 85 (102,729)|
+MZ02-31| p09_disablity_rescaled_sum  [*m26*] | p04_sex  [*49*]| 13 x 18 | HoH over 85 (102,729)|
+MZ02-32| p09_disablity_rescaled_sum  [*m26*] | p05_age_binned  [*m08*]| 13 x 18 | HoH over 85 (102,729)|
+MZ02-33|p09_disablity_rescaled_sum  [*m26*] | number_of_people_bound  [*m01*]| 13 x 15 | HoH over 85 (102,729)|
+MZ02-34| p09_disablity_rescaled_sum  [*m26*] |  unique_generations [*m04*]| 13 x 5 |  HoH over 85 (102,729)|
+MZ02-35| p09_disablity_rescaled_sum  [*m26*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |  HoH over 85 (102,729)|
+MZ02-36| p09_disablity_rescaled_sum  [*m26*] | p22_activity_status  [*67*]| 13 x 12 | HoH over 85 (102,729)|
+MZ02-37| p09_disablity_rescaled_sum  [*m26*] | batch_urban_rural  [*5*]| 13 x 2 | HoH over 85 (102,729)|
+MZ02-38| p09_disablity_rescaled_sum  [*m26*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 | e. wed F HoH  >85 (52,122)|
+MZ02-39| p09_disablity_rescaled_sum  [*m26*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-40| p09_disablity_rescaled_sum  [*m26*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 |e. wed F HoH  >85 (52,122)|
+MZ02-41| p09_disablity_rescaled_sum  [*m26*] | p27_children_else_bound  [*m19*]| 13 x 12 | e. wed F HoH  >85 (52,122)|
+MZ02-42| p09_disablity_rescaled_sum  [*m26*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-43| p09_disablity_rescaled_sum  [*m26*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e. wed F HoH  >85 (52,122)|
+MZ02-44| p09_disablity_rescaled_sum  [*m26*] | h32_type_residence [*14*]| 13 x 8 | HoH over 85 (102,729)|
+MZ02-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 | HoH over 85 (102,729)|
+
+
+|ID | Variable one | Variable two | Variable three | table size | population |
+|-----------|------------------------------------|------------|------------------------|-----------|----------------------|
+|MZ02.02-01  | p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 5 x 2 x 3  | HoH over 85 (102,729) |
+|MZ02.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 3  | HoH over 85 (102,729)  |
+|MZ02.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 3  | HoH over 85 (102,729) |
+            
+
+## Third set of George's tables repeated for HoH over 60 in farming occupations[^1] - MZ03
+
+[^1]: Occupation is ISCO classification cat 6 = Skilled Agricultural, Forestry and Fishery  Workers. The codes are: 611 - Field crop and vegetable growers, Gardeners, horticultural and nursery growers, Market gardeners and crop growers, Mixed crop growers, Tree and shrub crop growers Skilled Agricultural, Forestry and Fishery Workers; 612 - Animal producers not elsewhere classified, Apiarists and Seri culturists (bee keeping), Livestock and dairy producers, Poultry producers; 613 - Mixed crop and animal producers; 614 - Rice and Paddy Farmers; 621 - Forestry and related workers; 622 - Aquaculture workers, Deep-sea fishery workers, Fishery workers, hunters and trappers (market oriented skilled worker), Inland and coastal waters fishery workers; 631 - Subsistence crop farmers;  632 - Subsistence livestock farmers; 633 - Subsistence mixed crop and livestock farmers; 634 - Subsistence fishers, hunters, trappers and gatherers (own consumption). 
+
+
+
+ID | Variable one  | Variable two |  table size | population |
+------|---------------------------|----------------------------------|-----|------------------------|
+MZ03-01| p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*]| 5 x 18 | HoH farm > 60 (645,844)|
+MZ03-02| p09_disablity_dummy_sum [*m27*] | p05_age_binned  [*m08*]| 5 x 18 |  HoH farm > 60 (645,844)|
+MZ03-03|p09_disablity_dummy_sum [*m27*] | number_of_people_bound  [*m01*]| 5 x 15 |  HoH farm > 60 (645,844)|
+MZ03-04| p09_disablity_dummy_sum [*m27*] |  unique_generations [*m04*]| 5 x 5 |   HoH farm > 60 (645,844)|
+MZ03-05| p09_disablity_dummy_sum [*m27*] | p21_highest_grade_c7  [*m28*]| 5 x 7 |   HoH farm > 60 (645,844)|
+MZ03-06| p09_disablity_dummy_sum [*m27*] | p22_activity_status  [*67*]| 5 x 12 |  HoH farm > 60 (645,844)|
+MZ03-07| p09_disablity_dummy_sum [*m27*] | batch_urban_rural  [*5*]| 5 x 2 |  HoH farm > 60 (645,844)|
+MZ03-08| p09_disablity_dummy_sum [*m27*] | p26_children_in_hh_bound  [*m16*]| 5 x 12 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-09| p09_disablity_dummy_sum [*m27*] | p26a_children_in_hh_male_bound  [*m17*]| 5 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-10| p09_disablity_dummy_sum [*m27*] | p26b_children_in_hh_female_bound  [*m18*]| 5 x 10 |e.w.F.HoH Farm  >60 (99,483)|
+MZ03-11| p09_disablity_dummy_sum [*m27*] | p27_children_else_bound  [*m19*]| 5 x 12 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-12| p09_disablity_dummy_sum [*m27*] | p27a_children_else_male_bound  [*m20*]| 5 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-13| p09_disablity_dummy_sum [*m27*] | p27b_children_else_female_bound  [*m21*]| 5 x 10 |e.w.F.HoH Farm  >60 (99,483)|
+MZ03-14| p09_disablity_dummy_sum [*m27*] | h32_type_residence [*14*]| 5 x 8 |  HoH farm > 60 (645,844)|
+MZ03-15| p09_disablity_dummy_sum [*m27*] | h33_type_ownership [*15*]| 5 x 6 |  HoH farm > 60 (645,844)|
+MZ03-16| p09_disablity_sum  [*m25*] | p04_sex  [*49*]| 13 x 18 |  HoH farm > 60 (645,844)|
+MZ03-17| p09_disablity_sum  [*m25*] | p05_age_binned  [*m08*]| 13 x 18 |  HoH farm > 60 (645,844)|
+MZ03-18|p09_disablity_sum  [*m25*] | number_of_people_bound  [*m01*]| 13 x 15 |  HoH farm > 60 (645,844)|
+MZ03-19| p09_disablity_sum  [*m25*] |  unique_generations [*m04*]| 13 x 5 |   HoH farm > 60 (645,844)|
+MZ03-20| p09_disablity_sum  [*m25*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |   HoH farm > 60 (645,844)|
+MZ03-21| p09_disablity_sum  [*m25*] | p22_activity_status  [*67*]| 13 x 12 |  HoH farm > 60 (645,844)|
+MZ03-22| p09_disablity_sum  [*m25*] | batch_urban_rural  [*5*]| 13 x 2 |  HoH farm > 60 (645,844)|
+MZ03-23| p09_disablity_sum  [*m25*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 |e.w.F.HoH Farm  >60 (99,483)|
+MZ03-24| p09_disablity_sum  [*m25*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-25| p09_disablity_sum  [*m25*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-26| p09_disablity_sum  [*m25*] | p27_children_else_bound  [*m19*]| 13 x 12 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-27| p09_disablity_sum  [*m25*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-28| p09_disablity_sum  [*m25*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-29| p09_disablity_sum  [*m25*] | h32_type_residence [*14*]| 13 x 8 |  HoH farm > 60 (645,844)|
+MZ03-30| p09_disablity_sum [*m25*] | h33_type_ownership [*15*]| 13 x 6 |  HoH farm > 60 (645,844)|
+MZ03-31| p09_disablity_rescaled_sum  [*m26*] | p04_sex  [*49*]| 13 x 18 |  HoH farm > 60 (645,844)|
+MZ03-32| p09_disablity_rescaled_sum  [*m26*] | p05_age_binned  [*m08*]| 13 x 18 |  HoH farm > 60 (645,844)|
+MZ03-33|p09_disablity_rescaled_sum  [*m26*] | number_of_people_bound  [*m01*]| 13 x 15 |  HoH farm > 60 (645,844)|
+MZ03-34| p09_disablity_rescaled_sum  [*m26*] |  unique_generations [*m04*]| 13 x 5 |   HoH farm > 60 (645,844)|
+MZ03-35| p09_disablity_rescaled_sum  [*m26*] | p21_highest_grade_c7  [*m28*]| 13 x 7 |   HoH farm > 60 (645,844)|
+MZ03-36| p09_disablity_rescaled_sum  [*m26*] | p22_activity_status  [*67*]| 13 x 12 |  HoH farm > 60 (645,844)|
+MZ03-37| p09_disablity_rescaled_sum  [*m26*] | batch_urban_rural  [*5*]| 13 x 2 |  HoH farm > 60 (645,844)|
+MZ03-38| p09_disablity_rescaled_sum  [*m26*] | p26_children_in_hh_bound  [*m16*]| 13 x 12 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-39| p09_disablity_rescaled_sum  [*m26*] | p26a_children_in_hh_male_bound  [*m17*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-40| p09_disablity_rescaled_sum  [*m26*] | p26b_children_in_hh_female_bound  [*m18*]| 13 x 10 |e.w.F.HoH Farm  >60 (99,483)|
+MZ03-41| p09_disablity_rescaled_sum  [*m26*] | p27_children_else_bound  [*m19*]| 13 x 12 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-42| p09_disablity_rescaled_sum  [*m26*] | p27a_children_else_male_bound  [*m20*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-43| p09_disablity_rescaled_sum  [*m26*] | p27b_children_else_female_bound  [*m21*]| 13 x 10 | e.w.F.HoH Farm  >60 (99,483)|
+MZ03-44| p09_disablity_rescaled_sum  [*m26*] | h32_type_residence [*14*]| 13 x 8 |  HoH farm > 60 (645,844)|
+MZ03-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 |  HoH farm > 60 (645,844)|
+
+
+|ID | Variable one | Variable two | Variable three | table size | population |
+|-----------|------------------------------------|------------|----------------------|-----------|------------------------|
+|MZ03.02-01  | p09_disablity_dummy_sum [*m27*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 5 x 2 x 3  |  HoH farm > 60 (645,844) |
+|MZ03.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 3  |  HoH farm > 60 (645,844)  |
+|MZ03.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 3  |  HoH farm > 60 (645,844) |
+            
+            
