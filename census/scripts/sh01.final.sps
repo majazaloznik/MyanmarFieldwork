@@ -1,10 +1,8 @@
 ﻿
 * Encoding: UTF-8.
-
 ************************************************************************************
 ************************************************************************************
-* 
-GET DATA - CHANGE FILE PATH!!!
+* GET DATA - CHANGE FILE PATH!!!
 * also replace all C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\ with new output path
 ************************************************************************************
 
@@ -96,17 +94,26 @@ VARIABLE LABELS p09_disablity_dummy_sum 'Disabilites dummy sum (4)'.
 ************************************************************************************
 * occupation collapsed
 
-RECODE  p23_occupation (MISSING=COPY)(LO THRU 99 = 0) (LO THRU 199=1) (LO THRU 299=2) (LO THRU 399=3) (LO THRU 499=4) (LO THRU 599=5) (LO THRU 699=6) (LO THRU 799=7) (LO THRU 899=8) (LO THRU 998 =9) (999 = 10) (ELSE=SYSMIS) INTO p23_occupation_binned.
-VALUE LABELS p23_occupation_binned 0 'Armed forces' 1 'Managers' 2 'Professionals' 3 'Technicians and Associate Professionals' 4 'Clerical Support Workers' 5 'Services and Sales Workers' 6 'Skilled Agricultural, Forestry and Fishery Workers' 7 'Craft and Related Trades Workers' 8 'Plant and Machine Operators and Assemblers' 9 'Elementary Occupations' 10 'Not stated'. 
+RECODE  p23_occupation (MISSING=COPY)(LO THRU 99 = 0) (LO THRU 199=1) 
+(LO THRU 299=2) (LO THRU 399=3) (LO THRU 499=4) (LO THRU 599=5) (LO THRU 699=6) 
+(LO THRU 799=7) (LO THRU 899=8) (LO THRU 998 =9) (999 = 10) (ELSE=SYSMIS)
+ INTO p23_occupation_binned.
+VALUE LABELS p23_occupation_binned 0 'Armed forces' 1 'Managers' 
+2 'Professionals' 3 'Technicians and Associate Professionals' 4 'Clerical Support Workers' 
+5 'Services and Sales Workers' 6 'Skilled Agricultural, Forestry and Fishery Workers' 
+7 'Craft and Related Trades Workers' 8 'Plant and Machine Operators and Assemblers' 
+9 'Elementary Occupations' 10 'Not stated'. 
 exe. 
 
 ************************************************************************************
 * recode education into 7 categories
 
-recode  p21_highest_grade (missing = copy) (0 thru 4 = 0) (5 thru 8 = 1) (9 thru 10 = 2) (11 = 3) (12 thru 15 = 4) (16 thru 18 = 5) (19 = 6)  (else = sysmis) into p21_highest_grade_c7.
+recode  p21_highest_grade (missing = copy) (0 thru 4 = 0) (5 thru 8 = 1) (9 thru 10 = 2) (11 = 3)
+ (12 thru 15 = 4) (16 thru 18 = 5) (19 = 6)  (else = sysmis) into p21_highest_grade_c7.
 variable labels p21_highest_grade_c7 'Highest level of education completed (7 categories)'.
 formats p21_highest_grade_c7 (F2.0).
-value labels p21_highest_grade_c7 0 'None completed' 1 'Elementary completed' 2 'Middleschool completed' 3 'Highschool completed' 4 'undergraduate' 5 'postgraduate' 6 'other'.
+value labels p21_highest_grade_c7 0 'None completed' 1 'Elementary completed' 
+2 'Middleschool completed' 3 'Highschool completed' 4 'undergraduate' 5 'postgraduate' 6 'other'.
 exe.
 
 ************************************************************************************
@@ -141,10 +148,6 @@ IF  (HH_SON_cores = 1 &  HH_DAUGHTER_cores = 1) HH_Type_cores = 3.
 VALUE LABELS HH_Type_HoH 0 'No cores children' 1 'Only sons coresident' 2 'Only daughters coresident' 3 'Both sons and daughters coresident'.
 VARIABLE LABELS HH_Type_cores 'Type of HH by child coresidence'.
 EXECUTE.
-
-
-
-
 
 ************************************************************************************
 ************************************************************************************
@@ -201,8 +204,6 @@ OMSEND TAG=['SH01.XLSX'].
 
 
 
-
-
 ************************************************************************************
 * select only Heads of households over 60 - i.e. one row per HH
 USE ALL.
@@ -236,7 +237,7 @@ OMS
 ************************************************************************************
 
 CROSSTABS
-  /TABLES= batch_state_region BY HH_Type_cores BY p09_disablity_dummy_sum BY p05_age_binned BY p04_sex  BY p06_marital_status
+  /TABLES=  p09_disablity_dummy_sum BY HH_Type_cores BY   p06_marital_status BY p05_age_binned  BY  p04_sex
   /FORMAT=AVALUE TABLES
   /CELLS=COUNT
   /COUNT ROUND CELL.
@@ -250,6 +251,47 @@ CROSSTABS
 OMSEND TAG=['SH02.SAV'].
 OMSEND TAG=['SH02.XLSX'].
 
+
+************************************************************************************
+************************************************************************************
+* CROSSTABS FOR SARAH PART THREE: SAME AS PART TWO, BUT REGIONS AS WELL
+************************************************************************************
+************************************************************************************
+
+
+************************************************************************************
+** OUTPUT MANAGMENT 
+
+OMS
+  /SELECT TABLES
+  /IF COMMANDS=['Crosstabs'] SUBTYPES=['Crosstabulation']
+  /DESTINATION FORMAT=SAV NUMBERED=TableNumber_
+   OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\SH03.sav' VIEWER=YES
+  /TAG='SH03.SAV'.
+
+OMS
+  /SELECT TABLES
+  /IF COMMANDS=['Crosstabs'] SUBTYPES=['Crosstabulation']
+  /DESTINATION FORMAT=XLSX
+   OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\SH03.xlsx' VIEWER=YES
+  /TAG='SH03.XLSX'.
+
+************************************************************************************
+
+CROSSTABS
+  /TABLES=   p09_disablity_dummy_sum BY HH_Type_cores BY   p06_marital_status BY p05_age_binned  BY  p04_sex BY batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+
+************************************************************************************
+************************************************************************************
+* END EXPORT
+************************************************************************************
+* OMSEND.
+OMSEND TAG=['SH03.SAV'].
+OMSEND TAG=['SH03.XLSX'].
 
 
 

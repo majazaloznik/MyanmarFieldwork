@@ -1,6 +1,7 @@
 ---
-title: Myanmar Census Analysis - Outline of Tables Available
-author: mz
+title: "Myanmar Census Analysis - Outline of Tables Available"
+author: "mz"
+geometry: margin=0.5in
 output:
   pdf_document:
     number_sections: yes
@@ -12,7 +13,7 @@ output:
     fig_width: 5
     reference_docx: StyleReference.docx
     toc: yes
-classoption: landscape    
+classoption: landscape
 ---
 # Varible Lists
 
@@ -22,12 +23,12 @@ As a rule of thumb, variables names beginning with "h" are household level, and 
 
 ID|Variable Code | Name, description | notes  |
 --|-----------------------|------------------------------------|--------------------|
-1| batch_state_region| ||
+1| batch_state_region| 15 regions:  Kachin, Kayah, Kayin, Chin, Sagaing, Tanintharyi, Bago, Magway, Mandalay, Mon, Rakhine, Yangon, Shan, Ayeywawady, Nay Pyi Taw ||
 2| batch_district|||
 3| batch_township|||
 4| batch_ward|||
 5| batch_urban_rural| | |
-6| batch_ea| | |
+6| batch_ea| | | 
 7| household_number| | |
 8 | barcode| | |
 9 | scanned_date| | |
@@ -73,7 +74,7 @@ ID|Variable Code | Name, description | notes  |
 48 |p03_relationship | Relationship to head of HH |     |
 49 |p04_sex|  Sex |   |
 50 |p05_age| Age  | up to 98 or older  |
-51 |p06_marital_status | Marital status | four categories   |
+51 |p06_marital_status | 5 categories:   Single,	Married, Widowed,	Divorced/Separated,	Renounced |    |
 52 |p09a_disability_seeing| Disability Seeing |   |
 53 |p09b_disability_hearing | Disability Hearing |   |
 54 |p09c_disability_walking| Disability Walking |   |
@@ -83,13 +84,13 @@ ID|Variable Code | Name, description | notes  |
 58 |p13_usual_res_township  | Township code of usual residence - 000 for here | |
 59 |p14_usual_res_ur | Q14-Ind-ResRuUr-c2 | Usual residence rural or urban |  |
 60 |p15_duration_of_residence  | Years in place of usual residence |  |
-61 |p16_reason_for_movement  | Reason for move here  |   |
+61 |p16_reason_for_movement  | Reason for move here 8 : Employment/Searching employment,	Education	Marriage,	Followed family	Conflict,	Did not move	Other,	9  |   |
 62 |p17_prev_res_township  | Township of previous place of residence ||
 63 |p18_prev_res_ur | Previous place of residence rural or urban ||
 64 |p19_read_and_write   | Can read and write | (age 5 and above) |
 65 |p20_school_attendance |  Ever/currently attended school |  (age 5 and above)|
 66 |p21_highest_grade | Highest level of education attained | (age 5 and above) grouping? |
-67 |p22_activity_status | Activity Status | (age 10 and above)  |
+67 |p22_activity_status | Activity Status 12: Employee (government),	Employee (private, org),	Employer,	Own account worker,	Contributing family worker,	Sought work,	Did not seek work,	Full time student,	Household work,	Pensioner/retired/elderly person,	Ill/ disabled,	12 | (age 10 and above)  |
 68 |p23_occupation | Occupation (ILO)| age 10 and above AND Q22 == employed or self-employed |
 69 |p24_industry  | Industry (ILO) | age 10 and above AND Q22 == employed or self-employed |
 70 |p25a_children_born_male | Number of children born alive male | (ever married women over 15) |
@@ -140,8 +141,29 @@ m25 | p09_disablity_sum | sum of all four disabilities, max 12| ind | p09a_disab
 m26 | p09_disablity_rescaled_sum | sum of all four disabilities rescaled , max 8|ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
 m27 | p09_disablity_dummy_sum | sum of all four disabilities as dummies , max 4 |ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
 m28 | p21_highest_grade_c7| recategorised education into 7 cats. | ind |  p21_highest_grade |
+m29 | p23_occupation_binned | Occupation top level 10 categories | ind | p23_occupation |
+m30 | SON_cores | At least one son coresident | hh | p03_relationship, p04_sex, HH_ID|
+m31 | DAUGTER_cores | At least one daughter coresident | hh | p03_relationship, p04_sex, HH_ID |
+m32 | HH_Type_cores | 0 'No cores children' 1 'Only sons coresident' 2 'Only daughters coresident' 3 'Both sons and daughters coresident' | hh | SON_cores,HH_Type_cores |
+m33 | FarmingHH_F_HoH | Household where HoH is in skilled agricultural occupation and not an employee | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID   |
+m34 | FarmingHH_F_HoH_Sp | Household where HoH or spouse is in skilled agricultural occupation and not an employee | hh  | p23_occupation, p03_relationship, p22_activity_status, HH_ID   |
+m35 | FarmingHH_F_Any | Household where any relative is in skilled agricultural occupation and not an employee | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID   |
+m36 | Over60_HoH | Household with HoH over 60 years old | hh | p03_relationship, p05_age, HH_ID|
+m37 | HH_parents_cores | At least one parent of HoH is coresiding | hh | p03_relationship,  HH_ID|
+m38 | HH_Type_HoH | Using [*m33*] definition of farming HH (HoH only) - four types of HH: 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores' | hh | FarmingHH_F_HoH, HH_ID, Over60_HoH|
+m39 | FarmingHH_HoH_Sp  | Using [*m34*] definition of farming HH (HoH or spouse)- four types of HH: 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores' | hh | FarmingHH_F_HoH_Sp, HH_ID, Over60_HoH|
+m40 | FarmingHH_Any  | Using [*m35*] definition of farming HH (any relative)- four types of HH: 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores' | hh | FarmingHH_F_Any, HH_ID, Over60_HoH|
+m41 | HH_N_Avail_Labour_M   | number of males in HH available for farming labour - not HoH | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID, p04_sex |
+m42 | HH_N_Avail_Labour_F   | number of females in HH available for farming labour - not HoH | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID, p04_sex |
+m43 | HH_N_Avail_Labour | total number of people in HH available for farming labour - not HoH | hh | HH_N_Avail_Labour_M, HH_N_Avail_Labour_F |
+m44 | HH_No_Vehicle | Does the HH own at least one motor vehicke (car, truck, van, motorcycle, moped and/or wheel tractor. ) |
+m45 | p05_age_c2 | Age - two groups under/over 60 years: 1 '15 - 59' 2 '60+' | ind | p05_age |
+m46 | Mig_type1 | Urban/rural direciton of usual vs previous residence: 0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban' 4 'Rural-Rural'|  ind | p14_usual_res_ur, p18_prev_res_ur |
+m47 | Mig_type2 |  Urban/rural direciton of usual residence vs birthplace:  0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban' 4 'Rural-Rural'|  ind | p11_birth_township_dummy, p14_usual_res_ur, p12_birth_ur |
+m48 | p15_duration_of_residence_binned  | 9 categories: 1yr, 2yrs, 3-5 yrs, 6-10, 11-20, 21-30, 31-40, 41-50, over 50 | ind | p15_duration_of_residence  |
 
 
+# George's tables 
 
 ## First set of George's tables - GL01 
 
@@ -759,4 +781,152 @@ MZ03-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 
 |MZ03.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 3  |  HoH farm > 60 (645,844)  |
 |MZ03.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 3  |  HoH farm > 60 (645,844) |
             
-            
+
+       
+
+# Ken's Tables
+
+## First set of Ken's Tables - KH01
+<!-- Age by Gender by disability by HH type by region -->
+
+|ID |Variables | table size | population 
+|-------|----------------------------------------------------|--------------------|-------------------|
+|KH01-01 | p09_disablity_dummy_sum [*m27*] | 5 x 18 x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p05_age_binned   [*m08*]| | |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH [*m38*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-02 | p09_disablity_dummy_sum [*m27*] | 5 x 18 x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p05_age_binned   [*m08*]| | |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH_Sp [*m39*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-03 | p09_disablity_dummy_sum [*m27*] | 5 x 18 x 2 x 4 x 15 | HoffH (10,877,832) |
+|        | p05_age_binned   [*m08*]| | |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_Any [*m40*] | | |
+|        | batch_state_region [*1*]| | |
+
+
+## Second set of Ken's Tables - KH02
+<!-- distribution of M/F/Total number of available labour in HH for different HH type and region, male and female HoH --> 
+
+|ID |Variables | table size | population |
+|-------|----------------------------------------------------|--------------------|-------------------|
+|KH02-01 | HH_N_Avail_Labour [*m43*] | 25+ x 2 x 4 x 15 | HofH (or HH reall) (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH [*m38*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-02 | HH_N_Avail_Labour_M [*m41*] | 25+ x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH [*m38*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-03 | HH_N_Avail_Labour_F  [*m42*] | 25+ x 2 x 4 x 15  | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH [*m38*] | | |
+|        | batch_state_region [*1*]| | |
+|KH02-04 | HH_N_Avail_Labour [*m43*] | 25+ x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH_Sp [*m39*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-05 | HH_N_Avail_Labour_M [*m41*] | 25+ x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH_Sp [*m39*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-06 | HH_N_Avail_Labour_F  [*m42*] | 25+ x 2 x 4 x 15  | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_HoH_Sp [*m39*] | | |
+|        | batch_state_region [*1*]| | |
+|KH02-07 | HH_N_Avail_Labour [*m43*] | 25+ x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_Any [*m40*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-08 | HH_N_Avail_Labour_M [*m41*] | 25+ x 2 x 4 x 15 | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_Any [*m40*] | | |
+|        | batch_state_region [*1*]| | |
+|KH01-09 | HH_N_Avail_Labour_F  [*m42*] | 25+ x 2 x 4 x 15  | HofH (10,877,832) |
+|        | p04_sex      [*49*]     | | |
+|        | HH_Type_Any [*m40*] | | |
+|        | batch_state_region [*1*]| | |
+
+
+## Third set of Ken's Tables - KH03
+
+|ID |Variables | table size | population  |
+|-------|---------------------------------------------------------|-------------|-----------------------------|
+|KH03-01 | HH_Type_HoH [*m38*]      |  4 x 2 x 2 x 15 | Heads of Households (10,877,832) |
+|        | p04_sex      [*49*]      | |  |
+|        | HH_No_Vehicle  [*m44*]|  |
+|        | batch_state_region [*1*] | | |
+|KH03-02 | HH_Type_HoH_Sp [*m39*]   | 4 x 2 x 2 x 15 | Heads of Households (10,877,832)  |
+|        | p04_sex      [*49*]      | | |
+|        | HH_No_Vehicle  [*m44*]|  |
+|        | batch_state_region [*1*] | | |
+|KH03-03 | HH_Type_Any [*m40*]      | 4 x 2 x 2 x 15 | Heads of Households (10,877,832) |
+|        | p04_sex      [*49*]      | |  |
+|        | HH_No_Vehicle  [*m44*]|  |
+|        | batch_state_region [*1*] | | |
+
+# John Knodel's Tables - Migration - JK01
+
+|ID |Variable one | Variable two | Variable three | table size | population |
+|-------|--------------------|---------------------------|---------------------------|---------|-------------------|
+JK01-01 | batch_state_region [*1*]| p11_birth_township_c2 [*m09*]| p04_sex [*49*]| 15 x 2 x 2 | over 15s (33,934,631) |
+JK01-02 | batch_state_region [*1*]| p11_birth_township_c2 [*m09*]| p05_age_c2 [*m45*]| 15 x 2 x 2 | over 15s (33,934,631) |
+JK01-03 | batch_state_region [*1*]| p11_birth_township_c2 [*m09*]| batch_urban_rural [*5*]| 15 x 2 x 2 | over 15s (33,934,631) |
+JK01-04 | batch_state_region [*1*]| Mig_type1 [*m46*]| p05_age_binned [*m08*]| 15 x 5 x 18 | over 15s (33,820,106) |
+JK01-05 | batch_state_region [*1*]| Mig_type2 [*m47*]| p05_age_binned [*m08*]| 15 x 5 x 18 | over 15s (33,762,173) |
+JK01-06 | batch_state_region [*1*]| p05_age_c2 [*m45*]| p16_reason_for_movement [*61*]| 15 x 2 x 8 | over 15s in diff t-ship f. birthplace (8,360,577) |
+JK01-07 | batch_state_region [*1*]| batch_urban_rural [*5*]| p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | over 60s (4,341,459) |
+JK01-08 | batch_state_region [*1*]| p04_sex [*49*] | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Rural(birth) -> Urban now (1,998,549) |
+JK01-09 | batch_state_region [*1*]| p05_age_c2 [*m45*] | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Rural(birth) -> Urban now (1,998,549) |
+JK01-10 | batch_state_region [*1*]| p04_sex [*49*]  | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Economic migrants (3,144,247) |
+JK01-11 | batch_state_region [*1*]| p05_age_c2 [*m45*]  | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Economic migrants (3,144,247) |
+JK01-12 | batch_state_region [*1*]| batch_urban_rural [*5*]  | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Economic migrants (3,144,247) |
+
+
+# Ken's Migration Tables - KHm01
+
+|ID |Variable one | Variable two | Variable three | table size | population |
+|---------|------------------|------------------------|---------------------------|---------|-------------------|
+KHm01-01 | batch_state_region [*1*]| Mig_type1 [*m46*]| p22_activity_status [*67*]| 15x5x12 | over 15s (33,820,106) |
+KHm01-02 | batch_state_region [*1*]| p04_sex [*49*]| p15_duration_of_residence_binned [*m48*]| 15x2x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
+KHm01-03 | batch_state_region [*1*]| p05_age_binned [*m08*]| p15_duration_of_residence_binned [*m48*]| 15x18x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
+KHm01-04 | batch_state_region [*1*]| p21_highest_grade_c7  [*m28*]| p15_duration_of_residence_binned [*m48*]| 15x7x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
+
+
+
+
+# Sarah's Tables
+
+## First set of Sarah's Tables - SH01
+
+<!-- "children by number by age by occupation, by education, by urban rural for a second analysis." -->
+
+|ID |Variable one | Variable two | Variable three | table size | population |
+|-------|-------------------------------|---------------------|----------------------------|-----|----------------------|
+SH01-01 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  p23_occupation_binned [*m29*] | 12x8x10 | e.w.F. HoH>60 (216,128)|
+SH01-02 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  p21_highest_grade_c7  [*m28*] | 12x8x7 | e.w.F. HoH>60 (903,648)|
+SH01-02 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  batch_urban_rural  [*5*] | 12x8x2 | e.w.F. HoH>60 (903,648)|
+
+## Second set of Sarah's Tables - SH02
+
+<!-- gender/age, disability (or chronic disease), children by gender in household ... Also in disability one - add in marital status of householder alongside gender of resident child/children  -->
+
+|ID |Variables | table size | population |
+|-------|---------------------------|------------|----------------------|
+|SH02-01 | p09_disablity_dummy_sum [*m27*] | 5 x 4 x 5 x 8 x 2 | HoH over 60 (2,530,908)|
+|        | HH_Type_cores [*m32*] | | |
+|        | p06_marital_status [*51*]| | |
+|        | p05_age_binned   [*m08*]| | |
+|        | p04_sex      [*49*]     | | |
+
+
+## Third set of Sarah's Tables - SH03
+
+Same as SH02, but with region added: batch_state_region [*1*] with 15 categories, SH03-01 has 5 x 4 x 5 x 8 x 2 x 15 = 24000 cells 
+
+
+
+
