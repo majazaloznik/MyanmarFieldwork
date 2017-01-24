@@ -15,101 +15,89 @@ output:
     toc: yes
 classoption: landscape
 ---
+
+\vspace{1cm}
+
+\begin{center}
+
+The variable list has IDs (first column) for each of the variables used in the tables.
+
+The table lists then refer to these IDs in [\emph{ID}] italics in the square brackets for easy lookup. 
+
+\end{center}
+
+
+
+\newpage
 # Varible Lists
 
 ## List of variables as provided by the census office
 
-As a rule of thumb, variables names beginning with "h" are household level, and ones begining with "p" are individual level ones. 
 
-ID|Variable Code | Name, description | notes  |
---|-----------------------|------------------------------------|--------------------|
-1| batch_state_region| 15 regions:  Kachin, Kayah, Kayin, Chin, Sagaing, Tanintharyi, Bago, Magway, Mandalay, Mon, Rakhine, Yangon, Shan, Ayeywawady, Nay Pyi Taw ||
-2| batch_district|||
-3| batch_township|||
-4| batch_ward|||
-5| batch_urban_rural| | |
-6| batch_ea| | | 
-7| household_number| | |
-8 | barcode| | |
-9 | scanned_date| | |
-10 | scanner_id| | |
-11 | batch_number| | |
-12 | qnh| | |
-13 |nqh| | |
-14 |h32_type_residence| 8 -Condominium,	Apartment/Flat,	Bungalow/Brick house,	Semi-pacca house,	Wooden house,	Bamboo	Hut 2 - 3 years,	Hut 1 year,	9
-| |
-15 |h33_type_ownership| 6 - Owner,	Renter,	Provided free (individually),	Government Quarters,	Private Company Quarters,	Other | |
-16 |h34_lighting| 8 - Electricity, Kerosene, Candle, Battery, Generator (private), Water mill (private), Solar system/energy, Other| |
-17 |h35a_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other| |
-18 |h35b_non_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other | |
-19 |h36_cooking_fuel| 9 - Electricity, LPG, Kerosene, BioGas, Firewood, Charcoal, Coal, Straw/Grass, Other| |
-20 |h37_toilet| 7 - Flush, Water seal (Improved pit latrine), Pit (Traditional pit latrine), Bucket (Surface latrine), Other, None | |
-21 |h38a_roof| 7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
-22 |h38b_walls|7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
-23 |h38c_floor| 6 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Tile/Brick/Concrete, Other| |
-24 |h39a_radio| 2 - Yes, No | |
-25 |h39b_television| 2 - Yes, No| |
-26 |h39c_land_line_phone| 2 - Yes, No | |
-27 |h39d_mobile_phone| 2 - Yes, No| |
-28 |h39e_computer| 2 - Yes, No| |
-29 |h39f_internet_at_home| 2 - Yes, No| |
-30 |h39g_car_truck_van| 2 - Yes, No| |
-31 |h39h_motorcycle_moped| 2 - Yes, No| |
-32 |h39i_bicycle| 2 - Yes, No| |
-33 |h39j_4_wheel_tractor| 2 - Yes, No| |
-34 |h39k_canoe_boat| 2 - Yes, No| |
-35 |h39l_motor_boat| 2 - Yes, No| |
-36 |h39m_cart_bullock| 2 - Yes, No| |
-37 |h40_number_abroad| | |
-38 |h41_number_of_deaths| | |
-39 |number_of_males| | |
-40 |number_of_females| | |
-41 |number_of_people| | |
-42 |form_type| | |
-43 |per_scan_form_seq| | |
-44 |qnp| | |
-45 |nqp| | |
-46 |p01_person_number| | |
-47 |p02_line_number |  | |
-48 |p03_relationship | Relationship to head of HH |     |
-49 |p04_sex|  Sex |   |
-50 |p05_age| Age  | up to 98 or older  |
-51 |p06_marital_status | 5 categories:   Single,	Married, Widowed,	Divorced/Separated,	Renounced |    |
-52 |p09a_disability_seeing| Disability Seeing |   |
-53 |p09b_disability_hearing | Disability Hearing |   |
-54 |p09c_disability_walking| Disability Walking |   |
-55 |p09d_disability_remembering| Disability Remembering or concentrating |   |
-56 |p11_birth_township | Township code of place of birth - 000 for here |  |
-57 |p12_birth_ur  | Place of birth rural or urban |   |
-58 |p13_usual_res_township  | Township code of usual residence - 000 for here | |
-59 |p14_usual_res_ur | Q14-Ind-ResRuUr-c2 | Usual residence rural or urban |  |
-60 |p15_duration_of_residence  | Years in place of usual residence |  |
-61 |p16_reason_for_movement  | Reason for move here 8 : Employment/Searching employment,	Education	Marriage,	Followed family	Conflict,	Did not move	Other,	9  |   |
-62 |p17_prev_res_township  | Township of previous place of residence ||
-63 |p18_prev_res_ur | Previous place of residence rural or urban ||
-64 |p19_read_and_write   | Can read and write | (age 5 and above) |
-65 |p20_school_attendance |  Ever/currently attended school |  (age 5 and above)|
-66 |p21_highest_grade | Highest level of education attained | (age 5 and above) grouping? |
-67 |p22_activity_status | Activity Status 12: Employee (government),	Employee (private, org),	Employer,	Own account worker,	Contributing family worker,	Sought work,	Did not seek work,	Full time student,	Household work,	Pensioner/retired/elderly person,	Ill/ disabled,	12 | (age 10 and above)  |
-68 |p23_occupation | Occupation (ILO)| age 10 and above AND Q22 == employed or self-employed |
-69 |p24_industry  | Industry (ILO) | age 10 and above AND Q22 == employed or self-employed |
-70 |p25a_children_born_male | Number of children born alive male | (ever married women over 15) |
-71 |p25b_children_born_female| Number of children born alive female | (ever married women over 15) |
-72 |p26a_children_in_hh_male | Number of children in HH male | (ever married women over 15) |
-73 |p26b_children_in_hh_female| Number of children in HH female | (ever married women over 15) |
-74 |p27a_children_else_male | Number of children elsewhere male | (ever married women over 15) |
-75 |p27b_children_else_female | Number of children elsewhere female | (ever married women over 15) |
-76 |p28a_children_died_male | Number of children died male | (ever married women over 15) |
-77 |p28b_children_died_female | Number of children died female | (ever married women over 15) |
-78 |p29a_last_live_birth_month | |
-79 |p29b_last_live_birth_year | |
-80 |p30_last_live_birth_sex | |
-81 |p31_last_live_birth_alive | |
-82 |px32_birth_township_full | |
-83 |px33_usual_township_full | |
-84 |px34_previous_township_full | |
+ID|Variable Code | Description | level  |
+--|-----------------------|----------------------------------------------|----------|
+1| batch_state_region| 15 regions:  Kachin, Kayah, Kayin, Chin, Sagaing, Tanintharyi, Bago, Magway, Mandalay, Mon, Rakhine, Yangon, Shan, Ayeywawady, Nay Pyi Taw | hh|
+2| batch_district||hh|
+3| batch_township||hh|
+4| batch_ward||hh|
+5| batch_urban_rural| | hh|
+6| batch_ea| | hh|
+7| household_number| Used in HH_ID [*m02*]| hh|
+14 |h32_type_residence| Type of housing unit - [8cats] : Condominium,	Apartment/Flat,	Bungalow/Brick house,	Semi-pacca house,	Wooden house,	Bamboo	Hut 2 - 3 years,	Hut 1 year,	9| hh|
+15 |h33_type_ownership| Type of houseing ownership - [6 cats]: Owner,	Renter,	Provided free (individually),	Government Quarters,	Private Company Quarters,	Other | hh|
+16 |h34_lighting| Main source of lighting [8 cats]: Electricity, Kerosene, Candle, Battery, Generator (private), Water mill (private), Solar system/energy, Other|hh|
+17 |h35a_drinking_water| Main source of drinking water [10cats] : Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other| hh|
+18 |h35b_non_drinking_water| Main source of non-drinking water [10cats]: Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other | hh|
+19 |h36_cooking_fuel| Main type of cooking fuel [9 cats] : Electricity, LPG, Kerosene, BioGas, Firewood, Charcoal, Coal, Straw/Grass, Other| hh|
+20 |h37_toilet| Type of toilet used [7cats]: Flush, Water seal (Improved pit latrine), Pit (Traditional pit latrine), Bucket (Surface latrine), Other, None | hh|
+21 |h38a_roof| Main construciton material used in roof [7 cats] - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| hh|
+22 |h38b_walls|Main construciton material used in walls [7 cats] - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| hh|
+23 |h38c_floor| Main construciton material used in floor [6 cats] - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Tile/Brick/Concrete, Other|hh|
+24 |h39a_radio| Household owns radio?  - Yes, No | hh|
+25 |h39b_television| Household owns television? - Yes, No| hh|
+26 |h39c_land_line_phone| Household owns land line phone? [2 cats] - Yes, No | hh|
+27 |h39d_mobile_phone| Household owns mobile phone? [2 cats] Yes, No| hh|
+28 |h39e_computer| Household owns computer? [2 cats] Yes, No| hh|
+29 |h39f_internet_at_home| Household owns internet at home? [2 cats] Yes, No| hh|
+30 |h39g_car_truck_van| Household owns car, truck or van? [2 cats] Yes, No| hh|
+31 |h39h_motorcycle_moped| Household owns motorcycle or moped? [2 cats] Yes, No| hh|
+32 |h39i_bicycle| Household owns bicycle? [2 cats] Yes, No| hh|
+33 |h39j_4_wheel_tractor| Household owns four wheel tractor? [2 cats] Yes, No|hh|
+34 |h39k_canoe_boat| Household owns canoe boat? [2 cats] Yes, No| hh|
+35 |h39l_motor_boat| Household owns motor boat? [2 cats] Yes, No| hh|
+36 |h39m_cart_bullock| Household owns bullock drawen cart? [2 cats] Yes, No|hh|
+41 |number_of_people| NUmber of people in household  | hh|
+48 |p03_relationship | Relationship to head of HH |    ind |
+49 |p04_sex|  Sex [2cat ]: Man, Woman |   ind |
+50 |p05_age| Age: up to 98 or older  | ind |
+51 |p06_marital_status | Marital Status [5 categories]:   Single,	Married, Widowed,	Divorced/Separated,	Renounced |    ind |
+52 |p09a_disability_seeing| Disability Seeing [4cats]: No difficulty, some difficulty, a lot of difficulty, cannot do at all |   ind |
+53 |p09b_disability_hearing | Disability Hearing [4cats]: No difficulty, some difficulty, a lot of difficulty, cannot do at all  |   ind |
+54 |p09c_disability_walking| Disability Walking [4cats]: No difficulty, some difficulty, a lot of difficulty, cannot do at all  |   ind |
+55 |p09d_disability_remembering| Disability Remembering or concentrating [4cats]: No difficulty, some difficulty, a lot of difficulty, cannot do at all |   ind |
+56 |p11_birth_township | Township code of place of birth - 000 for here |  ind |
+57 |p12_birth_ur  | Place of birth [2 cats]: rural or urban |   ind |
+58 |p13_usual_res_township  | Township code of usual residence - 000 for here | ind |
+59 |p14_usual_res_ur |  Usual residence [2 cats]: rural or urban |  ind |
+60 |p15_duration_of_residence  | Years resident in place of usual residence |  ind |
+61 |p16_reason_for_movement  | Reason for move here 8 : Employment/Searching employment,	Education	Marriage,	Followed family	Conflict,	Did not move	Other,	9  |   ind |
+62 |p17_prev_res_township  | Township of previous place of residence |ind |
+63 |p18_prev_res_ur | Previous place of residence rural or urban |ind |
+66 |p21_highest_grade | Highest level of education attained | ind |
+67 |p22_activity_status | Activity Status 12: Employee (government),	Employee (private, org),	Employer,	Own account worker,	Contributing family worker,	Sought work,	Did not seek work,	Full time student,	Household work,	Pensioner/retired/elderly person,	Ill/ disabled,	12 | ind |
+68 |p23_occupation | Occupation (ILO)| ind |
+70 |p25a_children_born_male | Number of children born alive male | e.w.f.>15  |
+71 |p25b_children_born_female| Number of children born alive female |e.w.f.>15  |
+72 |p26a_children_in_hh_male | Number of children in HH male | e.w.f.>15  |
+73 |p26b_children_in_hh_female| Number of children in HH female | e.w.f.>15  |
+74 |p27a_children_else_male | Number of children elsewhere male | e.w.f.>15 |
+75 |p27b_children_else_female | Number of children elsewhere female | e.w.f.>15 |
+76 |p28a_children_died_male | Number of children died male | e.w.f.>15  |
+77 |p28b_children_died_female | Number of children died female |e.w.f.>15  |
 
-## List of variables derived by me:
+[^*]: ever married women over 15 years of age. 
+
+## List of variables derived by mz:
 
 
 ID | Variable Code | description | level | derived from  |
@@ -125,18 +113,18 @@ m08 | p05_age_binned | age in five year categories | ind | p05_age |
 m09 | p11_birth_township_c2 | born in this township or elswhere (dichotomous) | ind | p11_birth_township|
 m10 | p15_duration_of_residence_5 | duration of residence in give year categories | ind | p15_duration_of_residence|
 m12 | p17_prev_res_township_c2 | previous residence in this township or elswhere (dichotomous) | ind | p17_prev_res_township|
-m13 | p25_children_born_bound | total children born, up to 10, then 11+ | ind (f+15) | p25_children_born_male, p25_children_born_female|
-m14 | p25a_children_born_male_bound | total boys born, up to 10, then 11+ | ind (f+15) | p25a_children_born_male|
-m15 | p25b_children_born_female_bound | total girls born, up tp 10, then 11+ | ind (f+15) | p25b_children_born_female|
-m16 | p26_children_in_hh_bound | total children still in household, up to 10, then 11+ | ind (f+15) | p26a_children_in_hh_male, p26b_children_in_hh_female|
-m17 | p26a_children_in_hh_male_bound | total boys still in household, up to 10, then 11+ | ind (f+15) | p26a_children_in_hh_male|
-m18 | p26b_children_in_hh_female_bound | total girls still in household, up tp 10, then 11+ | ind (f+15) | p26b_children_in_hh_female|
-m19 | p27_children_else_bound | total children living elsewhere, up to 10, then 11+ | ind (f+15) | p27a_children_else_male, p27b_children_else_female|
-m20 | p27a_children_else_male_bound | total boys living elsewhere, up to 10, then 11+ | ind (f+15) | p27a_children_else_male|
-m21 | p27b_children_else_female_bound | total girls still in household, up tp 10, then 11+ | ind (f+15) | p27b_children_else_female |
-m22 | p28_children_died_bound | total children died, up to 10, then 11+ | ind (f+15) | p28a_children_died_male, p28b_children_died_female |
-m23 | p28a_children_died_male_bound | total boys dead, up to 10, then 11+ | ind (f+15) | p28a_children_died_male|
-m24 | p28b_children_died_female_bound | total girls dead, up tp 10, then 11+ | ind (f+15) | p28b_children_died_female |
+m13 | p25_children_born_bound | total children born, up to 10, then 11+ | e.w.f.>15 | p25_children_born_male, p25_children_born_female|
+m14 | p25a_children_born_male_bound | total boys born, up to 10, then 11+ | e.w.f.>15 | p25a_children_born_male|
+m15 | p25b_children_born_female_bound | total girls born, up tp 10, then 11+ | e.w.f.>15 | p25b_children_born_female|
+m16 | p26_children_in_hh_bound | total children still in household, up to 10, then 11+ | e.w.f.>15 | p26a_children_in_hh_male, p26b_children_in_hh_female|
+m17 | p26a_children_in_hh_male_bound | total boys still in household, up to 10, then 11+ | e.w.f.>15 | p26a_children_in_hh_male|
+m18 | p26b_children_in_hh_female_bound | total girls still in household, up tp 10, then 11+ | e.w.f.>15 | p26b_children_in_hh_female|
+m19 | p27_children_else_bound | total children living elsewhere, up to 10, then 11+ | e.w.f.>15 | p27a_children_else_male, p27b_children_else_female|
+m20 | p27a_children_else_male_bound | total boys living elsewhere, up to 10, then 11+ | e.w.f.>15 | p27a_children_else_male|
+m21 | p27b_children_else_female_bound | total girls still in household, up tp 10, then 11+ | e.w.f.>15 | p27b_children_else_female |
+m22 | p28_children_died_bound | total children died, up to 10, then 11+ | e.w.f.>15 | p28a_children_died_male, p28b_children_died_female |
+m23 | p28a_children_died_male_bound | total boys dead, up to 10, then 11+ | e.w.f.>15 | p28a_children_died_male|
+m24 | p28b_children_died_female_bound | total girls dead, up tp 10, then 11+ | e.w.f.>15 | p28b_children_died_female |
 m25 | p09_disablity_sum | sum of all four disabilities, max 12| ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
 m26 | p09_disablity_rescaled_sum | sum of all four disabilities rescaled , max 8|ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
 m27 | p09_disablity_dummy_sum | sum of all four disabilities as dummies , max 4 |ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
@@ -162,6 +150,7 @@ m46 | Mig_type1 | Urban/rural direciton of usual vs previous residence: 0 'Did N
 m47 | Mig_type2 |  Urban/rural direciton of usual residence vs birthplace:  0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban' 4 'Rural-Rural'|  ind | p11_birth_township_dummy, p14_usual_res_ur, p12_birth_ur |
 m48 | p15_duration_of_residence_binned  | 9 categories: 1yr, 2yrs, 3-5 yrs, 6-10, 11-20, 21-30, 31-40, 41-50, over 50 | ind | p15_duration_of_residence  |
 
+\newpage
 
 # George's tables 
 
@@ -719,6 +708,7 @@ MZ02-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 
 |MZ02.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 3  | HoH over 85 (102,729)  |
 |MZ02.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 3  | HoH over 85 (102,729) |
             
+\newpage
 
 ## Third set of George's tables repeated for HoH over 60 in farming occupations[^1] - MZ03
 
@@ -781,6 +771,48 @@ MZ03-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 
 |MZ03.02-02  | p09_disablity_sum [*m25*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 13 x 2 x 3  |  HoH farm > 60 (645,844)  |
 |MZ03.02-03  | p09_disablity_rescaled_sum [*m26*] | p04_sex  [*49*] | p05_age_binned  [*m08*]| 16 x 2 x 3  |  HoH farm > 60 (645,844) |
             
+
+
+# Sarah's Tables
+
+## First set of Sarah's Tables - SH01
+
+<!-- "children by number by age by occupation, by education, by urban rural for a second analysis." -->
+
+|ID |Variable one | Variable two | Variable three | table size | population |
+|-------|-------------------------------|---------------------|----------------------------|-----|----------------------|
+SH01-01 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  p23_occupation_binned [*m29*] | 12x8x10 | e.w.F. HoH>60 (216,128)|
+SH01-02 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  p21_highest_grade_c7  [*m28*] | 12x8x7 | e.w.F. HoH>60 (903,648)|
+SH01-02 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  batch_urban_rural  [*5*] | 12x8x2 | e.w.F. HoH>60 (903,648)|
+
+## Second set of Sarah's Tables - SH02
+
+<!-- gender/age, disability (or chronic disease), children by gender in household ... Also in disability one - add in marital status of householder alongside gender of resident child/children  -->
+
+|ID |Variables | table size | population |
+|-------|---------------------------|------------|----------------------|
+|SH02-01 | p09_disablity_dummy_sum [*m27*] | 5 x 4 x 5 x 8 x 2 | HoH over 60 (2,530,908)|
+|        | HH_Type_cores [*m32*] | | |
+|        | p06_marital_status [*51*]| | |
+|        | p05_age_binned   [*m08*]| | |
+|        | p04_sex      [*49*]     | | |
+
+
+## Third set of Sarah's Tables - SH03
+
+|ID |Variables | table size | population |
+|-------|---------------------------|------------|----------------------|
+|SH03-01 | p09_disablity_dummy_sum [*m27*] | 5 x 4 x 5 x 8 x 2 x 15 | HoH over 60 (2,530,908)|
+|        | HH_Type_cores [*m32*] | | |
+|        | p06_marital_status [*51*]| | |
+|        | p05_age_binned   [*m08*]| | |
+|        | p04_sex      [*49*]     | | |
+|        | batch_state_region [*1*]  | | |
+
+
+
+
+
 
        
 
@@ -868,6 +900,18 @@ MZ03-45| p09_disablity_rescaled_sum [*m26*] | h33_type_ownership [*15*]| 13 x 6 
 |        | HH_No_Vehicle  [*m44*]|  |
 |        | batch_state_region [*1*] | | |
 
+
+# Ken's Migration Tables - KHm01
+
+|ID |Variable one | Variable two | Variable three | table size | population |
+|---------|------------------|------------------------|---------------------------|---------|-------------------|
+KHm01-01 | batch_state_region [*1*]| Mig_type1 [*m46*]| p22_activity_status [*67*]| 15x5x12 | over 15s (33,820,106) |
+KHm01-02 | batch_state_region [*1*]| p04_sex [*49*]| p15_duration_of_residence_binned [*m48*]| 15x2x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
+KHm01-03 | batch_state_region [*1*]| p05_age_binned [*m08*]| p15_duration_of_residence_binned [*m48*]| 15x18x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
+KHm01-04 | batch_state_region [*1*]| p21_highest_grade_c7  [*m28*]| p15_duration_of_residence_binned [*m48*]| 15x7x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
+
+
+
 # John Knodel's Tables - Migration - JK01
 
 |ID |Variable one | Variable two | Variable three | table size | population |
@@ -884,49 +928,5 @@ JK01-09 | batch_state_region [*1*]| p05_age_c2 [*m45*] | p11_birth_township_c2 [
 JK01-10 | batch_state_region [*1*]| p04_sex [*49*]  | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Economic migrants (3,144,247) |
 JK01-11 | batch_state_region [*1*]| p05_age_c2 [*m45*]  | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Economic migrants (3,144,247) |
 JK01-12 | batch_state_region [*1*]| batch_urban_rural [*5*]  | p11_birth_township_c2 [*m09*]| 15 x 2 x 2 | Economic migrants (3,144,247) |
-
-
-# Ken's Migration Tables - KHm01
-
-|ID |Variable one | Variable two | Variable three | table size | population |
-|---------|------------------|------------------------|---------------------------|---------|-------------------|
-KHm01-01 | batch_state_region [*1*]| Mig_type1 [*m46*]| p22_activity_status [*67*]| 15x5x12 | over 15s (33,820,106) |
-KHm01-02 | batch_state_region [*1*]| p04_sex [*49*]| p15_duration_of_residence_binned [*m48*]| 15x2x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
-KHm01-03 | batch_state_region [*1*]| p05_age_binned [*m08*]| p15_duration_of_residence_binned [*m48*]| 15x18x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
-KHm01-04 | batch_state_region [*1*]| p21_highest_grade_c7  [*m28*]| p15_duration_of_residence_binned [*m48*]| 15x7x9 |over 15s Rural-> Urban from previous residence (1,118,381) |
-
-
-
-
-# Sarah's Tables
-
-## First set of Sarah's Tables - SH01
-
-<!-- "children by number by age by occupation, by education, by urban rural for a second analysis." -->
-
-|ID |Variable one | Variable two | Variable three | table size | population |
-|-------|-------------------------------|---------------------|----------------------------|-----|----------------------|
-SH01-01 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  p23_occupation_binned [*m29*] | 12x8x10 | e.w.F. HoH>60 (216,128)|
-SH01-02 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  p21_highest_grade_c7  [*m28*] | 12x8x7 | e.w.F. HoH>60 (903,648)|
-SH01-02 |  p25_children_born_bound [*m13*] |  p05_age_binned [*m08*] |  batch_urban_rural  [*5*] | 12x8x2 | e.w.F. HoH>60 (903,648)|
-
-## Second set of Sarah's Tables - SH02
-
-<!-- gender/age, disability (or chronic disease), children by gender in household ... Also in disability one - add in marital status of householder alongside gender of resident child/children  -->
-
-|ID |Variables | table size | population |
-|-------|---------------------------|------------|----------------------|
-|SH02-01 | p09_disablity_dummy_sum [*m27*] | 5 x 4 x 5 x 8 x 2 | HoH over 60 (2,530,908)|
-|        | HH_Type_cores [*m32*] | | |
-|        | p06_marital_status [*51*]| | |
-|        | p05_age_binned   [*m08*]| | |
-|        | p04_sex      [*49*]     | | |
-
-
-## Third set of Sarah's Tables - SH03
-
-Same as SH02, but with region added: batch_state_region [*1*] with 15 categories, SH03-01 has 5 x 4 x 5 x 8 x 2 x 15 = 24000 cells 
-
-
 
 
