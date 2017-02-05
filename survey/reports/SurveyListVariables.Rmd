@@ -1,0 +1,30 @@
+---
+title: "Myanmar Survey - Variables"
+author: "mz"
+output:
+  word_document:
+    fig_caption: yes
+    fig_height: 4.5
+    fig_width: 5
+    toc: yes
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+  html_document:
+    toc: yes
+    toc_depth: '3'
+classoption: landscape
+---
+
+
+
+
+```{r xtable, results="asis"}
+library(memisc)
+library(xtable)
+dataset <- as.data.set(spss.system.file("../data/Myanmar Ageing Farmer draft data set.sav"))
+x <- description(dataset)
+tab <- xtable(cbind(names(x), unlist(x)))
+print(tab)
+```

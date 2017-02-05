@@ -1,0 +1,37 @@
+---
+title: "Myanmar Survey Analysis - MZ"
+author: "mz"
+date: "5.2.2017"
+output:
+  pdf_document:
+  number_sections: yes
+toc: yes
+toc_depth: 3
+html_document: default
+word_document:
+  reference_docx: StyleReference.docx
+word_document html_document: default
+---
+  
+# Survey Data Analysis Journal
+  
+## Sunday 5.2.2017 - First trawl - Univariate descriptives
+  
+Clean dataset arrived 30.1.2017, in .sav format. 
+
+Installed SPSS for quick analysis, but waited for MSR report, which arrived 1.2. in hope that it may already include a descriptive analysis, but it did not. It is a pure technical report about sampling etc. To feed into methodology section. 
+
+Original copy of data kept raw in `survey\data\raw.original.data`.
+
+Prepare web report of univariate distributions of variables - to degree sensible. 
+
+* remove `Q3_OT_SP` other marital status as no valid answers were given. 
+* remove `Q4_96_OT_SP` other educational grade/level as no valid answers were given. 
+* New variable `N1` sums up all seven disability questions Q6_A to Q6_G as number of dificulties reported, max is seven. Checks out with 'Q6_H` which reports who doesn't have any disabilities. 
+* `Q7_5` on working outside of the village part of the year is wrongly coded - 1 for yes and 2 for no. Recoded all to 1 for yes and 0 for no. 
+* New variable `N2` - number of hh members working outside of village part of the year. 
+* New variable `N3` - number of hh members working in village in same township.
+* New variable `N4` - number of hh members working in different township.
+* New variable `N5` - number of hh members working in city in Myanmar (eg Mandalay, Yangon).
+* New variable `N6` - number of hh members working outside Myanmar.
+

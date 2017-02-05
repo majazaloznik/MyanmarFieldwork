@@ -4,7 +4,8 @@
 .Ruserdata
 census/old
 census/outputs
-survey/
 reports/
 census/admin/
 census/outputs-raw/
+survey/data
+survey/questionnaires
