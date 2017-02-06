@@ -479,6 +479,318 @@ FREQUENCIES VARIABLES=Q24
   /BARCHART PERCENT
   /ORDER=ANALYSIS.
 
-FREQUENCIES VARIABLES=Q24_B_ID
+if Q24_B_ID = 1 N34 = Q7_2$01.
+if Q24_B_ID = 2 N34 = Q7_2$02.
+if Q24_B_ID = 3 N34 = Q7_2$03.
+if Q24_B_ID = 4 N34 = Q7_2$04.
+if Q24_B_ID = 5 N34 = Q7_2$05.
+if Q24_B_ID = 6 N34 = Q7_2$06.
+if Q24_B_ID = 7 N34 = Q7_2$07.
+if Q24_B_ID = 8 N34 = Q7_2$08.
+if Q24_B_ID = 9 N34 = Q7_2$09.
+if Q24_B_ID = 10 N34 = Q7_2$10.
+if Q24_B_ID = 11 N34 = Q7_2$11.
+if Q24_B_ID = 12 N34 = Q7_2$12.
+if Q24_B_ID = 13 N34 = Q7_2$13.
+if Q24_B_ID = 14 N34 = Q7_2$14.
+if Q24_B_ID = 15 N34 = Q7_2$15.
+exe.
+
+VARIABLE LABELS N34 'N34 - Relationship of co-responsible farm manager (Based on Q24).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N34
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N34
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q24_C_ID = 1 N35 = Q7_2$01.
+if Q24_C_ID = 2 N35 = Q7_2$02.
+if Q24_C_ID = 3 N35 = Q7_2$03.
+if Q24_C_ID = 4 N35 = Q7_2$04.
+if Q24_C_ID = 5 N35 = Q7_2$05.
+if Q24_C_ID = 6 N35 = Q7_2$06.
+if Q24_C_ID = 7 N35 = Q7_2$07.
+if Q24_C_ID = 8 N35 = Q7_2$08.
+if Q24_C_ID = 9 N35 = Q7_2$09.
+if Q24_C_ID = 10 N35 = Q7_2$10.
+if Q24_C_ID = 11 N35 = Q7_2$11.
+if Q24_C_ID = 12 N35 = Q7_2$12.
+if Q24_C_ID = 13 N35 = Q7_2$13.
+if Q24_C_ID = 14 N35 = Q7_2$14.
+if Q24_C_ID = 15 N35 = Q7_2$15.
+exe.
+
+VARIABLE LABELS N35 'N35 - Relationship of other family member that is main farm manager (Based on Q24).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N35
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N35
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+COMPUTE N36 = max(n34, n35).
+* test that this is actually uniquely defined
+COMPUTE N37 = min(n34, n35).
+*compute test = (N36-N37).
+*exe.
+*FREQUENCIES VARIABLES= test
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+VARIABLE LABELS N36 'N36 - Relationship of other family member that is co- or solo farm manager (Based on Q24).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N36
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N36
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q25
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q26
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q27
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+*TEMPORARY. 
+*RECODE Q24 Q27 (SYSMIS=-99).
+*CROSSTABS Q24 BY Q27.
+
+FREQUENCIES VARIABLES=Q28_A
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+TEMPORARY. 
+RECODE Q28_A Q28_A_OT_SP (SYSMIS=-99).
+CROSSTABS Q28_A BY Q28_A_OT_SP.
+
+COMPUTE N37 = max(Q28_A, Q28_A_OT_SP).
+exe.
+
+VARIABLE LABELS N37 'N37 - (Q28A) When no longer able to visit my land, I will continue to manage the farm jointly with one of my children/children-in-laws.}'.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q28_A_OT_SP
+  /TARGET VARIABLES = N37
+  /varinfo valllabels = replace.
+
+add value labels N37 0 'No'.
+
+FREQUENCIES VARIABLES=N37
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+COMPUTE N38 = max(Q28_B, Q28_B_OT_SP).
+exe.
+VARIABLE LABELS N38 'N38 - (Q28B) When no longer able to visit my land, I will hand over the management of the farm to one of my children/in-law.'.
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q28_B_OT_SP
+  /TARGET VARIABLES = N38
+  /varinfo valllabels = replace.
+
+add value labels N38 0 'No'.
+
+FREQUENCIES VARIABLES=N38
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+COMPUTE N39 = max(Q28_C, Q28_C_OT_SP).
+exe.
+VARIABLE LABELS N39 'N39 - (Q28C) When no longer able to visit my land,I will continue to manage the farm jointly with another member of my family.(i.e. not children or children-in-law).'.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q28_C_OT_SP
+  /TARGET VARIABLES = N39
+  /varinfo valllabels = replace.
+
+add value labels N39 0 'No'.
+
+FREQUENCIES VARIABLES=N39
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+COMPUTE N40 = max(Q28_D, Q28_D_OT_SP).
+exe.
+VARIABLE LABELS N40 'N40 - (Q28D) When no longer able to visit my land, I will hand over the management of the farm to another member of my family.(i.e. not children or children-in-law)'.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q28_D_OT_SP
+  /TARGET VARIABLES = N40
+  /varinfo valllabels = replace.
+
+add value labels N40 0 'No'.
+
+FREQUENCIES VARIABLES=N40
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES=Q28_E
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q28_F
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+COMPUTE N41 = max(Q28_G, Q28_G_OT_SP).
+exe.
+VARIABLE LABELS N41 'N41 - (Q28G) When no longer able to visit my land, do something else '.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q28_G_OT_SP
+  /TARGET VARIABLES = N41
+  /varinfo valllabels = replace.
+
+add value labels N41 0 'No'.
+
+FREQUENCIES VARIABLES=N41
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+count N42= Q28_A Q28_B Q28_C Q28_D Q28_E Q28_F (1).
+IF n42 = 1 n42 = 0.
+IF N42 = 2 N42 =1. 
+EXE.
+count N43= Q28_A Q28_B Q28_C Q28_D (1).
+IF n43 = 1 n43 = 0.
+IF N43 = 2 N43 =1. 
+EXEcute.
+count N44= Q28_E Q28_F (1).
+IF n44 = 1 n44= 0.
+IF N44 = 2 N44 =1. 
+EXE.
+VARIABLE LABELS N42 'N42 - (Q28) When no longer able to visit my land, two answers'.
+VARIABLE LABELS N43 'N43 - (Q28) When no longer able to visit my land, two answers, both relatives'.
+VARIABLE LABELS N44 'N44 - (Q28) When no longer able to visit my land, two answers, rent and sell'.exe.
+ if N42 = 1 AND N43 = 0 AND N44 =0  N45 = 1.
+VARIABLE LABELS N45 'N45 - (Q28) When no longer able to visit my land, two answers, one relative, other rent/sell'.
+exe.
+
+if n42 ~=1 AND Q28_A = 1 N46 = 1.
+if n42 ~=1 AND Q28_b = 1 N46 = 2.
+if n42 ~=1 AND Q28_C = 1 N46 = 3.
+if n42 ~=1 AND Q28_D = 1 N46 = 4.
+if n42 ~=1 AND Q28_E = 1 N46 = 5.
+if n42 ~=1 AND Q28_F = 1 N46= 6.
+if n42 ~=1 AND Q28_G = 1 N46 = 7.
+if N43 = 1 N46 = 8. 
+if N44 = 1 N46 = 9. 
+if N45 = 1 N46 = 10. 
+exe.
+variable labels N46 - 'N46 Q28 consolidated - When no longer able to visit my land:'. 
+value  labels N46 1 'continue farming jointly with child(in-law)' 
+2 'hand over to child(-in-law)' 3 'continue farming jointly with other relative' 
+4 ' hand over to other relative' 5 'rent out land' 6 'try to sell land' 7'self manage with hired labour'
+8 'two answers relatives' 9 'two answeres rent/sell' 10 'two answers one relative and one rent/sell'.
+
+FREQUENCIES VARIABLES=N46
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES=Q29a
+  /HISTOGRAM
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q29B
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q30_A
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q30_B
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q30_C
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N47 = SUM(Q30_A, Q30_B, Q30_C).
+IF N47 = 2 N47 = 1.
+EXE.
+variable labels N47 - 'N47 Q30 consolidated - Size of farm increased in last 5 years in any way.:'. 
+value  labels N47 1 'Yes' 0 ' No'. 
+
+FREQUENCIES VARIABLES=N47
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES=Q30_A_ACRE
+  /HISTOGRAM
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q30_b_ACRE
+  /HISTOGRAM
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q30_c_ACRE
+  /HISTOGRAM
+  /ORDER=ANALYSIS.
+
+
+compute N48 = SUM(Q30_A_ACRE, Q30_B_ACRE, Q30_C_ACRE).
+EXE.
+variable labels N48 - 'N48 Q30_ACRE SUM - Total numebr of acres size of farm increased in last 5 years in any way.:'. 
+
+FREQUENCIES VARIABLES=N48
+  /HISTOGRAM
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES=Q31
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q31_A1
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q31_A2
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q31_A3
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q31_A4
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q31_A5
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+count N49 = Q31_A1 Q31_A2 Q31_A3 Q31_A4 Q31_A5 (1). 
+EXE.
+
+variable labels N49 - 'N49 Q31 consolidated - Number of reasons for decrease in farm size in last five years.:'. 
+FREQUENCIES VARIABLES=N49
   /BARCHART PERCENT
   /ORDER=ANALYSIS.

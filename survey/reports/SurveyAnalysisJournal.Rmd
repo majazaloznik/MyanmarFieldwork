@@ -28,7 +28,7 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * remove `Q3_OT_SP` other marital status as no valid answers were given. 
 * remove `Q4_96_OT_SP` other educational grade/level as no valid answers were given. 
 * New variable `N1` sums up all seven disability questions Q6_A to Q6_G as number of dificulties reported, max is seven. Checks out with 'Q6_H` which reports who doesn't have any disabilities. 
-* ISSUE - `Q7_5` on working outside of the village part of the year is wrongly coded - 1 for yes and 2 for no. Recoded all to 1 for yes and 0 for no. 
+* **ISSUE** - `Q7_5` on working outside of the village part of the year is wrongly coded - 1 for yes and 2 for no. Recoded all to 1 for yes and 0 for no. 
 * New variable `N2` - number of hh members working outside of village part of the year. from `Q7_5$1` to `Q7_5$14`
 * New variable `N3` - number of hh members working in village in same township. From  `Q7_6$1` to `Q7_6$14`
 * New variable `N4` - number of hh members working in different township. From  `Q7_6$1` to `Q7_6$14``
@@ -57,9 +57,34 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N27` - number of hh members that have moved out into  different town/village but close enough for regular visits. Based on   `Q8_5$1` to `Q8_5$14`.
 * New variable `N28` - number of hh members that have moved out into nto different town/village but too far for regular visits'. Based on  `Q8_5$1` to `Q8_5$14`.
 * New variable `N29` - number of hh members that have moved out into different country. Based on  `Q8_5$1` to `Q8_5$14`.
-* ISSUE - `Q15`: the question reads "of the largest loan you have taken in the last 12 months, who did you borrow from" - 30 % listed more than one lender? This should not be possible. This also leaves three different"other" answers, particularly unclear how this could happen..
+* **ISSUE** - `Q15`: the question reads "of the largest loan you have taken in the last 12 months, who did you borrow from" - 30 % listed more than one lender? This should not be possible. This also leaves three different"other" answers, particularly unclear how this could happen..
 * New variable `N30` - number of lenders listed in answer to question 15. From `Q15_A` to `Q15_J`
-* ISSUE: variable `Q20_B` shouldn't exist?!
+* **ISSUE**: variable `Q20_B` shouldn't exist?!
 * New variable `N31` - difference between acreage of land owned and that cultivated. `Q17` - `Q18`
 * New variable `N32` - difference between acreage of land owned and that cultivated and or leased out. This is land left fallow, so the couple of cases with negative values are errors! [ ISSUE]. `Q17` - `Q18` - `Q20_A`
 * New variable `N33` - difference between acreage of land rented and that rented and cultivated rented land left fallow, and tehre is none. `Q22` - `Q23` 
+
+## Monday 6.2.2017 - First trawl - Univariate descriptives - continuted
+
+* Q24B and C ask- who is responsible for managing the farming activities apart from the respondent - hh menber ID. So the in order to get relationship etc. of these people new variables are required. 
+* New variable `N34` - Relationship of co-responsible manager. Form `Q24_B_ID`
+* **ISSUE** - N34 should not have the value 1 = self. Becasue that means they have answered "me and another family member" and the other family memeber is me. But there are 6 such people.
+* New variable `N35` - Relationship ofother household member that is listed as responsible for farm management.  Form `Q24_C_ID`
+* Check that N34 and N35 have no overlapp, correct.
+* New variable `N36` - relationship of other household memebr that is either co- or solely responsible for farm management.  form `N34` and `N35`
+* Check that Q25 "used to manage" is asked of right people - those who say now other family member manages in Q24. correct. 
+* Check that Q26 "when used to manage" is asked of right people - those who said they used to manage in Q25. correct. 
+* Check that Q27 "go check the field daily" is asked of right people, those that said they manage or co-manage in Q24. correct. 
+* Q28 question "when no longer able to visit land" - each option is coded as separate variables for yes/no and tehn for relationship. Instead I merge them.
+* New variable `N37` - "Will co-manage with child(-in-law)" from `Q28_A` and `Q28_A_OT_SP`. 
+* New variable `N38` - "Will hand over to child(-in-law)" from `Q28_B` and `Q28_B_OT_SP`. 
+* New variable `N39` - "Will co-manage with other relative" from `Q28_C` and `Q28_C_OT_SP`. 
+* New variable `N40` - "Will hand over to other relative" from `Q28_D` and `Q28_D_OT_SP`. 
+* New variable `N41` - "Will do something else" from `Q28_G` and `Q28_G_OT_SP`. 
+* **ISSUE** - Q28 should have had "One option only" - but in the end 31 people gave two options. 
+* New variable `N46` - how Q28 should look like - with all options given. BUT, because of multiple answers, these are given additionally. (variables N42-N45 are temporary)
+* New variable `N47` has the size of your land increased in any way in the past five years from `Q30_A`, `Q30_B`, AND `Q30_C`.  
+* New variable `N48` the total acreage of increase - sum of bought, rented and ingherited in from `Q30_A_ACRE`, `Q30_B_ACRE`, AND `Q30_C_ACRE`.  
+* New variable `N49` - number of responses on reduction of land size.   `Q31`: this was a multiple response question, but **ISSUE** of the 44 respondents that had had a decrease in land size, all had only one reason (sold, rented, confiscated, gave away or lost to river errosion). This seems unlikely!?
+
+
