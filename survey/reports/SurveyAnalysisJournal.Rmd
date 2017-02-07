@@ -87,4 +87,20 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N48` the total acreage of increase - sum of bought, rented and ingherited in from `Q30_A_ACRE`, `Q30_B_ACRE`, AND `Q30_C_ACRE`.  
 * New variable `N49` - number of responses on reduction of land size.   `Q31`: this was a multiple response question, but **ISSUE** of the 44 respondents that had had a decrease in land size, all had only one reason (sold, rented, confiscated, gave away or lost to river errosion). This seems unlikely!?
 
+## Tuesday 7.2.2017 - First trawl - Univariate descriptives - continuted
 
+*New variable `N50` - all five Q31_A questions consolidated - "Reason for decrease in farm size in last five years". From `Q31_A1`, `Q31_A2`, `Q31_A3`, `Q31_A4`, `Q31_A5`.
+* New variable `N51`- all five Q31_B questions  consolidated - "Total number of acrers of decrease in farm size in last five years."  From `Q31_B1`, `Q31_B2`, `Q31_B3`, `Q31_B4`, `Q31_B5`.
+* Resason in Q31 should be single answer. But each is coded as three answers. But still, turns out they were answered only once. So need to colsolidate each of the five sets of variables.. **ISSUE** Instead of five variables there are 20 here..
+* New variable `N52` "Reason for selling land" - from  `Q31_C1_1`, `Q31_C1_2`, `Q31_C1_3`, `Q31_C1_3_OT_SP`.
+* New variable `N53` "Reason for letting out land" - from  `Q31_C2_1`, `Q31_C2_2`, `Q31_C2_3`, `Q31_C2_3_OT_SP`.
+* New variable `N54` "Reason for giving away land" - from  `Q31_C3_1`, `Q31_C3_2`, `Q31_C3_3`, `Q31_C3_3_OT_SP`. **ISSUE** Two people said they gave away land because of debt. This doesn't make sense - this combination of variables should not have occured. 
+* New variable `N55` "Reason for confiscation of land" - from  `Q31_C4_1`, `Q31_C4_2`, `Q31_C4_3`, `Q31_C4_3_OT_SP`. **ISSUE** Confusion here: reason for confiscation given as confiscation!? Also the reason given as "rob" is not clear, was land stolen from someone?
+* New variable `N56` "Other reason decrease in land size" - from  `Q31_C5_1`, `Q31_C5_2`, `Q31_C5_3`, `Q31_C4_3_OT_SP`.
+* New variabel `N57` "Reason for decrease in land size " - from all 20 `Q31_C` variables consolidated. 
+* **ISSUE** All 9 Yes No questions under 'Q32' are coded Yes = 1 and No = 2 Instead of No = 0..
+* New variable `N59` "type of crop production for first crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_1_1` to `Q32_1_3`.
+* New variable `N61` "type of crop production for second crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_2_1` to `Q32_2_3`.
+* New variable `N63` "type of crop production for third crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_3_1` to `Q32_3_3`.
+* New variable `N64` "Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?". Consolidated from `Q33_A` and `Q33_A1`. 
+* New variable `N65` "Do you personaly perform harvesting and if not anymore, how long ago did you stop?". Consolidated from `Q33_B` and `Q33_B1`. 
