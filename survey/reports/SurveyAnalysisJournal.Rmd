@@ -89,7 +89,7 @@ Prepare web report of univariate distributions of variables - to degree sensible
 
 ## Tuesday 7.2.2017 - First trawl - Univariate descriptives - continuted
 
-*New variable `N50` - all five Q31_A questions consolidated - "Reason for decrease in farm size in last five years". From `Q31_A1`, `Q31_A2`, `Q31_A3`, `Q31_A4`, `Q31_A5`.
+* New variable `N50` - all five Q31_A questions consolidated - "Reason for decrease in farm size in last five years". From `Q31_A1`, `Q31_A2`, `Q31_A3`, `Q31_A4`, `Q31_A5`.
 * New variable `N51`- all five Q31_B questions  consolidated - "Total number of acrers of decrease in farm size in last five years."  From `Q31_B1`, `Q31_B2`, `Q31_B3`, `Q31_B4`, `Q31_B5`.
 * Resason in Q31 should be single answer. But each is coded as three answers. But still, turns out they were answered only once. So need to colsolidate each of the five sets of variables.. **ISSUE** Instead of five variables there are 20 here..
 * New variable `N52` "Reason for selling land" - from  `Q31_C1_1`, `Q31_C1_2`, `Q31_C1_3`, `Q31_C1_3_OT_SP`.
@@ -104,3 +104,56 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N63` "type of crop production for third crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_3_1` to `Q32_3_3`.
 * New variable `N64` "Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?". Consolidated from `Q33_A` and `Q33_A1`. 
 * New variable `N65` "Do you personaly perform harvesting and if not anymore, how long ago did you stop?". Consolidated from `Q33_B` and `Q33_B1`. 
+* New variable `N66` "Do you personaly perform sowing, planting, transplanting and if not anymore, how long ago did you stop?". Consolidated from `Q33_C` and `Q33_C1`. 
+* New variable `N67` "Do you personaly perform weeding and if not anymore, how long ago did you stop?". Consolidated from `Q33_D` and `Q33_D1`. 
+* New variable `N68` "Do you personaly perform pest management and if not anymore, how long ago did you stop?". Consolidated from `Q33_E` and `Q33_E1`. 
+
+## Wednesday 8.2.2017 - First trawl - Univariate descriptives - continuted
+
+* **ISSUE** Variables `Q34` - all the ID ones (which HH member helps with task) - have the value 0 for the first of five people where there is no one helping instead of a missing value. 
+* New variable `N69` "Number of household members (maximum 5) that help with land preparation/ploughing." From vars `Q34_A1_2_ID` `Q34_A2_2_ID` `Q34_A3_2_ID` `Q34_A4_2_ID` and `Q34_A5_2_ID`. 
+* New variable `N70` "Total number of days HH members helped with land preparation/ploughing." From vars `Q34_A1_3_DAYS` `Q34_A2_3_DAYS` `Q34_A3_3_DAYS` `Q34_A4_3_DAYS` and `Q34_A5_3_DAYS`. 
+* New variable `N71` "Relationship of first HH member who helped with land preparation/ploughing." From vars `Q34_A1_2_ID` ans all the `Q7_2`s for looking up each ID. 
+* New variable `N72` "Relationship of second HH member who helped with land preparation/ploughing." From vars `Q34_A2_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N73` "Relationship of third HH member who helped with land preparation/ploughing." From vars `Q34_A3_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N74` "Relationship of fourth HH member who helped with land preparation/ploughing." From vars `Q34_A4_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N75` "Relationship of fifth HH member who helped with land preparation/ploughing." From vars `Q34_A5_2_ID` ans all the `Q7_2`s for looking up each ID..
+* New variable `N76` "Number of household members (maximum 5) that help with harvesting." From vars `Q34_B1_2_ID` `Q34_B2_2_ID` `Q34_B3_2_ID` `Q34_B4_2_ID` and `Q34_B5_2_ID`. 
+* New variable `N77` "Total number of days HH members helped with land harvesting." From vars `Q34_B1_3_DAYS` `Q34_B2_3_DAYS` `Q34_B3_3_DAYS` `Q34_B4_3_DAYS` and `Q34_B5_3_DAYS`. 
+* New variable `N78` "Relationship of first HH member who helped with harvesting." From vars `Q34_B1_2_ID` ans all the `Q7_2`s for looking up each ID. 
+* New variable `N79` "Relationship of second HH member who helped with harvesting." From vars `Q34_B2_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N80` "Relationship of third HH member who helped with harvesting." From vars `Q34_B3_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N81` "Relationship of fourth HH member who helped with harvesting." From vars `Q34_B4_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N82` "Relationship of fifth HH member who helped with harvesting." From vars `Q34_B5_2_ID` ans all the `Q7_2`s for looking up each ID..
+* New variable `N83` "Number of household members (maximum 5) that help with sowing, plantint, transplanting" From vars `Q34_C1_2_ID` `Q34_C2_2_ID` `Q34_C3_2_ID` `Q34_C4_2_ID` and `Q34_C5_2_ID`. 
+* New variable `N84` "Total number of days HH members helped with land sowing, plantint, transplanting" From vars `Q34_C1_3_DAYS` `Q34_C2_3_DAYS` `Q34_C3_3_DAYS` `Q34_C4_3_DAYS` and `Q34_C5_3_DAYS`. 
+* New variable `N85` "Relationship of first HH member who helped with sowing, plantint, transplanting" From vars `Q34_C1_2_ID` ans all the `Q7_2`s for looking up each ID. 
+* New variable `N86` "Relationship of second HH member who helped with sowing, plantint, transplanting" From vars `Q34_C2_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N87` "Relationship of third HH member who helped with sowing, plantint, transplanting" From vars `Q34_C3_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N88` "Relationship of fourth HH member who helped with sowing, plantint, transplanting" From vars `Q34_C4_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N89` "Relationship of fifth HH member who helped with sowing, plantint, transplanting" From vars `Q34_C5_2_ID` ans all the `Q7_2`s for looking up each ID..
+* New variable `N90` "Number of household members (maximum 5) that help with weeding" From vars `Q34_D1_2_ID` `Q34_D2_2_ID` `Q34_D3_2_ID` `Q34_D4_2_ID` and `Q34_D5_2_ID`. 
+* New variable `N91` "Total number of days HH members helped with land weeding" From vars `Q34_D1_3_DAYS` `Q34_D2_3_DAYS` `Q34_D3_3_DAYS` `Q34_D4_3_DAYS` and `Q34_D5_3_DAYS`. 
+* New variable `N92` "Relationship of first HH member who helped with weeding" From vars `Q34_D1_2_ID` ans all the `Q7_2`s for looking up each ID. 
+* New variable `N93` "Relationship of second HH member who helped with weeding" From vars `Q34_D2_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N94` "Relationship of third HH member who helped with weeding" From vars `Q34_D3_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N95` "Relationship of fourth HH member who helped with weeding" From vars `Q34_D4_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N96` "Relationship of fifth HH member who helped with weeding" From vars `Q34_D5_2_ID` ans all the `Q7_2`s for looking up each ID..
+* New variable `N97` "Number of household members (maximum 5) that help with pest management" From vars `Q34_E1_2_ID` `Q34_E2_2_ID` `Q34_E3_2_ID` `Q34_E4_2_ID` and `Q34_E5_2_ID`. 
+* New variable `N98` "Total number of days HH members helped with land pest management" From vars `Q34_E1_3_DAYS` `Q34_E2_3_DAYS` `Q34_E3_3_DAYS` `Q34_E4_3_DAYS` and `Q34_E5_3_DAYS`. 
+* New variable `N99` "Relationship of first HH member who helped with pest management" From vars `Q34_E1_2_ID` ans all the `Q7_2`s for looking up each ID. 
+* New variable `N100` "Relationship of second HH member who helped with pest management" From vars `Q34_E2_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N101` "Relationship of third HH member who helped with pest management" From vars `Q34_E3_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N102` "Relationship of fourth HH member who helped with pest management" From vars `Q34_E4_2_ID` ans all the `Q7_2`s for looking up each ID
+* New variable `N103` "Total number of days HH members helped with all 5 types of farm activities" from `N70`, `N77`, `N84`, `N91` and `N98`
+* **ISSUE** `Q35` and q36 are incompatible? In fact q35 asking 'did you hire from this village' is impossible to answer if the person hired both. How did this happent, how was it not addressed in the pilot and how was it finally solved?
+* New variable `N104` -  "In the last 12 months did you hire labour to help with any of following the farming tasks? {Land preparation/Ploughing} and if yes, were they from the same village" - From `Q35_A_1` `Q35._A_2`
+* New variable `N105` -  "In the last 12 months did you hire labour to help with any of following the farming tasks? {Harvesting} and if yes, were they from the same village" - From `Q35_B_1` `Q35._B_2`
+* New variable `N106` -  "In the last 12 months did you hire labour to help with any of following the farming tasks? {Sowing, planting, transplanting} and if yes, were they from the same village" -From `Q35_C_1` `Q35_C_2`
+* New variable `N107` -  "In the last 12 months did you hire labour to help with any of following the farming tasks? {Weeding} and if yes, were they from the same village" From `Q35_D_1` `Q35_D_2`
+* New variable `N108` -  "In the last 12 months did you hire labour to help with any of following the farming tasks? {Managing pests} and if yes, were they from the same village" - From  `Q35_E_1` `Q35_E_2`
+* **ISSUE** all 10 `q36` variables: number of person/days are zero, not missing..
+* New variable `N109` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Land preparation/Ploughing}" From `Q36_A1` but without the zeros.
+* New variable `N110` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Land preparation/Ploughing}" From `Q36_A2` but without the zeros.
+* New variable `N111` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Harvesting}" From `Q36_B1` but without the zeros.
+* New variable `N112` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Harvesting}" From `Q36_B2` but without the zeros.

@@ -1048,8 +1048,856 @@ if Q33_C = 1 N66 = 0.
 exe.
 variable label n66 'Do you personaly perform sowing, planting and transplanting and if not anymore, how long ago did you stop?'.
 value labels n66 99 'Never performed sowing, planting and transplanting' 0 'Yes'.
-FREQUENCIES VARIABLES=n64
+FREQUENCIES VARIABLES=n66
   /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+compute n67 = q33_D1.
+if Q33_D = 1 N67 = 0.
+exe.
+variable label n67 'Do you personaly perform weeding and if not anymore, how long ago did you stop?'.
+value labels n67 99 'Never performed weeding' 0 'Yes'.
+FREQUENCIES VARIABLES=n67
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+compute n68 = q33_E1.
+if Q33_E = 1 N68 = 0.
+exe.
+variable label n68 'Do you personaly perform pest management and if not anymore, how long ago did you stop?'.
+value labels n68 99 'Never performed pest management' 0 'Yes'.
+FREQUENCIES VARIABLES=n68
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+
+COUNT N69 =  Q34_A1_2_ID Q34_A2_2_ID Q34_A3_2_ID Q34_A4_2_ID Q34_A5_2_ID (1 thru hi).
+if sysmis(Q34_A1_2_ID)  n69 = $sysmis.
+variable label n69 'Number of household members (maximum 5) that help with land preparation/ploughing '.
+FREQUENCIES VARIABLES=N69
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N70 = sum(Q34_A1_3_DAYS, Q34_A2_3_DAYS, Q34_A3_3_DAYS, Q34_A4_3_DAYS, Q34_A5_3_DAYS).
+
+variable label n70 'Total number of days HH members helped with land preparation/ploughing '.
+FREQUENCIES VARIABLES=N70
+  /HISTOGRAM PERCENT
+  /ORDER=ANALYSIS
+  /format notable.
+
+
+* max relationship ID is 9, so i can stop there. 
+
+if Q34_A1_2_ID = 1 N71 = Q7_2$01.
+if Q34_A1_2_ID = 2 N71 = Q7_2$02.
+if Q34_A1_2_ID = 3 N71 = Q7_2$03.
+if Q34_A1_2_ID = 4 N71 = Q7_2$04.
+if Q34_A1_2_ID = 5 N71 = Q7_2$05.
+if Q34_A1_2_ID = 6 N71 = Q7_2$06.
+if Q34_A1_2_ID = 7 N71 = Q7_2$07.
+if Q34_A1_2_ID = 8 N71 = Q7_2$08.
+if Q34_A1_2_ID = 9 N71 = Q7_2$09.
+exe.
+variable label 
+
+VARIABLE LABELS N71 'N71 - Relationship of first HH menber helping with land preparation/ploughing (Based on Q34_A1_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N71
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N71
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_A2_2_ID = 1 N72 = Q7_2$01.
+if Q34_A2_2_ID = 2 N72 = Q7_2$02.
+if Q34_A2_2_ID = 3 N72 = Q7_2$03.
+if Q34_A2_2_ID = 4 N72 = Q7_2$04.
+if Q34_A2_2_ID = 5 N72 = Q7_2$05.
+if Q34_A2_2_ID = 6 N72 = Q7_2$06.
+if Q34_A2_2_ID = 7 N72 = Q7_2$07.
+if Q34_A2_2_ID = 8 N72 = Q7_2$08.
+if Q34_A2_2_ID = 9 N72 = Q7_2$09.
+exe.
+variable label 
+
+VARIABLE LABELS N72 'N72 - Relationship of second HH menber helping with land preparation/ploughing (Based on Q34_A2_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N72
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N72
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_A3_2_ID = 1 N73 = Q7_2$01.
+if Q34_A3_2_ID = 2 N73 = Q7_2$02.
+if Q34_A3_2_ID = 3 N73 = Q7_2$03.
+if Q34_A3_2_ID = 4 N73 = Q7_2$04.
+if Q34_A3_2_ID = 5 N73 = Q7_2$05.
+if Q34_A3_2_ID = 6 N73 = Q7_2$06.
+if Q34_A3_2_ID = 7 N73 = Q7_2$07.
+if Q34_A3_2_ID = 8 N73 = Q7_2$08.
+if Q34_A3_2_ID = 9 N73 = Q7_2$09.
+exe.
+variable label 
+
+VARIABLE LABELS N73 'N73 - Relationship of third HH menber helping with land preparation/ploughing (Based on Q34_A3_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N73
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N73
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_A4_2_ID = 1 N74 = Q7_2$01.
+if Q34_A4_2_ID = 2 N74 = Q7_2$02.
+if Q34_A4_2_ID = 3 N74 = Q7_2$03.
+if Q34_A4_2_ID = 4 N74 = Q7_2$04.
+if Q34_A4_2_ID = 5 N74 = Q7_2$05.
+if Q34_A4_2_ID = 6 N74 = Q7_2$06.
+if Q34_A4_2_ID = 7 N74 = Q7_2$07.
+if Q34_A4_2_ID = 8 N74 = Q7_2$08.
+if Q34_A4_2_ID = 9 N74 = Q7_2$09.
+exe.
+variable label 
+
+VARIABLE LABELS N74 'N74 - Relationship of fourth HH menber helping with land preparation/ploughing (Based on Q34_A5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N74
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N74
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_A5_2_ID = 1 N75 = Q7_2$01.
+if Q34_A5_2_ID = 2 N75 = Q7_2$02.
+if Q34_A5_2_ID = 3 N75 = Q7_2$03.
+if Q34_A5_2_ID = 4 N75 = Q7_2$04.
+if Q34_A5_2_ID = 5 N75 = Q7_2$05.
+if Q34_A5_2_ID = 6 N75 = Q7_2$06.
+if Q34_A5_2_ID = 7 N75 = Q7_2$07.
+if Q34_A5_2_ID = 8 N75 = Q7_2$08.
+if Q34_A5_2_ID = 9 N75 = Q7_2$09.
+exe.
+variable label 
+
+VARIABLE LABELS N75 'N75 - Relationship of fifth HH menber helping with land preparation/ploughing (Based on Q34_A5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N75
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N75
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+COUNT N76 =  Q34_B1_2_ID Q34_B2_2_ID Q34_B3_2_ID Q34_B4_2_ID Q34_B5_2_ID (1 thru hi).
+if sysmis(Q34_B1_2_ID)  n76= $sysmis.
+variable label n76 'Number of household members (maximum 5) that help with harvesting '.
+FREQUENCIES VARIABLES=N76
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N77 = sum(Q34_B1_3_DAYS, Q34_B2_3_DAYS, Q34_B3_3_DAYS, Q34_B4_3_DAYS, Q34_B5_3_DAYS).
+
+variable label n77 'Total number of days HH members helped with harvesting'.
+FREQUENCIES VARIABLES=N77
+  /HISTOGRAM 
+  /ORDER=ANALYSIS
+  /format notable.
+
+
+
+*compute test = max(Q34_B1_2_ID, Q34_B2_2_ID, Q34_B3_2_ID, Q34_B5_2_ID, Q34_B5_2_ID ).
+*exe.
+* max relationship ID is 10, so i can stop there. 
+
+if Q34_B1_2_ID = 1 N78 = Q7_2$01.
+if Q34_B1_2_ID = 2 N78 = Q7_2$02.
+if Q34_B1_2_ID = 3 N78 = Q7_2$03.
+if Q34_B1_2_ID = 4 N78 = Q7_2$04.
+if Q34_B1_2_ID = 5 N78 = Q7_2$05.
+if Q34_B1_2_ID = 6 N78 = Q7_2$06.
+if Q34_B1_2_ID = 7 N78 = Q7_2$07.
+if Q34_B1_2_ID = 8 N78 = Q7_2$08.
+if Q34_B1_2_ID = 9 N78 = Q7_2$09.
+if Q34_B1_2_ID = 10 N78 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N78 'N78 - Relationship of first HH menber helping with harvesting (Based on Q34_B1_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N78
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N78
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_B2_2_ID = 1 N79 = Q7_2$01.
+if Q34_B2_2_ID = 2 N79 = Q7_2$02.
+if Q34_B2_2_ID = 3 N79 = Q7_2$03.
+if Q34_B2_2_ID = 4 N79 = Q7_2$04.
+if Q34_B2_2_ID = 5 N79 = Q7_2$05.
+if Q34_B2_2_ID = 6 N79 = Q7_2$06.
+if Q34_B2_2_ID = 7 N79 = Q7_2$07.
+if Q34_B2_2_ID = 8 N79 = Q7_2$08.
+if Q34_B2_2_ID = 9 N79 = Q7_2$09.
+if Q34_B2_2_ID = 10 N79 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N79 'N79 - Relationship of second HH menber helping with harvesting (Based on Q34_B2_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N79
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N79
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_B3_2_ID = 1 N80 = Q7_2$01.
+if Q34_B3_2_ID = 2 N80 = Q7_2$02.
+if Q34_B3_2_ID = 3 N80 = Q7_2$03.
+if Q34_B3_2_ID = 4 N80 = Q7_2$04.
+if Q34_B3_2_ID = 5 N80 = Q7_2$05.
+if Q34_B3_2_ID = 6 N80 = Q7_2$06.
+if Q34_B3_2_ID = 7 N80 = Q7_2$07.
+if Q34_B3_2_ID = 8 N80 = Q7_2$08.
+if Q34_B3_2_ID = 9 N80 = Q7_2$09.
+if Q34_B3_2_ID = 10 N80 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N80 'N80 - Relationship of third HH menber helping with harvesting (Based on Q34_B3_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N80
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N80
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_B4_2_ID = 1 N81 = Q7_2$01.
+if Q34_B4_2_ID = 2 N81 = Q7_2$02.
+if Q34_B4_2_ID = 3 N81 = Q7_2$03.
+if Q34_B4_2_ID = 4 N81 = Q7_2$04.
+if Q34_B4_2_ID = 5 N81 = Q7_2$05.
+if Q34_B4_2_ID = 6 N81 = Q7_2$06.
+if Q34_B4_2_ID = 7 N81 = Q7_2$07.
+if Q34_B4_2_ID = 8 N81 = Q7_2$08.
+if Q34_B4_2_ID = 9 N81 = Q7_2$09.
+if Q34_B4_2_ID = 10 N81 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N81 'N81 - Relationship of fourth HH menber helping with harvesting (Based on Q34_B5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N81
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N81
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_B5_2_ID = 1 N82 = Q7_2$01.
+if Q34_B5_2_ID = 2 N82 = Q7_2$02.
+if Q34_B5_2_ID = 3 N82 = Q7_2$03.
+if Q34_B5_2_ID = 4 N82 = Q7_2$04.
+if Q34_B5_2_ID = 5 N82 = Q7_2$05.
+if Q34_B5_2_ID = 6 N82 = Q7_2$06.
+if Q34_B5_2_ID = 7 N82 = Q7_2$07.
+if Q34_B5_2_ID = 8 N82 = Q7_2$08.
+if Q34_B5_2_ID = 9 N82 = Q7_2$09.
+if Q34_B5_2_ID = 10 N82 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N82 'N82 - Relationship of fifth HH menber helping with harvesting (Based on Q34_B5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N82
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N82
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+**sowing planting transplanting
+
+COUNT N83 =  Q34_C1_2_ID Q34_C2_2_ID Q34_C3_2_ID Q34_C4_2_ID Q34_C5_2_ID (1 thru hi).
+if sysmis(Q34_C1_2_ID)  n83= $sysmis.
+variable label n83 'Number of household members (maximum 5) that help with sowing, planting transplanting'.
+FREQUENCIES VARIABLES=N83
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N84 = sum(Q34_C1_3_DAYS, Q34_C2_3_DAYS, Q34_C3_3_DAYS, Q34_C4_3_DAYS, Q34_C5_3_DAYS).
+
+variable label n84 'Total number of days HH members helped with sowing, planting transplanting'.
+FREQUENCIES VARIABLES=N84
+  /HISTOGRAM 
+  /ORDER=ANALYSIS
+  /format notable.
+
+*compute test = max(Q34_C1_2_ID, Q34_C2_2_ID, Q34_C3_2_ID, Q34_C5_2_ID, Q34_C5_2_ID ).
+*exe.
+* max relationship ID is 10, so i can stop there. 
+
+if Q34_C1_2_ID = 1 N85 = Q7_2$01.
+if Q34_C1_2_ID = 2 N85 = Q7_2$02.
+if Q34_C1_2_ID = 3 N85 = Q7_2$03.
+if Q34_C1_2_ID = 4 N85 = Q7_2$04.
+if Q34_C1_2_ID = 5 N85 = Q7_2$05.
+if Q34_C1_2_ID = 6 N85 = Q7_2$06.
+if Q34_C1_2_ID = 7 N85 = Q7_2$07.
+if Q34_C1_2_ID = 8 N85 = Q7_2$08.
+if Q34_C1_2_ID = 9 N85 = Q7_2$09.
+if Q34_C1_2_ID = 10 N85 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N85 'N85 - Relationship of first HH menber helping with  sowing, planting, transplanting (Based on Q34_C1_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N85
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=n85
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_C2_2_ID = 1 N86 = Q7_2$01.
+if Q34_C2_2_ID = 2 N86 = Q7_2$02.
+if Q34_C2_2_ID = 3 N86 = Q7_2$03.
+if Q34_C2_2_ID = 4 N86 = Q7_2$04.
+if Q34_C2_2_ID = 5 N86 = Q7_2$05.
+if Q34_C2_2_ID = 6 N86 = Q7_2$06.
+if Q34_C2_2_ID = 7 N86 = Q7_2$07.
+if Q34_C2_2_ID = 8 N86 = Q7_2$08.
+if Q34_C2_2_ID = 9 N86 = Q7_2$09.
+if Q34_C2_2_ID = 10 N86 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N86 'N86 - Relationship of second HH menber helping with sowing, planting, transplanting  (Based on Q34_C2_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N86
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N86
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_C3_2_ID = 1 N87 = Q7_2$01.
+if Q34_C3_2_ID = 2 N87 = Q7_2$02.
+if Q34_C3_2_ID = 3 N87 = Q7_2$03.
+if Q34_C3_2_ID = 4 N87 = Q7_2$04.
+if Q34_C3_2_ID = 5 N87 = Q7_2$05.
+if Q34_C3_2_ID = 6 N87 = Q7_2$06.
+if Q34_C3_2_ID = 7 N87 = Q7_2$07.
+if Q34_C3_2_ID = 8 N87 = Q7_2$08.
+if Q34_C3_2_ID = 9 N87 = Q7_2$09.
+if Q34_C3_2_ID = 10 N87 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N87 'N87 - Relationship of third HH menber helping with  sowing, planting, transplanting  (Based on Q34_C3_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N87
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N87
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_C4_2_ID = 1 N88 = Q7_2$01.
+if Q34_C4_2_ID = 2 N88 = Q7_2$02.
+if Q34_C4_2_ID = 3 N88 = Q7_2$03.
+if Q34_C4_2_ID = 4 N88 = Q7_2$04.
+if Q34_C4_2_ID = 5 N88 = Q7_2$05.
+if Q34_C4_2_ID = 6 N88 = Q7_2$06.
+if Q34_C4_2_ID = 7 N88 = Q7_2$07.
+if Q34_C4_2_ID = 8 N88 = Q7_2$08.
+if Q34_C4_2_ID = 9 N88 = Q7_2$09.
+if Q34_C4_2_ID = 10 N88 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N88 'N88 - Relationship of fourth HH menber helping with  sowing, planting, transplanting  (Based on Q34_C5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N88
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N88
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_C5_2_ID = 1 N89 = Q7_2$01.
+if Q34_C5_2_ID = 2 N89 = Q7_2$02.
+if Q34_C5_2_ID = 3 N89 = Q7_2$03.
+if Q34_C5_2_ID = 4 N89 = Q7_2$04.
+if Q34_C5_2_ID = 5 N89 = Q7_2$05.
+if Q34_C5_2_ID = 6 N89 = Q7_2$06.
+if Q34_C5_2_ID = 7 N89 = Q7_2$07.
+if Q34_C5_2_ID = 8 N89 = Q7_2$08.
+if Q34_C5_2_ID = 9 N89 = Q7_2$09.
+if Q34_C5_2_ID = 10 N89 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N89 'N89 - Relationship of fifth HH menber helping with sowing, planting, transplanting  (Based on Q34_C5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N89
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N89
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+
+**weeding
+
+COUNT N90 =  Q34_D1_2_ID Q34_D2_2_ID Q34_D3_2_ID Q34_D4_2_ID Q34_D5_2_ID (1 thru hi).
+if sysmis(Q34_D1_2_ID)  n90= $sysmis.
+variable label n90 'Number of household members (maximum 5) that help with weeding'.
+FREQUENCIES VARIABLES=N90
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N91 = sum(Q34_D1_3_DAYS, Q34_D2_3_DAYS, Q34_D3_3_DAYS, Q34_D4_3_DAYS, Q34_D5_3_DAYS).
+
+variable label n91 'Total number of days HH members helped with weeding'.
+FREQUENCIES VARIABLES=N91
+  /HISTOGRAM 
+  /ORDER=ANALYSIS
+  /format notable.
+
+*compute test = max(Q34_D1_2_ID, Q34_D2_2_ID, Q34_D3_2_ID, Q34_D5_2_ID, Q34_D5_2_ID ).
+*exe.
+* max relationship ID is 10, so i can stop there. 
+
+if Q34_D1_2_ID = 1 N92 = Q7_2$01.
+if Q34_D1_2_ID = 2 N92 = Q7_2$02.
+if Q34_D1_2_ID = 3 N92 = Q7_2$03.
+if Q34_D1_2_ID = 4 N92 = Q7_2$04.
+if Q34_D1_2_ID = 5 N92 = Q7_2$05.
+if Q34_D1_2_ID = 6 N92 = Q7_2$06.
+if Q34_D1_2_ID = 7 N92 = Q7_2$07.
+if Q34_D1_2_ID = 8 N92 = Q7_2$08.
+if Q34_D1_2_ID = 9 N92 = Q7_2$09.
+if Q34_D1_2_ID = 10 N92 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N92 'N92 - Relationship of first HH menber helping with weeding (Based on Q34_D1_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N92
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N92
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_D2_2_ID = 1 N93 = Q7_2$01.
+if Q34_D2_2_ID = 2 N93 = Q7_2$02.
+if Q34_D2_2_ID = 3 N93 = Q7_2$03.
+if Q34_D2_2_ID = 4 N93 = Q7_2$04.
+if Q34_D2_2_ID = 5 N93 = Q7_2$05.
+if Q34_D2_2_ID = 6 N93 = Q7_2$06.
+if Q34_D2_2_ID = 7 N93 = Q7_2$07.
+if Q34_D2_2_ID = 8 N93 = Q7_2$08.
+if Q34_D2_2_ID = 9 N93 = Q7_2$09.
+if Q34_D2_2_ID = 10 N93 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N93 'N93 - Relationship of second HH menber helping with weeding  (Based on Q34_D2_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N93
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N93
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_D3_2_ID = 1 N94 = Q7_2$01.
+if Q34_D3_2_ID = 2 N94 = Q7_2$02.
+if Q34_D3_2_ID = 3 N94 = Q7_2$03.
+if Q34_D3_2_ID = 4 N94 = Q7_2$04.
+if Q34_D3_2_ID = 5 N94 = Q7_2$05.
+if Q34_D3_2_ID = 6 N94 = Q7_2$06.
+if Q34_D3_2_ID = 7 N94 = Q7_2$07.
+if Q34_D3_2_ID = 8 N94 = Q7_2$08.
+if Q34_D3_2_ID = 9 N94 = Q7_2$09.
+if Q34_D3_2_ID = 10 N94 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N94 'N94 - Relationship of third HH member helping with weeding (Based on Q34_D3_2_ID).'.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N94
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N94
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_D4_2_ID = 1 N95 = Q7_2$01.
+if Q34_D4_2_ID = 2 N95 = Q7_2$02.
+if Q34_D4_2_ID = 3 N95 = Q7_2$03.
+if Q34_D4_2_ID = 4 N95 = Q7_2$04.
+if Q34_D4_2_ID = 5 N95 = Q7_2$05.
+if Q34_D4_2_ID = 6 N95 = Q7_2$06.
+if Q34_D4_2_ID = 7 N95 = Q7_2$07.
+if Q34_D4_2_ID = 8 N95 = Q7_2$08.
+if Q34_D4_2_ID = 9 N95 = Q7_2$09.
+if Q34_D4_2_ID = 10 N95 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N95 'N95 - Relationship of fourth HH menber helping with  weeding  (Based on Q34_D4_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N95
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N95
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_D5_2_ID = 1 N96 = Q7_2$01.
+if Q34_D5_2_ID = 2 N96 = Q7_2$02.
+if Q34_D5_2_ID = 3 N96 = Q7_2$03.
+if Q34_D5_2_ID = 4 N96 = Q7_2$04.
+if Q34_D5_2_ID = 5 N96 = Q7_2$05.
+if Q34_D5_2_ID = 6 N96 = Q7_2$06.
+if Q34_D5_2_ID = 7 N96 = Q7_2$07.
+if Q34_D5_2_ID = 8 N96 = Q7_2$08.
+if Q34_D5_2_ID = 9 N96 = Q7_2$09.
+if Q34_D5_2_ID = 10 N96 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N96 'N96 - Relationship of fifth HH menber helping with weeding (Based on Q34_D5_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N96
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N96
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+** managing pests 
+
+COUNT N97 =  Q34_E1_2_ID Q34_E2_2_ID Q34_E3_2_ID Q34_E4_2_ID Q34_E5_2_ID (1 thru hi).
+if sysmis(Q34_E1_2_ID)  n97= $sysmis.
+variable label n97 'Number of household members (maximum 5) that help with managing pests'.
+FREQUENCIES VARIABLES=N97
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N98 = sum(Q34_E1_3_DAYS, Q34_E2_3_DAYS, Q34_E3_3_DAYS, Q34_E4_3_DAYS, Q34_E5_3_DAYS).
+
+variable label n98 'Total number of days HH members helped with managing pests'.
+FREQUENCIES VARIABLES=N98
+  /HISTOGRAM 
+  /ORDER=ANALYSIS
+  /format notable.
+
+*compute test = max(Q34_E1_2_ID, Q34_E2_2_ID, Q34_E3_2_ID, Q34_E5_2_ID, Q34_E5_2_ID ).
+*exe.
+* max relationship ID is 10, so i can stop there. 
+
+if Q34_E1_2_ID = 1 N99 = Q7_2$01.
+if Q34_E1_2_ID = 2 N99 = Q7_2$02.
+if Q34_E1_2_ID = 3 N99 = Q7_2$03.
+if Q34_E1_2_ID = 4 N99 = Q7_2$04.
+if Q34_E1_2_ID = 5 N99 = Q7_2$05.
+if Q34_E1_2_ID = 6 N99 = Q7_2$06.
+if Q34_E1_2_ID = 7 N99 = Q7_2$07.
+if Q34_E1_2_ID = 8 N99 = Q7_2$08.
+if Q34_E1_2_ID = 9 N99 = Q7_2$09.
+if Q34_E1_2_ID = 10 N99 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N99 'N99 - Relationship of first HH menber helping with managing pests (Based on Q34_E1_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N99
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N99
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_E2_2_ID = 1 N100 = Q7_2$01.
+if Q34_E2_2_ID = 2 N100 = Q7_2$02.
+if Q34_E2_2_ID = 3 N100 = Q7_2$03.
+if Q34_E2_2_ID = 4 N100 = Q7_2$04.
+if Q34_E2_2_ID = 5 N100 = Q7_2$05.
+if Q34_E2_2_ID = 6 N100 = Q7_2$06.
+if Q34_E2_2_ID = 7 N100 = Q7_2$07.
+if Q34_E2_2_ID = 8 N100 = Q7_2$08.
+if Q34_E2_2_ID = 9 N100 = Q7_2$09.
+if Q34_E2_2_ID = 10 N100 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N100 'N100 - Relationship of second HH menber helping with managing pests  (Based on Q34_E2_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N100
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N100
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_E3_2_ID = 1 N101 = Q7_2$01.
+if Q34_E3_2_ID = 2 N101 = Q7_2$02.
+if Q34_E3_2_ID = 3 N101 = Q7_2$03.
+if Q34_E3_2_ID = 4 N101 = Q7_2$04.
+if Q34_E3_2_ID = 5 N101 = Q7_2$05.
+if Q34_E3_2_ID = 6 N101 = Q7_2$06.
+if Q34_E3_2_ID = 7 N101 = Q7_2$07.
+if Q34_E3_2_ID = 8 N101 = Q7_2$08.
+if Q34_E3_2_ID = 9 N101 = Q7_2$09.
+if Q34_E3_2_ID = 10 N101 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N101 'N101 - Relationship of third HH menber helping with managing pests (Based on Q34_E3_2_ID).'.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N101
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N101
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q34_E4_2_ID = 1 N102 = Q7_2$01.
+if Q34_E4_2_ID = 2 N102 = Q7_2$02.
+if Q34_E4_2_ID = 3 N102 = Q7_2$03.
+if Q34_E4_2_ID = 4 N102 = Q7_2$04.
+if Q34_E4_2_ID = 5 N102 = Q7_2$05.
+if Q34_E4_2_ID = 6 N102 = Q7_2$06.
+if Q34_E4_2_ID = 7 N102 = Q7_2$07.
+if Q34_E4_2_ID = 8 N102 = Q7_2$08.
+if Q34_E4_2_ID = 9 N102 = Q7_2$09.
+if Q34_E4_2_ID = 10 N102 = Q7_2$10.
+exe.
+variable label 
+
+VARIABLE LABELS N102 'N102 - Relationship of fourth HH menber helping with  managing pests  (Based on Q34_E4_2_ID).' .
+exe.
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = Q7_2$01
+  /TARGET VARIABLES = N102
+/varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES=N102
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+compute N103 = sum(N70, N77, N84, N91, N98).
+
+variable label n103 'N103 - Total number of days HH members helped with all 5 types of farm activities'.
+FREQUENCIES VARIABLES=N103
+  /HISTOGRAM 
+  /ORDER=ANALYSIS
+  /format notable.
+
+
+IF Q35_A_1 = 2 N104 = 0.
+IF Q35_A_1 = 1 N104 = Q35_A_2.
+EXECUTE.
+
+VALUE LABELS N104 0 'No, did not hire' 1 'Yes, from same village' 2 'Yes, not from same village' .
+VARIABLE LABELS N104  'N104 - Q35.A.1., & 2 In the last 12 months did you hire labour to help with' +
+'any of following the farming tasks? {Land preparation/Ploughing}'.
+
+FREQUENCIES VARIABLES=N104
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+IF Q35_B_1 = 2 N105 = 0.
+IF Q35_B_1 = 1 N105 = Q35_B_2.
+EXECUTE.
+
+VALUE LABELS N105 0 'No, did not hire' 1 'Yes, from same village' 2 'Yes, not from same village' .
+VARIABLE LABELS N105  'N105 - Q35.B.1., & 2 In the last 12 months did you hire labour to help with' +
+'any of following the farming tasks? {Harvesting}'.
+
+FREQUENCIES VARIABLES=N105
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+IF Q35_C_1 = 2 N106 = 0.
+IF Q35_C_1 = 1 N106 = Q35_C_2.
+EXECUTE.
+
+VALUE LABELS N106 0 'No, did not hire' 1 'Yes, from same village' 2 'Yes, not from same village' .
+VARIABLE LABELS N106  'N106 - Q35.C.1., & 2 In the last 12 months did you hire labour to help with' +
+'any of following the farming tasks? {Sowing, planting, transplanting}'.
+
+FREQUENCIES VARIABLES=N106
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+IF Q35_D_1 = 2 N107 = 0.
+IF Q35_D_1 = 1 N107 = Q35_D_2.
+EXECUTE.
+
+VALUE LABELS N107 0 'No, did not hire' 1 'Yes, from same village' 2 'Yes, not from same village' .
+VARIABLE LABELS N107  'N107 - Q35.D.1., & 2 In the last 12 months did you hire labour to help with' +
+'any of following the farming tasks? {Weeding}'.
+
+FREQUENCIES VARIABLES=N107
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+IF Q35_E_1 = 2 N108 = 0.
+IF Q35_E_1 = 1 N108 = Q35_E_2.
+EXECUTE.
+
+VALUE LABELS N108 0 'No, did not hire' 1 'Yes, from same village' 2 'Yes, not from same village' .
+VARIABLE LABELS N108  'N108 - Q35.E.1., & 2 In the last 12 months did you hire labour to help with' +
+'any of following the farming tasks? {Pest management}'.
+
+FREQUENCIES VARIABLES=N108
+  /BARCHART PERCENT
+  /ORDER=ANALYSIS.
+
+
+if Q36_A1 > 0  n109 = Q36_A1. 
+exe.
+variable labels n109 'N109 - Q36.A1 What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Land preparation/Ploughing}'.
+
+FREQUENCIES VARIABLES=n109
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_A2 > 0  n110 = Q36_A2. 
+exe.
+variable labels n110 'N110 - Q36.A2 What were the total number of person-days employed in the last 12 months for each of the following tasks: NOT From local village Days {Land preparation/Ploughing}'.
+
+FREQUENCIES VARIABLES=n110
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+
+
+
+if Q36_B1 > 0  n111 = Q36_B1. 
+exe.
+variable labels n111 'N111 - Q36_B1 What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Harvesting}'.
+
+FREQUENCIES VARIABLES=n111
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_B2 > 0  n112 = Q36_B2. 
+exe.
+variable labels n112 'N112 - Q36_B2 What were the total number of person-days employed in the last 12 months for each of the following tasks: NOT From local village Days {Harvesting}'.
+
+FREQUENCIES VARIABLES=n112
+  /HISTOGRAM 
   /ORDER=ANALYSIS.
 
 
