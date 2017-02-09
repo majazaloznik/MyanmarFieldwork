@@ -157,3 +157,48 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N110` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Land preparation/Ploughing}" From `Q36_A2` but without the zeros.
 * New variable `N111` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Harvesting}" From `Q36_B1` but without the zeros.
 * New variable `N112` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Harvesting}" From `Q36_B2` but without the zeros.
+
+## Thursday 10.2.2017 - First trawl - Univariate descriptives - continuted
+
+* New variable `N113` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {sowing, planting, transplanting}" From `Q36_C1` but without the zeros.
+* New variable `N114` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {sowing, planting, transplanting}" From `Q36_C2` but without the zeros.
+* New variable `N115` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Weeding}" From `Q36_D1` but without the zeros.
+* New variable `N116` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Weeding}" From `Q36_D2` but without the zeros.
+* New variable `N117` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Pest management}" From `Q36_E1` but without the zeros.
+* New variable `N118` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Pest management}" From `Q36_E2` but without the zeros.
+* New variable `N119` "What were the total number of person-days employed in the last 12 months for all five tasks: From local village." From `N109`, `N111`, `N113`, `N115`, `N117`.
+* New variable `N120` "What were the total number of person-days employed in the last 12 months for all five tasks: NOT From local village." From `N110`, `N112`, `N114`, `N116`, `N118`.
+* New variable `N121` "What were the total number of person-days employed in the last 12 months for all five tasks: from anywhere." From `N119`, `N120.
+* **ISSUE** again variables Q37_A to Q37_J are coded as 2 for 'No' instead of 0. Recoded all into same variables. 
+* New variable `N122` - "Total number of novel farming methods tried in the last two years (out of the 10 listed)." From vars `Q37_A` to `Q37_J`.
+* New variable `N123` - Those that had received advice form the Agricultural services "Did they receive information on planting new crops and if yes, did they act on it?" From vars `Q39_A1` and `Q39_A2`. 
+* New variable `N124` - Those that had received advice form the Agricultural services "Did they receive information on new seed varieties and if yes, did they act on it?" From vars `Q39_B1` and `Q39_B2`. 
+* New variable `N125` - Those that had received advice form the Agricultural services "Did they receive information oninter-cropping or mixed cropping and if yes, did they act on it?" From vars `Q39_C1` and `Q39_C2`. 
+* New variable `N126` - Those that had received advice form the Agricultural services "Did they receive information on double cropping on the same plot  and if yes, did they act on it?" From vars `Q39_D1` and `Q39_D2`. 
+* New variable `N127` - Those that had received advice form the Agricultural services "Did they receive information on plant spacing and if yes, did they act on it?" From vars `Q39_E1` and `Q39_E2`. 
+* New variable `N128` - Those that had received advice form the Agricultural services "Did they receive information on managing pests and/or use of pesticides and if yes, did they act on it?" From vars `Q39_F1` and `Q39_F2`. 
+* New variable `N129` - Those that had received advice form the Agricultural services "Did they receive information on fertilisers and if yes, did they act on it?" From vars `Q39_G1` and `Q39_G2`. 
+* New variable `N130` - Those that had received advice form the Agricultural services "Did they receive information on the use of farm machinery and if yes, did they act on it?" From vars `Q39_H1` and `Q39_H2`. 
+* New variable `N131` - Those that had received advice form the Agricultural services "Did they receive information on water management and if yes, did they act on it?" From vars `Q39_H1` and `Q39_H2`. 
+* New variable `N132` - "Tell me which of those sources of your knowledge for faming are? {Other Specified options" From `Q40_I` and `Q40_I_OT_SP`. 
+* **ISSUE** - Q40_1, Q40_2 and Q40_3 could have the "other specify" options merged togehter instead of separate variables. 
+* New variable `N133` - "And which one is the most important source of your knowledge for farming?" - merge with 'other specify' options `Q40_1` and `Q40_1_OT_SP`.
+* New variable `N134` - " And which one is the second most important source of your knowledge for farming?" - merge with 'other specify' options `Q40_2` and `Q40_2_OT_SP`.
+* New variable `N135` - "And which one is the third most important source of your knowledge for farming?" - merge with 'other specify' options `Q40_3` and `Q40_3_OT_SP`.
+* **ISSUE** - `Q43_1` and `Q43_2` could have the "other specify" options merged together instead of separate variables. 
+* New variable `N136` - "Which one is the most important reason your corp yields are increasing?" From merge with 'other specify' options `Q43_1` and `Q43_1_OT_SP`.
+* New variable `N137` - "Which one is the second most important reason your corp yields are increasing?" From merge with 'other specify' options `Q43_2` and `Q43_2_OT_SP`.
+* **ISSUE** - `Q44_1` and `Q44_2` could have the "other specify" options merged together instead of separate variables. 
+* New variable `N138` - "Which one is the most important reason your corp yields are decreasing?" From merge with 'other specify' options `Q44_1` and `Q44_1_OT_SP`.
+* New variable `N139` - "Which one is the second most important reason your corp yields are decreasing?" From merge with 'other specify' options `Q44_2` and `Q44_2_OT_SP`.
+* **ISSUE** Q45 was only asked of people who answered increase or decrease in Q43, others went straight on to Module 3.. Nothing to be done.. 
+* **ISSUE** - `Q45_1` and `Q45_2` could have the "other specify" options merged together instead of separate variables. 
+* New variable `N140` - "Which one is the most important challenge to you farming ?" From merge with 'other specify' options `Q45_1` and `Q45_1_OT_SP`.
+* New variable `N141` - "Which one is the second most important challenge to you farming?" From merge with 'other specify' options `Q45_2` and `Q45_2_OT_SP`
+* **ISSUE** `Q46_1_OT_SP` has the option "Late time line of farm work" not sure what that means?
+* **ISSUE** some more unclear translations in `q46_1_OT_SP`
+* New variable `N142` - "Which one is the most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_1` and `Q46_1_OT_SP`.
+* New variable `N143` - "Which one is the second most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_2` and `Q46_2_OT_SP`
+* New variable `N144` - "Which one is the third most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_3` and `Q46_3_OT_SP`
+
+

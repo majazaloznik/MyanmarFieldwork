@@ -3,55 +3,55 @@
 DATASET ACTIVATE DataSet1.
 
 FREQUENCIES VARIABLES=Q1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q2
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q3
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q4
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q5
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_A
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_B
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_C
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_D
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_E
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_F
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_G
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q6_H
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COMPUTE N1=Q6_A + Q6_B + Q6_C +  Q6_D + Q6_E   + Q6_F +Q6_G.
@@ -59,15 +59,15 @@ VARIABLE LABELS  N1 'Number of dificultuies reported'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q7
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q7
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 RECODE Q7_5$01 Q7_5$02 Q7_5$03 Q7_5$04 Q7_5$05 Q7_5$06 Q7_5$07 Q7_5$08 Q7_5$09 Q7_5$10 Q7_5$11 Q7_5$12 Q7_5$13 Q7_5$14 Q7_5$15 (1=1) (2=0).
@@ -78,7 +78,7 @@ VARIABLE LABELS  N2 'Number of HH members working outside village part of the ye
 EXECUTE.
 
 FREQUENCIES VARIABLES=N2
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N3=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
@@ -87,7 +87,7 @@ VARIABLE LABELS  N3 'Number of HH members working in another village in same tow
 EXECUTE.
 
 FREQUENCIES VARIABLES=N3
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N4=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
@@ -96,7 +96,7 @@ VARIABLE LABELS  N4 'Number of HH members working in another township'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N4
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N5=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
@@ -105,7 +105,7 @@ VARIABLE LABELS  N5 'Number of HH members working in a city in Myanmar e.g. Yang
 EXECUTE.
 
 FREQUENCIES VARIABLES=N5
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N6=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
@@ -114,7 +114,7 @@ VARIABLE LABELS  N6 'Number of HH members working outside Myanmanr'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N6
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -124,7 +124,7 @@ VARIABLE LABELS  N7 'Former HH members that have moved out that are Spouses'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N7
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N8=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
@@ -133,7 +133,7 @@ VARIABLE LABELS  N8 'Former HH members that have moved out that are Children'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N8
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N9=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
@@ -142,7 +142,7 @@ VARIABLE LABELS  N9 'Former HH members that have moved out that are grandchildre
 EXECUTE.
 
 FREQUENCIES VARIABLES=N9
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N10=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
@@ -151,7 +151,7 @@ VARIABLE LABELS  N10 'Former HH members that have moved out that are Children in
 EXECUTE.
 
 FREQUENCIES VARIABLES=N10
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -161,7 +161,7 @@ VARIABLE LABELS  N11 'Former HH members that have moved out that are Parents'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N11
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -171,7 +171,7 @@ VARIABLE LABELS  N12 'Former HH members that have moved out that are parents in 
 EXECUTE.
 
 FREQUENCIES VARIABLES=N12
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N13=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
@@ -180,7 +180,7 @@ VARIABLE LABELS  N13 'Former HH members that have moved out that are siblings'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N13
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -190,7 +190,7 @@ VARIABLE LABELS  N14 'Former HH members that have moved out that are other famil
 EXECUTE.
 
 FREQUENCIES VARIABLES=N14
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -200,7 +200,7 @@ VARIABLE LABELS  N15 'Former HH members that have moved out that are other non f
 EXECUTE.
 
 FREQUENCIES VARIABLES=N15
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -210,7 +210,7 @@ VARIABLE LABELS  N16 'Number of former HH members that have moved out that are m
 EXECUTE.
 
 FREQUENCIES VARIABLES=N16
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N17=Q8_2$01 Q8_2$02 Q8_2$03 Q8_2$04 Q8_2$05 Q8_2$06 Q8_2$07 Q8_2$08 Q8_2$09 Q8_2$10 Q8_2$11 
@@ -219,7 +219,7 @@ VARIABLE LABELS  N17 'Number of former HH members that have moved out that are f
 EXECUTE.
 
 FREQUENCIES VARIABLES=N18
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -229,7 +229,7 @@ VARIABLE LABELS  N18 'Number of former HH members that have moved out for employ
 EXECUTE.
 
 FREQUENCIES VARIABLES=N18
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -239,7 +239,7 @@ VARIABLE LABELS  N19 'Number of former HH members that have moved out for educai
 EXECUTE.
 
 FREQUENCIES VARIABLES=N19
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -249,7 +249,7 @@ VARIABLE LABELS  N20 'Number of former HH members that have moved out for marria
 EXECUTE.
 
 FREQUENCIES VARIABLES=N20
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N21=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
@@ -258,7 +258,7 @@ VARIABLE LABELS  N21 'Number of former HH members that have moved out because fo
 EXECUTE.
 
 FREQUENCIES VARIABLES=N21
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N22=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
@@ -267,7 +267,7 @@ VARIABLE LABELS  N22 'Number of former HH members that have moved out becasue of
 EXECUTE.
 
 FREQUENCIES VARIABLES=N22
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N23=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
@@ -276,7 +276,7 @@ VARIABLE LABELS  N23 'Number of former HH members that have moved out becasue of
 EXECUTE.
 
 FREQUENCIES VARIABLES=N23
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -286,7 +286,7 @@ VARIABLE LABELS  N24 'Number of former HH members that have moved out into separ
 EXECUTE.
 
 FREQUENCIES VARIABLES=N24
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N25=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
@@ -295,7 +295,7 @@ VARIABLE LABELS  N25 'Number of former HH members that have moved out into same 
 EXECUTE.
 
 FREQUENCIES VARIABLES=N25
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -305,7 +305,7 @@ VARIABLE LABELS  N26 'Number of former HH members that have moved out into same 
 EXECUTE.
 
 FREQUENCIES VARIABLES=N26
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -315,7 +315,7 @@ VARIABLE LABELS  N27 'Number of former HH members that have moved out into diffe
 EXECUTE.
 
 FREQUENCIES VARIABLES=N27
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -325,7 +325,7 @@ VARIABLE LABELS  N28 'Number of former HH members that have moved out into diffe
 EXECUTE.
 
 FREQUENCIES VARIABLES=N28
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COUNT N29=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
@@ -334,31 +334,31 @@ VARIABLE LABELS  N29 'Number of former HH members that have moved out into diffe
 EXECUTE.
 
 FREQUENCIES VARIABLES=N29
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q9
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q10
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q11
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q12
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q13
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q14
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COMPUTE N30 = sum(Q15_A, Q15_B, Q15_C, Q15_D, Q15_F, Q15_G, Q15_H, Q15_I, Q15_J).
@@ -366,59 +366,59 @@ VARIABLE LABELS  N30 'Number of lenders listed as sources of largest loan in las
 EXECUTE.
 
 FREQUENCIES VARIABLES=N30
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_A
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_B
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_C
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_D
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_F
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_G
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_H
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_I
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_J
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_J_96_OT_SP_1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_J_96_OT_SP_2
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q15_J_96_OT_SP_3
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q16
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q17
@@ -439,7 +439,7 @@ FREQUENCIES VARIABLES=N31
 
 
 FREQUENCIES VARIABLES=Q19
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q20_A
@@ -456,7 +456,7 @@ FREQUENCIES VARIABLES=N32
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q21
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q22
@@ -476,7 +476,7 @@ FREQUENCIES VARIABLES=N33
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q24
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 if Q24_B_ID = 1 N34 = Q7_2$01.
@@ -505,7 +505,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N34
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -535,7 +535,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N35
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COMPUTE N36 = max(n34, n35).
@@ -544,7 +544,7 @@ COMPUTE N37 = min(n34, n35).
 *compute test = (N36-N37).
 *exe.
 *FREQUENCIES VARIABLES= test
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 VARIABLE LABELS N36 'N36 - Relationship of other family member that is co- or solo farm manager (Based on Q24).' .
@@ -556,19 +556,19 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N36
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q25
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q26
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q27
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 *TEMPORARY. 
@@ -576,7 +576,7 @@ FREQUENCIES VARIABLES=Q27
 *CROSSTABS Q24 BY Q27.
 
 FREQUENCIES VARIABLES=Q28_A
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 TEMPORARY. 
@@ -596,7 +596,7 @@ APPLY DICTIONARY from *
 add value labels N37 0 'No'.
 
 FREQUENCIES VARIABLES=N37
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COMPUTE N38 = max(Q28_B, Q28_B_OT_SP).
@@ -610,7 +610,7 @@ APPLY DICTIONARY from *
 add value labels N38 0 'No'.
 
 FREQUENCIES VARIABLES=N38
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 COMPUTE N39 = max(Q28_C, Q28_C_OT_SP).
@@ -625,7 +625,7 @@ APPLY DICTIONARY from *
 add value labels N39 0 'No'.
 
 FREQUENCIES VARIABLES=N39
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -641,16 +641,16 @@ APPLY DICTIONARY from *
 add value labels N40 0 'No'.
 
 FREQUENCIES VARIABLES=N40
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
 FREQUENCIES VARIABLES=Q28_E
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q28_F
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -666,7 +666,7 @@ APPLY DICTIONARY from *
 add value labels N41 0 'No'.
 
 FREQUENCIES VARIABLES=N41
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 count N42= Q28_A Q28_B Q28_C Q28_D Q28_E Q28_F (1).
@@ -706,7 +706,7 @@ value  labels N46 1 'continue farming jointly with child(in-law)'
 8 'two answers relatives' 9 'two answeres rent/sell' 10 'two answers one relative and one rent/sell'.
 
 FREQUENCIES VARIABLES=N46
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -715,19 +715,19 @@ FREQUENCIES VARIABLES=Q29a
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q29B
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q30_A
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q30_B
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q30_C
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N47 = SUM(Q30_A, Q30_B, Q30_C).
@@ -737,7 +737,7 @@ variable labels N47 - 'N47 Q30 consolidated - Size of farm increased in last 5 y
 value  labels N47 1 'Yes' 0 ' No'. 
 
 FREQUENCIES VARIABLES=N47
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -764,27 +764,27 @@ FREQUENCIES VARIABLES=N48
 
 
 FREQUENCIES VARIABLES=Q31
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q31_A1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q31_A2
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q31_A3
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q31_A4
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q31_A5
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 count N49 = Q31_A1 Q31_A2 Q31_A3 Q31_A4 Q31_A5 (1). 
@@ -792,7 +792,7 @@ EXE.
 variable labels N49  'N49 Q31_A consolidated - Number of reasons for decrease in farm size in last five years.:'. 
 
 FREQUENCIES VARIABLES=N49
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -807,7 +807,7 @@ VALUE LABELS N50 0 'No decrease' 1 'Sold' 2 'Let' 3 'Gave away' 4 'Had confiscat
 variable labels N50  'N50 - Q31_A consolidated - Reason for decrease in farm size in last five years.:'. 
 
 FREQUENCIES VARIABLES=N50
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 FREQUENCIES VARIABLES=Q31_B1
@@ -849,7 +849,7 @@ VALUE LABELS N52 0 'No sale' 1 'Debt' 2 'Too large to manage' 3 'Emergency need 
 variable labels N52  'N52 - from Q31_C1 - Reason for sale of land'. 
 
 FREQUENCIES VARIABLES=N52
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -864,7 +864,7 @@ VALUE LABELS N53 0 'No letting out' 1 'Debt' 2 'Too large to manage' 3 'Emergenc
 variable labels N53  'N53 - from Q31_C2 - Reason for letting out of land'. 
 
 FREQUENCIES VARIABLES=N53
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -881,7 +881,7 @@ VALUE LABELS N54 0 'No giving away' 1 'Debt' 2 'Too large to manage' 3 'Contribu
 variable labels N54  'N54 - from Q31_C3 - Reason for giving away land'. 
 
 FREQUENCIES VARIABLES=N54
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -897,7 +897,7 @@ VALUE LABELS N55 0 'No confiscation' 1 'Contribute for canalization or public ro
 variable labels N55  'N55 - from Q31_C4 - Reason for confiscation of land'. 
 
 FREQUENCIES VARIABLES=N55
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -911,7 +911,7 @@ VALUE LABELS N53 0 'No other reason' 1 'River erosion'.
 variable labels N56  'N56 - from Q31_C5 - Other reasons for decrease in land sizeland'. 
 
 FREQUENCIES VARIABLES=N56
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -936,12 +936,12 @@ VALUE LABELS N57  1 'Sold because of debt' 2 'Sold because too large to manage' 
 13 'Lost land to river erosion'.
 
 FREQUENCIES VARIABLES=N57
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
 FREQUENCIES VARIABLES=Q32_1_1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 count N58 = Q32_1_2 Q32_1_3 Q32_1_4 (1). 
@@ -958,7 +958,7 @@ value labels N59 1 'for subsistence only' 2 'for animal feed only' 3 'for sale o
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
 variable label N59 'Production type for first crop'. 
 FREQUENCIES VARIABLES=N59
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 CROSSTABS
@@ -970,7 +970,7 @@ CROSSTABS
 
 
 FREQUENCIES VARIABLES=Q32_2_1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 count N60 = Q32_2_2 Q32_2_3 Q32_2_4 (1). 
@@ -987,7 +987,7 @@ value labels N61 1 'for subsistence only' 2 'for animal feed only' 3 'for sale o
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
 variable label N61 'Production type for second crop'. 
 FREQUENCIES VARIABLES=N61
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 CROSSTABS
@@ -998,7 +998,7 @@ CROSSTABS
   /barchart.
 
 FREQUENCIES VARIABLES=Q32_3_1
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 count N62 = Q32_3_2 Q32_3_3 Q32_3_4 (1). 
@@ -1015,7 +1015,7 @@ value labels N63 1 'for subsistence only' 2 'for animal feed only' 3 'for sale o
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
 variable label N63 'Production type for third crop'. 
 FREQUENCIES VARIABLES=N63
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 CROSSTABS
@@ -1031,7 +1031,7 @@ exe.
 variable label n64 'Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?'.
 value labels n64 99 'Never performed land preparation (ploughign)' 0 'Yes'.
 FREQUENCIES VARIABLES=n64
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute n65 = q33_B1.
@@ -1040,7 +1040,7 @@ exe.
 variable label n65 'Do you personaly perform harvesting and if not anymore, how long ago did you stop?'.
 value labels n65 99 'Never performed harvesting' 0 'Yes'.
 FREQUENCIES VARIABLES=n65
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute n66 = q33_C1.
@@ -1049,7 +1049,7 @@ exe.
 variable label n66 'Do you personaly perform sowing, planting and transplanting and if not anymore, how long ago did you stop?'.
 value labels n66 99 'Never performed sowing, planting and transplanting' 0 'Yes'.
 FREQUENCIES VARIABLES=n66
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1059,7 +1059,7 @@ exe.
 variable label n67 'Do you personaly perform weeding and if not anymore, how long ago did you stop?'.
 value labels n67 99 'Never performed weeding' 0 'Yes'.
 FREQUENCIES VARIABLES=n67
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1069,7 +1069,7 @@ exe.
 variable label n68 'Do you personaly perform pest management and if not anymore, how long ago did you stop?'.
 value labels n68 99 'Never performed pest management' 0 'Yes'.
 FREQUENCIES VARIABLES=n68
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1078,7 +1078,7 @@ COUNT N69 =  Q34_A1_2_ID Q34_A2_2_ID Q34_A3_2_ID Q34_A4_2_ID Q34_A5_2_ID (1 thru
 if sysmis(Q34_A1_2_ID)  n69 = $sysmis.
 variable label n69 'Number of household members (maximum 5) that help with land preparation/ploughing '.
 FREQUENCIES VARIABLES=N69
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N70 = sum(Q34_A1_3_DAYS, Q34_A2_3_DAYS, Q34_A3_3_DAYS, Q34_A4_3_DAYS, Q34_A5_3_DAYS).
@@ -1113,7 +1113,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N71
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1138,7 +1138,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N72
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1163,7 +1163,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N73
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1188,7 +1188,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N74
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1213,7 +1213,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N75
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1221,7 +1221,7 @@ COUNT N76 =  Q34_B1_2_ID Q34_B2_2_ID Q34_B3_2_ID Q34_B4_2_ID Q34_B5_2_ID (1 thru
 if sysmis(Q34_B1_2_ID)  n76= $sysmis.
 variable label n76 'Number of household members (maximum 5) that help with harvesting '.
 FREQUENCIES VARIABLES=N76
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N77 = sum(Q34_B1_3_DAYS, Q34_B2_3_DAYS, Q34_B3_3_DAYS, Q34_B4_3_DAYS, Q34_B5_3_DAYS).
@@ -1260,7 +1260,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N78
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1286,7 +1286,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N79
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1312,7 +1312,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N80
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1338,7 +1338,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N81
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1364,7 +1364,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N82
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 **sowing planting transplanting
@@ -1373,7 +1373,7 @@ COUNT N83 =  Q34_C1_2_ID Q34_C2_2_ID Q34_C3_2_ID Q34_C4_2_ID Q34_C5_2_ID (1 thru
 if sysmis(Q34_C1_2_ID)  n83= $sysmis.
 variable label n83 'Number of household members (maximum 5) that help with sowing, planting transplanting'.
 FREQUENCIES VARIABLES=N83
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N84 = sum(Q34_C1_3_DAYS, Q34_C2_3_DAYS, Q34_C3_3_DAYS, Q34_C4_3_DAYS, Q34_C5_3_DAYS).
@@ -1410,7 +1410,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=n85
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1436,7 +1436,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N86
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1462,7 +1462,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N87
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1488,7 +1488,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N88
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1514,7 +1514,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N89
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1525,7 +1525,7 @@ COUNT N90 =  Q34_D1_2_ID Q34_D2_2_ID Q34_D3_2_ID Q34_D4_2_ID Q34_D5_2_ID (1 thru
 if sysmis(Q34_D1_2_ID)  n90= $sysmis.
 variable label n90 'Number of household members (maximum 5) that help with weeding'.
 FREQUENCIES VARIABLES=N90
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N91 = sum(Q34_D1_3_DAYS, Q34_D2_3_DAYS, Q34_D3_3_DAYS, Q34_D4_3_DAYS, Q34_D5_3_DAYS).
@@ -1562,7 +1562,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N92
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1588,7 +1588,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N93
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1613,7 +1613,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N94
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1639,7 +1639,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N95
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1665,7 +1665,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N96
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 ** managing pests 
@@ -1674,7 +1674,7 @@ COUNT N97 =  Q34_E1_2_ID Q34_E2_2_ID Q34_E3_2_ID Q34_E4_2_ID Q34_E5_2_ID (1 thru
 if sysmis(Q34_E1_2_ID)  n97= $sysmis.
 variable label n97 'Number of household members (maximum 5) that help with managing pests'.
 FREQUENCIES VARIABLES=N97
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N98 = sum(Q34_E1_3_DAYS, Q34_E2_3_DAYS, Q34_E3_3_DAYS, Q34_E4_3_DAYS, Q34_E5_3_DAYS).
@@ -1711,7 +1711,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N99
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1737,7 +1737,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N100
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1762,7 +1762,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N101
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1788,7 +1788,7 @@ APPLY DICTIONARY from *
 /varinfo valllabels = merge.
 
 FREQUENCIES VARIABLES=N102
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N103 = sum(N70, N77, N84, N91, N98).
@@ -1809,7 +1809,7 @@ VARIABLE LABELS N104  'N104 - Q35.A.1., & 2 In the last 12 months did you hire l
 'any of following the farming tasks? {Land preparation/Ploughing}'.
 
 FREQUENCIES VARIABLES=N104
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1822,7 +1822,7 @@ VARIABLE LABELS N105  'N105 - Q35.B.1., & 2 In the last 12 months did you hire l
 'any of following the farming tasks? {Harvesting}'.
 
 FREQUENCIES VARIABLES=N105
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1835,7 +1835,7 @@ VARIABLE LABELS N106  'N106 - Q35.C.1., & 2 In the last 12 months did you hire l
 'any of following the farming tasks? {Sowing, planting, transplanting}'.
 
 FREQUENCIES VARIABLES=N106
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1848,7 +1848,7 @@ VARIABLE LABELS N107  'N107 - Q35.D.1., & 2 In the last 12 months did you hire l
 'any of following the farming tasks? {Weeding}'.
 
 FREQUENCIES VARIABLES=N107
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1861,7 +1861,7 @@ VARIABLE LABELS N108  'N108 - Q35.E.1., & 2 In the last 12 months did you hire l
 'any of following the farming tasks? {Pest management}'.
 
 FREQUENCIES VARIABLES=N108
-  /BARCHART PERCENT
+  /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
@@ -1883,7 +1883,6 @@ FREQUENCIES VARIABLES=n110
 
 
 
-
 if Q36_B1 > 0  n111 = Q36_B1. 
 exe.
 variable labels n111 'N111 - Q36_B1 What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Harvesting}'.
@@ -1901,3 +1900,717 @@ FREQUENCIES VARIABLES=n112
   /ORDER=ANALYSIS.
 
 
+if Q36_C1 > 0  n113 = Q36_C1. 
+exe.
+variable labels n113 'N113 - Q36_C1 What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Sowing, planting, transplanting}'.
+
+FREQUENCIES VARIABLES=n113
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_C2 > 0  n114 = Q36_C2. 
+exe.
+variable labels n114 'N114 - Q36_C2 What were the total number of person-days employed in the last 12 months for each of the following tasks: NOT From local village Days {Sowing, planting, transplanting}'.
+
+FREQUENCIES VARIABLES=n114
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_D1 > 0  n115 = Q36_D1. 
+exe.
+variable labels n115 'N115 - Q36_D1 What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Weeding}'.
+
+FREQUENCIES VARIABLES=n115
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_D2 > 0  n116 = Q36_D2. 
+exe.
+variable labels n116 'N116 - Q36_D2 What were the total number of person-days employed in the last 12 months for each of the following tasks: NOT From local village Days {Weeding}'.
+
+FREQUENCIES VARIABLES=n116
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_E1 > 0  n117 = Q36_E1. 
+exe.
+variable labels n117 'N117 - Q36_E1 What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Pest management}'.
+
+FREQUENCIES VARIABLES=n117
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+if Q36_E2 > 0  n118 = Q36_E2. 
+exe.
+variable labels n118 'N118 - Q36_E2 What were the total number of person-days employed in the last 12 months for each of the following tasks: NOT From local village Days {Pest management}'.
+
+FREQUENCIES VARIABLES=n118
+  /HISTOGRAM 
+  /ORDER=ANALYSIS.
+
+compute n119 = sum(n109, n111, n113, n115, n117).
+exe.
+variable labels n119 'N119 - Q36 What were the total number of person-days employed in the last 12 months for all five tasks from local village.'.
+
+FREQUENCIES VARIABLES=n119
+  /HISTOGRAM 
+  /ORDER=ANALYSIS,
+  /format notable.
+
+
+compute n120 = sum(n110, n112, n114, n116, n118).
+exe.
+variable labels n120 'N120 - Q36 What were the total number of person-days employed in the last 12 months for all five tasks NOT from local village.'.
+
+FREQUENCIES VARIABLES=n120
+  /HISTOGRAM 
+  /ORDER=ANALYSIS,
+  /format notable.
+
+compute n121 = sum(n119, n120).
+exe.
+variable labels n121 'N121 - Q36 What were the total number of person-days employed in the last 12 months for all five tasks from anywhere.'.
+
+FREQUENCIES VARIABLES=n121
+  /HISTOGRAM 
+  /ORDER=ANALYSIS,
+  /format notable.
+
+
+RECODE Q37_A (1=1) (2=0) (99 = 99).
+value labels Q37_A 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_A
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+RECODE Q37_B (1=1) (2=0)(99 = 99).
+value labels Q37_B 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_b
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+RECODE Q37_C (1=1) (2=0)(99 = 99).
+value labels Q37_C 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_c
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+RECODE Q37_D (1=1) (2=0)(99 = 99).
+value labels Q37_D 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_d
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+RECODE Q37_E (1=1) (2=0)(99 = 99).
+value labels Q37_E 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_e
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+RECODE Q37_F (1=1) (2=0)(99 = 99).
+value labels Q37_F 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_f
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+RECODE Q37_G (1=1) (2=0)(99 = 99).
+value labels Q37_G 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_g
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+RECODE Q37_H (1=1) (2=0)(99 = 99).
+value labels Q37_H 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_h
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+RECODE Q37_I (1=1) (2=0)(99 = 99).
+value labels Q37_I 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_I
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+RECODE Q37_J (1=1) (2=0)(99 = 99).
+value labels Q37_J 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+FREQUENCIES VARIABLES=Q37_j
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N122  = 0.
+if sysmis(Q37_A) N122 = $sysmis.
+if Q37_A ~= 99 N122 = N122 + q37_a.
+if Q37_B ~= 99 N122 = N122 + q37_B.
+if Q37_C ~= 99 N122 = N122 + q37_C.
+if Q37_D ~= 99 N122 = N122 + q37_D.
+if Q37_E ~= 99 N122 = N122 + q37_E.
+if Q37_F ~= 99 N122 = N122 + q37_F.
+if Q37_G ~= 99 N122 = N122 + q37_G.
+if Q37_H ~= 99 N122 = N122 + q37_H.
+if Q37_I  ~= 99 N122 = N122 + q37_I.
+if Q37_J ~= 99 N122 = N122 + q37_J.
+exe.
+
+variable labels n122 "N122 - Q37 Total number of 'novel' farming methods used in the last two years out of 10 possible".
+FREQUENCIES VARIABLES=N122
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q38
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N123 = Q39_A1.
+if q39_A1 = 1 n123 = q39_A1 + q39_A2.
+variable labels n123 'N123 - Did you ever receive advice from the Agricultural serices on planting new corps and if yes, did you act on it?'.
+value labels N123 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N123
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N124 = Q39_B1.
+if Q39_B1 = 1 n124 = Q39_B1 + Q39_B2.
+variable labels n124 'N124 - Did you ever receive advice from the Agricultural serices on information on new seeds and if yes, did you act on it?'.
+value labels N124 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N124
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N125 = Q39_C1.
+if Q39_C1 = 1 n125 = Q39_C1 + Q39_C2.
+variable labels n125 'N125 - Did you ever receive advice from the Agricultural serices on information on intercropping or mixed cropping and if yes, did you act on it?'.
+value labels N125 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N125
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N126 = Q39_D1.
+if Q39_D1 = 1 n126 = Q39_D1 + Q39_D2.
+variable labels n126 'N126 - Did you ever receive advice from the Agricultural serices on information on double cropping on the same plot and if yes, did you act on it?'.
+value labels N126 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N126
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N127 = Q39_E1.
+if Q39_E1 = 1 n127 = Q39_E1 + Q39_E2.
+variable labels n127 'N127 - Did you ever receive advice from the Agricultural serices on information on plant spacing and if yes, did you act on it?'.
+value labels N127 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N127
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N128 = Q39_F1.
+if Q39_F1 = 1 n128 = Q39_F1 + Q39_F2.
+variable labels n128 'N128 - Did you ever receive advice from the Agricultural serices on managing pests and/or use of pesticides and if yes, did you act on it?'.
+value labels N128 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N128
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N129 = Q39_G1.
+if Q39_G1 = 1 n129 = Q39_G1 + Q39_G2.
+variable labels n129 'N129 - Did you ever receive advice from the Agricultural serices on fertilisers and if yes, did you act on it?'.
+value labels N129 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N129
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N130 = Q39_H1.
+if Q39_H1 = 1 n130 = Q39_H1 + Q39_H2.
+variable labels n130 'N130 - Did you ever receive advice from the Agricultural serices on the use of farm machinery and if yes, did you act on it?'.
+value labels N130 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N130
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N131 = Q39_I1.
+if Q39_I1 = 1 n131 = Q39_I1 + Q39_I2.
+variable labels n131 'N131 - Did you ever receive advice from the Agricultural serices on waterr management and if yes, did you act on it?'.
+value labels N131 0 "Didn't receive advice" 1 "Did receive advice, but didn't act on it" 2 "Did receive advice and acted on it".
+exe.
+FREQUENCIES VARIABLES=N131
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q40_A
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q40_B
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q40_C
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q40_D
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q40_E
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES=Q40_F
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES=Q40_G
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES=Q40_i
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N3132 = q40_I.
+if N132 = 1 N132 = N132 + Q40_I_OT_SP.
+exe.
+variable labels n132 'N132 - fQ40.I. Tell me which of those sources of your knowledge for faming are? {Other Specify} '.
+value labels N132 0 "None" 2 "self experience in farm work" 3 "Agricultural literature, information, Education and comunication materials".
+exe.
+FREQUENCIES VARIABLES=N132
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N133 = q40_1.
+if q40_1_OT_SP = 1 N133 = 9.
+if q40_1_OT_SP = 2 N133 = 10.
+exe.
+variable labels N133 " N133 - Which one is the most important source of your knowledge for farming?".
+value labels N133  9 "self experience in farm work" 10 "Agricultural literature, information, Education and comunication materials".
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q40_1
+  /TARGET VARIABLES = N133
+  /varinfo valllabels = merge.
+FREQUENCIES VARIABLES = N133
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N134 = q40_2.
+if q40_2_OT_SP = 1 N134 = 9.
+if q40_2_OT_SP = 2 N134 = 10.
+exe.
+variable labels N134 " N134 - Which one is the second most important source of your knowledge for farming?".
+value labels N134  9 "self experience in farm work" 10 "Agricultural literature, information, Education and comunication materials".
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q40_2
+  /TARGET VARIABLES = N134
+  /varinfo valllabels = merge.
+FREQUENCIES VARIABLES = N134
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N135 = q40_3.
+if q40_3_OT_SP = 1 N135 = 9.
+if q40_3_OT_SP = 2 N135 = 10.
+exe.
+variable labels N135 " N135 - Which one is the third most important source of your knowledge for farming?".
+value labels N135  9 "self experience in farm work" 10 "Agricultural literature, information, Education and comunication materials".
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q40_3
+  /TARGET VARIABLES = N135
+  /varinfo valllabels = merge.
+FREQUENCIES VARIABLES = N135
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q41
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q42
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q43_A
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q43_B
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q43_C
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q43_D
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q43_E
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q43_F
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q43_F_OT_SP
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N136 = q43_1.
+if q43_1 = 96 N136 = q43_1_OT_SP + 5.
+exe.
+variable labels N136 " N136 - Which one is the most important reason your corp yields are increasing?".
+value labels N136  6 "Use more soil fertilizer" 7 "Better soil quality" 8 "Better weather" 9 "Change soil fertiliser"
+10  "Better land preparation" 11 "Planting in fallow land" 12 "Change planting method due to soil condition"  13"Using plant fertilizer".
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q43_1
+  /TARGET VARIABLES = N136
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N136
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+
+compute N137 = q43_2.
+if q43_2 = 96 N137 = q43_2_OT_SP + 5.
+exe.
+variable labels N137 " N137 - Which one is the second most important reason your corp yields are increasing?".
+value labels N137  6 "Use more soil fertilizer" 7 "Better soil quality" 8 "Better weather" 9 "Change soil fertiliser"
+10  "Better land preparation" 11 "Planting in fallow land" 12 "Change planting method due to soil condition"  13"Using plant fertilizer".
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q43_2
+  /TARGET VARIABLES = N137
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N137
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q44_A
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_B
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_C
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_D
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_E
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_F
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_G
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q44_G_OT_SP
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N138 = q44_1.
+if q44_1 = 96 N138 = q44_1_OT_SP + 6.
+exe.
+variable labels N138 " N138 - Which one is the most important reason your corp yields are decreasing?".
+value labels N138  7 "Pest destroy" 8 "Flood" 9 "Labour hiring charges"
+10  "Confiscate" 11 "Improper water nmanagement" 12 "Earthquake" .
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q44_1
+  /TARGET VARIABLES = N138
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N138
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N139 = q44_2.
+if q44_2 = 96 N139 = q44_2_OT_SP + 6.
+exe.
+variable labels N139 " N139 - Which one is the second most important reason your corp yields are decreasing?".
+value labels N139  7 "Pest destroy" 8 "Flood" 9 "Labour hiring charges"
+10  "Confiscate" 11 "Improper water nmanagement" 12 "Earthquake" .
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q44_2
+  /TARGET VARIABLES = N139
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N139
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_A
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_B
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q45_C
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q45_D
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_E
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q45_F
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q45_G
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q45_H
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_I
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_J
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_K
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_L
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_M
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_M_OT_SP
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_N
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q45_N
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N140 = q45_1.
+if q45_1 = 96 N140 = q45_1_OT_SP + 12.
+exe.
+variable labels N140 " N140 - Which one is the most important main challenge you face with farming on your land?".
+value labels N140  13 "High incidence of insect bites" 17 "machinery malfunctioning".
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q45_1
+  /TARGET VARIABLES = N140
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N140
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+compute N141 = q45_2.
+if q45_2 = 96 N141 = q45_2_OT_SP + 12.
+exe.
+variable labels N141 " N141 - Which one is the second most important main challenge you face with farming on your land?".
+value labels N141   17 "machinery malfunctioning".
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q45_2
+  /TARGET VARIABLES = N141
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N141
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_A
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_B
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_C
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_D
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_E
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_F
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_G
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_H
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_I
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_J
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_K
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_L
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q46_K_OT_SP
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N142 = q46_1.
+if q46_1 = 96 N142 = q46_1_OT_SP + 10.
+exe.
+variable labels N142 " N142 - Which one is the most important main challenge to farming faced by the community as a whole?".
+value labels N142  12 "High incidence of insect destroying" 13 "Flood" 14 "Imporper way of managing water"
+19 "Late time line of farm work". 
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q46_1
+  /TARGET VARIABLES = N142
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N142
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N143 = q46_2.
+if q46_2 = 96 N143 = q46_2_OT_SP + 10.
+exe.
+variable labels N143 " N143 - Which one is the second most important main challenge to farming faced by the community as a whole?".
+value labels N143  11 "Expensive cost for soil fertilizer" 12 "High incidence of insect destroying" 13 "Flood" 14 "Imporper way of managing water"
+15 "Financial difficultu expensive labour and fertilizer chargers/exploit" 16 "Uncontrollable weed" 18 "Confiscate" 19 "Late time line of farm work". 
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q46_2
+  /TARGET VARIABLES = N143
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = N143
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+compute N144 = q46_3.
+if q46_3 = 96 N144 = q46_3_OT_SP + 10.
+exe.
+variable labels N144 " N144 - Which one is the third most important main challenge to farming faced by the community as a whole?".
+value labels N144  11 "Expensive cost for soil fertilizer" 12 "High incidence of insect destroying" 13 "Flood" 14 "Imporper way of managing water"
+15 "Financial difficultu expensive labour and fertilizer chargers/exploit" 16 "Uncontrollable weed" 17 "Imporper transportation"18 "Confiscate" 19 "Late time line of farm work". 
+
+APPLY DICTIONARY from *
+  /SOURCE VARIABLES = q46_3
+  /TARGET VARIABLES = N144
+  /varinfo valllabels = merge.
+
+FREQUENCIES VARIABLES = n144
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q47
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q48
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q49
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+
+FREQUENCIES VARIABLES = Q50
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q51_a
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q51_B
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
+
+FREQUENCIES VARIABLES = Q51_c
+  /BARCHART FREQ
+  /ORDER=ANALYSIS.
