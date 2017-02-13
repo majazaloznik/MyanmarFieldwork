@@ -202,3 +202,16 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N144` - "Which one is the third most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_3` and `Q46_3_OT_SP`
 
 
+## Monday 13.2.2017 - First trawl - Univariate descriptives - continuted
+
+SH - meeting called for 14.2.2017.  Should be enough time to complete first trawl and produce html reports. And maybe also a nice list of the new variables and all the issues.. 
+
+* New variable `N145` " we want to know if you have any plans for your land after your death. {Leave all my land to one person.  Who?}". From  Q52_A1 and Q52_A. 
+* Quesiton 52b asks about dividing the land between several people. Up to 9 types of relationships, but in practice max of 3 types of relationships were given, so a new variable is created to merge these 9 variables. `N146` helper variable counting number of answers. 
+*  New variable `N147`  "N147 - We want to know if you have any plans for your land after your death. {Divide my land between more than one person. Who?}". Consolidated from `Q52_B1_1` to `Q52_B1_9`. 
+* New variable `N148` "N148 - Q52.E1. We want to know if you have any plans for your land after your death. {Other Specify}" Consolidate `Q52_E1` and `Q52_E1_OT_SP`. 
+* New variable `N149`  "N149 - Total number of agricultural machines owned or rented". From `Q54_A_1` (owned) and `Q54_A_2` (rented) for all 7 types (consolidated all 14 variables). 
+* New variabel `N150` "N150 - Q56.E. If yes, where did you hear about the agricultural machinery? {Other Specify}" Consolidated varibable from `Q56_E` and `Q56_E_OT_SP`.
+*For Q53 a new 'long-form' dataset is created in tow steps: first for each of the (up to ) four crops listed, and secondly for each of the (up to) three pesticide application on each crop. Frequencies are then calculated from this datset of 541 crops, 567 separate applications by 383 farmers.
+* **ISSUE** The questionnaire implies (or so it would seem) that for each crop you can answer on several sprayings, but each spraying has one pest target. This is in fact not the case as there are examples where e.g. one crop has two pesticides and three targets pests. If a particular pesticide targets two pests it should be recorded twice. Now it's impossible to match targets and pests. (680 pest targets are listed, in addition to  541 crops, 567 separate applications by 383 farmers.)
+
