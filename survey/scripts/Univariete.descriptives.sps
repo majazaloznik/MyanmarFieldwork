@@ -16,9 +16,13 @@ FREQUENCIES VARIABLES=Q3
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
+delete variables q3_ot_sp. 
+
 FREQUENCIES VARIABLES=Q4
   /BARCHART FREQ
   /ORDER=ANALYSIS.
+
+delete variables q4_96_ot_sp. 
 
 FREQUENCIES VARIABLES=Q5
   /BARCHART FREQ
@@ -57,7 +61,7 @@ FREQUENCIES VARIABLES=Q6_H
   /ORDER=ANALYSIS.
 
 COMPUTE N1=Q6_A + Q6_B + Q6_C +  Q6_D + Q6_E   + Q6_F +Q6_G.
-VARIABLE LABELS  N1 'Number of dificultuies reported'.
+VARIABLE LABELS  N1 'N1 - Number of dificultuies reported'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N1
@@ -76,7 +80,7 @@ RECODE Q7_5$01 Q7_5$02 Q7_5$03 Q7_5$04 Q7_5$05 Q7_5$06 Q7_5$07 Q7_5$08 Q7_5$09 Q
 EXECUTE.
 
 COMPUTE N2 = sum(Q7_5$01 , Q7_5$02 , Q7_5$03 , Q7_5$04, Q7_5$05 ,Q7_5$06 ,Q7_5$07, Q7_5$08 ,Q7_5$09 ,Q7_5$10 ,Q7_5$11, Q7_5$12 ,Q7_5$13 ,Q7_5$14 ,Q7_5$15).
-VARIABLE LABELS  N2 'Number of HH members working outside village part of the year'.
+VARIABLE LABELS  N2 'N2 - Number of HH members working outside village part of the year'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N2
@@ -85,7 +89,7 @@ FREQUENCIES VARIABLES=N2
 
 COUNT N3=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
     Q7_6$12 Q7_6$13 Q7_6$14 Q7_6$15(1).
-VARIABLE LABELS  N3 'Number of HH members working in another village in same township'.
+VARIABLE LABELS  N3 'N3 - Number of HH members working in another village in same township'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N3
@@ -94,7 +98,7 @@ FREQUENCIES VARIABLES=N3
 
 COUNT N4=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
     Q7_6$12 Q7_6$13 Q7_6$14 Q7_6$15(2).
-VARIABLE LABELS  N4 'Number of HH members working in another township'.
+VARIABLE LABELS  N4 'N4 - Number of HH members working in another township'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N4
@@ -103,7 +107,7 @@ FREQUENCIES VARIABLES=N4
 
 COUNT N5=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
     Q7_6$12 Q7_6$13 Q7_6$14 Q7_6$15(3).
-VARIABLE LABELS  N5 'Number of HH members working in a city in Myanmar e.g. Yangon or Mandalay'.
+VARIABLE LABELS  N5 'N5 - Number of HH members working in a city in Myanmar e.g. Yangon or Mandalay'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N5
@@ -112,7 +116,7 @@ FREQUENCIES VARIABLES=N5
 
 COUNT N6=Q7_6$01 Q7_6$02 Q7_6$03 Q7_6$04 Q7_6$05 Q7_6$06 Q7_6$07 Q7_6$08 Q7_6$09 Q7_6$10 Q7_6$11 
     Q7_6$12 Q7_6$13 Q7_6$14 Q7_6$15(4).
-VARIABLE LABELS  N6 'Number of HH members working outside Myanmanr'.
+VARIABLE LABELS  N6 'N6 - Number of HH members working outside Myanmanr'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N6
@@ -122,7 +126,7 @@ FREQUENCIES VARIABLES=N6
 
 COUNT N7=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(1).
-VARIABLE LABELS  N7 'Former HH members that have moved out that are Spouses'.
+VARIABLE LABELS  N7 'N7 - Former HH members that have moved out that are Spouses'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N7
@@ -131,7 +135,7 @@ FREQUENCIES VARIABLES=N7
 
 COUNT N8=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(2).
-VARIABLE LABELS  N8 'Former HH members that have moved out that are Children'.
+VARIABLE LABELS  N8 'N8 - Former HH members that have moved out that are Children'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N8
@@ -140,7 +144,7 @@ FREQUENCIES VARIABLES=N8
 
 COUNT N9=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(3).
-VARIABLE LABELS  N9 'Former HH members that have moved out that are grandchildren'.
+VARIABLE LABELS  N9 'N9 - Former HH members that have moved out that are grandchildren'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N9
@@ -149,7 +153,7 @@ FREQUENCIES VARIABLES=N9
 
 COUNT N10=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(4).
-VARIABLE LABELS  N10 'Former HH members that have moved out that are Children in law'.
+VARIABLE LABELS  N10 'N10 - Former HH members that have moved out that are Children in law'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N10
@@ -159,7 +163,7 @@ FREQUENCIES VARIABLES=N10
 
 COUNT N11=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(5).
-VARIABLE LABELS  N11 'Former HH members that have moved out that are Parents'.
+VARIABLE LABELS  N11 'N11 - Former HH members that have moved out that are Parents'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N11
@@ -169,7 +173,7 @@ FREQUENCIES VARIABLES=N11
 
 COUNT N12=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(6).
-VARIABLE LABELS  N12 'Former HH members that have moved out that are parents in law'.
+VARIABLE LABELS  N12 'N12 - Former HH members that have moved out that are parents in law'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N12
@@ -178,7 +182,7 @@ FREQUENCIES VARIABLES=N12
 
 COUNT N13=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(7).
-VARIABLE LABELS  N13 'Former HH members that have moved out that are siblings'.
+VARIABLE LABELS  N13 'N13 - Former HH members that have moved out that are siblings'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N13
@@ -188,7 +192,7 @@ FREQUENCIES VARIABLES=N13
 
 COUNT N14=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(8).
-VARIABLE LABELS  N14 'Former HH members that have moved out that are other family'.
+VARIABLE LABELS  N14 'N14 - Former HH members that have moved out that are other family'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N14
@@ -198,7 +202,7 @@ FREQUENCIES VARIABLES=N14
 
 COUNT N15=Q8_1$01 Q8_1$02 Q8_1$03 Q8_1$04 Q8_1$05 Q8_1$06 Q8_1$07 Q8_1$08 Q8_1$09 Q8_1$10 Q8_1$11 
     Q8_1$12 Q8_1$13 Q8_1$14 Q8_1$15(9).
-VARIABLE LABELS  N15 'Former HH members that have moved out that are other non family'.
+VARIABLE LABELS  N15 'N15 - Former HH members that have moved out that are other non family'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N15
@@ -208,7 +212,7 @@ FREQUENCIES VARIABLES=N15
 
 COUNT N16=Q8_2$01 Q8_2$02 Q8_2$03 Q8_2$04 Q8_2$05 Q8_2$06 Q8_2$07 Q8_2$08 Q8_2$09 Q8_2$10 Q8_2$11 
     Q8_2$12 Q8_2$13 Q8_2$14 Q8_2$15(1).
-VARIABLE LABELS  N16 'Number of former HH members that have moved out that are male'.
+VARIABLE LABELS  N16 'N 16 - Number of former HH members that have moved out that are male'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N16
@@ -217,17 +221,17 @@ FREQUENCIES VARIABLES=N16
 
 COUNT N17=Q8_2$01 Q8_2$02 Q8_2$03 Q8_2$04 Q8_2$05 Q8_2$06 Q8_2$07 Q8_2$08 Q8_2$09 Q8_2$10 Q8_2$11 
     Q8_2$12 Q8_2$13 Q8_2$14 Q8_2$15(2).
-VARIABLE LABELS  N17 'Number of former HH members that have moved out that are female'.
+VARIABLE LABELS  N17 'N17 - Number of former HH members that have moved out that are female'.
 EXECUTE.
 
-FREQUENCIES VARIABLES=N18
+FREQUENCIES VARIABLES=N17
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 
 COUNT N18=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
     Q8_4$12 Q8_4$13 Q8_4$14 Q8_4$15(1).
-VARIABLE LABELS  N18 'Number of former HH members that have moved out for employment (search for employment)'.
+VARIABLE LABELS  N18 'N18 - Number of former HH members that have moved out for employment (search for employment)'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N18
@@ -237,7 +241,7 @@ FREQUENCIES VARIABLES=N18
 
 COUNT N19=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
     Q8_4$12 Q8_4$13 Q8_4$14 Q8_4$15(2).
-VARIABLE LABELS  N19 'Number of former HH members that have moved out for educaiton'.
+VARIABLE LABELS  N19 'N19 - Number of former HH members that have moved out for educaiton'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N19
@@ -247,7 +251,7 @@ FREQUENCIES VARIABLES=N19
 
 COUNT N20=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
     Q8_4$12 Q8_4$13 Q8_4$14 Q8_4$15(3).
-VARIABLE LABELS  N20 'Number of former HH members that have moved out for marriage'.
+VARIABLE LABELS  N20 'N20 - Number of former HH members that have moved out for marriage'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N20
@@ -256,7 +260,7 @@ FREQUENCIES VARIABLES=N20
 
 COUNT N21=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
     Q8_4$12 Q8_4$13 Q8_4$14 Q8_4$15(4).
-VARIABLE LABELS  N21 'Number of former HH members that have moved out because followed family'.
+VARIABLE LABELS  N21 'N21 - Number of former HH members that have moved out because followed family'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N21
@@ -265,7 +269,7 @@ FREQUENCIES VARIABLES=N21
 
 COUNT N22=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
     Q8_4$12 Q8_4$13 Q8_4$14 Q8_4$15(5).
-VARIABLE LABELS  N22 'Number of former HH members that have moved out becasue of conflict'.
+VARIABLE LABELS  N22 'N22 - Number of former HH members that have moved out becasue of conflict'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N22
@@ -274,7 +278,7 @@ FREQUENCIES VARIABLES=N22
 
 COUNT N23=Q8_4$01 Q8_4$02 Q8_4$03 Q8_4$04 Q8_4$05 Q8_4$06 Q8_4$07 Q8_4$08 Q8_4$09 Q8_4$10 Q8_4$11 
     Q8_4$12 Q8_4$13 Q8_4$14 Q8_4$15(6).
-VARIABLE LABELS  N23 'Number of former HH members that have moved out becasue of becoming a monk'.
+VARIABLE LABELS  N23 'N23 - Number of former HH members that have moved out becasue of becoming a monk'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N23
@@ -284,7 +288,7 @@ FREQUENCIES VARIABLES=N23
 
 COUNT N24=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
     Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(1).
-VARIABLE LABELS  N24 'Number of former HH members that have moved out into separate household within same building'.
+VARIABLE LABELS  N24 'N24 - Number of former HH members that have moved out into separate household within same building'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N24
@@ -293,7 +297,7 @@ FREQUENCIES VARIABLES=N24
 
 COUNT N25=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
     Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(2).
-VARIABLE LABELS  N25 'Number of former HH members that have moved out into same town/village, walking distance'.
+VARIABLE LABELS  N25 'N25 - Number of former HH members that have moved out into same town/village, walking distance'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N25
@@ -303,7 +307,7 @@ FREQUENCIES VARIABLES=N25
 
 COUNT N26=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
     Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(3).
-VARIABLE LABELS  N26 'Number of former HH members that have moved out into same town/village, not in walking distance'.
+VARIABLE LABELS  N26 'N26 - Number of former HH members that have moved out into same town/village, not in walking distance'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N26
@@ -313,7 +317,7 @@ FREQUENCIES VARIABLES=N26
 
 COUNT N27=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
     Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(4).
-VARIABLE LABELS  N27 'Number of former HH members that have moved out into different town/village but close enough for regular visits'.
+VARIABLE LABELS  N27 'N27 - Number of former HH members that have moved out into different town/village but close enough for regular visits'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N27
@@ -323,7 +327,7 @@ FREQUENCIES VARIABLES=N27
 
 COUNT N28=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
     Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(5).
-VARIABLE LABELS  N28 'Number of former HH members that have moved out into different town/village but too far for regular visits'.
+VARIABLE LABELS  N28 'N28 - Number of former HH members that have moved out into different town/village but too far for regular visits'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N28
@@ -332,7 +336,7 @@ FREQUENCIES VARIABLES=N28
 
 COUNT N29=Q8_5$01 Q8_5$02 Q8_5$03 Q8_5$04 Q8_5$05 Q8_5$06 Q8_5$07 Q8_5$08 Q8_5$09 Q8_5$10 Q8_5$11 
     Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(6).
-VARIABLE LABELS  N29 'Number of former HH members that have moved out into different t country'.
+VARIABLE LABELS  N29 'N29 - Number of former HH members that have moved out into different t country'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N29
@@ -364,7 +368,7 @@ FREQUENCIES VARIABLES=Q14
   /ORDER=ANALYSIS.
 
 COMPUTE N30 = sum(Q15_A, Q15_B, Q15_C, Q15_D, Q15_F, Q15_G, Q15_H, Q15_I, Q15_J).
-VARIABLE LABELS  N30 'Number of lenders listed as sources of largest loan in last 12 months'.
+VARIABLE LABELS  N30 'N30 - Number of lenders listed as sources of largest loan in last 12 months'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N30
@@ -419,6 +423,27 @@ FREQUENCIES VARIABLES=Q15_J_96_OT_SP_3
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
+
+
+
+OUTPUT EXPORT NAME=Document1
+  /CONTENTS  EXPORT=ALL LAYERS=ALL MODELVIEWS=ALL
+  /REPORT  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module1.htm'
+     TITLE=FILENAME FORMAT=HTML RESTYLE=YES.
+
+* Export Output.
+OUTPUT EXPORT
+  /CONTENTS  EXPORT=ALL  LAYERS=PRINTSETTING  MODELVIEWS=PRINTSETTING
+  /DOC  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module1.doc'
+     NOTESCAPTIONS=YES  WIDETABLES=WRAP PAGEBREAKS=YES
+     PAGESIZE=MM(209.96999999999997, 296.96999999999997)  TOPMARGIN=MM(25.4)  
+    BOTTOMMARGIN=MM(25.400000000000034)
+     LEFTMARGIN=MM(25.4)  RIGHTMARGIN=MM(25.399999999999977).
+
+output close Document1.
+
 ** MODULE 2 - land access and management
 
 FREQUENCIES VARIABLES=Q16
@@ -434,7 +459,7 @@ FREQUENCIES VARIABLES=Q18
   /ORDER=ANALYSIS.
 
 COMPUTE N31=sum(Q17, -Q18).
-VARIABLE LABELS  N31 'Difference between land ownership and  cultivation'.
+VARIABLE LABELS  N31 'N31 - Difference between land ownership and  cultivation'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N31
@@ -452,7 +477,7 @@ FREQUENCIES VARIABLES=Q20_A
 
 
 COMPUTE N32=sum(Q17, -Q18, -Q20_A).
-VARIABLE LABELS  N32 'Difference between land ownership and  cultivation + lease out = this is fallow land'.
+VARIABLE LABELS  N32 'N32 - Difference between land ownership and  cultivation + lease out = this is fallow land'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N32
@@ -472,7 +497,7 @@ FREQUENCIES VARIABLES=Q23
   /ORDER=ANALYSIS.
 
 COMPUTE N33=sum(Q22, -Q23).
-VARIABLE LABELS  N33 'Difference between land renting and cultivating rented land (= fallow rented land)'.
+VARIABLE LABELS  N33 'N33 - Difference between land renting and cultivating rented land (= fallow rented land)'.
 EXECUTE.
 
 FREQUENCIES VARIABLES=N33
@@ -685,11 +710,11 @@ count N44= Q28_E Q28_F (1).
 IF n44 = 1 n44= 0.
 IF N44 = 2 N44 =1. 
 EXE.
-VARIABLE LABELS N42 'N42 - (Q28) When no longer able to visit my land, two answers'.
-VARIABLE LABELS N43 'N43 - (Q28) When no longer able to visit my land, two answers, both relatives'.
-VARIABLE LABELS N44 'N44 - (Q28) When no longer able to visit my land, two answers, rent and sell'.exe.
+VARIABLE LABELS N42 'N42 - Temporary (Q28) When no longer able to visit my land, two answers'.
+VARIABLE LABELS N43 'N43 - Temporary (Q28) When no longer able to visit my land, two answers, both relatives'.
+VARIABLE LABELS N44 'N44 - Temporary (Q28) When no longer able to visit my land, two answers, rent and sell'.
  if N42 = 1 AND N43 = 0 AND N44 =0  N45 = 1.
-VARIABLE LABELS N45 'N45 - (Q28) When no longer able to visit my land, two answers, one relative, other rent/sell'.
+VARIABLE LABELS N45 'N45 - Temporary  (Q28) When no longer able to visit my land, two answers, one relative, other rent/sell'.
 exe.
 
 if n42 ~=1 AND Q28_A = 1 N46 = 1.
@@ -703,7 +728,7 @@ if N43 = 1 N46 = 8.
 if N44 = 1 N46 = 9. 
 if N45 = 1 N46 = 10. 
 exe.
-variable labels N46 - 'N46 Q28 consolidated - When no longer able to visit my land:'. 
+variable labels N46  'N46 - Q28 consolidated - When no longer able to visit my land:'. 
 value  labels N46 1 'continue farming jointly with child(in-law)' 
 2 'hand over to child(-in-law)' 3 'continue farming jointly with other relative' 
 4 ' hand over to other relative' 5 'rent out land' 6 'try to sell land' 7'self manage with hired labour'
@@ -737,8 +762,8 @@ FREQUENCIES VARIABLES=Q30_C
 compute N47 = SUM(Q30_A, Q30_B, Q30_C).
 IF N47 = 2 N47 = 1.
 EXE.
-variable labels N47 - 'N47 Q30 consolidated - Size of farm increased in last 5 years in any way.:'. 
-value  labels N47 1 'Yes' 0 ' No'. 
+variable labels N47 'N47 - Q30 consolidated - Size of farm increased in last 5 years in any way.:'. 
+value  labels N47 1 'Yes' 0 'No'. 
 
 FREQUENCIES VARIABLES=N47
   /BARCHART FREQ
@@ -760,7 +785,7 @@ FREQUENCIES VARIABLES=Q30_c_ACRE
 
 compute N48 = SUM(Q30_A_ACRE, Q30_B_ACRE, Q30_C_ACRE).
 EXE.
-variable labels N48 - 'N48 Q30_ACRE SUM - Total numebr of acres size of farm increased in last 5 years in any way.:'. 
+variable labels N48 'N48 - Q30_ACRE SUM - Total numebr of acres size of farm increased in last 5 years in any way.:'. 
 
 FREQUENCIES VARIABLES=N48
   /HISTOGRAM
@@ -793,7 +818,7 @@ FREQUENCIES VARIABLES=Q31_A5
 
 count N49 = Q31_A1 Q31_A2 Q31_A3 Q31_A4 Q31_A5 (1). 
 EXE.
-variable labels N49  'N49 Q31_A consolidated - Number of reasons for decrease in farm size in last five years.:'. 
+variable labels N49  'N49 - Q31_A consolidated - Number of reasons for decrease in farm size in last five years.:'. 
 
 FREQUENCIES VARIABLES=N49
   /BARCHART FREQ
@@ -836,7 +861,7 @@ FREQUENCIES VARIABLES=Q31_B5
 
 COMPUTE N51 = sum(Q31_B1, Q31_B2, Q31_B3, Q31_B4, Q31_B5). 
 EXE.
-variable labels N51 - 'N51 Q31_B consolidated - Total number of acers of decrease in farm size in last five years.:'. 
+variable labels N51 'N51 - Q31_B consolidated - Total number of acers of decrease in farm size in last five years.:'. 
 
 FREQUENCIES VARIABLES=N51
   /HISTOGRAM PERCENT
@@ -939,6 +964,7 @@ VALUE LABELS N57  1 'Sold because of debt' 2 'Sold because too large to manage' 
 10 'Confiscation to contribute for canalization or public road' 11 'Confiscation - rob[ed?]', 12 'Confiscation becaus confiscated' 
 13 'Lost land to river erosion'.
 
+variable labels N57 "N57 - Reason for decrease in land size".
 FREQUENCIES VARIABLES=N57
   /BARCHART FREQ
   /ORDER=ANALYSIS.
@@ -949,7 +975,7 @@ FREQUENCIES VARIABLES=Q32_1_1
   /ORDER=ANALYSIS.
 
 count N58 = Q32_1_2 Q32_1_3 Q32_1_4 (1). 
-
+variable labels N58 "N58 - temporary var". 
 if  N58 = 1 and Q32_1_2 = 1 N59 = 1.
 if  N58 = 1 and Q32_1_3 = 1 N59 = 2.
 if  N58 = 1 and Q32_1_4 = 1 N59 = 3.
@@ -960,7 +986,7 @@ if  N58 = 3  N59 = 7.
 exe.
 value labels N59 1 'for subsistence only' 2 'for animal feed only' 3 'for sale only' 4 'for subsistence and own animal feed'
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
-variable label N59 'Production type for first crop'. 
+variable label N59 'N59 - Production type for first crop'. 
 FREQUENCIES VARIABLES=N59
   /BARCHART FREQ
   /ORDER=ANALYSIS.
@@ -978,7 +1004,7 @@ FREQUENCIES VARIABLES=Q32_2_1
   /ORDER=ANALYSIS.
 
 count N60 = Q32_2_2 Q32_2_3 Q32_2_4 (1). 
-
+variable labels N60 "N60 - temporary var". 
 if  N60 = 1 and Q32_2_2 = 1 N61 = 1.
 if  N60 = 1 and Q32_2_3 = 1 N61 = 2.
 if  N60 = 1 and Q32_2_4 = 1 N61 = 3.
@@ -989,7 +1015,7 @@ if  N60 = 3  N61 = 7.
 exe.
 value labels N61 1 'for subsistence only' 2 'for animal feed only' 3 'for sale only' 4 'for subsistence and own animal feed'
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
-variable label N61 'Production type for second crop'. 
+variable label N61 'N61 - Production type for second crop'. 
 FREQUENCIES VARIABLES=N61
   /BARCHART FREQ
   /ORDER=ANALYSIS.
@@ -1006,7 +1032,7 @@ FREQUENCIES VARIABLES=Q32_3_1
   /ORDER=ANALYSIS.
 
 count N62 = Q32_3_2 Q32_3_3 Q32_3_4 (1). 
-
+variable labels N62 "N62 - temporary var". 
 if  N62 = 1 and Q32_3_2 = 1 N63 = 1.
 if  N62 = 1 and Q32_3_3 = 1 N63 = 2.
 if  N62 = 1 and Q32_3_4 = 1 N63 = 3.
@@ -1017,7 +1043,7 @@ if  N62 = 3  N63 = 7.
 exe.
 value labels N63 1 'for subsistence only' 2 'for animal feed only' 3 'for sale only' 4 'for subsistence and own animal feed'
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
-variable label N63 'Production type for third crop'. 
+variable label N63 'N63 - Production type for third crop'. 
 FREQUENCIES VARIABLES=N63
   /BARCHART FREQ
   /ORDER=ANALYSIS.
@@ -1032,7 +1058,7 @@ CROSSTABS
 compute n64 = q33_a1.
 if Q33_A = 1 N64 = 0.
 exe.
-variable label n64 'Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?'.
+variable label n64 'N64 - Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?'.
 value labels n64 99 'Never performed land preparation (ploughign)' 0 'Yes'.
 FREQUENCIES VARIABLES=n64
   /BARCHART FREQ
@@ -1041,7 +1067,7 @@ FREQUENCIES VARIABLES=n64
 compute n65 = q33_B1.
 if Q33_b = 1 N65 = 0.
 exe.
-variable label n65 'Do you personaly perform harvesting and if not anymore, how long ago did you stop?'.
+variable label n65 'N65 - Do you personaly perform harvesting and if not anymore, how long ago did you stop?'.
 value labels n65 99 'Never performed harvesting' 0 'Yes'.
 FREQUENCIES VARIABLES=n65
   /BARCHART FREQ
@@ -1050,7 +1076,7 @@ FREQUENCIES VARIABLES=n65
 compute n66 = q33_C1.
 if Q33_C = 1 N66 = 0.
 exe.
-variable label n66 'Do you personaly perform sowing, planting and transplanting and if not anymore, how long ago did you stop?'.
+variable label n66 'N66 - Do you personaly perform sowing, planting and transplanting and if not anymore, how long ago did you stop?'.
 value labels n66 99 'Never performed sowing, planting and transplanting' 0 'Yes'.
 FREQUENCIES VARIABLES=n66
   /BARCHART FREQ
@@ -1060,7 +1086,7 @@ FREQUENCIES VARIABLES=n66
 compute n67 = q33_D1.
 if Q33_D = 1 N67 = 0.
 exe.
-variable label n67 'Do you personaly perform weeding and if not anymore, how long ago did you stop?'.
+variable label n67 'N67 - Do you personaly perform weeding and if not anymore, how long ago did you stop?'.
 value labels n67 99 'Never performed weeding' 0 'Yes'.
 FREQUENCIES VARIABLES=n67
   /BARCHART FREQ
@@ -1070,7 +1096,7 @@ FREQUENCIES VARIABLES=n67
 compute n68 = q33_E1.
 if Q33_E = 1 N68 = 0.
 exe.
-variable label n68 'Do you personaly perform pest management and if not anymore, how long ago did you stop?'.
+variable label n68 'N68 - Do you personaly perform pest management and if not anymore, how long ago did you stop?'.
 value labels n68 99 'Never performed pest management' 0 'Yes'.
 FREQUENCIES VARIABLES=n68
   /BARCHART FREQ
@@ -1080,14 +1106,14 @@ FREQUENCIES VARIABLES=n68
 
 COUNT N69 =  Q34_A1_2_ID Q34_A2_2_ID Q34_A3_2_ID Q34_A4_2_ID Q34_A5_2_ID (1 thru hi).
 if sysmis(Q34_A1_2_ID)  n69 = $sysmis.
-variable label n69 'Number of household members (maximum 5) that help with land preparation/ploughing '.
+variable label n69 'N69 - Number of household members (maximum 5) that help with land preparation/ploughing '.
 FREQUENCIES VARIABLES=N69
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N70 = sum(Q34_A1_3_DAYS, Q34_A2_3_DAYS, Q34_A3_3_DAYS, Q34_A4_3_DAYS, Q34_A5_3_DAYS).
 
-variable label n70 'Total number of days HH members helped with land preparation/ploughing '.
+variable label n70 'N70 - Total number of days HH members helped with land preparation/ploughing '.
 FREQUENCIES VARIABLES=N70
   /HISTOGRAM PERCENT
   /ORDER=ANALYSIS
@@ -1223,14 +1249,14 @@ FREQUENCIES VARIABLES=N75
 
 COUNT N76 =  Q34_B1_2_ID Q34_B2_2_ID Q34_B3_2_ID Q34_B4_2_ID Q34_B5_2_ID (1 thru hi).
 if sysmis(Q34_B1_2_ID)  n76= $sysmis.
-variable label n76 'Number of household members (maximum 5) that help with harvesting '.
+variable label n76 'N76 - Number of household members (maximum 5) that help with harvesting '.
 FREQUENCIES VARIABLES=N76
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N77 = sum(Q34_B1_3_DAYS, Q34_B2_3_DAYS, Q34_B3_3_DAYS, Q34_B4_3_DAYS, Q34_B5_3_DAYS).
 
-variable label n77 'Total number of days HH members helped with harvesting'.
+variable label n77 'N77 - Total number of days HH members helped with harvesting'.
 FREQUENCIES VARIABLES=N77
   /HISTOGRAM 
   /ORDER=ANALYSIS
@@ -1375,14 +1401,14 @@ FREQUENCIES VARIABLES=N82
 
 COUNT N83 =  Q34_C1_2_ID Q34_C2_2_ID Q34_C3_2_ID Q34_C4_2_ID Q34_C5_2_ID (1 thru hi).
 if sysmis(Q34_C1_2_ID)  n83= $sysmis.
-variable label n83 'Number of household members (maximum 5) that help with sowing, planting transplanting'.
+variable label n83 'N83 - Number of household members (maximum 5) that help with sowing, planting transplanting'.
 FREQUENCIES VARIABLES=N83
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N84 = sum(Q34_C1_3_DAYS, Q34_C2_3_DAYS, Q34_C3_3_DAYS, Q34_C4_3_DAYS, Q34_C5_3_DAYS).
 
-variable label n84 'Total number of days HH members helped with sowing, planting transplanting'.
+variable label n84 'N84 - Total number of days HH members helped with sowing, planting transplanting'.
 FREQUENCIES VARIABLES=N84
   /HISTOGRAM 
   /ORDER=ANALYSIS
@@ -1527,14 +1553,14 @@ FREQUENCIES VARIABLES=N89
 
 COUNT N90 =  Q34_D1_2_ID Q34_D2_2_ID Q34_D3_2_ID Q34_D4_2_ID Q34_D5_2_ID (1 thru hi).
 if sysmis(Q34_D1_2_ID)  n90= $sysmis.
-variable label n90 'Number of household members (maximum 5) that help with weeding'.
+variable label n90 'N90 - Number of household members (maximum 5) that help with weeding'.
 FREQUENCIES VARIABLES=N90
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N91 = sum(Q34_D1_3_DAYS, Q34_D2_3_DAYS, Q34_D3_3_DAYS, Q34_D4_3_DAYS, Q34_D5_3_DAYS).
 
-variable label n91 'Total number of days HH members helped with weeding'.
+variable label n91 'N91 - Total number of days HH members helped with weeding'.
 FREQUENCIES VARIABLES=N91
   /HISTOGRAM 
   /ORDER=ANALYSIS
@@ -1676,14 +1702,14 @@ FREQUENCIES VARIABLES=N96
 
 COUNT N97 =  Q34_E1_2_ID Q34_E2_2_ID Q34_E3_2_ID Q34_E4_2_ID Q34_E5_2_ID (1 thru hi).
 if sysmis(Q34_E1_2_ID)  n97= $sysmis.
-variable label n97 'Number of household members (maximum 5) that help with managing pests'.
+variable label n97 'N97 - Number of household members (maximum 5) that help with managing pests'.
 FREQUENCIES VARIABLES=N97
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
 compute N98 = sum(Q34_E1_3_DAYS, Q34_E2_3_DAYS, Q34_E3_3_DAYS, Q34_E4_3_DAYS, Q34_E5_3_DAYS).
 
-variable label n98 'Total number of days HH members helped with managing pests'.
+variable label n98 'N98 - Total number of days HH members helped with managing pests'.
 FREQUENCIES VARIABLES=N98
   /HISTOGRAM 
   /ORDER=ANALYSIS
@@ -2194,7 +2220,7 @@ FREQUENCIES VARIABLES=Q40_i
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
-compute N3132 = q40_I.
+compute N132 = q40_I.
 if N132 = 1 N132 = N132 + Q40_I_OT_SP.
 exe.
 variable labels n132 'N132 - fQ40.I. Tell me which of those sources of your knowledge for faming are? {Other Specify} '.
@@ -2209,7 +2235,7 @@ compute N133 = q40_1.
 if q40_1_OT_SP = 1 N133 = 9.
 if q40_1_OT_SP = 2 N133 = 10.
 exe.
-variable labels N133 " N133 - Which one is the most important source of your knowledge for farming?".
+variable labels N133 "N133 - Which one is the most important source of your knowledge for farming?".
 value labels N133  9 "self experience in farm work" 10 "Agricultural literature, information, Education and comunication materials".
 APPLY DICTIONARY from *
   /SOURCE VARIABLES = q40_1
@@ -2224,7 +2250,7 @@ compute N134 = q40_2.
 if q40_2_OT_SP = 1 N134 = 9.
 if q40_2_OT_SP = 2 N134 = 10.
 exe.
-variable labels N134 " N134 - Which one is the second most important source of your knowledge for farming?".
+variable labels N134 "N134 - Which one is the second most important source of your knowledge for farming?".
 value labels N134  9 "self experience in farm work" 10 "Agricultural literature, information, Education and comunication materials".
 APPLY DICTIONARY from *
   /SOURCE VARIABLES = q40_2
@@ -2239,7 +2265,7 @@ compute N135 = q40_3.
 if q40_3_OT_SP = 1 N135 = 9.
 if q40_3_OT_SP = 2 N135 = 10.
 exe.
-variable labels N135 " N135 - Which one is the third most important source of your knowledge for farming?".
+variable labels N135 "N135 - Which one is the third most important source of your knowledge for farming?".
 value labels N135  9 "self experience in farm work" 10 "Agricultural literature, information, Education and comunication materials".
 APPLY DICTIONARY from *
   /SOURCE VARIABLES = q40_3
@@ -2292,7 +2318,7 @@ FREQUENCIES VARIABLES = Q43_F_OT_SP
 compute N136 = q43_1.
 if q43_1 = 96 N136 = q43_1_OT_SP + 5.
 exe.
-variable labels N136 " N136 - Which one is the most important reason your corp yields are increasing?".
+variable labels N136 "N136 - Which one is the most important reason your corp yields are increasing?".
 value labels N136  6 "Use more soil fertilizer" 7 "Better soil quality" 8 "Better weather" 9 "Change soil fertiliser"
 10  "Better land preparation" 11 "Planting in fallow land" 12 "Change planting method due to soil condition"  13"Using plant fertilizer".
 
@@ -2310,7 +2336,7 @@ FREQUENCIES VARIABLES = N136
 compute N137 = q43_2.
 if q43_2 = 96 N137 = q43_2_OT_SP + 5.
 exe.
-variable labels N137 " N137 - Which one is the second most important reason your corp yields are increasing?".
+variable labels N137 "N137 - Which one is the second most important reason your corp yields are increasing?".
 value labels N137  6 "Use more soil fertilizer" 7 "Better soil quality" 8 "Better weather" 9 "Change soil fertiliser"
 10  "Better land preparation" 11 "Planting in fallow land" 12 "Change planting method due to soil condition"  13"Using plant fertilizer".
 
@@ -2360,7 +2386,7 @@ FREQUENCIES VARIABLES = Q44_G_OT_SP
 compute N138 = q44_1.
 if q44_1 = 96 N138 = q44_1_OT_SP + 6.
 exe.
-variable labels N138 " N138 - Which one is the most important reason your corp yields are decreasing?".
+variable labels N138 "N138 - Which one is the most important reason your corp yields are decreasing?".
 value labels N138  7 "Pest destroy" 8 "Flood" 9 "Labour hiring charges"
 10  "Confiscate" 11 "Improper water nmanagement" 12 "Earthquake" .
 
@@ -2376,7 +2402,7 @@ FREQUENCIES VARIABLES = N138
 compute N139 = q44_2.
 if q44_2 = 96 N139 = q44_2_OT_SP + 6.
 exe.
-variable labels N139 " N139 - Which one is the second most important reason your corp yields are decreasing?".
+variable labels N139 "N139 - Which one is the second most important reason your corp yields are decreasing?".
 value labels N139  7 "Pest destroy" 8 "Flood" 9 "Labour hiring charges"
 10  "Confiscate" 11 "Improper water nmanagement" 12 "Earthquake" .
 
@@ -2461,7 +2487,7 @@ FREQUENCIES VARIABLES = Q45_N
 compute N140 = q45_1.
 if q45_1 = 96 N140 = q45_1_OT_SP + 12.
 exe.
-variable labels N140 " N140 - Which one is the most important main challenge you face with farming on your land?".
+variable labels N140 "N140 - Which one is the most important main challenge you face with farming on your land?".
 value labels N140  13 "High incidence of insect bites" 17 "machinery malfunctioning".
 
 APPLY DICTIONARY from *
@@ -2477,7 +2503,7 @@ FREQUENCIES VARIABLES = N140
 compute N141 = q45_2.
 if q45_2 = 96 N141 = q45_2_OT_SP + 12.
 exe.
-variable labels N141 " N141 - Which one is the second most important main challenge you face with farming on your land?".
+variable labels N141 "N141 - Which one is the second most important main challenge you face with farming on your land?".
 value labels N141   17 "machinery malfunctioning".
 
 APPLY DICTIONARY from *
@@ -2488,6 +2514,28 @@ APPLY DICTIONARY from *
 FREQUENCIES VARIABLES = N141
   /BARCHART FREQ
   /ORDER=ANALYSIS.
+
+
+
+
+OUTPUT EXPORT 
+  /CONTENTS  EXPORT=ALL LAYERS=ALL MODELVIEWS=ALL
+  /REPORT  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module2.htm'
+     TITLE=FILENAME FORMAT=HTML RESTYLE=YES.
+
+
+* Export Output.
+OUTPUT EXPORT
+  /CONTENTS  EXPORT=ALL  LAYERS=PRINTSETTING  MODELVIEWS=PRINTSETTING
+  /DOC  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module2.doc'
+     NOTESCAPTIONS=YES  WIDETABLES=WRAP PAGEBREAKS=YES
+     PAGESIZE=MM(209.96999999999997, 296.96999999999997)  TOPMARGIN=MM(25.4)  
+    BOTTOMMARGIN=MM(25.400000000000034)
+     LEFTMARGIN=MM(25.4)  RIGHTMARGIN=MM(25.399999999999977).
+
+
 
 ** MODULE 3 - future and legacy
 
@@ -2546,7 +2594,7 @@ FREQUENCIES VARIABLES = Q46_K_OT_SP
 compute N142 = q46_1.
 if q46_1 = 96 N142 = q46_1_OT_SP + 10.
 exe.
-variable labels N142 " N142 - Which one is the most important main challenge to farming faced by the community as a whole?".
+variable labels N142 "N142 - Which one is the most important main challenge to farming faced by the community as a whole?".
 value labels N142  12 "High incidence of insect destroying" 13 "Flood" 14 "Imporper way of managing water"
 19 "Late time line of farm work". 
 
@@ -2562,7 +2610,7 @@ FREQUENCIES VARIABLES = N142
 compute N143 = q46_2.
 if q46_2 = 96 N143 = q46_2_OT_SP + 10.
 exe.
-variable labels N143 " N143 - Which one is the second most important main challenge to farming faced by the community as a whole?".
+variable labels N143 "N143 - Which one is the second most important main challenge to farming faced by the community as a whole?".
 value labels N143  11 "Expensive cost for soil fertilizer" 12 "High incidence of insect destroying" 13 "Flood" 14 "Imporper way of managing water"
 15 "Financial difficultu expensive labour and fertilizer chargers/exploit" 16 "Uncontrollable weed" 18 "Confiscate" 19 "Late time line of farm work". 
 
@@ -2578,7 +2626,7 @@ FREQUENCIES VARIABLES = N143
 compute N144 = q46_3.
 if q46_3 = 96 N144 = q46_3_OT_SP + 10.
 exe.
-variable labels N144 " N144 - Which one is the third most important main challenge to farming faced by the community as a whole?".
+variable labels N144 "N144 - Which one is the third most important main challenge to farming faced by the community as a whole?".
 value labels N144  11 "Expensive cost for soil fertilizer" 12 "High incidence of insect destroying" 13 "Flood" 14 "Imporper way of managing water"
 15 "Financial difficultu expensive labour and fertilizer chargers/exploit" 16 "Uncontrollable weed" 17 "Imporper transportation"18 "Confiscate" 19 "Late time line of farm work". 
 
@@ -2621,8 +2669,6 @@ FREQUENCIES VARIABLES = Q51_c
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
-
-
 compute N145 =  Q52_A1.
 if  Q52_A1 = 1 N145 = Q52_A.
 exe.
@@ -2638,10 +2684,7 @@ FREQUENCIES VARIABLES = N145
 
 count N146 = Q52_B1_1 Q52_B1_2 Q52_B1_3 Q52_B1_4 Q52_B1_5 Q52_B1_6 Q52_B1_7 Q52_B1_8 Q52_B1_9 (1).
 exe.
-FREQUENCIES VARIABLES = N146
-  /BARCHART FREQ
-  /ORDER=ANALYSIS.
-
+variable labels N146 "N146 temporary var". 
 
 compute N147 = 12.
 if Q52_B1 = 0 N147 = 0.
@@ -2683,6 +2726,28 @@ FREQUENCIES VARIABLES = N148
 FREQUENCIES VARIABLES = Q52_F1
   /BARCHART FREQ
   /ORDER=ANALYSIS.
+
+
+
+
+
+OUTPUT EXPORT 
+  /CONTENTS  EXPORT=ALL LAYERS=ALL MODELVIEWS=ALL
+  /REPORT  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module3.htm'
+     TITLE=FILENAME FORMAT=HTML RESTYLE=YES.
+
+* Export Output.
+OUTPUT EXPORT
+  /CONTENTS  EXPORT=ALL  LAYERS=PRINTSETTING  MODELVIEWS=PRINTSETTING
+  /DOC  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module3.doc'
+     NOTESCAPTIONS=YES  WIDETABLES=WRAP PAGEBREAKS=YES
+     PAGESIZE=MM(209.96999999999997, 296.96999999999997)  TOPMARGIN=MM(25.4)  
+    BOTTOMMARGIN=MM(25.400000000000034)
+     LEFTMARGIN=MM(25.4)  RIGHTMARGIN=MM(25.399999999999977).
+
+
 
 ** MODULE 4
 
@@ -2984,6 +3049,22 @@ FREQUENCIES VARIABLES = MODULE_4_2
   /BARCHART FREQ
   /ORDER=ANALYSIS.
 
+
+RECODE Q63_2_1_Crop_1 (32=16).
+RECODE Q63_2_2_Crop_1 (32=16).
+RECODE Q63_2_3_Crop_1 (32=16).
+RECODE Q63_2_1_Crop_2 (32=16).
+RECODE Q63_2_2_Crop_2 (32=16).
+RECODE Q63_2_3_Crop_2 (32=16).
+RECODE Q63_2_1_Crop_3 (32=16).
+RECODE Q63_2_2_Crop_3 (32=16).
+RECODE Q63_2_3_Crop_3 (32=16).
+RECODE Q63_2_1_Crop_4 (32=16).
+RECODE Q63_2_2_Crop_4 (32=16).
+RECODE Q63_2_3_Crop_4 (32=16).
+EXECUTE.
+
+
 FREQUENCIES VARIABLES = Q63_CROP_01
   /BARCHART FREQ
   /ORDER=ANALYSIS.
@@ -3165,5 +3246,21 @@ FREQUENCIES VARIABLES =   Q69
 
 
 
+OUTPUT EXPORT 
+  /CONTENTS  EXPORT=ALL LAYERS=ALL MODELVIEWS=ALL
+  /REPORT  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module4.htm'
+     TITLE=FILENAME FORMAT=HTML RESTYLE=YES.
 
 
+
+
+* Export Output.
+OUTPUT EXPORT
+  /CONTENTS  EXPORT=ALL  LAYERS=PRINTSETTING  MODELVIEWS=PRINTSETTING
+  /DOC  DOCUMENTFILE=
+    'C:\Users\sfos0247\Dropbox\analysis\Myanmar\MyanmarFieldwork\survey\reports\Module4.doc'
+     NOTESCAPTIONS=YES  WIDETABLES=WRAP PAGEBREAKS=YES
+     PAGESIZE=MM(209.96999999999997, 296.96999999999997)  TOPMARGIN=MM(25.4)  
+    BOTTOMMARGIN=MM(25.400000000000034)
+     LEFTMARGIN=MM(25.4)  RIGHTMARGIN=MM(25.399999999999977).

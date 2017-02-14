@@ -82,7 +82,7 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N40` - "Will hand over to other relative" from `Q28_D` and `Q28_D_OT_SP`. 
 * New variable `N41` - "Will do something else" from `Q28_G` and `Q28_G_OT_SP`. 
 * **ISSUE** - Q28 should have had "One option only" - but in the end 31 people gave two options. 
-* New variable `N46` - how Q28 should look like - with all options given. BUT, because of multiple answers, these are given additionally. (variables N42-N45 are temporary)
+* New variable `N46` - how Q28 should look like - with all options given. BUT, because of multiple answers, these are given additionally. (variables `N42`-`N45`are temporary)
 * New variable `N47` has the size of your land increased in any way in the past five years from `Q30_A`, `Q30_B`, AND `Q30_C`.  
 * New variable `N48` the total acreage of increase - sum of bought, rented and ingherited in from `Q30_A_ACRE`, `Q30_B_ACRE`, AND `Q30_C_ACRE`.  
 * New variable `N49` - number of responses on reduction of land size.   `Q31`: this was a multiple response question, but **ISSUE** of the 44 respondents that had had a decrease in land size, all had only one reason (sold, rented, confiscated, gave away or lost to river errosion). This seems unlikely!?
@@ -214,4 +214,9 @@ SH - meeting called for 14.2.2017.  Should be enough time to complete first traw
 * New variabel `N150` "N150 - Q56.E. If yes, where did you hear about the agricultural machinery? {Other Specify}" Consolidated varibable from `Q56_E` and `Q56_E_OT_SP`.
 *For Q53 a new 'long-form' dataset is created in tow steps: first for each of the (up to ) four crops listed, and secondly for each of the (up to) three pesticide application on each crop. Frequencies are then calculated from this datset of 541 crops, 567 separate applications by 383 farmers.
 * **ISSUE** The questionnaire implies (or so it would seem) that for each crop you can answer on several sprayings, but each spraying has one pest target. This is in fact not the case as there are examples where e.g. one crop has two pesticides and three targets pests. If a particular pesticide targets two pests it should be recorded twice. Now it's impossible to match targets and pests. (680 pest targets are listed, in addition to  541 crops, 567 separate applications by 383 farmers.)
+* **ISSUE** twelve pesticide variables have duplicate value labels (16 is the same as 32). That might seem like a minor issue, but it's sloppy. I only noticed in R where uniqueness of categories is checked, so would not have spotted it in SPSS.
 
+
+## Tuesday 14.2.2017 
+
+Finished univariate descriptives - reports for all four modules in `.html` and `.doc` formats sent to team 14.2.2017 1am.
