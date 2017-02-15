@@ -96,12 +96,13 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N53` "Reason for letting out land" - from  `Q31_C2_1`, `Q31_C2_2`, `Q31_C2_3`, `Q31_C2_3_OT_SP`.
 * New variable `N54` "Reason for giving away land" - from  `Q31_C3_1`, `Q31_C3_2`, `Q31_C3_3`, `Q31_C3_3_OT_SP`. **ISSUE** Two people said they gave away land because of debt. This doesn't make sense - this combination of variables should not have occured. 
 * New variable `N55` "Reason for confiscation of land" - from  `Q31_C4_1`, `Q31_C4_2`, `Q31_C4_3`, `Q31_C4_3_OT_SP`. **ISSUE** Confusion here: reason for confiscation given as confiscation!? Also the reason given as "rob" is not clear, was land stolen from someone?
-* New variable `N56` "Other reason decrease in land size" - from  `Q31_C5_1`, `Q31_C5_2`, `Q31_C5_3`, `Q31_C4_3_OT_SP`.
+* New variable `N56` "Other reason decrease in land size" - from  `Q31_C5_1`, `Q31_C5_2`, `Q31_C5_3`, `Q31_C5_3_OT_SP`.
 * New variabel `N57` "Reason for decrease in land size " - from all 20 `Q31_C` variables consolidated. 
 * **ISSUE** All 9 Yes No questions under 'Q32' are coded Yes = 1 and No = 2 Instead of No = 0..
-* New variable `N59` "type of crop production for first crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_1_1` to `Q32_1_3`.
-* New variable `N61` "type of crop production for second crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_2_1` to `Q32_2_3`.
-* New variable `N63` "type of crop production for third crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_3_1` to `Q32_3_3`.
+* New variable `N58` - tempeorary var.
+* New variable `N59` "type of crop production for first crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_1_1` to `Q32_1_4`.
+* New variable `N61` "type of crop production for second crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_2_1` to `Q32_2_4`.
+* New variable `N63` "type of crop production for third crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_3_1` to `Q32_3_4`.
 * New variable `N64` "Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?". Consolidated from `Q33_A` and `Q33_A1`. 
 * New variable `N65` "Do you personaly perform harvesting and if not anymore, how long ago did you stop?". Consolidated from `Q33_B` and `Q33_B1`. 
 * New variable `N66` "Do you personaly perform sowing, planting, transplanting and if not anymore, how long ago did you stop?". Consolidated from `Q33_C` and `Q33_C1`. 
