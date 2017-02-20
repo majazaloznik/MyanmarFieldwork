@@ -217,7 +217,22 @@ SH - meeting called for 14.2.2017.  Should be enough time to complete first traw
 * **ISSUE** The questionnaire implies (or so it would seem) that for each crop you can answer on several sprayings, but each spraying has one pest target. This is in fact not the case as there are examples where e.g. one crop has two pesticides and three targets pests. If a particular pesticide targets two pests it should be recorded twice. Now it's impossible to match targets and pests. (680 pest targets are listed, in addition to  541 crops, 567 separate applications by 383 farmers.)
 * **ISSUE** twelve pesticide variables have duplicate value labels (16 is the same as 32). That might seem like a minor issue, but it's sloppy. I only noticed in R where uniqueness of categories is checked, so would not have spotted it in SPSS.
 
-
 ## Tuesday 14.2.2017 
 
 Finished univariate descriptives - reports for all four modules in `.html` and `.doc` formats sent to team 14.2.2017 1am.
+
+## Friday 17.2.2017
+
+Clean, check double check, re-run `00-Univariate.descriptoves.sps`.
+SPSS side complete. Next section is in R only, no more SPSS. 
+
+## Monday 18.2.2017
+
+* Clear duplicate labels in R, because it would be incredibly tedious manual work in SPSS.
+* Remove variables with all missing values. 
+* Save as .csv table `survey/data/survey.data.csv`
+* Save as .RData file ``survey/data/survey.data.RData` - now datasource of record
+* Output htlm codebook, which is a convenvient summary of the whole dataset with frequency tables for categorical datasets and summary stats for integer 
+save codebook.
+
+
