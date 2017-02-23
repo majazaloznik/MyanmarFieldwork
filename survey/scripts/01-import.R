@@ -1,7 +1,7 @@
 ###############################################################################
 ##  01 First trawl through survey data
 ###############################################################################
-##  00-univariate.descriptives.sps is the first trawl through the spss dataset
+##  00-0-new-variables.sps is the first trawl through the spss dataset
 ##  with a set of new variables. 
 ##  This file imports them into R, re-orders the new and old vars in 
 ##  the correct order, relists the variable names and labels 
@@ -29,7 +29,7 @@ FunSwap <- function(New, After) {
 ##  3. reorder vars interspersing the "new" ones with the old
 ###############################################################################
  
-index <- 1:850
+index <- 1:852
 index <- FunSwap("n1", "q6_h")
 index <- FunSwap("n2", "q7_5$15")
 index <- FunSwap("n3", "q7_6$15")
@@ -180,9 +180,11 @@ index <- FunSwap("n147", "n146")
 index <- FunSwap("n148", "n147")
 index <- FunSwap("n149", "q54_h_a3")
 index <- FunSwap("n150", "q56_e_ot_sp")
+index <- FunSwap("n151", "q2")
+index <- FunSwap("n152", "id1")
 
 dataset <- dataset[index]
-
+rm(index)
 ##  4. clean up duplicate factor labels
 ###############################################################################
 ## need to remove duplicate labels from vars q63_2_1_crop_1 to q63_2_1_crop_4
@@ -221,8 +223,61 @@ labels(dataset$q63_2_3_crop_4) <- labels(dataset$q63_2_3_crop_4)[
 drop <- which(sapply(dataset, function(x) sum(is.na(x)) == 600))
 
 dataset <- dataset[-drop]
+rm(drop)
+##  5. additional variables:
+###############################################################################
 
-##  5. transform  as dataframe and codebook and save both 
+# N 153 dividing by size of landholding
+n153 <- ifelse(dataset$q17 <= 5, 0, 
+                       ifelse( dataset$q17 <= 10, 1,2))
+labels(n153) <- c("up to 5 acres" =  0,
+                  "5 to 10 acres" =  1,
+                  "over 10 acres" =  2)
+dataset <- data.set(dataset, n153 = n153)
+description(dataset$n153) <- "N153 - Landholding size - three groups"
+
+index <- 1:770
+index <- FunSwap("n153", "q17")
+dataset <- dataset[index]
+rm(index, n153)
+
+# N154 age groups 10 years
+n154 <- ifelse(dataset$q2 <=29, 0, 
+               ifelse(dataset$q2 <=39, 1,
+                      ifelse(dataset$q2 <=49, 2,
+                             ifelse(dataset$q2 <=59, 3,
+                                    ifelse(dataset$q2 <=69, 4,
+                                           ifelse(dataset$q2 <=79, 5,
+                                                  ifelse(dataset$q2 <=89, 6,
+                                                         ifelse(dataset$q2 <=99, 7
+                             ))))))))
+
+labels(n154) <- c("under 30" =  0,
+                  "30 to 39" =  1,
+                  "40 to 49" =  2,
+                  "50 to 59" =  3,
+                  "60 to 69" =  4,
+                  "70 to 79" =  5,
+                  "80 to 89" =  6,
+                  "90 to 99" =  7)
+dataset <- data.set(dataset, n154 = n154)
+description(dataset$n154) <- "N154 - Age group (10 year groups)"
+
+index <- 1:771
+index <- FunSwap("n154", "q2")
+dataset <- dataset[index]
+rm(index, n154)
+
+description(dataset$q6_a) <- "Q6.A. Do you have difficulty with seeing, even if wearing glasses?"
+description(dataset$q6_b) <- "Q6.B. Do you have difficulty with hearing, even if using a hearing aid?"
+description(dataset$q6_c) <- "Q6.C. Do you have difficulty with walking?"
+description(dataset$q6_d) <- "Q6.D. Do you have difficulty with climbing steps?"
+description(dataset$q6_e) <- "Q6.E. Do you have difficulty with carrying heavy items?"
+description(dataset$q6_f) <- "Q6.F. Do you have difficulty with remembering things?"
+description(dataset$q6_g) <- "Q6.G. Do you have difficulty with Concentrating?"
+description(dataset$q6_h) <- "Q6.H. Do you have difficulty with none of the above?"
+
+##  6. transform  as dataframe and codebook and save both 
 ###############################################################################
 
 write_html(codebook(dataset), file = "survey/reports/surveyVariables.html")
@@ -233,4 +288,17 @@ write.csv(data, file = "survey/data/survey.data.csv" )
 save(data, file = "survey/data/survey.dataframe.RData" )
 save(dataset, file = "survey/data/survey.dataset.RData" )
 
-# 20/2/2017 19:10
+rm(FunSwap)
+
+
+## 7. List all variables in pdf file 
+###############################################################################
+
+library(knitr)
+library(rmarkdown)
+knit("survey/reports/old/SurveyListVariables.Rmd", 
+     output= "survey/reports/old/SurveyListVariables.md")
+render("survey/reports/old/SurveyListVariables.md", 
+       "pdf_document", output_dir ="survey/reports" )
+
+# 20/2/2017 20:28

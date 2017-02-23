@@ -226,7 +226,9 @@ Finished univariate descriptives - reports for all four modules in `.html` and `
 Clean, check double check, re-run `00-Univariate.descriptoves.sps`.
 SPSS side complete. Next section is in R only, no more SPSS. 
 
-## Monday 18.2.2017
+## Monday 20.2.2017
+
+`01-import.R`:
 
 * Clear duplicate labels in R, because it would be incredibly tedious manual work in SPSS.
 * Remove variables with all missing values. 
@@ -234,5 +236,44 @@ SPSS side complete. Next section is in R only, no more SPSS.
 * Save as .RData file ``survey/data/survey.data.RData` - now datasource of record
 * Output htlm codebook, which is a convenvient summary of the whole dataset with frequency tables for categorical datasets and summary stats for integer 
 save codebook.
+* Ouput variable list as nice pdf table
 
+* Likert scales on mechanisation: Produce quick report on three of the mechanisation questions, split by age and region `R01-Mechanisation.Rmd`.
+
+
+## Tuesday 21.2.2017
+
+* Meeting with SH, GL, KH
+* TODO: repeat "whole" [based on GL summary] set of frequencies, but crossing with age (over/under 60) and  region, and maybe also size of holding
+* census - household type, what do we have
+* 
+
+## Wednesday 22.2.2017
+
+* split SPSS syntax file into variable modifying one and output generating one
+* move old SPSS sytax into `\survey\scripts\old`
+* new variable modifying (152 new vars) file is `00-0-new-variables.sps`
+* fix `SurveyListVariables.Rmd` to add two new vars: From now on all new vars in R. 
+* `N151` - over or under 60 years old, based on `Q2`
+* `N152` - Agricultural zone (dry or delta), based on `ID1 - state`
+
+* Cannot produce the type of crosstab tables that GL wants in SPSS, but there is an R solution - http://rpubs.com/stevepowell99/floating-css allows a neat Rmarkdown version of the TOC as a navigation pane like the SPSS output. 
+* `N153` - landownership "0 - 5","5 to 10" and "over 10" 
+* `N154` - age groups 10 years. 
+
+Current workflow:
+
+1. Derive first 152 new vars: 
+
+* Run `\survey\scripts\00-0-new-variables.sps` on `\survey\data\Myanmar Ageing Farmer draft data set.sav`
+
+2. Import into R and produce codebook, varlist:
+
+* Run `\survey\scripts\01-Import.R`, which imports `\survey\data\Myanmar Ageing Farmer draft data set.sav` 
+* cleans up
+* Exports `\survey\data\survey.data.csv` simple .csv table of 700 vars
+* Exports `\survey\data\survey.dataframe.RData` same as csv but with factor labels
+* Exports `\survey\data\survey.dataset.RData` same as csv but with factor labels and var descriptions i.e. all the data that was in the spss `.sav` file.
+
+3. Additional new variables are added in `\survey\scripts\01-Import.R` under section 6.  Then rerun the rest of the file to update teh saved export datafiles. 
 
