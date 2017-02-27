@@ -1,0 +1,173 @@
+---
+title: 'Myanmanr Census Crosstabs - Household Types '
+tables: yes
+output:
+  html_document:
+    css: custom.css
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+###############################################################################
+## First look at census data - unique generations
+###############################################################################
+
+
+## Preliminaries
+###############################################################################
+library(knitr)
+library(tidyverse)
+library(memisc)
+library(RColorBrewer)
+gl03 <- as.data.frame(as.data.set(spss.system.file("../outputs/GL03.sav")))
+mz01 <- as.data.frame(as.data.set(spss.system.file("../outputs/MZ01.sav")))
+mz02 <- as.data.frame(as.data.set(spss.system.file("../outputs/MZ02.sav")))
+mz03 <- as.data.frame(as.data.set(spss.system.file("../outputs/MZ03.sav")))
+sh02 <- as.data.frame(as.data.set(spss.system.file("../outputs/SH02.sav")))
+
+options(scipen = 9999, digits = 6)
+```
+
+
+
+# Number of generations in Household and Disability
+
+## Everyone over 18  [gl03-04]
+
+```{r, echo=FALSE}
+# ie.e tablenumber == 4
+gl03.04 <- gl03 %>%
+  filter(tablenumber_ == 4, var1 != "Total") %>%
+  dplyr::select(which(colMeans(is.na(.)) == 0 ),
+                -total, -command_, -subtype_) %>%
+  dplyr::select(6:10)
+```
+[N = `r sum(gl03.04)`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var1 <- "Number of disabilities (out of a maximum of 4)"
+var2 <- "Number of generations living in household"
+
+var1.labs <- c("None", "One Disability", "Two Disabilities", "Three Disabilities", "Four Disabilities")
+var2.labs <- c( "One Gen", "Two Gens", "Three Gens", "Four Gens", "Five Gens")
+rownames(gl03.04) <- var1.labs
+colnames(gl03.04) <- var2.labs
+kable(prop.table(as.matrix(gl03.04), 2)*100, digits = 2, booktabs = TRUE, padding = 10)
+par(mar = c(9,2,1,1))
+barplot(prop.table(as.matrix(gl03.04), 2), width = colSums(gl03.04),
+        col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(gl03.04)),
+        names.arg = var2.labs, 
+        legend.text = var1.labs, args.legend = list(y = -.1),
+        main = paste(var1, "by", var2), cex.main = 0.75)
+
+```
+
+
+## Heads of Household over 60  [mz02-04]
+
+```{r, echo=FALSE}
+# ie.e tablenumber == 4
+mz01.04 <- mz01 %>%
+  filter(tablenumber_ == 4, var1 != "Total") %>%
+  dplyr::select(which(colMeans(is.na(.)) == 0 ),
+                -total, -command_, -subtype_, -var3) %>%
+  dplyr::select(5:8)
+```
+
+[N = `r sum(mz01.04)`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var1 <- "Number of disabilities (out of a maximum of 4)"
+var2 <- "Number of generations living in household"
+
+var1.labs <- c("None", "One Disability", "Two Disabilities", "Three Disabilities", "Four Disabilities")
+var2.labs <- c( "One Gen", "Two Gens", "Three Gens", "Four Gens")
+rownames(mz01.04) <- var1.labs
+colnames(mz01.04) <- var2.labs
+kable(prop.table(as.matrix(mz01.04), 2)*100, digits = 2, booktabs = TRUE, padding = 10)
+par(mar = c(9,2,1,1))
+barplot(prop.table(as.matrix(mz01.04), 2), width = colSums(mz01.04),
+        col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(mz01.04)),
+        names.arg = var2.labs, 
+        legend.text = var1.labs, args.legend = list(y = -.1),
+        main = paste(var1, "by", var2), cex.main = 0.75)
+```
+
+
+## Heads of Household over 85 [mz02-04]
+
+```{r, echo=FALSE}
+# ie.e tablenumber == 4
+mz02.04 <- mz02 %>%
+  filter(tablenumber_ == 4, var1 != "Total") %>%
+  dplyr::select(which(colMeans(is.na(.)) == 0 ),
+                -total, -command_, -subtype_, -var3) %>%
+  dplyr::select(5:8)
+```
+[N = `r sum(mz02.04)`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var1 <- "Number of disabilities (out of a maximum of 4)"
+var2 <- "Number of generations living in household"
+
+var1.labs <- c("None", "One Disability", "Two Disabilities", "Three Disabilities", "Four Disabilities")
+var2.labs <- c( "One Gen", "Two Gens", "Three Gens", "Four Gens")
+rownames(mz02.04) <- var1.labs
+colnames(mz02.04) <- var2.labs
+kable(prop.table(as.matrix(mz02.04), 2)*100, digits = 2, booktabs = TRUE, padding = 10)
+par(mar = c(9,2,1,1))
+barplot(prop.table(as.matrix(mz02.04), 2), width = colSums(mz02.04),
+        col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(mz02.04)),
+        names.arg = var2.labs, 
+        legend.text = var1.labs, args.legend = list(y = -.1),
+        main = paste(var1, "by", var2), cex.main = 0.75)
+
+```
+
+
+## Heads of Household over 60 AND in farming occupation  [mz03-04]
+
+```{r, echo=FALSE}
+# ie.e tablenumber == 4
+mz03.04 <- mz03 %>%
+  filter(tablenumber_ == 4, var1 != "Total") %>%
+  dplyr::select(which(colMeans(is.na(.)) == 0 ),
+                -total, -command_, -subtype_, -var3) %>%
+  dplyr::select(5:8)
+```
+[N = `r sum(mz03.04)`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var1 <- "Number of disabilities (out of a maximum of 4)"
+var2 <- "Number of generations living in household"
+
+var1.labs <- c("None", "One Disability", "Two Disabilities", "Three Disabilities", "Four Disabilities")
+var2.labs <- c( "One Gen", "Two Gens", "Three Gens", "Four Gens")
+rownames(mz03.04) <- var1.labs
+colnames(mz03.04) <- var2.labs
+kable(prop.table(as.matrix(mz03.04), 2)*100, digits = 2, booktabs = TRUE, padding = 10)
+par(mar = c(9,2,1,1))
+barplot(prop.table(as.matrix(mz03.04), 2), width = colSums(mz03.04),
+        col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(mz03.04)),
+        names.arg = var2.labs, 
+        legend.text = var1.labs, args.legend = list(y = -.1),
+        main = paste(var1, "by", var2), cex.main = 0.75)
+```
+
+```{r}
+# # Type of co-residence (Son/Daugther) 
+# 
+# ## Coresidence and disability 
+# 
+# ```{r, echo=FALSE}
+# # ie.e tablenumber == 4
+# sh02.01 <- sh02 %>%
+#   filter(tablenumber_ == 4, var1 != "Total") %>%
+#   dplyr::select(which(colMeans(is.na(.)) == 0 ),
+#                 -total, -command_, -subtype_, -var3) %>%
+#   dplyr::select(5:8)
+# ```
+# [N = `r sum(mz03.04)`] 
+```
