@@ -1,0 +1,30 @@
+---
+title: "Myanmar Survey - Variables Original and Derived"
+author: "mz"
+output: pdf_document
+classoption: landscape
+header-includes:
+     - \usepackage{longtable}
+---
+
+<!-- Just list of original variables in dataset. -->
+
+```{r xtable, results="asis", echo = FALSE}
+library(xtable)
+x <- description(dataset)
+glossaryprint <- xtable(data.frame(ID = names(x), Variable.Name = unlist(x)))
+align(glossaryprint) <- "l|l|p{19cm}|"
+addtorow          <- list()
+addtorow$pos      <- list()
+addtorow$pos[[1]] <- c(0)
+addtorow$command  <- c(paste("\\hline \n",
+                             "\\endhead \n",
+                             "\\hline \n",
+                             "\\endfoot \n",
+                             "\\endlastfoot \n",sep=""))
+print(glossaryprint,  
+      tabular.environment='longtable', 
+      include.rownames=FALSE, floating = FALSE,  add.to.row = addtorow,
+      hline.after=c(-1),
+      comment = FALSE)
+```

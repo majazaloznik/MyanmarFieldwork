@@ -1,7 +1,7 @@
 ---
-title: "Myanmar Survey Analysis - MZ"
+title: "Myanmar Survey Variables - Original and derived"
 author: "mz"
-date: "5.2.2017"
+date: "14.2.2017"
 output:
   pdf_document:
   number_sections: yes
@@ -13,17 +13,6 @@ word_document:
 word_document html_document: default
 ---
   
-# Survey Data Analysis Journal
-  
-## Sunday 5.2.2017 - First trawl - Univariate descriptives
-  
-Clean dataset arrived 30.1.2017, in .sav format. 
-
-Installed SPSS for quick analysis, but waited for MSR report, which arrived 1.2. in hope that it may already include a descriptive analysis, but it did not. It is a pure technical report about sampling etc. To feed into methodology section. 
-
-Original copy of data kept raw in `survey\data\raw.original.data`.
-
-Prepare web report of univariate distributions of variables - to degree sensible. 
 
 * remove `Q3_OT_SP` other marital status as no valid answers were given. 
 * remove `Q4_96_OT_SP` other educational grade/level as no valid answers were given. 
@@ -60,12 +49,9 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * **ISSUE** - `Q15`: the question reads "of the largest loan you have taken in the last 12 months, who did you borrow from" - 30 % listed more than one lender? This should not be possible. This also leaves three different"other" answers, particularly unclear how this could happen..
 * New variable `N30` - number of lenders listed in answer to question 15. From `Q15_A` to `Q15_J`
 * **ISSUE**: variable `Q20_B` shouldn't exist?!
-* New variable `N31` - difference between acreage of land owned and that cultivated. `Q17` - `Q18`
+  * New variable `N31` - difference between acreage of land owned and that cultivated. `Q17` - `Q18`
 * New variable `N32` - difference between acreage of land owned and that cultivated and or leased out. This is land left fallow, so the couple of cases with negative values are errors! [ ISSUE]. `Q17` - `Q18` - `Q20_A`
 * New variable `N33` - difference between acreage of land rented and that rented and cultivated rented land left fallow, and tehre is none. `Q22` - `Q23` 
-
-## Monday 6.2.2017 - First trawl - Univariate descriptives - continuted
-
 * Q24B and C ask- who is responsible for managing the farming activities apart from the respondent - hh menber ID. So the in order to get relationship etc. of these people new variables are required. 
 * New variable `N34` - Relationship of co-responsible manager. Form `Q24_B_ID`
 * **ISSUE** - N34 should not have the value 1 = self. Becasue that means they have answered "me and another family member" and the other family memeber is me. But there are 6 such people.
@@ -82,13 +68,10 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N40` - "Will hand over to other relative" from `Q28_D` and `Q28_D_OT_SP`. 
 * New variable `N41` - "Will do something else" from `Q28_G` and `Q28_G_OT_SP`. 
 * **ISSUE** - Q28 should have had "One option only" - but in the end 31 people gave two options. 
-* New variable `N46` - how Q28 should look like - with all options given. BUT, because of multiple answers, these are given additionally. (variables `N42`-`N45`are temporary)
+* New variable `N46` - how Q28 should look like - with all options given. BUT, because of multiple answers, these are given additionally. (variables N42-N45 are temporary)
 * New variable `N47` has the size of your land increased in any way in the past five years from `Q30_A`, `Q30_B`, AND `Q30_C`.  
 * New variable `N48` the total acreage of increase - sum of bought, rented and ingherited in from `Q30_A_ACRE`, `Q30_B_ACRE`, AND `Q30_C_ACRE`.  
 * New variable `N49` - number of responses on reduction of land size.   `Q31`: this was a multiple response question, but **ISSUE** of the 44 respondents that had had a decrease in land size, all had only one reason (sold, rented, confiscated, gave away or lost to river errosion). This seems unlikely!?
-
-## Tuesday 7.2.2017 - First trawl - Univariate descriptives - continuted
-
 * New variable `N50` - all five Q31_A questions consolidated - "Reason for decrease in farm size in last five years". From `Q31_A1`, `Q31_A2`, `Q31_A3`, `Q31_A4`, `Q31_A5`.
 * New variable `N51`- all five Q31_B questions  consolidated - "Total number of acrers of decrease in farm size in last five years."  From `Q31_B1`, `Q31_B2`, `Q31_B3`, `Q31_B4`, `Q31_B5`.
 * Resason in Q31 should be single answer. But each is coded as three answers. But still, turns out they were answered only once. So need to colsolidate each of the five sets of variables.. **ISSUE** Instead of five variables there are 20 here..
@@ -96,21 +79,17 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N53` "Reason for letting out land" - from  `Q31_C2_1`, `Q31_C2_2`, `Q31_C2_3`, `Q31_C2_3_OT_SP`.
 * New variable `N54` "Reason for giving away land" - from  `Q31_C3_1`, `Q31_C3_2`, `Q31_C3_3`, `Q31_C3_3_OT_SP`. **ISSUE** Two people said they gave away land because of debt. This doesn't make sense - this combination of variables should not have occured. 
 * New variable `N55` "Reason for confiscation of land" - from  `Q31_C4_1`, `Q31_C4_2`, `Q31_C4_3`, `Q31_C4_3_OT_SP`. **ISSUE** Confusion here: reason for confiscation given as confiscation!? Also the reason given as "rob" is not clear, was land stolen from someone?
-* New variable `N56` "Other reason decrease in land size" - from  `Q31_C5_1`, `Q31_C5_2`, `Q31_C5_3`, `Q31_C5_3_OT_SP`.
+* New variable `N56` "Other reason decrease in land size" - from  `Q31_C5_1`, `Q31_C5_2`, `Q31_C5_3`, `Q31_C4_3_OT_SP`.
 * New variabel `N57` "Reason for decrease in land size " - from all 20 `Q31_C` variables consolidated. 
 * **ISSUE** All 9 Yes No questions under 'Q32' are coded Yes = 1 and No = 2 Instead of No = 0..
-* New variable `N58` - tempeorary var.
-* New variable `N59` "type of crop production for first crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_1_1` to `Q32_1_4`.
-* New variable `N61` "type of crop production for second crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_2_1` to `Q32_2_4`.
-* New variable `N63` "type of crop production for third crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_3_1` to `Q32_3_4`.
+* New variable `N59` "type of crop production for first crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_1_1` to `Q32_1_3`.
+* New variable `N61` "type of crop production for second crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_2_1` to `Q32_2_3`.
+* New variable `N63` "type of crop production for third crop" - what type of combinaiton of subsistence, animal feed and sale from `Q32_3_1` to `Q32_3_3`.
 * New variable `N64` "Do you personaly perform land preparation (ploughing) and if not anymore, how long ago did you stop?". Consolidated from `Q33_A` and `Q33_A1`. 
 * New variable `N65` "Do you personaly perform harvesting and if not anymore, how long ago did you stop?". Consolidated from `Q33_B` and `Q33_B1`. 
 * New variable `N66` "Do you personaly perform sowing, planting, transplanting and if not anymore, how long ago did you stop?". Consolidated from `Q33_C` and `Q33_C1`. 
 * New variable `N67` "Do you personaly perform weeding and if not anymore, how long ago did you stop?". Consolidated from `Q33_D` and `Q33_D1`. 
 * New variable `N68` "Do you personaly perform pest management and if not anymore, how long ago did you stop?". Consolidated from `Q33_E` and `Q33_E1`. 
-
-## Wednesday 8.2.2017 - First trawl - Univariate descriptives - continuted
-
 * **ISSUE** Variables `Q34` - all the ID ones (which HH member helps with task) - have the value 0 for the first of five people where there is no one helping instead of a missing value. 
 * New variable `N69` "Number of household members (maximum 5) that help with land preparation/ploughing." From vars `Q34_A1_2_ID` `Q34_A2_2_ID` `Q34_A3_2_ID` `Q34_A4_2_ID` and `Q34_A5_2_ID`. 
 * New variable `N70` "Total number of days HH members helped with land preparation/ploughing." From vars `Q34_A1_3_DAYS` `Q34_A2_3_DAYS` `Q34_A3_3_DAYS` `Q34_A4_3_DAYS` and `Q34_A5_3_DAYS`. 
@@ -158,9 +137,6 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N110` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Land preparation/Ploughing}" From `Q36_A2` but without the zeros.
 * New variable `N111` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Harvesting}" From `Q36_B1` but without the zeros.
 * New variable `N112` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {Harvesting}" From `Q36_B2` but without the zeros.
-
-## Thursday 10.2.2017 - First trawl - Univariate descriptives - continuted
-
 * New variable `N113` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {sowing, planting, transplanting}" From `Q36_C1` but without the zeros.
 * New variable `N114` "What were the total number of person-days employed in the last 12 months for each of the following tasks:NOT From local village Days {sowing, planting, transplanting}" From `Q36_C2` but without the zeros.
 * New variable `N115` "What were the total number of person-days employed in the last 12 months for each of the following tasks:From local village Days {Weeding}" From `Q36_D1` but without the zeros.
@@ -201,12 +177,6 @@ Prepare web report of univariate distributions of variables - to degree sensible
 * New variable `N142` - "Which one is the most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_1` and `Q46_1_OT_SP`.
 * New variable `N143` - "Which one is the second most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_2` and `Q46_2_OT_SP`
 * New variable `N144` - "Which one is the third most important challenge to farming for the community as a whole?" From merge with 'other specify' options `Q46_3` and `Q46_3_OT_SP`
-
-
-## Monday 13.2.2017 - First trawl - Univariate descriptives - continuted
-
-SH - meeting called for 14.2.2017.  Should be enough time to complete first trawl and produce html reports. And maybe also a nice list of the new variables and all the issues.. 
-
 * New variable `N145` " we want to know if you have any plans for your land after your death. {Leave all my land to one person.  Who?}". From  Q52_A1 and Q52_A. 
 * Quesiton 52b asks about dividing the land between several people. Up to 9 types of relationships, but in practice max of 3 types of relationships were given, so a new variable is created to merge these 9 variables. `N146` helper variable counting number of answers. 
 *  New variable `N147`  "N147 - We want to know if you have any plans for your land after your death. {Divide my land between more than one person. Who?}". Consolidated from `Q52_B1_1` to `Q52_B1_9`. 
@@ -215,122 +185,4 @@ SH - meeting called for 14.2.2017.  Should be enough time to complete first traw
 * New variabel `N150` "N150 - Q56.E. If yes, where did you hear about the agricultural machinery? {Other Specify}" Consolidated varibable from `Q56_E` and `Q56_E_OT_SP`.
 *For Q53 a new 'long-form' dataset is created in tow steps: first for each of the (up to ) four crops listed, and secondly for each of the (up to) three pesticide application on each crop. Frequencies are then calculated from this datset of 541 crops, 567 separate applications by 383 farmers.
 * **ISSUE** The questionnaire implies (or so it would seem) that for each crop you can answer on several sprayings, but each spraying has one pest target. This is in fact not the case as there are examples where e.g. one crop has two pesticides and three targets pests. If a particular pesticide targets two pests it should be recorded twice. Now it's impossible to match targets and pests. (680 pest targets are listed, in addition to  541 crops, 567 separate applications by 383 farmers.)
-* **ISSUE** twelve pesticide variables have duplicate value labels (16 is the same as 32). That might seem like a minor issue, but it's sloppy. I only noticed in R where uniqueness of categories is checked, so would not have spotted it in SPSS.
-
-## Tuesday 14.2.2017 
-
-Finished univariate descriptives - reports for all four modules in `.html` and `.doc` formats sent to team 14.2.2017 1am.
-
-## Friday 17.2.2017
-
-Clean, check double check, re-run `00-Univariate.descriptoves.sps`.
-SPSS side complete. Next section is in R only, no more SPSS. 
-
-## Monday 20.2.2017
-
-`01-import.R`:
-
-* Clear duplicate labels in R, because it would be incredibly tedious manual work in SPSS.
-* Remove variables with all missing values. 
-* Save as .csv table `survey/data/survey.data.csv`
-* Save as .RData file ``survey/data/survey.data.RData` - now datasource of record
-* Output htlm codebook, which is a convenvient summary of the whole dataset with frequency tables for categorical datasets and summary stats for integer 
-save codebook.
-* Ouput variable list as nice pdf table
-
-* Likert scales on mechanisation: Produce quick report on three of the mechanisation questions, split by age and region `R01-Mechanisation.Rmd`.
-
-
-## Tuesday 21.2.2017
-
-* Meeting with SH, GL, KH
-* TODO: repeat "whole" [based on GL summary] set of frequencies, but crossing with age (over/under 60) and  region, and maybe also size of holding
-* census - household type, what do we have
-* 
-
-## Wednesday 22.2.2017
-
-* split SPSS syntax file into variable modifying one and output generating one
-* move old SPSS sytax into `\survey\scripts\old`
-* new variable modifying (152 new vars) file is `00-0-new-variables.sps`
-* fix `SurveyListVariables.Rmd` to add two new vars: From now on all new vars in R. 
-* `N151` - over or under 60 years old, based on `Q2`
-* `N152` - Agricultural zone (dry or delta), based on `ID1 - state`
-
-* Cannot produce the type of crosstab tables that GL wants in SPSS, but there is an R solution - http://rpubs.com/stevepowell99/floating-css allows a neat Rmarkdown version of the TOC as a navigation pane like the SPSS output. 
-* `N153` - landownership "0 - 5","5 to 10" and "over 10" 
-* `N154` - age groups 10 years. 
-
-* Finished first Module in R: `R02-WHoleSurvey2ndCut.Rmd`, which has crosstabs of most important vars with age(over/under60), regions(dry, delta) and landownership size (under 5, 5-10, over 10)
-
-
-## Thursday  23.2.2017
-
-1 continute working through `R02`..
-
-* add N= couter in each segment to avoid confusion when it isn't all 600. 
-* `N155` household size grouped - three size groups
-* How about adding a table with means for interval variables? TODO
-* TODO N8: former hh memebrs children and gender.  
-
-
-## Friday  24.2.2017
-Argh! OK, figured out how to reshape the dataset so each person that moved out gets a record, which required learning reqex.. 
-
-* this new datafile `data.movers` is now created in `01.import.R` as well, so available for all further analysis. 
-* a new set of variables are created starting with `m`  in the data.movers data table (980 obs), which can then me summarised back to household level and merged with the original data. 
-* `m1` - son that has moved out
-* `n156` - "N156 - Household has had (at least one) son move out" (based on `m1`)
-* `m2` - daugther that has moved out
-* `n157` - "N157 - Household has had (at least one) daughter move out" (based on `m2`)
-* `m3` - son that has moved out for marriage
-* `n158` - "N158 - Household has had (at least one) son move out to get married" (based on `m3`)
-* `m4` - daughter that has moved out for marriage
-* `n159` - "N159 - Household has had (at least one) daughter move out to get married" (based on `m4`)
-* TODO number of generations
-
-Damn: the original coding swaps Yes/No loads of times, which is annoying for the charts as it swaps which is up and which down. Went back to the spss syntax file to change most of those from 2-1 to 1-0. Bloody nightmare. Left all the q35_a_1 et al. ones, because they are already used in further calculations. Will fix when I move it all to R.. 
-
-* Added new table type for interval variables with mean, min and max. 
-* Added boxplots for interval variables as well.
-* Figured out how to do generation numbers.
-
-## Monday  27.2.2017
-
-Consolidated workflow. See below.
-
-* New variable `N160` Number of generations living in household. [learned that assign has a `pos` argument for use inside functions and creating global variables ;)]
-* This is Module 1 complete. 
-* Remove NAs from the interval variable tables. 
-* **ISSUE** in coding Q24_C_ID - added 88 code for 'other family member as in not in HH. But this messes up the labels.. Need to fix manually. 
-* `N35` gets fixed, also `N36` which depended on it
-* Variables on wheterh they preform certain tasks and if not when did they stop are too fragmented, need to group the years. `N64` to `N68`
-* Finished Module 2
-* Finished Module 3
-* Missing variable total draught animals 
-* New vairable `N161` Number of draught animals both owned and rented
-* machinery variables also need some more consolidating
-* `N161` "Do you own or rent Plough/tiller for use with draught animals?" from Q54_a, a_1, a_2: own, own and rent, rent only, no
-
-
-**Current workflow:**
-
-1. Derive first 152 new vars: 
-
-* Run `\survey\scripts\00-0-new-variables.sps` on `\survey\data\Myanmar Ageing Farmer draft data set.sav`
-
-2. Move to R 01.import, first round of tidying up, saves 
-
-* Run `\survey\scripts\01-Import.R`, which imports `\survey\data\Myanmar Ageing Farmer draft data set.sav` 
-* cleans up
-* Exports `\survey\data\survey.data01.csv` simple .csv table of 770 vars
-* Exports `\survey\data\survey.data01.RData` both `data` (dataframe) and `dataset` (memsic dataset) objects
-
-3. New variables are created in `survey\scripts\02-newvars.R`
-
-* including a reshaped table for all people that had moved
-* in the end the final dataset gets exported as `\survey\data\survey.data02.RData` both `data` (dataframe) and `dataset` (memsic dataset) objects
-* printed list of variables in `survey\reports\SurveyListVariables.pdf`
-* as well as codebook
-
-
+* **ISSUE** twelve pesticide variables have duplicate value labels (16 is the same as 32). That might seem like a minor issue, but it's sloppy. I only noticed in R where uniqueness of categories is checked, so would not have spotted it in .

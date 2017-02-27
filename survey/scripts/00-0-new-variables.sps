@@ -13,6 +13,7 @@ VARIABLE LABELS  N1 'N1 - Number of dificultuies reported'.
 EXECUTE.
 
 RECODE Q7_5$01 Q7_5$02 Q7_5$03 Q7_5$04 Q7_5$05 Q7_5$06 Q7_5$07 Q7_5$08 Q7_5$09 Q7_5$10 Q7_5$11 Q7_5$12 Q7_5$13 Q7_5$14 Q7_5$15 (1=1) (2=0).
+VALUE LABELS Q7_5$01 Q7_5$02 Q7_5$03 Q7_5$04 Q7_5$05 Q7_5$06 Q7_5$07 Q7_5$08 Q7_5$09 Q7_5$10 Q7_5$11 Q7_5$12 Q7_5$13 Q7_5$14 Q7_5$15 1 "Yes" 0 "No".
 EXECUTE.
 
 COMPUTE N2 = sum(Q7_5$01 , Q7_5$02 , Q7_5$03 , Q7_5$04, Q7_5$05 ,Q7_5$06 ,Q7_5$07, Q7_5$08 ,Q7_5$09 ,Q7_5$10 ,Q7_5$11, Q7_5$12 ,Q7_5$13 ,Q7_5$14 ,Q7_5$15).
@@ -154,9 +155,18 @@ Q8_5$12 Q8_5$13 Q8_5$14 Q8_5$15(6).
 VARIABLE LABELS  N29 'N29 - Number of former HH members that have moved out into different t country'.
 EXECUTE.
 
+recode q14 (2 = 0 ) (1 = 1). 
+value labels q14 0 "No" 1 "Yes". 
+
+
 COMPUTE N30 = sum(Q15_A, Q15_B, Q15_C, Q15_D, Q15_F, Q15_G, Q15_H, Q15_I, Q15_J).
 VARIABLE LABELS  N30 'N30 - Number of lenders listed as sources of largest loan in last 12 months'.
 EXECUTE.
+
+
+recode q16 (2 = 0 ) (1 = 1). 
+value labels q16 0 "No" 1 "Yes". 
+
 
 COMPUTE N31=sum(Q17, -Q18).
 VARIABLE LABELS  N31 'N31 - Difference between land ownership and  cultivation'.
@@ -165,6 +175,14 @@ EXECUTE.
 COMPUTE N32=sum(Q17, -Q18, -Q20_A).
 VARIABLE LABELS  N32 'N32 - Difference between land ownership and  cultivation + lease out = this is fallow land'.
 EXECUTE.
+
+
+recode q19 (2 = 0 ) (1 = 1). 
+value labels q19 0 "No" 1 "Yes". 
+
+
+recode q21 q25 q27 q31 (2 = 0 ) (1 = 1). 
+value labels q21 q25 q27 q31 0 "No" 1 "Yes". 
 
 COMPUTE N33=sum(Q22, -Q23).
 VARIABLE LABELS  N33 'N33 - Difference between land renting and cultivating rented land (= fallow rented land)'.
@@ -229,7 +247,7 @@ COMPUTE N37 = min(n34, n35).
 /BARCHART FREQ
 /ORDER=ANALYSIS.
 
-VARIABLE LABELS N36 'N36 - Relationship of other family member that is co- or solo farm manager (Based on Q24).' .
+VARIABLE LABELS N36 'N36 - Relationship of other family member that is co- or solo farm manager (Either N34 or N35).' .
 exe.
 
 APPLY DICTIONARY from *
@@ -429,6 +447,11 @@ VALUE LABELS N57  1 'Sold because of debt' 2 'Sold because too large to manage' 
 
 variable labels N57 "N57 - Reason for decrease in land size".
 
+
+RECODE Q32_1_2 Q32_1_3 Q32_1_4(1=1) (2=0) (99 = 99).
+value labels Q32_1_2 Q32_1_3 Q32_1_4 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+
 count N58 = Q32_1_2 Q32_1_3 Q32_1_4 (1). 
 variable labels N58 "N58 - temporary var". 
 if  N58 = 1 and Q32_1_2 = 1 N59 = 1.
@@ -442,6 +465,10 @@ exe.
 value labels N59 1 'for subsistence only' 2 'for animal feed only' 3 'for sale only' 4 'for subsistence and own animal feed'
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
 variable label N59 'N59 - Production type for first crop'. 
+
+RECODE Q32_2_2 Q32_2_3 Q32_2_4(1=1) (2=0) (99 = 99).
+value labels Q32_2_2 Q32_2_3 Q32_2_4 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
 
 count N60 = Q32_2_2 Q32_2_3 Q32_2_4 (1). 
 variable labels N60 "N60 - temporary var". 
@@ -457,6 +484,11 @@ value labels N61 1 'for subsistence only' 2 'for animal feed only' 3 'for sale o
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
 variable label N61 'N61 - Production type for second crop'. 
 
+
+RECODE Q32_3_2 Q32_3_3 Q32_3_4(1=1) (2=0) (99 = 99).
+value labels Q32_3_2 Q32_3_3 Q32_3_4 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+
 count N62 = Q32_3_2 Q32_3_3 Q32_3_4 (1). 
 variable labels N62 "N62 - temporary var". 
 if  N62 = 1 and Q32_3_2 = 1 N63 = 1.
@@ -470,6 +502,11 @@ exe.
 value labels N63 1 'for subsistence only' 2 'for animal feed only' 3 'for sale only' 4 'for subsistence and own animal feed'
 5 'for subsistence and for sale' 6'for animal feed and for sale' 7 'for subsistence, animal feed and for sale'. 
 variable label N63 'N63 - Production type for third crop'. 
+
+RECODE Q33_a Q33_b Q33_c Q33_d Q33_e (1=1) (2=0) (99 = 99).
+value labels Q33_a Q33_b Q33_c Q33_d Q33_e 0 'No' 1 'Yes' 99 "Don't know".
+EXECUTE.
+
 
 compute n64 = q33_a1.
 if Q33_A = 1 N64 = 0.
@@ -1281,7 +1318,7 @@ exe.
 compute N132 = q40_I.
 if N132 = 1 N132 = N132 + Q40_I_OT_SP.
 exe.
-variable labels n132 'N132 - fQ40.I. Tell me which of those sources of your knowledge for faming are? {Other Specify} '.
+variable labels n132 'N132 - fQ40.I. Tell me which of those sources of your knowledge for faming are? {Others}'.
 value labels N132 0 "None" 2 "self experience in farm work" 3 "Agricultural literature, information, Education and comunication materials".
 exe.
 

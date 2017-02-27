@@ -1,0 +1,341 @@
+---
+title: "Likert scales on technology and mechainisation"
+author: "mz"
+date: "21.2.2017"
+output:
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+  word_document:
+    reference_docx: StyleReference.docx
+    toc: yes
+    toc_depth: '3'
+html_document: default
+word_document html_document: default
+---
+
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+library(lattice)
+require(grid)
+require(latticeExtra)
+require(HH)
+
+load("../data/survey.dataframe.RData")
+# n151 - older than 60
+data %>% mutate(n151 = factor(ifelse(q2<60, 0, 1), labels = c("Under 60", "Over 60"))) ->  data
+levels(data$n151) <- c("Under 60", "Over 60")
+```
+
+# Question 57: the effects of the use of agricultural machinery 
+
+## Likert scale for all four subquestions (N=600)
+
+
+```{r, echo = FALSE}
+sgbar.likert <- prop.table(table(data$q57a))*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q57b))*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q57c))*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q57d))*100)
+
+rownames(sgbar.likert) <- c("Higher yield", "Ease of farming", "Soil quality", "Crop quality")
+
+
+likert(as.matrix(sgbar.likert),
+       main=list(label="Do you think using agricultural machinery can lead to:", cex=0.75),
+       xlab= list("Percentage", cex = 0.75))
+
+```
+
+## Under/over age 60 on Q57
+
+### Under/over age 60 on Q57.a (higher yields)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q57a),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to higher yields", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q57.b (ease of farming)
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q57b),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to incresed ease of farming", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q57.c (soil quality)
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q57c),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to incresed soil quality", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q57.d (crop quality)
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q57d),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to incresed crop quality", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## Regional variation on Q57
+
+### Regional variation on Q57.a (higher yields)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q57a),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to higher yields", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q57.b (ease of farming)
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q57b),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to incresed ease of farming", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q57.c (soil quality)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q57c),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to incresed soil quality", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q57.d (crop quality)
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q57d),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think using agricultural machinery can lead to incresed crop quality", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+# Question 59: the limits on purcgasing of agricultural machinery 
+
+## Likert scale for all five subquestions (N=600)
+
+
+```{r, echo = FALSE}
+sgbar.likert <- prop.table(table(data$q59a))*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q59b))*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q59c))*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q59d))*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q59e))*100)
+rownames(sgbar.likert) <- c("Insuff. knowledge/info", "No enough money", "Limited access to credit", "Fear of failure", "Field characteristics")
+
+
+likert(as.matrix(sgbar.likert),
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by:", cex=0.75),
+       xlab= list("Percentage", cex = 0.75))
+
+```
+
+## Under/over age 60 on Q59
+
+### Under/over age 60 on Q59.a (not enough knowledge/information)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q59a),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by insufficient knowledge", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q59.b (not enough money)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q59b),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by not enough money", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q59.c (limited access to credit)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q59c),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by limited access to credit", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q59.d (fear of failure)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q59d),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by fear of failure", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q59.e (field characteristics)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q59e),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by field characteristics", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## Regional variation on Q59
+
+### Regional variation0 on Q59.a (not enough knowledge/information)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q59a),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by insufficient knowledge", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q59.b (not enough money)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q59b),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by not enough money", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q59.c (limited access to credit)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q59c),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by limited access to credit", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q59.d (fear of failure)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q59d),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by fear of failure", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q59.e (field characteristics)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q59e),1)*100
+
+likert(sgbar.likert,
+       main=list(label="Do you think your ability to purchase agricultural machinery is limited by field characteristics", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+# Question 61: social norm/pressure on ownership of machinery
+
+## Likert scale for all two subquestions (N=600)
+
+
+```{r, echo = FALSE}
+sgbar.likert <- prop.table(table(data$q61a))*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$q61b))*100)
+rownames(sgbar.likert) <- c("Neighbouring farmers", "Household members")
+
+
+likert(as.matrix(sgbar.likert),
+       main=list(label="How much is your ownership of machinery appreciated by your:", cex=0.75),
+       xlab= list("Percentage", cex = 0.75))
+
+```
+
+
+
+## Under/over age 60 on Q61
+
+### Under/over age 60 on Q61.a (Neighbouring farmers)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q61a),1)*100
+
+likert(sgbar.likert,
+       main=list(label="How much is your ownership of machinery appreciated by your neighbouring farmers", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Under/over age 60 on Q61.b (household members)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$n151,data$q61b),1)*100
+
+likert(sgbar.likert,
+       main=list(label="How much is your ownership of machinery appreciated by your household members", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## Regional variation on Q61
+
+### Regional variation on Q61.a (Neighbouring farmers)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q61a),1)*100
+
+likert(sgbar.likert,
+       main=list(label="How much is your ownership of machinery appreciated by your neighbouring farmers", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+### Regional variation on Q61.b (household members)
+
+```{r, echo = FALSE, fig.height = 3.5}
+sgbar.likert <- prop.table(table(data$id1,data$q61b),1)*100
+
+likert(sgbar.likert,
+       main=list(label="How much is your ownership of machinery appreciated by your household members", cex=0.75),
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
