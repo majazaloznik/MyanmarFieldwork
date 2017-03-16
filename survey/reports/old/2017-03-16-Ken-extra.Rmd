@@ -1,0 +1,25 @@
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+load("../data/survey.data02.RData")
+```
+
+### Number of respondents by region and age group
+
+```{r, echo = FALSE}
+kable(table(data$n151, data$n152))
+```
+
+### Proportion of respondents by region and age group
+
+```{r, echo = FALSE}
+kable(prop.table(table(data$n151, data$n152)),digits = 2)
+```
+
+### Mean age of respondednt by region
+
+```{r, echo = FALSE}
+group_by(data, n152) %>% 
+  summarise(`Mean Age`= mean(q2)) -> df
+kable(df, digits = 2)
+```
