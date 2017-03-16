@@ -2,17 +2,16 @@
 title: "Myanmanr Farming Survey - MODULE 2 - Third Cut"
 tables: yes
 output:
+  word_document:
+    toc: yes
   html_document:
     css: custom.css
     toc: yes
-  word_document:
-    toc: yes
-    
 ---
   
   
 ```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
-source("MyFunctions.R")
+source("R03-MyFunctions.R")
 ```
 
 # Land

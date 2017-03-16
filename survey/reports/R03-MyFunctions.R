@@ -4,6 +4,10 @@ library(xtable)
 library(knitr)
 library(RColorBrewer)
 library(memisc)
+library(lattice)
+require(grid)
+require(latticeExtra)
+require(HH)
 load("../data/survey.data02.RData")
 #load("survey/data/survey.data02.RData")
 
@@ -72,3 +76,23 @@ Fun03BarplotInt <- function(var) {
 }
 
 
+## Likert function
+
+
+Fun03Likert <- function(var) {
+  x <- table(data$n151, data$n152, var)
+  x <- rbind(x[, 1, ], x[, 2, ])
+  x <- prop.table(x, 1)*100
+  rownames(x) <- NULL
+  c("60 or over", "Under 60")
+  rownames(x) <-
+    c(paste(rep("Dry zone - ", 2), c("60 or over", "Under 60")),
+      paste(rep("Delta zone - ", 2), c("60 or over", "Under 60")))
+  
+  likert(
+    x,
+    main = "",
+    xlab = list("Percentage", cex = 0.75),
+    cex.main = 2
+  )
+}
