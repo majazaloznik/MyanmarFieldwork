@@ -1,0 +1,578 @@
+---
+title: "Myanmanr Farming Survey - MODULE 1 - Third Cut"
+tables: yes
+output:
+  html_document:
+    css: custom.css
+    toc: yes
+  word_document:
+    toc: yes
+---
+  
+  
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+library(tidyr)
+library(xtable)
+library(knitr)
+library(RColorBrewer)
+library(memisc)
+load("../data/survey.data02.RData")
+
+## FUN1 categorical variables
+###############################################################################
+## TABLES
+
+FunR03Table <- function(var) {
+  var %>% table(Var = ., Age.group = data$n151 , Region = data$n152) %>% 
+    prop.table(c(2,3)) 
+  }
+
+Fun03PrintTab <- function(var) {
+  tabz <- FunR03Table(var)
+  cbind(`Dry zone - 60 or over (%)` = tabz[,1,1], 
+        `Dry zone - under 60 (%)` = tabz[,2,1],
+        `Delta zone - 60 or over (%)` = tabz[,1,2], 
+        `Delta zone - under 60 (%)` = tabz[,2,2],
+        `Total sample (%)` = prop.table(table(var))) -> tab.print
+  # remove row where there are no cases (otherwise a few errors..)
+  row_sub = apply(tab.print, 1, function(row) !all(row == 0 ))
+  tab.print <- tab.print[row_sub,]
+  return(list(kable(tab.print, digits = 2, booktabs = TRUE, padding = 10),
+         rownames(tab.print)))
+}
+
+y <-  c(table(data$n151, data$n152))
+
+Fun03Barplot <- function(var) {
+  par(mfrow = c(2,1), xpd = TRUE)
+  par(mar = c(3,2,1,9))
+  barplot(FunR03Table(var)[,,1], horiz = TRUE, 
+          main = "Dry zone",
+          col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(FunR03Table(var))),
+          legend.text = Fun03PrintTab(var)[[2]], args.legend = list( x = 1.01,y = 300, xjust = 0),
+          width = y[1:2])
+  barplot(FunR03Table(var)[,,2], horiz = TRUE,
+          main = "Delta",
+          col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(FunR03Table(var))),
+          width = y[3:4])
+}
+
+
+## interval variables
+###############################################################################
+
+FunR03TableInt <- function(var) {
+  data %>%
+    group_by(n152, n151) %>%
+    summarise_each(funs(min, mean, max), get(var)) %>%
+    unite(gr, n152, n151, sep = " - ") -> x1
+  tab <- t(x1[2:4])
+  tab <- cbind(tab, t(summarise_each(data, funs(min, mean, max), get(var))))
+  colnames(tab) <- c(x1[[1]], "Total")
+  tab
+}
+
+Fun03PrintTabInt<- function(var){
+  kable(FunR03TableInt(var), digits = 2, booktabs = TRUE, padding = 10)
+}
+
+
+
+
+Fun03BarplotInt <- function(var) {
+  par(mar = c(5,1.5,1,.1), xpd = TRUE)
+  boxplot(get(var) ~ n151 + n152, data, cex.axis= 0.6)
+  par(mfrow = c(1,1))
+}
+
+
+```
+
+
+
+
+# Gender-Age-Education-Civil-Status-Health
+
+
+## `r description(I(dataset$q1))` 
+
+[N = `r sum(!is.na(data$q1))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q1
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+
+```
+
+
+## `r description(I(dataset$n154))`
+
+[N = `r sum(!is.na(data$n154))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n154
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q3))`
+
+[N = `r sum(!is.na(data$q3))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q3
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q4))`
+
+[N = `r sum(!is.na(data$q4))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q4
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q5))`
+
+[N = `r sum(!is.na(data$q5))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q5
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+
+## `r description(I(dataset$q6_a))`
+[N = `r sum(!is.na(data$q6_a))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_a
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_b))`
+[N = `r sum(!is.na(data$q6_b))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_b
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_c))`
+[N = `r sum(!is.na(data$q6_c))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_c
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_d))`
+[N = `r sum(!is.na(data$q6_d))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_d
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_e))`
+[N = `r sum(!is.na(data$q6_e))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_e
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_f))`
+[N = `r sum(!is.na(data$q6_f))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_f
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_g))`
+[N = `r sum(!is.na(data$q6_g))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_g
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q6_h))`
+[N = `r sum(!is.na(data$q6_h))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q6_h
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$n1))`
+[N = `r sum(!is.na(data$n1))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n1
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+# Households
+
+## `r description(I(dataset$n155))`
+[N = `r sum(!is.na(data$n155))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n155
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$n160))`
+[N = `r sum(!is.na(data$n160))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n160
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$n2))`
+[N = `r sum(!is.na(data$n2))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n2
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n2"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n3))`
+[N = `r sum(!is.na(data$n3))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n3
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n3"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+
+## `r description(I(dataset$n4))`
+[N = `r sum(!is.na(data$n4))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n4
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n4"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n5))`
+[N = `r sum(!is.na(data$n5))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n5
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n5"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n6))`
+[N = `r sum(!is.na(data$n6))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n6
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n6"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n8))`**
+[N = `r sum(!is.na(data$n8))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n8
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n8"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n16))`**
+[N = `r sum(!is.na(data$n16))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n16
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n16"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n17))`**
+[N = `r sum(!is.na(data$n17))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n17
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+## `r description(I(dataset$n156))`
+[N = `r sum(!is.na(data$n156))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n17
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n17"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n157))`
+[N = `r sum(!is.na(data$n157))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n157
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$n18))`
+[N = `r sum(!is.na(data$n18))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n18
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n18"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n19))`
+[N = `r sum(!is.na(data$n19))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n19
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n19"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n20))`
+[N = `r sum(!is.na(data$n20))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n20
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n20"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n21))`
+[N = `r sum(!is.na(data$n21))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n21
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+## `r description(I(dataset$n23))`
+[N = `r sum(!is.na(data$n23))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n23
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+
+## `r description(I(dataset$n158))`
+[N = `r sum(!is.na(data$n158))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n158
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$n159))`
+[N = `r sum(!is.na(data$n159))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n159
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+
+## `r description(I(dataset$n24))`
+[N = `r sum(!is.na(data$n24))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n24
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+## `r description(I(dataset$n25))`
+[N = `r sum(!is.na(data$n25))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n25
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n25"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n26))`
+[N = `r sum(!is.na(data$n26))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n26
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n26"
+Fun03PrintTabInt(var)
+```
+
+
+## `r description(I(dataset$n27))`
+[N = `r sum(!is.na(data$n27))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n27
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n27"
+Fun03PrintTabInt(var)
+```
+
+## `r description(I(dataset$n28))`
+[N = `r sum(!is.na(data$n28))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n28
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n28"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## `r description(I(dataset$n29))`
+[N = `r sum(!is.na(data$n29))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n29
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+```{r results='asis', echo=FALSE, fig.height=3}
+var <- "n29"
+Fun03PrintTabInt(var)
+```
+
+## number of generations.. **
+
+#Income
+
+## `r description(I(dataset$q9))`
+[N = `r sum(!is.na(data$q9))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q9
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q10))`
+[N = `r sum(!is.na(data$q10))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q10
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q11))`
+[N = `r sum(!is.na(data$q11))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q11
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q12))`
+[N = `r sum(!is.na(data$q12))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q12
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q13))`
+[N = `r sum(!is.na(data$q13))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q13
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+## `r description(I(dataset$q14))`
+[N = `r sum(!is.na(data$q14))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q14
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+## `r description(I(dataset$q15_h))`
+[N = `r sum(!is.na(data$q15_h))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q15_h
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+
+## `r description(I(dataset$n30))`
+[N = `r sum(!is.na(data$n30))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n30
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
