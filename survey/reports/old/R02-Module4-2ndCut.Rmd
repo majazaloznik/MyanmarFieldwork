@@ -1,0 +1,854 @@
+---
+title: "Myanmanr Farming Survey - MODULE 4 - Second Cut"
+tables: yes
+output:
+  word_document:
+    toc: yes
+  html_document:
+    css: custom.css
+    toc: yes
+---
+  
+  
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+library(xtable)
+library(knitr)
+library(RColorBrewer)
+library(memisc)
+library(lattice)
+require(grid)
+require(latticeExtra)
+require(HH)
+
+load("../data/survey.data02.RData")
+
+
+## merge together three tables - age, region and land ownership.
+## also drop categories that don't have any cases 
+FunR02Table <- function(var) {
+  x <-  cbind(table(var ,data$n151 ),
+              table(var ,data$n152 ),
+              table(var ,data$n153 ))
+  row_sub = apply(x, 1, function(row) !all(row == 0 ))
+  x <- x[row_sub,]
+  prop.table(x, 2)*100
+}
+
+y <-  c(table(data$n151 ),
+        table(data$n152 ),
+        table(data$n153 ))
+
+Fun02Barplot <- function(var) {
+  par(mar = c(10,2,1,1), xpd = TRUE)
+  barplot(FunR02Table(var), width = y, space = c(.5,.5,1,.5,1,.5,.5),
+          col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(FunR02Table(var))),
+          legend.text = rownames(FunR02Table(var)), args.legend = list(y = -15))
+}
+
+Fun02PrintTab<- function(var){
+  kable(FunR02Table(var), digits = 2, booktabs = TRUE, padding = 10)
+}
+
+
+
+FunR02TableInt<- function(var){
+  data %>% 
+    group_by(n151) %>%
+    summarise_each(funs(min(., na.rm = TRUE), mean(., na.rm = TRUE), max(., na.rm = TRUE)), get(var)) %>%
+    dplyr::rename( var = n151 ) -> x1
+  
+  data %>% 
+    group_by(n152) %>%
+    summarise_each(funs(min(., na.rm = TRUE), mean(., na.rm = TRUE), max(., na.rm = TRUE)), get(var)) %>%
+    dplyr::rename( var = n152 ) -> x2
+  
+  data %>% 
+    group_by(n153) %>%
+    summarise_each(funs(min(., na.rm = TRUE), mean(., na.rm = TRUE), max(., na.rm = TRUE)), get(var)) %>%
+    dplyr::rename( var = n153 ) -> x3
+  
+  tab <- t(rbind(x1,x2,x3)[2:4])
+  colnames(tab) <- names(y)
+  tab
+}
+
+Fun02PrintTabInt<- function(var){
+  kable(FunR02TableInt(var), digits = 2, booktabs = TRUE, padding = 10)
+}
+
+Fun02BarplotInt <- function(var) {
+  par(mar = c(5,2,1,1), xpd = TRUE)
+  par(mfrow = c(1,3))
+  boxplot(get(var) ~ n151, data)
+  boxplot(get(var) ~ n152, data)
+  boxplot(get(var) ~ n153, data)
+  par(mfrow = c(1,1))
+}
+
+
+
+
+```
+
+# Resources
+
+## `r description(I(dataset$q53_a))` 
+[N = `r sum(!is.na(data$q53_a))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q53_a
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+
+## `r description(I(dataset$q53_b))` 
+[N = `r sum(!is.na(data$q53_b))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q53_b
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n161))`
+[N = `r sum(!is.na(data$n161))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n161"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+
+## `r description(I(dataset$q54_a))` 
+[N = `r sum(!is.na(data$q54_a))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q54_a
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+
+## `r description(I(dataset$n162))` 
+[N = `r sum(!is.na(data$n162))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n162
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+
+## `r description(I(dataset$n163))`
+[N = `r sum(!is.na(data$n163))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n163"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+## `r description(I(dataset$n164))` 
+[N = `r sum(!is.na(data$n164))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n164
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n165))`
+[N = `r sum(!is.na(data$n165))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n165"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+## `r description(I(dataset$n166))` 
+[N = `r sum(!is.na(data$n166))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n166
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n167))`
+[N = `r sum(!is.na(data$n167))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n167"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+## `r description(I(dataset$n168))` 
+[N = `r sum(!is.na(data$n168))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n168
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n169))`
+[N = `r sum(!is.na(data$n169))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n169"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+
+## `r description(I(dataset$n170))` 
+[N = `r sum(!is.na(data$n170))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n170
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n171))`
+[N = `r sum(!is.na(data$n171))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n171"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+
+## `r description(I(dataset$n172))` 
+[N = `r sum(!is.na(data$n172))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n172
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n173))`
+[N = `r sum(!is.na(data$n173))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n173"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+
+## `r description(I(dataset$n174))` 
+[N = `r sum(!is.na(data$n174))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n174
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n175))`
+[N = `r sum(!is.na(data$n175))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n175"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+
+## `r description(I(dataset$n176))`
+[N = `r sum(!is.na(data$n176))`] 
+```{r results='asis', echo=FALSE, fig.height=4}
+var <- "n176"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+# Plans
+
+## `r description(I(dataset$q55))` 
+[N = `r sum(!is.na(data$q55))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q55
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+
+## `r description(I(dataset$q56_a))` 
+[N = `r sum(!is.na(data$q56_a))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q56_a
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$q56_b))` 
+[N = `r sum(!is.na(data$q56_b))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q56_b
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$q56_c))` 
+[N = `r sum(!is.na(data$q56_c))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q56_c
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+## `r description(I(dataset$q56_d))` 
+[N = `r sum(!is.na(data$q56_d))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q56_d
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+## `r description(I(dataset$q56_e))` 
+[N = `r sum(!is.na(data$q56_e))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q56_e
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+## `r description(I(dataset$q56_f))` 
+[N = `r sum(!is.na(data$q56_f))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q56_f
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$n150))` 
+[N = `r sum(!is.na(data$n150))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$n150
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+
+
+
+
+## `r description(I(dataset$q57a))` 
+[N = `r sum(!is.na(data$q57a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q57a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q57a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q57a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q57b))` 
+[N = `r sum(!is.na(data$q57b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q57b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q57b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q57b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+
+## `r description(I(dataset$q57c))` 
+[N = `r sum(!is.na(data$q57c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q57c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q57c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q57c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q57d))` 
+[N = `r sum(!is.na(data$q57d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q57d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q57d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q57d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q58a))` 
+[N = `r sum(!is.na(data$q58a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q58a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q58a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q58a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q58b))` 
+[N = `r sum(!is.na(data$q58b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q58b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q58b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q58b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q58c))` 
+[N = `r sum(!is.na(data$q58c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q58c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q58c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q58c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q58d))` 
+[N = `r sum(!is.na(data$q58d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q58d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q58d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q58d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q59a))` 
+[N = `r sum(!is.na(data$q59a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q59a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q59a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q59a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q59b))` 
+[N = `r sum(!is.na(data$q59b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q59b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q59b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q59b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q59c))` 
+[N = `r sum(!is.na(data$q59c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q59c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q59c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q59c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q59d))` 
+[N = `r sum(!is.na(data$q59d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q59d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q59d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q59d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q59e))` 
+[N = `r sum(!is.na(data$q59e))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q59e),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q59e),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q59e),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q60a))` 
+[N = `r sum(!is.na(data$q60a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q60a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q60a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q60a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q60b))` 
+[N = `r sum(!is.na(data$q60b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q60b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q60b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q60b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q60c))` 
+[N = `r sum(!is.na(data$q60c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q60c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q60c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q60c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q60d))` 
+[N = `r sum(!is.na(data$q60d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q60d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q60d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q60d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q60e))` 
+[N = `r sum(!is.na(data$q60e))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q60e),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q60e),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q60e),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q61a))` 
+[N = `r sum(!is.na(data$q61a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q61a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q61a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q61a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q61b))` 
+[N = `r sum(!is.na(data$q61b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q61b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q61b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q61b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q62a))` 
+[N = `r sum(!is.na(data$q62a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q62a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q62a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q62a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+
+## `r description(I(dataset$q62b))` 
+[N = `r sum(!is.na(data$q62b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q62b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q62b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q62b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+# Pesticides
+
+## `r description(I(dataset$module_4_2))` 
+[N = `r sum(!is.na(data$module_4_2))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$module_4_2
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+## `r description(I(dataset$q64_a))` 
+[N = `r sum(!is.na(data$q64_a))`] 
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q64_a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q64_a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q64_a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+
+## `r description(I(dataset$q64_b))` 
+[N = `r sum(!is.na(data$q64_b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q64_b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q64_b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q64_b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q64_c))` 
+[N = `r sum(!is.na(data$q64_c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q64_c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q64_c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q64_c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q64_d))` 
+[N = `r sum(!is.na(data$q64_d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q64_d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q64_d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q64_d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q65_a))` 
+[N = `r sum(!is.na(data$q65_a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q65_a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q65_a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q65_a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q65_b))` 
+[N = `r sum(!is.na(data$q65_b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q65_b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q65_b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q65_b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q65_c))` 
+[N = `r sum(!is.na(data$q65_c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q65_c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q65_c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q65_c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q65_d))` 
+[N = `r sum(!is.na(data$q65_d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q65_d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q65_d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q65_d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q66_a))` 
+[N = `r sum(!is.na(data$q66_a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q66_a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q66_a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q66_a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q66_b))` 
+[N = `r sum(!is.na(data$q66_b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q66_b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q66_b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q66_b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q66_c))` 
+[N = `r sum(!is.na(data$q66_c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q66_c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q66_c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q66_c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q66_d))` 
+[N = `r sum(!is.na(data$q66_d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q66_d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q66_d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q66_d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q67_a))` 
+[N = `r sum(!is.na(data$q67_a))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q67_a),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q67_a),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q67_a),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q67_b))` 
+[N = `r sum(!is.na(data$q67_b))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q67_b),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q67_b),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q67_b),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q67_c))` 
+[N = `r sum(!is.na(data$q67_c))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q67_c),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q67_c),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q67_c),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q67_d))` 
+[N = `r sum(!is.na(data$q67_d))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q67_d),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q67_d),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q67_d),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q68))` 
+[N = `r sum(!is.na(data$q68))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q68),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q68),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q68),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```
+
+## `r description(I(dataset$q69))` 
+[N = `r sum(!is.na(data$q69))`] 
+
+```{r, echo = FALSE, fig.height = 6}
+sgbar.likert <- prop.table(table(data$n151,data$q69),1)*100
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n152,data$q69),1)*100)
+sgbar.likert<- rbind(sgbar.likert, prop.table(table(data$n153,data$q69),1)*100)
+likert(sgbar.likert, main = "",
+       xlab= list("Percentage", cex = 0.75),
+       cex.main = 2)
+```

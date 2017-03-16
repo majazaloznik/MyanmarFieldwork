@@ -1,0 +1,164 @@
+---
+  title: "Myanmar Census Analysis - Outline of Variables Available"
+author: "mz"
+geometry: margin=0.5in
+output:
+  pdf_document:
+  number_sections: yes
+toc: yes
+toc_depth: 3
+word_document:
+  fig_caption: yes
+fig_height: 4.5
+fig_width: 5
+reference_docx: StyleReference.docx
+toc: yes
+classoption: landscape
+---
+  # Varible Lists
+  
+  ## List of variables as provided by the census office
+  
+  As a rule of thumb, variables names beginning with "h" are household level, and ones begining with "p" are individual level ones. 
+
+ID|Variable Code | Name, description | notes  |
+  --|-----------------------|------------------------------------|--------------------|
+  1| batch_state_region| 15 regions:  Kachin, Kayah, Kayin, Chin, Sagaing, Tanintharyi, Bago, Magway, Mandalay, Mon, Rakhine, Yangon, Shan, Ayeywawady, Nay Pyi Taw ||
+  2| batch_district|||
+  3| batch_township|||
+  4| batch_ward|||
+  5| batch_urban_rural| | |
+  6| batch_ea| | | 
+  7| household_number| | |
+  8 | barcode| | |
+  9 | scanned_date| | |
+  10 | scanner_id| | |
+  11 | batch_number| | |
+  12 | qnh| | |
+  13 |nqh| | |
+  14 |h32_type_residence| 8 -Condominium,	Apartment/Flat,	Bungalow/Brick house,	Semi-pacca house,	Wooden house,	Bamboo	Hut 2 - 3 years,	Hut 1 year,	9
+| |
+  15 |h33_type_ownership| 6 - Owner,	Renter,	Provided free (individually),	Government Quarters,	Private Company Quarters,	Other | |
+  16 |h34_lighting| 8 - Electricity, Kerosene, Candle, Battery, Generator (private), Water mill (private), Solar system/energy, Other| |
+  17 |h35a_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other| |
+  18 |h35b_non_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other | |
+  19 |h36_cooking_fuel| 9 - Electricity, LPG, Kerosene, BioGas, Firewood, Charcoal, Coal, Straw/Grass, Other| |
+  20 |h37_toilet| 7 - Flush, Water seal (Improved pit latrine), Pit (Traditional pit latrine), Bucket (Surface latrine), Other, None | |
+  21 |h38a_roof| 7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
+  22 |h38b_walls|7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
+  23 |h38c_floor| 6 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Tile/Brick/Concrete, Other| |
+  24 |h39a_radio| 2 - Yes, No | |
+  25 |h39b_television| 2 - Yes, No| |
+  26 |h39c_land_line_phone| 2 - Yes, No | |
+  27 |h39d_mobile_phone| 2 - Yes, No| |
+  28 |h39e_computer| 2 - Yes, No| |
+  29 |h39f_internet_at_home| 2 - Yes, No| |
+  30 |h39g_car_truck_van| 2 - Yes, No| |
+  31 |h39h_motorcycle_moped| 2 - Yes, No| |
+  32 |h39i_bicycle| 2 - Yes, No| |
+  33 |h39j_4_wheel_tractor| 2 - Yes, No| |
+  34 |h39k_canoe_boat| 2 - Yes, No| |
+  35 |h39l_motor_boat| 2 - Yes, No| |
+  36 |h39m_cart_bullock| 2 - Yes, No| |
+  37 |h40_number_abroad| | |
+  38 |h41_number_of_deaths| | |
+  39 |number_of_males| | |
+  40 |number_of_females| | |
+  41 |number_of_people| | |
+  42 |form_type| | |
+  43 |per_scan_form_seq| | |
+  44 |qnp| | |
+  45 |nqp| | |
+  46 |p01_person_number| | |
+  47 |p02_line_number |  | |
+  48 |p03_relationship | Relationship to head of HH |     |
+  49 |p04_sex|  Sex |   |
+  50 |p05_age| Age  | up to 98 or older  |
+  51 |p06_marital_status | 5 categories:   Single,	Married, Widowed,	Divorced/Separated,	Renounced |    |
+  52 |p09a_disability_seeing| Disability Seeing |   |
+  53 |p09b_disability_hearing | Disability Hearing |   |
+  54 |p09c_disability_walking| Disability Walking |   |
+  55 |p09d_disability_remembering| Disability Remembering or concentrating |   |
+  56 |p11_birth_township | Township code of place of birth - 000 for here |  |
+  57 |p12_birth_ur  | Place of birth rural or urban |   |
+  58 |p13_usual_res_township  | Township code of usual residence - 000 for here | |
+  59 |p14_usual_res_ur | Q14-Ind-ResRuUr-c2 | Usual residence rural or urban |  |
+  60 |p15_duration_of_residence  | Years in place of usual residence |  |
+  61 |p16_reason_for_movement  | Reason for move here 8 : Employment/Searching employment,	Education	Marriage,	Followed family	Conflict,	Did not move	Other,	9  |   |
+  62 |p17_prev_res_township  | Township of previous place of residence ||
+  63 |p18_prev_res_ur | Previous place of residence rural or urban ||
+  64 |p19_read_and_write   | Can read and write | (age 5 and above) |
+  65 |p20_school_attendance |  Ever/currently attended school |  (age 5 and above)|
+  66 |p21_highest_grade | Highest level of education attained | (age 5 and above) grouping? |
+  67 |p22_activity_status | Activity Status 12: Employee (government),	Employee (private, org),	Employer,	Own account worker,	Contributing family worker,	Sought work,	Did not seek work,	Full time student,	Household work,	Pensioner/retired/elderly person,	Ill/ disabled,	12 | (age 10 and above)  |
+  68 |p23_occupation | Occupation (ILO)| age 10 and above AND Q22 == employed or self-employed |
+  69 |p24_industry  | Industry (ILO) | age 10 and above AND Q22 == employed or self-employed |
+  70 |p25a_children_born_male | Number of children born alive male | (ever married women over 15) |
+  71 |p25b_children_born_female| Number of children born alive female | (ever married women over 15) |
+  72 |p26a_children_in_hh_male | Number of children in HH male | (ever married women over 15) |
+  73 |p26b_children_in_hh_female| Number of children in HH female | (ever married women over 15) |
+  74 |p27a_children_else_male | Number of children elsewhere male | (ever married women over 15) |
+  75 |p27b_children_else_female | Number of children elsewhere female | (ever married women over 15) |
+  76 |p28a_children_died_male | Number of children died male | (ever married women over 15) |
+  77 |p28b_children_died_female | Number of children died female | (ever married women over 15) |
+  78 |p29a_last_live_birth_month | |
+  79 |p29b_last_live_birth_year | |
+  80 |p30_last_live_birth_sex | |
+  81 |p31_last_live_birth_alive | |
+  82 |px32_birth_township_full | |
+  83 |px33_usual_township_full | |
+  84 |px34_previous_township_full | |
+  
+  ## List of variables derived by me:
+  
+  
+  ID | Variable Code | description | level | derived from  |
+  --|--------------------------|-----------------------------------|-------|-----------------|
+  m01 | number_of_people_bound | Number of people in hh up to 14, then "15 +" | hh | number_of_people
+m02 | HH_ID | unique HH ID | hh | 1,2,3,4,6,7|
+  m03 | relationship_generation |  generation relative to HoH |ind | p03_relationship | 
+  m04 | unique_generations | number of generations in HH | hh | relationship_generation, HH_ID|
+  m05 | sex_head | gender of head of HH | hh | p04_sex, HH_ID|
+  m06 | age_head | age of head od HH | hh | p05_age, HH_ID|
+  m07 | marital_status_head | marital status of Jead of HH | hh | p06_marital_status, HH_ID|
+  m08 | p05_age_binned | age in five year categories | ind | p05_age |
+  m09 | p11_birth_township_c2 | born in this township or elswhere (dichotomous) | ind | p11_birth_township|
+  m10 | p15_duration_of_residence_5 | duration of residence in give year categories | ind | p15_duration_of_residence|
+  m12 | p17_prev_res_township_c2 | previous residence in this township or elswhere (dichotomous) | ind | p17_prev_res_township|
+  m13 | p25_children_born_bound | total children born, up to 10, then 11+ | ind (f+15) | p25_children_born_male, p25_children_born_female|
+  m14 | p25a_children_born_male_bound | total boys born, up to 10, then 11+ | ind (f+15) | p25a_children_born_male|
+  m15 | p25b_children_born_female_bound | total girls born, up tp 10, then 11+ | ind (f+15) | p25b_children_born_female|
+  m16 | p26_children_in_hh_bound | total children still in household, up to 10, then 11+ | ind (f+15) | p26a_children_in_hh_male, p26b_children_in_hh_female|
+  m17 | p26a_children_in_hh_male_bound | total boys still in household, up to 10, then 11+ | ind (f+15) | p26a_children_in_hh_male|
+  m18 | p26b_children_in_hh_female_bound | total girls still in household, up tp 10, then 11+ | ind (f+15) | p26b_children_in_hh_female|
+  m19 | p27_children_else_bound | total children living elsewhere, up to 10, then 11+ | ind (f+15) | p27a_children_else_male, p27b_children_else_female|
+  m20 | p27a_children_else_male_bound | total boys living elsewhere, up to 10, then 11+ | ind (f+15) | p27a_children_else_male|
+  m21 | p27b_children_else_female_bound | total girls still in household, up tp 10, then 11+ | ind (f+15) | p27b_children_else_female |
+  m22 | p28_children_died_bound | total children died, up to 10, then 11+ | ind (f+15) | p28a_children_died_male, p28b_children_died_female |
+  m23 | p28a_children_died_male_bound | total boys dead, up to 10, then 11+ | ind (f+15) | p28a_children_died_male|
+  m24 | p28b_children_died_female_bound | total girls dead, up tp 10, then 11+ | ind (f+15) | p28b_children_died_female |
+  m25 | p09_disablity_sum | sum of all four disabilities, max 12| ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
+  m26 | p09_disablity_rescaled_sum | sum of all four disabilities rescaled , max 8|ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
+  m27 | p09_disablity_dummy_sum | sum of all four disabilities as dummies , max 4 |ind | p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering|
+  m28 | p21_highest_grade_c7| recategorised education into 7 cats. | ind |  p21_highest_grade |
+  m29 | p23_occupation_binned | Occupation top level 10 categories | ind | p23_occupation |
+  m30 | SON_cores | At least one son coresident | hh | p03_relationship, p04_sex, HH_ID|
+  m31 | DAUGTER_cores | At least one daughter coresident | hh | p03_relationship, p04_sex, HH_ID |
+  m32 | HH_Type_cores | 0 'No cores children' 1 'Only sons coresident' 2 'Only daughters coresident' 3 'Both sons and daughters coresident' | hh | SON_cores,HH_Type_cores |
+  m33 | FarmingHH_F_HoH | Household where HoH is in skilled agricultural occupation and not an employee | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID   |
+  m34 | FarmingHH_F_HoH_Sp | Household where HoH or spouse is in skilled agricultural occupation and not an employee | hh  | p23_occupation, p03_relationship, p22_activity_status, HH_ID   |
+  m35 | FarmingHH_F_Any | Household where any relative is in skilled agricultural occupation and not an employee | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID   |
+  m36 | Over60_HoH | Household with HoH over 60 years old | hh | p03_relationship, p05_age, HH_ID|
+  m37 | HH_parents_cores | At least one parent of HoH is coresiding | hh | p03_relationship,  HH_ID|
+  m38 | HH_Type_HoH | Using [*m33*] definition of farming HH (HoH only) - four types of HH: 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores' | hh | FarmingHH_F_HoH, HH_ID, Over60_HoH|
+  m39 | FarmingHH_HoH_Sp  | Using [*m34*] definition of farming HH (HoH or spouse)- four types of HH: 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores' | hh | FarmingHH_F_HoH_Sp, HH_ID, Over60_HoH|
+  m40 | FarmingHH_Any  | Using [*m35*] definition of farming HH (any relative)- four types of HH: 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores' | hh | FarmingHH_F_Any, HH_ID, Over60_HoH|
+  m41 | HH_N_Avail_Labour_M   | number of males in HH available for farming labour - not HoH | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID, p04_sex |
+  m42 | HH_N_Avail_Labour_F   | number of females in HH available for farming labour - not HoH | hh | p23_occupation, p03_relationship, p22_activity_status, HH_ID, p04_sex |
+  m43 | HH_N_Avail_Labour | total number of people in HH available for farming labour - not HoH | hh | HH_N_Avail_Labour_M, HH_N_Avail_Labour_F |
+  m44 | HH_No_Vehicle | Does the HH own at least one motor vehicke (car, truck, van, motorcycle, moped and/or wheel tractor. ) |
+  m45 | p05_age_c2 | Age - two groups under/over 60 years: 1 '15 - 59' 2 '60+' | ind | p05_age |
+  m46 | Mig_type1 | Urban/rural direciton of usual vs previous residence: 0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban' 4 'Rural-Rural'|  ind | p14_usual_res_ur, p18_prev_res_ur |
+  m47 | Mig_type2 |  Urban/rural direciton of usual residence vs birthplace:  0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban' 4 'Rural-Rural'|  ind | p11_birth_township_dummy, p14_usual_res_ur, p12_birth_ur |
+  m48 | p15_duration_of_residence_binned  | 9 categories: 1yr, 2yrs, 3-5 yrs, 6-10, 11-20, 21-30, 31-40, 41-50, over 50 | ind | p15_duration_of_residence  |
+  
