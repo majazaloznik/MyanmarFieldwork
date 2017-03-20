@@ -1,0 +1,30 @@
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+library(vcd)
+load("../data/survey.data02.RData")
+source("R03-MyFunctions.R")
+```
+
+## Ken 17.3.17
+
+### Household size (categories) and Income category
+
+!! Careful with this, the household income here is not standardized by household size. 
+That will take me longer if you want it, because:
+
+1. it is not necessarily obvious how to standardize (divide by HH size, or use more complex system, where e.g. children are 0.5 etc)
+
+2. we have an income category, not a value. Which means you have to take presumably the middle value of the category when you divide by HH size, but then that is not useful for the first and last category..
+
+Anyway, I thought I'd plot these out just to see that there is generally no relationship between HH income and HH size (the spaces between the 'tiles' line up quite well, indicating HH size and HH income are pretty independent)
+```{r, echo = FALSE}
+
+x <- table(data$n152,data$q12, data$n155)
+names(dimnames(x)) <- c("Region", "Income", "HH size")
+#dimnames(x)$Income <- letters[1:10]
+mosaic(x[1,,],rot_labels=c(0,90,0,0), just_labels = "right", main = "Dry zone")
+mosaic(x[2,,],rot_labels=c(0,90,0,0), just_labels = "right", main = "Delta")
+
+```
+

@@ -8,8 +8,8 @@ library(lattice)
 require(grid)
 require(latticeExtra)
 require(HH)
-load("../data/survey.data02.RData")
-#load("survey/data/survey.data02.RData")
+#load("../data/survey.data02.RData")
+# load("survey/data/survey.data02.RData")
 
 ## FUN1 categorical variables
 ###############################################################################
@@ -31,22 +31,23 @@ Fun03PrintTab <- function(var) {
   row_sub = apply(tab.print, 1, function(row) !all(row == 0 ))
   tab.print <- tab.print[row_sub,]
   return(list(kable(tab.print, digits = 2, booktabs = TRUE, padding = 10),
-              rownames(tab.print)))
+              rownames(tab.print),
+         tab.print))
 }
 
-y <-  c(table(data$n151, data$n152))
 
 Fun03Barplot <- function(var) {
+  y <-  c(table(data$n151, data$n152))
   par(mfrow = c(2,1), xpd = TRUE)
   par(mar = c(3,2,1,9))
-  barplot(FunR03Table(var)[,,1], horiz = TRUE, 
+  barplot(Fun03PrintTab(var)[[3]][,1:2], horiz = TRUE, 
           main = "Dry zone",
-          col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(FunR03Table(var))),
-          legend.text = Fun03PrintTab(var)[[2]], args.legend = list( x = 1.01,y = 300, xjust = 0),
+          col = colorRampPalette(brewer.pal(11, "Spectral"))(length(Fun03PrintTab(var)[[2]])),
+          legend.text = Fun03PrintTab(var)[[2]], args.legend = list( x = 101.01,y = 300, xjust = 0),
           width = y[1:2])
-  barplot(FunR03Table(var)[,,2], horiz = TRUE,
+  barplot(Fun03PrintTab(var)[[3]][,3:4], horiz = TRUE,
           main = "Delta",
-          col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(FunR03Table(var))),
+          col = colorRampPalette(brewer.pal(11, "Spectral"))(length(Fun03PrintTab(var)[[2]])),
           width = y[3:4])
 }
 

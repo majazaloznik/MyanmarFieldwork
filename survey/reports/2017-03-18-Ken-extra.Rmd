@@ -1,0 +1,223 @@
+---
+title: "Ken - extra queries 18.3.17"
+tables: yes
+output:
+  html_document:
+    css: custom.css
+    toc: yes
+---
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+library(vcd)
+load("../data/survey.data03.RData")
+source("R04-MyFunctions.R")
+```
+
+
+### Household size by region only
+
+Boxplot standards are:
+
+* median (not mean) as the darkest line
+* 25 and 75 percentiles are the top and bottom of the boxes
+* The whiskers are meant to be the range of non outliers (1.5 times the interquartile range - the height of the box)
+* and then teh outliers as points beyond that
+
+#### `r description(I(dataset$q7))` 
+```{r results='asis', echo=FALSE, fig.height=5}
+var <- "q7"
+Fun04PrintTabInt.region(var)
+Fun04BarplotInt.region(var)
+              
+```
+
+
+### Household income by region only
+
+Like I said before, we only have an income category, and with the top category over 300,000 being open ended - and so large in the delta, there is no way to reasonably estimate an average value.  
+
+#### `r description(I(dataset$q12))` 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- data$q12
+Fun04PrintTab.region(var)
+Fun04Barplot.region(var)
+```
+
+
+## HH managing style
+
+*Re query 16.3.: *
+
+"Nearly all HHs in the dry sample have children who are involved in different ways in the work of the farm – either as sole managers or as co-managers or as a source of regular labour”.  Could you tell me %? And then same for sons or sons-in-law?"
+
+* Partial answer here, based on managing stype only, not source of regular labour. Mainly because "source of regular labour" is very poorly defined.. Because we have 5 types of tasks and up to 5 hh members helping with each. For whatever number of days. So that's essentially a 5 x 5 table, so I'm not sure how to extract a "source of regular labour"  definition out of it, but see bellow
+
+
+### Type of co-manageing style by Region, by age, and by holding size
+
+#### `r description(I(dataset$n182))` 
+[N = `r sum(!is.na(data$n182))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- dataset$n182
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+### Type of co-manageing style by region AND age group 
+
+#### `r description(I(dataset$n182))` 
+[N = `r sum(!is.na(data$n182))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- dataset$n182
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
+
+
+
+## HH labour sources
+
+*Re query 17.3.: *
+
+"I want some idea not just of person-days that HH members were employed on farm work, but also numbers (of HH members).  "
+
+" EG Are there any HHs where no-one other than the respondent works on the land (i.e. helps with any of the tasks we listed)?  "
+
+"( then also it would be good to know frequencies/percentages for : respondent + 1 other ; respondent +  2 others...etc)"
+
+
+### Number of HH members helping by Region, by age, and by holding size
+
+#### `r description(I(dataset$n183))`
+
+[N = `r sum(!is.na(data$n183))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n183"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+### Number of HH members helping by Region ANDage
+
+#### `r description(I(dataset$n183))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n183"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+
+### Number of person days of Household farm labour by Region, by age, and by holding size
+
+#### `r description(I(dataset$n185))`
+
+[N = `r sum(!is.na(data$n185))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n185"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+### Number of person days of Household farm labour by Region AND age
+
+#### `r description(I(dataset$n185))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n185"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+
+### Average number of days per Household farm labourer, by Region, by age, and by holding size
+
+#### `r description(I(dataset$n186))`
+
+[N = `r sum(!is.na(data$n186))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n186"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+### Average number of days per Household farm labourer, by Region AND age
+
+#### `r description(I(dataset$n186))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n186"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+## HH labour pattern
+
+### Number of members and/or HoH farming contribution, by Region, by age, and by holding size
+
+#### `r description(I(dataset$n187))`
+
+[N = `r sum(!is.na(data$n187))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- dataset$n187
+Fun02PrintTab(var)
+Fun02Barplot(var) 
+```
+
+### Number of members and/or HoH farming contribution,  by Region AND age
+
+#### `r description(I(dataset$n187))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- dataset$n187
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var) 
+```
+
+## Hired labour pattern
+
+Based on KH: 17.3.17: 
+
+"Similar question for hired labour: are there any HHs which rely entirely oh HH labour? (i.e. no-one hired to help with any tasks)?  
+
+### Ratio of Household to Hired Labour by Region, by age, and by holding size
+
+#### `r description(I(dataset$n188))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n188"
+Fun02PrintTabInt(var)
+Fun02BarplotInt(var) 
+```
+
+### Ratio of Household to Hired Labour by Region AND by age
+
+#### `r description(I(dataset$n188))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- "n188"
+Fun03PrintTabInt(var)
+Fun03BarplotInt(var) 
+```
+
+
+
+### Almost all labour HH/hired  by Region, by age, and by holding size
+
+Because only a tiny number (like four or sth) have exclusively HH labour, and slightly more exclusively hired labour I used 5 \% as the "almost" level.  
+ 
+#### `r description(I(dataset$n189))`
+
+[N = `r sum(!is.na(data$n189))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- dataset$n189
+Fun02PrintTab(var)
+Fun02Barplot(var) 
+```
+
+### Almost all labour HH/hired  by Region AND age
+
+#### `r description(I(dataset$n189))`
+```{r results='asis', echo=FALSE, fig.height=6}
+var <- dataset$n189
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var) 
+```
