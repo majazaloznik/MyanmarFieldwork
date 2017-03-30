@@ -810,5 +810,25 @@ question\_no & Question No \\
   q67\_d & Q67.D. How important are these factors for you personally, when you decide about spraying with pesticides: \{How afraid you are of pest damage\} \\ 
   q68 & Q68. How much is correct pesticide application important for the: \{Neighbouring farmers\} \\ 
   q69 & Q69. When you decide about pesticide spraying, how much do you personally care about the opinion of: \{Neighbouring farmers\} \\ 
+  n177 & n177 - Gender of other family member helping manage the farm (from q24\_b\_id) \\ 
+  n178 & n178 - Gender of other family member managing the farm (from q24\_c\_id) \\ 
+  n179 & N179 - child or child in law helping manage the farm (q24\_b\_id) \\ 
+  n180 & N180 - child or child in law managing the farm (q24\_c\_id) \\ 
+  n181 & N181 - child or child in law helping manage or managing the farm (n179 and n180) \\ 
+  n182 & N182 - Farm management type with relation to children (inlaw)  (co-)managing (q24, b,c,\& q7\_3) \\ 
+  n183 & N183 - number of different household memberslisted as helping in at least one of the 5 farming tasks(from all 25  variables with q34\_*\_2\_id pattern) \\ 
+  n184 & N184 - does the respondent help with at least one of the 5 farming tasks \\ 
+  n185 & N185 - number of person days of household labour used to perform the 5 farming tasks \\ 
+  n186 & N186 - average number of days per HH member helping to perform the 5 farming tasks \\ 
+  n187 & N187 - HH labour pattern (number of members and head of HHs involvment) (from N184 and N183) \\ 
+  n188 & N188 - Ratio of HH to hired labour (100 = all HH, 0 == all hired) from n185 and n121 \\ 
+  n189 & N189 - Allmost all HH labour or all hired labour (5\%)- or sth in between (from n188) \\ 
+  n190 & N190 - Household has had (at least one) son move out but remain in same village/town \\ 
+  n191 & N191 - Household has had (at least one) daughter move out to marry in same village/town \\ 
+  n192 & N192 - Household has had (at least one) son aged 14 or over \\ 
+  n193 & N193 - Household has (at least one) son in law living there \\ 
+  n194 & N194 - Household has  (at least one) son aged 14 or over in HH or in village \\ 
+  n195 & N195 - Household has (at least one) son-in-law in HH or in village \\ 
+  n196 & N196 - Household access to sons and son-in-laws in HH/village \\ 
   \hline
 \end{longtable}

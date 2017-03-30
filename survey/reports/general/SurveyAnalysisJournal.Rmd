@@ -375,6 +375,26 @@ KH query 17.3.2017:
 * New var  "N189 - Allmost all HH labour or all hired labour (5%)- or sth in between (from n188)"
 * Sent KH `2017-03-18-Ken-extra report`
 
+## Thursday 30.3.2017
+
+Ken's queries. Very nice potential error that turned out to be a case of Simpson's paradox, in this case the ratio of averages is not the same as the average of the ratios ;)
+
+Then Farm HHs that have a son either as member of HH or living in same village..HHs that have a son-in-law either as member of HH or living in same village - Farm HHs that have neither son nor son-in-law as member of HH or in same village.
+
+Check same village/town walking distance or not?
+
+* New var "N190 - Household has had (at least one) son move out but remain in same village/town"
+* New var "N191 - Household has had (at least one) daughter move out to marry in same village/town"
+
+RESHAPED TABLE - `data.members` members of households (2776 in total) to get numers of HHs with sons and sons in law etc. 
+
+* New var "N192 - Household has had (at least one) son aged 14 or over" (from hh.members)
+* New var "N193 - Household has (at least one) son in law living there" (from hh.members)
+* New var "N194 - Household has had (at least one) son aged 14 or over in HH or in village" (from n190 and n192)
+* New var "N195 - Household has had (at least one) son in law in HH or in village" (from n191 and n193)
+
+
+ 
 **Current workflow:**
 
 1. Derive first 152 new vars: 

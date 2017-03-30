@@ -1,0 +1,79 @@
+---
+title: "Ken - extra queries 30.3.17"
+tables: yes
+output:
+  html_document:
+  css: custom.css
+toc: yes
+---
+  
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+load("../data/survey.data03.RData")
+source("R04-MyFunctions.R")
+```
+
+## 27.3.2017 query one
+
+> Can you tell me how you worked out the ratios of HH labour to hired labour in your responses to my queries for 18.3.17?  They don't tally with my calculations.  This is what I wrote before I received your figures.
+
+> "The contribution of HH members to farm work is considerably higher in the dry zone than in the Delta, both in absolute terms (158 person-days/year vs 108 person-days/year) and as a proportion of the total labour input for the farm (18% vs 14%). "
+
+> I used figures from N103 and N121 in your 2nd cut for Module 2. 
+
+
+Ahh, nice: the problem is the average of the ratios (mine) is not the same as the ratio of the averages (yours).
+
+To give a simple example, say we have two farms:
+
+1. the small one has 2 person/day of HH labour and 4 person/days of hired labour, so the ratio is 1/3. 
+
+2. The large one has 20 person/days of HH labour and 10 person/days of hired labour, so the ratio is 2/3.
+
+
+What you did from tables N103 and N121 was say: the average number of hh days is 11, and the average number of hired labour days is 7, therefore the ratio is about 61%. But that is the ratio of the total days (in the region or whatever). 
+
+What I did with N188 was instead say the ratios are 1/3 and 2/3, so on average the ratio is 0.5 (averaged between farms). 
+
+BUT I've double checked just in case and N103, and N121 and N188 are all fine. 
+
+So "the average proportion of total labour input for the farm" is slightly higher in the dry zone (see below for precise numbers). 
+
+```{r echo = FALSE}
+data %>% 
+  group_by(n152) %>% 
+  summarise(n188 = 100*mean(n188, na.rm = TRUE)) ->x
+as.data.frame(x)
+```
+
+
+## 27.3.2017 query 2
+
+> Farm HHs that have a son either as member of HH or living in same village. 
+> ..HHs that have a son-in-law either as member of HH or living in same village
+> Farm HHs that have neither son nor son-in-law as member of HH or in same village
+
+
+**Issue 1: ** OK, but we have two options for "living in same village"
+
+* In same village/town in walking distance (347)
+* In same village/town not in walking distance (28)
+
+I am using both here - but can repeat with only first if you like. 
+ 
+**Issue 2: ** How old do the the sons in the HH  have to be to count? I'll do 14 for now. 
+ 
+OK, so here are the results: 
+
+`r var <- dataset$n198`
+
+### `r description(I(var))`
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+Fun02PrintTab(var)
+Fun02Barplot(var)
+```
+
+

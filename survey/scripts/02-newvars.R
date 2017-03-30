@@ -11,7 +11,7 @@
 load("survey/data/survey.data01.RData")
 library(dplyr)
 library(tidyr)
-
+library(memisc)
 # funciton for swapping the order of the columns when new var is introduced
 FunSwap <- function(New, After) {
   from <- which(names(dataset)[index] == New)
@@ -83,6 +83,35 @@ data.movers$m4 <- ifelse(
   )
 )
 
+#  son moved out but in same village
+data.movers$m5 <- ifelse(
+  is.na(data.movers$q8_1),
+  0,
+  ifelse(
+    data.movers$q8_1 == "Children" &
+      data.movers$q8_2 == "Male" &
+      data.movers$q8_5 %in% c("In same village/town in walking distance",
+                              "IIn same village/town, not in walking distance"),
+    1,
+    0
+  )
+)
+
+#  daugther moved for marriage but in same village (=> son in law in same village)
+data.movers$m6 <- ifelse(
+  is.na(data.movers$q8_1),
+  0,
+  ifelse(
+    data.movers$q8_1 == "Children" &
+      data.movers$q8_2 == "Female" &
+      data.movers$q8_4 == "Marriage" &
+      data.movers$q8_5 %in% c("In same village/town in walking distance",
+                              "IIn same village/town, not in walking distance"),
+    1,
+    0
+  )
+)
+
 ## aggregate movers data back to 600 households - see below for adding n156 and n157back
 data.movers %>%
   group_by(question_no) %>%
@@ -90,8 +119,44 @@ data.movers %>%
     n156 = ifelse(sum(m1) == 0, 0, 1),
     n157 = ifelse(sum(m2) == 0, 0, 1),
     n158 = ifelse(sum(m3) == 0, 0, 1),
-    n159 = ifelse(sum(m4) == 0, 0, 1)
+    n159 = ifelse(sum(m4) == 0, 0, 1),
+    n190 = ifelse(sum(m5) == 0, 0, 1),
+    n191 = ifelse(sum(m6) == 0, 0, 1)
   ) -> hh.movers
+
+
+
+
+###############################################################################
+## 2.2. HH members: one row per HH member
+## reshape whole dataset to get a row per person
+
+data %>%
+  gather(key, value,  hhmid.01:q7_6.12)%>%
+  filter(grepl('q|hhmid', key)) %>%
+  extract(key, c("question", "member_id"), "(.+)\\.(..)")   %>% 
+  spread(question, value) %>%
+  arrange(question_no)   %>%
+  filter(!is.na(hhmid)) -> data.members
+
+
+# is son in HH over 14 years old
+data.members$v1 <- ifelse(data.members$q7_2 == "Children" &
+           data.members$q7_3 == "Male" &
+           data.members$q7_4 >= 14, 1, 0)
+
+# is son in law in hh
+data.members$v2 <- ifelse(data.members$q7_2 == "Children-in-law" &
+                            data.members$q7_3 == "Male", 1, 0)
+
+
+## aggregate movers data back to 600 households - see below for adding vars back
+data.members %>%
+  group_by(question_no) %>%
+  summarise(
+    n192 = ifelse(sum(v1) == 0, 0, 1),
+    n193 = ifelse(sum(v2) == 0, 0, 1)
+  ) -> hh.members
 
 
 
@@ -99,22 +164,22 @@ data.movers %>%
 ###############################################################################
 
 # N 153 dividing by size of landholding
-n153 <- ifelse(dataset$q17 <= 5 | is.na(dataset$q17),
+dataset$n153 <- ifelse(dataset$q17 <= 5 | is.na(dataset$q17),
                0,
                ifelse(dataset$q17 <= 10, 1, 2))
-labels(n153) <- c(
+labels(dataset$n153) <- c(
   "up to 5 acres" =  0,
   "5 to 10 acres" =  1,
   "over 10 acres" =  2
 )
-dataset <- data.set(dataset, n153 = n153)
+
 description(dataset$n153) <-
   "N153 - Landholding size - three groups"
 
 index <- 1:770
 index <- FunSwap("n153", "q17")
 dataset <- dataset[index]
-rm(index, n153)
+rm(index)
 
 # N154 age groups 10 years
 n154 <- ifelse(dataset$q2 <= 29, 0,
@@ -900,6 +965,7 @@ description(dataset$n184) <- "N184 - does the respondent help with at least one 
 
 
 # N185 - number of person days of household labour used to perform the 5 farming tasks
+# turns out this is already in N103, but never hurts to double check.
 data %>%
   dplyr::select(starts_with("q34_"), question_no) %>%
   dplyr::select(ends_with("_3_days"), question_no) %>%
@@ -956,6 +1022,89 @@ labels(dataset$n189) <- c("under 5% household labour" =  0,
                           "In bewteen" =  1)
                           
 
+
+
+
+# N190 HH has had son move out but stay in same village
+dataset$n190 <- hh.movers$n190
+
+labels(dataset$n190) <- c("No" =  0,
+                  "Yes" =  1)
+
+description(dataset$n190) <-
+  "N190 - Household has had (at least one) son move out but remain in same village/town"
+rm(n190)
+
+# N191 HH has had daughter move out to get married but stay in same village - 
+# so we assume a son in law lives in the same village
+dataset$n191 <- hh.movers$n191
+
+labels(dataset$n191) <- c("No" =  0,
+                  "Yes" =  1)
+description(dataset$n191) <-
+  "N191 - Household has had (at least one) daughter move out to marry in same village/town"
+
+
+# N192 has son over 14 years old in HH
+dataset$n192 <- hh.members$n192
+
+labels(dataset$n192) <- c("No" =  0,
+                  "Yes" =  1)
+description(dataset$n192) <-
+  "N192 - Household has had (at least one) son aged 14 or over"
+
+
+
+# N193 has a son in law in the HH
+dataset$n193 <- hh.members$n193
+labels(dataset$n193) <- c("No" =  0,
+                  "Yes" =  1)
+description(dataset$n193) <-
+  "N193 - Household has (at least one) son in law living there"
+
+
+# N194  HH has son over 14 in HH or in village
+dataset$n194 <- ifelse(dataset$n190 == 1 | dataset$n192 == 1, 1, 0)
+labels(dataset$n194) <- c("No" =  0,
+                          "Yes" =  1)
+description(dataset$n194) <-
+  "N194 - Household has  (at least one) son aged 14 or over in HH or in village"
+
+# N195  HH has son over 14 in HH or in village
+dataset$n195 <- ifelse(dataset$n191 == 1 | dataset$n193 == 1, 1, 0)
+labels(dataset$n195) <- c("No" =  0,
+                          "Yes" =  1)
+description(dataset$n195) <-
+  "N195 - Household has (at least one) son-in-law in HH or in village"
+
+# N196 sons and son in laws
+dataset$n196 <- ifelse(dataset$n194 ==1 & dataset$n195 ==1, 1,
+                       ifelse(dataset$n194 == 1, 2,
+                              ifelse(dataset$n195 ==1, 3,4)))
+labels(dataset$n196) <- c("Both Son and son-in-law in HH/village" =  1,
+                          "Son in HH/village" =  2,
+                          "Son-in-law in HH/village" = 3,
+                          "Neither son nor son-in-law in HH/village" = 4)
+
+description(dataset$n196) <-
+  "N196 - Household access to sons and son-in-laws in HH/village"
+
+# N197 Is farming HH (manage or co-manage)
+dataset$n197 <- ifelse(dataset$q24 =="A tenant", 0, 1)
+abels(dataset$n197) <- c("No" =  0,
+                         "Yes" =  1)
+description(dataset$n197) <-
+  "N197 - Household manages it's own farmland"
+
+# N198 sons and son in laws farm only
+dataset$n198 <- dataset$n196
+dataset$n198[dataset$n197==0] <- NA
+
+description(dataset$n198) <-
+  "N198 - Farming household's access to sons and son-in-laws in HH/village"
+
+
+
 ## Save in both formats, data and dataset,
 ###############################################################################
 data <- as.data.frame(dataset)
@@ -967,7 +1116,7 @@ save(data, dataset, file = "survey/data/survey.data03.RData")
 # ## 8. print codebook and List all variables in pdf file
 # ###############################################################################
 # write_html(codebook(dataset), file = "survey/reports/CodebookSurveyVariables.html")
-#
+# 
 # library(knitr)
 # library(rmarkdown)
 # knit("survey/reports/old/SurveyListVariables.Rmd",
