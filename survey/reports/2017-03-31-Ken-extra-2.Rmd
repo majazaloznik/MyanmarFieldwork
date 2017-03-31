@@ -1,0 +1,37 @@
+---
+title: "Ken - extra queries 31.3.17 - II. "
+tables: yes
+output:
+  html_document:
+  css: custom.css
+  toc: yes
+---
+  
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+library(vcd)
+load("../data/survey.data03.RData")
+source("R04-MyFunctions.R")
+```
+
+### Number of members and/or HoH farming contribution, by Region, by age, and by holding size
+
+
+`r var <- dataset$n200`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun02PrintTab(var)
+Fun02Barplot(var) 
+```
+
+### Number of members and/or HoH farming contribution,  by Region AND age
+
+#### `r description(I(var))`
+```{r results='asis', echo=FALSE, fig.height=6}
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var) 
+```

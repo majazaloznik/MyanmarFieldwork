@@ -1127,6 +1127,23 @@ labels(dataset$n199) <- c(
 description(dataset$n199) <-
   "N199 - Head of HH cobmination of working in field and managing the farm"
 
+# N200 - N187 but only for manage/co-manage HH labour pattern (number of members and head of HHs involvment) (from N184 and N183)
+
+
+
+dataset$n200 <- dataset$n187
+dataset$n200 <- ifelse(!dataset$q24 %in% c("A tenant", "Another family  member"), dataset$n200, NA)
+
+description(dataset$n200) <- "N200 - HH labour pattern (number of members and head of HHs involvment)  only HH where HoH manages or co-manages, (from N187 and Q24)"
+
+labels(dataset$n200) <- c("No HH farm labour" =  0,
+                          "Head of HH only" =  1,
+                          "HoH plus one" =  2, 
+                          "HoH plus two" = 3,
+                          "HoH plus three or more" = 4,
+                          "One non HoH labourer" = 5,
+                          "Two or more non HoH labourers" = 6)
+
 
 ## Save in both formats, data and dataset,
 ###############################################################################
