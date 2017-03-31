@@ -77,7 +77,7 @@ Fun03Barplot <- function(var) {
   barplot(Fun03PrintTab(var)[[3]][,1:2], horiz = TRUE, 
           main = "Dry zone",
           col = colorRampPalette(brewer.pal(11, "Spectral"))(length(Fun03PrintTab(var)[[2]])),
-          legend.text = Fun03PrintTab(var)[[2]], args.legend = list( x = 101.01,y = 300, xjust = 0),
+          legend.text = Fun03PrintTab(var)[[2]], args.legend = list( x = 101.01,y = 300, xjust = 0, cex = 0.7),
           width = y[1:2], las=2)
   barplot(Fun03PrintTab(var)[[3]][,3:4], horiz = TRUE,
           main = "Delta",

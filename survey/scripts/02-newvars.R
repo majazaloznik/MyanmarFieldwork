@@ -963,6 +963,8 @@ description(dataset$n183) <- paste0("N183 - number of different household member
 dataset <- data.set(dataset, n184 = unlist(tmp$n184))
 description(dataset$n184) <- "N184 - does the respondent help with at least one of the 5 farming tasks"
 
+labels(dataset$n184) <- c("No" =  0,
+                          "Yes" =  1)
 
 # N185 - number of person days of household labour used to perform the 5 farming tasks
 # turns out this is already in N103, but never hurts to double check.
@@ -1103,6 +1105,27 @@ dataset$n198[dataset$n197==0] <- NA
 description(dataset$n198) <-
   "N198 - Farming household's access to sons and son-in-laws in HH/village"
 
+
+# n199 - HoH managing and working combinations
+dataset$n199 <- as.numeric(interaction(dataset$n184, dataset$q24))
+dataset$n199 <- recode(dataset$n199,
+                       8 -> NA,
+                       7 -> NA,
+                       5 -> 1,
+                       3 -> 2,
+                       1 -> 3,
+                       2 -> 5,
+                       otherwise = "copy")
+labels(dataset$n199) <- c(
+  "Doesn't work & doesn't manage" = 1,
+  "Doesn't work & co-manages with family member" = 2,
+  "Doesn't work but manage alone" = 3,
+  "Works in the field & co-manages" = 4,
+  "Works in the field & manages alone" = 5
+)
+
+description(dataset$n199) <-
+  "N199 - Head of HH cobmination of working in field and managing the farm"
 
 
 ## Save in both formats, data and dataset,

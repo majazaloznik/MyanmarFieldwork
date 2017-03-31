@@ -1,0 +1,37 @@
+---
+title: "Ken - extra queries 31.3.17"
+tables: yes
+output:
+  html_document:
+  css: custom.css
+  toc: yes
+---
+  
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+load("../data/survey.data03.RData")
+source("R04-MyFunctions.R")
+```
+
+## 29.3.2017 query one
+
+> Could you analyse by age (60+/<60) the contribution of the HoH to the work of the farm?  Something like this: 
+- none (i.e. no involvement in any of the field tasks we listed)
+- management only
+- management + work in the field.
+
+>  I should have asked that you provide the HoH data by age group within the two regions.
+
+OK, I've added co-management as well. 
+
+
+`r var <- dataset$n199`
+
+### `r description(I(var))`
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.widht = 14}
+Fun03PrintTab(var)[[1]]
+Fun03Barplot(var)
+```
