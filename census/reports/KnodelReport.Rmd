@@ -1,0 +1,300 @@
+---
+title: "Myanmar census Migration tabulations"
+author: "Maja Zaloznik"
+date: "17 May 2017"
+output: 
+  pdf_document:
+    number_sections: true
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Supplementary material
+
+Hi John and Puk!
+
+I am so sorry for the delay, I hope this finds you well, and please let me know if anything is not clear, or if you would like me to do anything else with the data. 
+
+This file is to support the tabulations of the Myanmar 2014 census data on migration that are provided as both Excel and SPSS tables, and to explain how they relate to your requests in the `knodel ideas for census 2014 tabulation.xlsx`.
+
+I ran the whole thing using SPSS, so I'll include the syntax code in the report here, so you can double check what was going on. 
+
+I'll first explain the new variables I created, then describe each table and how it relates to your instructions. 
+
+## New variables
+
+You presumably have the census questionnaire, so you should be familiar with the original variables, but I have added them as an appendix at the end of this document. 
+
+- **`p11_birth_township_dummy`**
+- **`p05_age_c2`**
+- **`p05_age_binned`**
+
+
+### Township of birth
+
+Input: `p11_birth_township`
+
+Dummy variable collapsing township of birth variable into here or not here wansers into:
+
+1. Born in this township
+2. Born in different township
+
+`SPSS Syntax` for **`p11_birth_township_dummy`**:
+
+```{r, eval = FALSE}
+recode p11_birth_township (MISSING=COPY) (0 = 0 ) (LO THRU HI=1) (ELSE=SYSMIS) INTO
+p11_birth_township_dummy.
+value labels p11_birth_township_dummy 0 'Same as birthplace' 1 'Different from 
+birthplace'.
+exe. 
+```
+
+### Age -- two categories
+
+Input: `p05_age`
+
+Binning into two groups [^1]:
+
+1. age 15 - 59
+2. age 60 or over
+
+[^1]: A careful reading of the code might lead one to believe the first group is actually 0-59 instead of 15-59. That is indeed how the variable was calculated, but because all the tables were calculated after selecting only cases where p05_age >=15, this makes no difference and so the correct category is in fact 15 - 59.  
+`SPSS Syntax` for **`p05_age_c2`**:
+
+```{r, eval = FALSE}
+
+RECODE  p05_age (MISSING=COPY)  (LO THRU 59 = 1) (LO THRU HI = 2) INTO p05_age_c2.
+VARIABLE LABELS  p05_age_c2 'Age (two groups)'.
+FORMATS  p05_age_c2 (F5.0).
+VALUE LABELS  p05_age_c2 1  '15 - 59' 2 '60+'.
+EXECUTE.
+
+```
+### Age binned
+
+Input: `p05_age`
+
+Although you never explicitly asked for age distributions, your *Table 2* e.g. groups people into three age groups (under 15, 16-29 and 60+), so instead I've done five year age groups, which you can aggregate whichever way you like, but also keep all the information. 
+
+The binning is 5-year, but starts only at 15, so we have 18 categories:
+
+
+1. 14 and under;
+2. 5-19, ... 90-94 (a total of 16 categries)
+3. 95 and older;
+
+
+`SPSS Syntax` for **`p05_age_binned`**:
+
+```{r, eval = FALSE}
+RECODE  p05_age (MISSING=COPY) (LO THRU 14=1) (LO THRU 19=2) (LO THRU 24=3) (LO THRU 29=4) 
+(LO THRU 34=5) (LO THRU 39=6) (LO THRU 44=7) (LO THRU 49=8) (LO THRU 54=9) (LO THRU 59=10) 
+(LO THRU 64=11) (LO THRU 69=12) (LO THRU 74=13) (LO THRU 79=14) (LO THRU 84=15) 
+(LO THRU 89=16) (LO THRU 94=17) (LO THRU HI=18) (ELSE=SYSMIS) INTO p05_age_binned.
+VARIABLE LABELS  p05_age_binned 'Age (Binned)'.
+FORMATS  p05_age_binned (F5.0).
+VALUE LABELS  p05_age_binned 1 '<= 14' 2 '15 - 19' 3 '20 - 24' 4 '25 - 29' 5 '30 - 34' 
+6 '35 - 39' 7 '40 - 44' 8 '45 - 49' 9 '50 - 54' 10 '55 - 59' 11 '60 - 64' 12 '65 - 69' 
+13 '70 - 74' 14 '75 - '+ '79' 15 '80 - 84' 16 '85 - 89' 17 '90 - 94' 18 '95+'.
+VARIABLE LEVEL  p05_age_binned (ORDINAL).
+EXECUTE.
+```
+
+
+### Migration type 1: usual vs. previous residence 
+
+Input: `p14_usual_res_ur`, `p18_prev_res_ur` and `p16_reason_for_movement`
+
+Using combinations of current and previous residences' urban and rural status, as well as the answer to the "Reason for movement" question, to remove people who had not moved, we end up with 5 categories[^2]:
+
+[^2]: This addition of removing people who had not moved proved necessary, because everyone answeres the `p18_prev_res_ur` question, so it includes people who have not moved. BUT, in checking the data, I also noticed that people wo have two different values for usual and previous townships, still sometimes have "did not move" in question 16, even though Q16 Explicitly says "Reason for movement to this township (usual residence)". So this is an issue to be kept in mind, I'm not sure if it's a data entry issue or what. I never tried it on the full sample, but in the 1 % sample it affected about half a percent of the cases: these had different usual and previous townships, but had not moved..
+
+1. Did not move
+2. Urban to Urban
+3. Urban to Rural
+4. Rural to Urban
+5. Rural to Rural
+
+`SPSS Syntax` for **`Mig_type1 `**:
+
+```{r, eval = FALSE}
+IF  (p14_usual_res_ur = 1 & p18_prev_res_ur = 1 ) Mig_type1 = 1. 
+IF  (p14_usual_res_ur = 2 & p18_prev_res_ur = 1 ) Mig_type1 = 2. 
+IF  (p14_usual_res_ur = 1 & p18_prev_res_ur = 2 ) Mig_type1 = 3.
+IF  (p14_usual_res_ur = 2 & p18_prev_res_ur = 2 ) Mig_type1 = 4.  
+IF  (p16_reason_for_movement = 6) Mig_type1 = 0. 
+
+VALUE LABELS Mig_type1 0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban'
+4 'Rural-Rural'.
+VARIABLE LABELS Mig_type1 'Type of Migration from previous'.
+EXECUTE.
+```
+
+
+### Migration type 2: usual  residence vs. place of birth
+
+Input: `p12_birth_ur`, `p14_usual_res_ur`,  `p11_birth_township_dummy`
+
+Using combinations of birthplace and usual residency's urban and rural status we first get all four combinations. But U-U anr R-R only mean migration if the township has changed. So I use `p11_birth_township_dummy` to add the fifth category of people who have not moved [^3].We end up with 5 categories:
+
+1. Did not move
+2. Urban to Urban
+3. Urban to Rural
+4. Rural to Urban
+5. Rural to Rural
+
+ [^3]: Techically of course someone could have migrated within the same township but from U-U or R-R. But if we allow that, then everyone is a migrant, and there's no discriminating value in these variables anyway, so some sort of decision had to be made. 
+
+`SPSS Syntax` for **`Mig_type2 `**: 
+```{r, eval = FALSE}
+
+
+IF  (p12_birth_ur = 1 & p14_usual_res_ur = 1 ) Mig_type2 = 1. 
+IF  (p12_birth_ur = 1 & p14_usual_res_ur = 2 ) Mig_type2 = 2. 
+IF  (p12_birth_ur = 2 & p14_usual_res_ur = 1 ) Mig_type2 = 3. 
+IF  (p12_birth_ur = 2 & p14_usual_res_ur = 2 ) Mig_type2 = 4. 
+IF  (p11_birth_township_dummy = 0 & p12_birth_ur = p14_usual_res_ur) Mig_type2 = 0. 
+
+VALUE LABELS Mig_type2 0 'Did Not Move' 1 'Urban-Urban' 2 'Urban-Rural' 3 'Rural-Urban' 
+4 'Rural-Rural'.
+VARIABLE LABELS Mig_type2 'Type of Migration from birthplace'.
+EXECUTE.
+```
+
+
+## Tabulations
+
+
+There are a total of 12 tables in the attached Excel/SPSS files. These numbers do not correspond to your table numbers. So I will use this notation: **Final-Table 1** to indicate the census tabulations, and this notation *Knodel-Table 1* to indicate what it should correspond to in your request.[^4]
+
+Here are the corresponces:
+
+|  Knodel-Table  |  Final Table  |
+|-----------------------------|--------------------------------|
+| *Knodel-Table 1*            | **Final-Table 1** |
+|                             | **Final-Table 2** |
+|                             | **Final-Table 3** |
+|                             | **Final-Table 7** |
+| *Knodel-Table 2*            | **Final-Table 4** |
+|                             | **Final-Table 5** |
+| *Knodel-Table 3*            | **Final-Table 8** |
+|                             | **Final-Table 9** |
+| *Knodel-Table 4*            | **Final-Table 6** |
+| *Knodel-Table 5*            | **Final-Table 10** |
+|                             | **Final-Table 11** |
+|                             | **Final-Table 12** |
+
+[^4]: Yeah, I know this is a little bit awkward, but the SPSS tables are numbered and the Excel file is in this order, so I don't want to rearrange everything. 
+
+
+**Population** -- All tables are conducted on cases that are not in institutional housing and whose ageis 15 or over: 
+
+`SPSS Syntax` for sub-population: 
+```{r, eval = FALSE}
+USE ALL.
+SELECT IF (form_type  = 1).
+SELECT IF (p05_age >=15).
+exe.
+```
+
+### Table 1
+
+
+
+# Appendix 1: List of variables as provided by the census office
+  
+As a rule of thumb, variables names beginning with "h" are household level, and ones beginning with "p" are individual level ones. 
+  
+The **Notes** column is used to describe the sub-populatins where the question is not asked of all the individuals. 
+  
+
+ID|Variable Code | Name, description | notes  |
+  --|-----------------------|------------------------------------|--------------------|
+  1| batch_state_region| 15 regions:  Kachin, Kayah, Kayin, Chin, Sagaing, Tanintharyi, Bago, Magway, Mandalay, Mon, Rakhine, Yangon, Shan, Ayeywawady, Nay Pyi Taw ||
+  2| batch_district|||
+  3| batch_township|||
+  4| batch_ward|||
+  5| batch_urban_rural| | |
+  6| batch_ea| | | 
+  7| household_number| | |
+  8 | barcode| | |
+  9 | scanned_date| | |
+  10 | scanner_id| | |
+  11 | batch_number| | |
+  12 | qnh| | |
+  13 |nqh| | |
+  14 |h32_type_residence| 8 -Condominium,	Apartment/Flat,	Bungalow/Brick house,	Semi-pacca house,	Wooden house,	Bamboo	Hut 2 - 3 years,	Hut 1 year,	9
+| |
+  15 |h33_type_ownership| 6 - Owner,	Renter,	Provided free (individually),	Government Quarters,	Private Company Quarters,	Other | |
+  16 |h34_lighting| 8 - Electricity, Kerosene, Candle, Battery, Generator (private), Water mill (private), Solar system/energy, Other| |
+  17 |h35a_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other| |
+  18 |h35b_non_drinking_water| 10 - Tap water/Piped, Tube well, borehole, Protected well/Spring, Unprotected well/Spring, Pool/Pond/Lake, River/stream/canal, Waterfall/Rain water, Bottled water/Water from vending machine, Tanker/Truck, Other | |
+  19 |h36_cooking_fuel| 9 - Electricity, LPG, Kerosene, BioGas, Firewood, Charcoal, Coal, Straw/Grass, Other| |
+  20 |h37_toilet| 7 - Flush, Water seal (Improved pit latrine), Pit (Traditional pit latrine), Bucket (Surface latrine), Other, None | |
+  21 |h38a_roof| 7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
+  22 |h38b_walls|7 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Corrugated sheet, Tile/Brick/Concrete, Other| |
+  23 |h38c_floor| 6 - Dhani/Theke/In leaf, Bamboo, Earth, Wood, Tile/Brick/Concrete, Other| |
+  24 |h39a_radio| 2 - Yes, No | |
+  25 |h39b_television| 2 - Yes, No| |
+  26 |h39c_land_line_phone| 2 - Yes, No | |
+  27 |h39d_mobile_phone| 2 - Yes, No| |
+  28 |h39e_computer| 2 - Yes, No| |
+  29 |h39f_internet_at_home| 2 - Yes, No| |
+  30 |h39g_car_truck_van| 2 - Yes, No| |
+  31 |h39h_motorcycle_moped| 2 - Yes, No| |
+  32 |h39i_bicycle| 2 - Yes, No| |
+  33 |h39j_4_wheel_tractor| 2 - Yes, No| |
+  34 |h39k_canoe_boat| 2 - Yes, No| |
+  35 |h39l_motor_boat| 2 - Yes, No| |
+  36 |h39m_cart_bullock| 2 - Yes, No| |
+  37 |h40_number_abroad| | |
+  38 |h41_number_of_deaths| | |
+  39 |number_of_males| | |
+  40 |number_of_females| | |
+  41 |number_of_people| | |
+  42 |form_type| | |
+  43 |per_scan_form_seq| | |
+  44 |qnp| | |
+  45 |nqp| | |
+  46 |p01_person_number| | |
+  47 |p02_line_number |  | |
+  48 |p03_relationship | Relationship to head of HH |     |
+  49 |p04_sex|  Sex |   |
+  50 |p05_age| Age  | up to 98 or older  |
+  51 |p06_marital_status | 5 categories:   Single,	Married, Widowed,	Divorced/Separated,	Renounced |    |
+  52 |p09a_disability_seeing| Disability Seeing |   |
+  53 |p09b_disability_hearing | Disability Hearing |   |
+  54 |p09c_disability_walking| Disability Walking |   |
+  55 |p09d_disability_remembering| Disability Remembering or concentrating |   |
+  56 |p11_birth_township | Township code of place of birth - 000 for here |  |
+  57 |p12_birth_ur  | Place of birth rural or urban |   |
+  58 |p13_usual_res_township  | Township code of usual residence - 000 for here | |
+  59 |p14_usual_res_ur |  Usual residence rural or urban |  |
+  60 |p15_duration_of_residence  | Years in place of usual residence |  |
+  61 |p16_reason_for_movement  | Reason for move here 8 : Employment/Searching employment,	Education	Marriage,	Followed family	Conflict,	Did not move	Other,	9  |   |
+  62 |p17_prev_res_township  | Township of previous place of residence ||
+  63 |p18_prev_res_ur | Previous place of residence rural or urban ||
+  64 |p19_read_and_write   | Can read and write | (age 5 and above) |
+  65 |p20_school_attendance |  Ever/currently attended school |  (age 5 and above)|
+  66 |p21_highest_grade | Highest level of education attained | (age 5 and above) grouping? |
+  67 |p22_activity_status | Activity Status 12: Employee (government),	Employee (private, org),	Employer,	Own account worker,	Contributing family worker,	Sought work,	Did not seek work,	Full time student,	Household work,	Pensioner/retired/elderly person,	Ill/ disabled,	12 | (age 10 and above)  |
+  68 |p23_occupation | Occupation (ILO)| age 10 and above AND Q22 == employed or self-employed |
+  69 |p24_industry  | Industry (ILO) | age 10 and above AND Q22 == employed or self-employed |
+  70 |p25a_children_born_male | Number of children born alive male | (ever married women over 15) |
+  71 |p25b_children_born_female| Number of children born alive female | (ever married women over 15) |
+  72 |p26a_children_in_hh_male | Number of children in HH male | (ever married women over 15) |
+  73 |p26b_children_in_hh_female| Number of children in HH female | (ever married women over 15) |
+  74 |p27a_children_else_male | Number of children elsewhere male | (ever married women over 15) |
+  75 |p27b_children_else_female | Number of children elsewhere female | (ever married women over 15) |
+  76 |p28a_children_died_male | Number of children died male | (ever married women over 15) |
+  77 |p28b_children_died_female | Number of children died female | (ever married women over 15) |
+  78 |p29a_last_live_birth_month | |
+  79 |p29b_last_live_birth_year | |
+  80 |p30_last_live_birth_sex | |
+  81 |p31_last_live_birth_alive | |
+  82 |px32_birth_township_full | |
+  83 |px33_usual_township_full | |
+  84 |px34_previous_township_full | |

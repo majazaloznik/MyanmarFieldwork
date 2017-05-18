@@ -1,0 +1,249 @@
+---
+title: "Myanmanr Census - Age distribution of farming population"
+tables: yes
+output:
+  html_document:
+    css: custom.css
+    toc: yes
+  word_document:
+    toc: yes
+---
+    
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+  ###############################################################################
+  ## First look at census data - unique generations
+  ###############################################################################
+  
+  
+  ## Preliminaries
+  ###############################################################################
+  library(knitr)
+  library(tidyverse)
+  library(memisc)
+  library(RColorBrewer)
+  library(xtable)
+  kh01 <- as.data.frame(as.data.set(spss.system.file("../outputs/KH01.sav")))
+  
+  options(scipen = 9999, digits = 6)
+```
+  
+
+## "Farming Population"
+
+I've put "farming population" in quotes, because the data I have refers to households and/or heads of households, not all of the individuals. 
+
+Furthermore I have three different definitions of what a farming household might be. So here are the data for all three definitions looking at age distribution only.
+
+**FYI I also have this for regions, as well as Head of HH disability (number of) and head of HH gender.**
+
+### Farming HH 1: Head is skilled farmer
+
+```{r, echo = FALSE}
+kh01.01 <- kh01 %>%
+  filter(tablenumber_ == 1, var1 != "Total") %>%
+  dplyr::select(-tablenumber_, -total, -command_, -subtype_, -var4, -var6, -label_) %>%
+  dplyr::rename(region = var1, hh_type = var2, sex = var3, disability = var5) %>% 
+  gather(key = age.group, value = count, 5:22 ) %>% 
+  separate(age.group, c("A", "age.group")) %>% 
+  dplyr::select(-A) %>% 
+  filter(disability != "") %>% 
+  filter(region != "Total",
+         hh_type != "Total",
+         sex != "Total",
+         disability != "Total") %>% 
+  dplyr::select(age.group, region, sex, disability, hh_type, count) %>% 
+  arrange(age.group, region, sex, disability, hh_type) %>% 
+  mutate(hh_type = ifelse(hh_type == "not farming", 0, 1)) %>% 
+  group_by(age.group, region, sex, disability, hh_type) %>% 
+  dplyr::summarise(count = sum(count, na.rm = TRUE)) %>% 
+  ungroup() 
+  
+
+kh01.01 %>% 
+  group_by(age.group, hh_type) %>% 
+  dplyr::summarise(count = sum(count, na.rm = TRUE)) %>%  ungroup() %>% 
+  mutate(age.group = as.character(age.group)) %>% 
+  separate(age.group, 2, into = c("from", "to")) %>% 
+  unite(age.group, from, to, sep = "-") %>% 
+  mutate(age.group = ifelse(age.group == "14-", "-14", age.group))-> age.dist
+
+
+age.dist %>% spread(hh_type, count, sep="_") %>% 
+  dplyr::rename(non.farm = hh_type_0, 
+                farm = hh_type_1) %>% 
+  mutate(non.farm.percent = non.farm/sum(non.farm)*100,
+         farm.percent = farm/sum(farm)*100) -> age.dist.table
+```
+So in the first type of "farming households" these are households where:
+
+ 1. The head of the HH is in a farming occupation (ISCO classification category 6: Skilled Agricultural, Forestry and Fishery Workers), AND
+ 2. The head of the HH is not an employee. (Their Activity status is either Employer or Contributing family worker) 
+
+There are `r sum(age.dist.table$farm)` such households out of `r sum(age.dist.table$non.farm, age.dist.table$farm)`, so `r 100*sum(age.dist.table$farm)/sum(age.dist.table$non.farm, age.dist.table$farm)` %.
+
+Then we can look at the age distribution of the *heads of these households*.  
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.cap = "Figure 1: Age distribution of heads of households that are in skilled farming occupation or not - counts"}
+
+
+par(xpd = TRUE, mar = c(3,7,1,1))
+yz <- barplot(t(as.matrix(age.dist.table[2:3])), beside = TRUE, col = c("indianred2", "darkslategray2"), horiz = TRUE, legend.text = c("not farmers", "farmers"))
+text(-60000,colMeans(yz), age.dist.table[[1]], las = 2)
+
+```
+
+
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.cap = "Figure 2: Age distribution of heads of households that are in skilled farming occupation or not - percentages"}
+par(xpd = TRUE, mar = c(3,7,1,1))
+
+yz <- barplot(t(as.matrix(age.dist.table[4:5])), beside = TRUE, col = c("indianred2", "darkslategray2"), horiz = TRUE, legend.text = c("not farmers", "farmers"))
+text(-0.7,colMeans(yz), age.dist.table[[1]], las = 2)
+
+```
+
+Table 1: Age distribution of heads of households of type 1 farming (and non farming)
+```{r results='asis', echo=FALSE}
+kable(age.dist.table, digits = 2, booktabs = TRUE, padding = 10)
+```
+
+
+### Farming HH 2: Head or spouse is skilled farmer
+```{r, echo = FALSE} 
+ kh01.01 <- kh01 %>%
+  filter(tablenumber_ == 2, var1 != "Total") %>%
+  dplyr::select(-tablenumber_, -total, -command_, -subtype_, -var4, -var6, -label_) %>%
+  dplyr::rename(region = var1, hh_type = var2, sex = var3, disability = var5) %>% 
+  gather(key = age.group, value = count, 5:22 ) %>% 
+  separate(age.group, c("A", "age.group")) %>% 
+  dplyr::select(-A) %>% 
+  filter(disability != "") %>% 
+  filter(region != "Total",
+         hh_type != "Total",
+         sex != "Total",
+         disability != "Total") %>% 
+  dplyr::select(age.group, region, sex, disability, hh_type, count) %>% 
+  arrange(age.group, region, sex, disability, hh_type) %>% 
+  mutate(hh_type = ifelse(hh_type == "not farming", 0, 1)) %>% 
+  group_by(age.group, region, sex, disability, hh_type) %>% 
+  dplyr::summarise(count = sum(count, na.rm = TRUE)) %>% 
+  ungroup() 
+  
+
+kh01.01 %>% 
+  group_by(age.group, hh_type) %>% 
+  dplyr::summarise(count = sum(count, na.rm = TRUE)) %>%  ungroup() %>% 
+  mutate(age.group = as.character(age.group)) %>% 
+  separate(age.group, 2, into = c("from", "to")) %>% 
+  unite(age.group, from, to, sep = "-") %>% 
+  mutate(age.group = ifelse(age.group == "14-", "-14", age.group))-> age.dist
+
+
+age.dist %>% spread(hh_type, count, sep="_") %>% 
+  dplyr::rename(non.farm = hh_type_0, 
+                farm = hh_type_1) %>% 
+  mutate(non.farm.percent = non.farm/sum(non.farm)*100,
+         farm.percent = farm/sum(farm)*100) -> age.dist.table
+
+```
+In the second  type of "farming households" these are households where:
+
+ 1. The head or the spouse of the head of the HH is in a farming occupation (ISCO classification category 6: Skilled Agricultural, Forestry and Fishery Workers), AND
+ 2. That person is not an employee. (Their Activity status is either Employer or Contributing family worker) 
+
+There are `r sum(age.dist.table$farm)` such households out of `r sum(age.dist.table$non.farm, age.dist.table$farm)`, so `r 100*sum(age.dist.table$farm)/sum(age.dist.table$non.farm, age.dist.table$farm)` %.
+
+Then we can look at the age distribution of the *heads of these households* - Important!! SO again: this is the age distribution of the heads of household, who may not be farmers, but in that case their spouse is!  
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.cap = "Figure 3: Age distribution of heads of households who  are (or their spouses) in skilled farming occupation or not - counts"}
+
+par(xpd = TRUE, mar = c(3,7,1,1))
+yz <- barplot(t(as.matrix(age.dist.table[2:3])), beside = TRUE, col = c("indianred2", "darkslategray2"), horiz = TRUE, legend.text = c("not farmers", "farmers"))
+text(-60000,colMeans(yz), age.dist.table[[1]], las = 2)
+
+```
+
+
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.cap = "Figure 4: Age distribution of heads of households who  are (or their spouses) in skilled farming occupation or not - percentages"}
+par(xpd = TRUE, mar = c(3,7,1,1))
+
+yz <- barplot(t(as.matrix(age.dist.table[4:5])), beside = TRUE, col = c("indianred2", "darkslategray2"), horiz = TRUE, legend.text = c("not farmers", "farmers"))
+text(-0.7,colMeans(yz), age.dist.table[[1]], las = 2)
+
+```
+
+Table 2: Age distribution of heads of households of type 2 farming (and non farming)
+```{r results='asis', echo=FALSE}
+kable(age.dist.table, digits = 2, booktabs = TRUE, padding = 10)
+```
+
+### Farming HH 3: Any relative in HH is skilled farmer
+```{r, echo = FALSE}
+kh01.01 <- kh01 %>%
+  filter(tablenumber_ == 3, var1 != "Total") %>%
+  dplyr::select(-tablenumber_, -total, -command_, -subtype_, -var4, -var6, -label_) %>%
+  dplyr::rename(region = var1, hh_type = var2, sex = var3, disability = var5) %>% 
+  gather(key = age.group, value = count, 5:22 ) %>% 
+  separate(age.group, c("A", "age.group")) %>% 
+  dplyr::select(-A) %>% 
+  filter(disability != "") %>% 
+  filter(region != "Total",
+         hh_type != "Total",
+         sex != "Total",
+         disability != "Total") %>% 
+  dplyr::select(age.group, region, sex, disability, hh_type, count) %>% 
+  arrange(age.group, region, sex, disability, hh_type) %>% 
+  mutate(hh_type = ifelse(hh_type == "not farming", 0, 1)) %>% 
+  group_by(age.group, region, sex, disability, hh_type) %>% 
+  dplyr::summarise(count = sum(count, na.rm = TRUE)) %>% 
+  ungroup() 
+  
+
+kh01.01 %>% 
+  group_by(age.group, hh_type) %>% 
+  dplyr::summarise(count = sum(count, na.rm = TRUE)) %>%  ungroup() %>% 
+  mutate(age.group = as.character(age.group)) %>% 
+  separate(age.group, 2, into = c("from", "to")) %>% 
+  unite(age.group, from, to, sep = "-") %>% 
+  mutate(age.group = ifelse(age.group == "14-", "-14", age.group))-> age.dist
+
+
+age.dist %>% spread(hh_type, count, sep="_") %>% 
+  dplyr::rename(non.farm = hh_type_0, 
+                farm = hh_type_1) %>% 
+  mutate(non.farm.percent = non.farm/sum(non.farm)*100,
+         farm.percent = farm/sum(farm)*100) -> age.dist.table
+```
+In the third type of "farming households" these are households where:
+
+ 1. Any relative in the HH is in a farming occupation (ISCO classification category 6: Skilled Agricultural, Forestry and Fishery Workers), AND
+ 2. That person is not an employee. (Their Activity status is either Employer or Contributing family worker) 
+ 
+There are `r sum(age.dist.table$farm)` such households out of `r sum(age.dist.table$non.farm, age.dist.table$farm)`, so `r 100*sum(age.dist.table$farm)/sum(age.dist.table$non.farm, age.dist.table$farm)` %.
+ 
+Then we can look at the age distribution of the *heads of these households* - Important!! SO again: this is the age distribution of the heads of household, who may not be farmers - but someone related to them in the HH is!  
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.cap = "Figure 5: Age distribution of heads of households where  at least one relative is in a skilled farming occupation or not - counts"}
+
+par(xpd = TRUE, mar = c(3,7,1,1))
+yz <- barplot(t(as.matrix(age.dist.table[2:3])), beside = TRUE, col = c("indianred2", "darkslategray2"), horiz = TRUE, legend.text = c("not farmers", "farmers"))
+text(-60000,colMeans(yz), age.dist.table[[1]], las = 2)
+
+```
+
+
+
+```{r results='asis', echo=FALSE, fig.height=6, fig.cap = "Figure 6: Age distribution of heads of households where  at least one relative is in a skilled farming occupation or not - percentages"}
+par(xpd = TRUE, mar = c(3,7,1,1))
+
+yz <- barplot(t(as.matrix(age.dist.table[4:5])), beside = TRUE, col = c("indianred2", "darkslategray2"), horiz = TRUE, legend.text = c("not farmers", "farmers"))
+text(-0.7,colMeans(yz), age.dist.table[[1]], las = 2)
+
+```
+
+Table 3: Age distribution of heads of households of type 3 farming (and non farming)
+```{r results='asis', echo=FALSE}
+kable(age.dist.table, digits = 2, booktabs = TRUE, padding = 10)
+```
+
