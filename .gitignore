@@ -15,3 +15,6 @@ survey/questionnaires
 *.pdf
 *.html
 *.htm
+census/data
+census/data-raw
+reports/HAI-report

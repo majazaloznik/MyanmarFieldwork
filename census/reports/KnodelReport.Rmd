@@ -1,7 +1,8 @@
 ---
-title: "Myanmar census Migration tabulations"
-author: "Maja Zaloznik"
-date: "17 May 2017"
+title: "Myanmar census---Migration tabulations"
+subtitle: "Supplementary material"
+author: "Maja Založnik"
+date: "19 May 2017"
 output: 
   pdf_document:
     number_sections: true
@@ -12,35 +13,50 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Supplementary material
-
-Hi John and Puk!
-
-I am so sorry for the delay, I hope this finds you well, and please let me know if anything is not clear, or if you would like me to do anything else with the data. 
-
-This file is to support the tabulations of the Myanmar 2014 census data on migration that are provided as both Excel and SPSS tables, and to explain how they relate to your requests in the `knodel ideas for census 2014 tabulation.xlsx`.
-
-I ran the whole thing using SPSS, so I'll include the syntax code in the report here, so you can double check what was going on. 
-
-I'll first explain the new variables I created, then describe each table and how it relates to your instructions. 
-
-## New variables
-
-You presumably have the census questionnaire, so you should be familiar with the original variables, but I have added them as an appendix at the end of this document. 
-
-- **`p11_birth_township_dummy`**
-- **`p05_age_c2`**
-- **`p05_age_binned`**
+\vspace{0.5cm}
 
 
-### Township of birth
+*Hi John and Puk!*
+
+*I am so sorry for the delay, I hope this finds you well, and please let me know if anything is not clear, or if you would like me to do anything else with the data.* 
+
+*This file is to support the tabulations of the Myanmar 2014 census data on migration that are provided as both Excel and SPSS tables:*
+
+- `JK01.xlsx`
+- `JK01.sav`
+
+*and to explain how they relate to your requests in the `knodel ideas for census 2014 tabulation.xlsx`. NB: Both the SPSS and Excel files contain the **same** information, they are simply two formats for your convenience.*
+
+*I ran the whole thing using SPSS, so I'll include the syntax code in the report here, so you can double check what was going on.* 
+
+*I'll first explain the new variables I created, then describe each table and how it relates to your instructions.*
+
+*Please do not hesitate to contact me *(`maja.zaloznik@gmail.com`) *for anything!*
+
+Maja. 
+
+
+\newpage
+# New variables
+
+You presumably have the census questionnaire, so you should be familiar with the original variables, but I have added them as an appendix at the end of this document, in particular so the names of the variables used are clear and just for reference. 
+
+For the purposes of these tables I've created 5 new variables, each of which is described in turn, along with it's SPSS syntax code. 
+
+- *Township of birth dummy* - **`p11_birth_township_dummy`**
+- *Age tow categories* - **`p05_age_c2`**
+- *Age 5 year groups* - **`p05_age_binned`**
+- *Migration usual vs. previous* - **Mig_type1**
+- *Migration usual vs. birthplace* - **Mig_type2**
+
+## Township of birth
 
 Input: `p11_birth_township`
 
-Dummy variable collapsing township of birth variable into here or not here wansers into:
+Dummy variable collapsing township of birth variable into:
 
-1. Born in this township
-2. Born in different township
+0. Born in this township
+1. Born in different township
 
 `SPSS Syntax` for **`p11_birth_township_dummy`**:
 
@@ -52,18 +68,18 @@ birthplace'.
 exe. 
 ```
 
-### Age -- two categories
+## Age---two categories
 
 Input: `p05_age`
 
 Binning into two groups [^1]:
 
-1. age 15 - 59
+1. age 15---59
 2. age 60 or over
 
-[^1]: A careful reading of the code might lead one to believe the first group is actually 0-59 instead of 15-59. That is indeed how the variable was calculated, but because all the tables were calculated after selecting only cases where p05_age >=15, this makes no difference and so the correct category is in fact 15 - 59.  
-`SPSS Syntax` for **`p05_age_c2`**:
+[^1]: A careful reading of the code might lead one to believe the first group is actually 0-59 instead of 15-59. That is indeed how the variable was calculated, but because all the tables were calculated after selecting only cases where p05_age >=15, this makes no difference and so the correct category is in fact 15 - 59. 
 
+`SPSS Syntax` for **`p05_age_c2`**:
 ```{r, eval = FALSE}
 
 RECODE  p05_age (MISSING=COPY)  (LO THRU 59 = 1) (LO THRU HI = 2) INTO p05_age_c2.
@@ -73,7 +89,7 @@ VALUE LABELS  p05_age_c2 1  '15 - 59' 2 '60+'.
 EXECUTE.
 
 ```
-### Age binned
+## Age binned
 
 Input: `p05_age`
 
@@ -83,7 +99,7 @@ The binning is 5-year, but starts only at 15, so we have 18 categories:
 
 
 1. 14 and under;
-2. 5-19, ... 90-94 (a total of 16 categries)
+2. 5-19, ... 90-94 (a total of 16 categories)
 3. 95 and older;
 
 
@@ -104,13 +120,13 @@ EXECUTE.
 ```
 
 
-### Migration type 1: usual vs. previous residence 
+## Migration type 1---usual vs. previous residence 
 
 Input: `p14_usual_res_ur`, `p18_prev_res_ur` and `p16_reason_for_movement`
 
 Using combinations of current and previous residences' urban and rural status, as well as the answer to the "Reason for movement" question, to remove people who had not moved, we end up with 5 categories[^2]:
 
-[^2]: This addition of removing people who had not moved proved necessary, because everyone answeres the `p18_prev_res_ur` question, so it includes people who have not moved. BUT, in checking the data, I also noticed that people wo have two different values for usual and previous townships, still sometimes have "did not move" in question 16, even though Q16 Explicitly says "Reason for movement to this township (usual residence)". So this is an issue to be kept in mind, I'm not sure if it's a data entry issue or what. I never tried it on the full sample, but in the 1 % sample it affected about half a percent of the cases: these had different usual and previous townships, but had not moved..
+[^2]: This addition of removing people who had not moved proved necessary, because everyone answered the `p18_prev_res_ur` question, so it includes people who have not moved. BUT, in checking the data, I also noticed that people who have two different values for usual and previous townships, still sometimes have "did not move" in question 16, even though Q16 Explicitly says "Reason for movement to this township (usual residence)". So this is an issue to be kept in mind, I'm not sure if it's a data entry issue or what. I never tried it on the full sample, but in the 1 % sample it affected about half a percent of the cases: these had different usual and previous townships, but had not moved..
 
 1. Did not move
 2. Urban to Urban
@@ -134,11 +150,11 @@ EXECUTE.
 ```
 
 
-### Migration type 2: usual  residence vs. place of birth
+## Migration type 2---usual  residence vs. place of birth
 
 Input: `p12_birth_ur`, `p14_usual_res_ur`,  `p11_birth_township_dummy`
 
-Using combinations of birthplace and usual residency's urban and rural status we first get all four combinations. But U-U anr R-R only mean migration if the township has changed. So I use `p11_birth_township_dummy` to add the fifth category of people who have not moved [^3].We end up with 5 categories:
+Using combinations of birthplace and usual residency's urban and rural status we first get all four combinations. But U-U and R-R only mean migration if the township has changed. So I use `p11_birth_township_dummy` to add the fifth category of people who have not moved [^3].We end up with 5 categories:
 
 1. Did not move
 2. Urban to Urban
@@ -146,7 +162,7 @@ Using combinations of birthplace and usual residency's urban and rural status we
 4. Rural to Urban
 5. Rural to Rural
 
- [^3]: Techically of course someone could have migrated within the same township but from U-U or R-R. But if we allow that, then everyone is a migrant, and there's no discriminating value in these variables anyway, so some sort of decision had to be made. 
+ [^3]: Technically of course someone could have migrated within the same township but from U-U or R-R. But if we allow that, then everyone is a migrant, and there's no discriminating value in these variables anyway, so some sort of decision had to be made. 
 
 `SPSS Syntax` for **`Mig_type2 `**: 
 ```{r, eval = FALSE}
@@ -164,33 +180,35 @@ VARIABLE LABELS Mig_type2 'Type of Migration from birthplace'.
 EXECUTE.
 ```
 
+\newpage
 
-## Tabulations
+# Tabulations
 
 
 There are a total of 12 tables in the attached Excel/SPSS files. These numbers do not correspond to your table numbers. So I will use this notation: **Final-Table 1** to indicate the census tabulations, and this notation *Knodel-Table 1* to indicate what it should correspond to in your request.[^4]
 
-Here are the corresponces:
+The correspondences are in the first two columns of the table below. 
 
-|  Knodel-Table  |  Final Table  |
-|-----------------------------|--------------------------------|
-| *Knodel-Table 1*            | **Final-Table 1** |
-|                             | **Final-Table 2** |
-|                             | **Final-Table 3** |
-|                             | **Final-Table 7** |
-| *Knodel-Table 2*            | **Final-Table 4** |
-|                             | **Final-Table 5** |
-| *Knodel-Table 3*            | **Final-Table 8** |
-|                             | **Final-Table 9** |
-| *Knodel-Table 4*            | **Final-Table 6** |
-| *Knodel-Table 5*            | **Final-Table 10** |
-|                             | **Final-Table 11** |
-|                             | **Final-Table 12** |
+|  Knodel-Table  |  Final Table  | Sub-population | Condition |
+|------------------|-------------------|-------------------------------|-------------------------------|
+| *Knodel-Table 1*            | **Final-Table 1** | ||
+|                             | **Final-Table 2** |||
+|                             | **Final-Table 3** |||
+|                             | **Final-Table 7** | Over 60  | `p05_age_c2 = 2` |
+| *Knodel-Table 2*            | **Final-Table 4** |||
+|                             | **Final-Table 5** |||
+| *Knodel-Table 3*            | **Final-Table 8** |R->U from birthplace to usual | `Mig_type2 = 3` |
+|                             | **Final-Table 9** |R->U from birthplace to usual | `Mig_type2 = 3` |
+| *Knodel-Table 4*            | **Final-Table 6** |Different from birthplace | `p11_birth_township_dummy=1` |
+| *Knodel-Table 5*            | **Final-Table 10** | Economic migrants | `p16_reason_for_movement=1` |
+|                             | **Final-Table 11** |Economic migrants | `p16_reason_for_movement=1` |
+|                             | **Final-Table 12** |Economic migrants | `p16_reason_for_movement=1` |
 
 [^4]: Yeah, I know this is a little bit awkward, but the SPSS tables are numbered and the Excel file is in this order, so I don't want to rearrange everything. 
 
+### Sub-Population {-}
 
-**Population** -- All tables are conducted on cases that are not in institutional housing and whose ageis 15 or over: 
+All tables are conducted on cases that are not in institutional housing and whose age is 15 or over: 
 
 `SPSS Syntax` for sub-population: 
 ```{r, eval = FALSE}
@@ -200,15 +218,309 @@ SELECT IF (p05_age >=15).
 exe.
 ```
 
-### Table 1
+Furthermore some individual tables are calculated on additional sub-populations---these are described in the third and fourth columns in the table above, but also individually in each table description that follows. 
 
 
 
-# Appendix 1: List of variables as provided by the census office
+##  **Final-Table 1**---gender living in different township than born
+
+ **Final-Table 1** corresponds to the gender columns of *Knodel-Table 1*. 
+ 
+ Additionally, it includes information for those presently living in the same township they were born. 
+ 
+**Population**:
+
+- not living in institutions
+- over 15 years old
+
+N =  33,934,631
+
+`SPSS Syntax` for  **Final-Table 1**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= batch_state_region BY p11_birth_township_dummy BY p04_sex
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 2**---age group (2) living in different township than born
+
+ **Final-Table 2** corresponds to the age columns of *Knodel-Table 1*. 
+ 
+ Additionally, it includes information for those presently living in the same township they were born. 
+ 
+**Population**:
+
+- not living in institutions
+- over 15 years old
+
+N =  33,934,631
+
+`SPSS Syntax` for  **Final-Table 2**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= batch_state_region BY p11_birth_township_dummy BY p05_age_c2
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 3**---urban/rural status of those living in different township than born
+
+ **Final-Table 3** corresponds to the urban/rural columns of *Knodel-Table 1*. 
+ 
+ Additionally, it includes information for those presently living in the same township they were born. 
+ 
+**Population**:
+
+- not living in institutions
+- over 15 years old
+
+N =  33,934,631
+
+`SPSS Syntax` for  **Final-Table 3**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= batch_state_region BY p11_birth_township_dummy BY batch_urban_rural
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+
+##  **Final-Table 4**---age group (18) and type of migration from previous residence
+
+**Final-Table 4** corresponds to one version of *Knodel-Table 2*. This one uses *Migration type 1* i.e. the move from previous to usual residence, and the 5th category are people who did not move as per Q16. See next table for migration  from place of birth.
+ 
+Moreover, the data is also split into 5-year age groups, but obviously these can be collapsed to get the three age group tables you require. 
+ 
+**Population**:
+
+- not living in institutions
+- over 15 years old
+
+N =  33,820,106
+
+
+`SPSS Syntax` for  **Final-Table 4**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= batch_state_region BY Mig_type1 BY p05_age_binned
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 5**---age group (18) and type of migration from birthplace
+
+**Final-Table 5** corresponds to the second version of *Knodel-Table 2*. This one uses *Migration type 2* i.e. the move from birthplace to usual residence, and the 5th category are people who are still in the same township of birth, and whose rural or urban status has not changed either.
+ 
+Moreover, the data is also split into 5-year age groups, but obviously these can be collapsed to get the three age group tables you require. 
+ 
+**Population**:
+
+- not living in institutions
+- over 15 years old
+
+N =  33,762,173
+
+
+`SPSS Syntax` for  **Final-Table 5**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= batch_state_region BY Mig_type2 BY p05_age_binned 
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 6**---age group (2) and reason for movement from birthplace
+
+**Final-Table 6** corresponds to  *Knodel-Table 4*. 
+ 
+
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- born in different township
+
+N =  8,360,577
+
+
+`SPSS Syntax` for  **Final-Table 6**: 
+```{r, eval = FALSE}
+COMPUTE filter_$=(p11_birth_township_dummy = 1).
+FILTER BY filter_$.
+exe.
+
+CROSSTABS
+  /TABLES= p05_age_c2 BY p16_reason_for_movement by batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+
+##  **Final-Table 7**---urban/rural status of those living in different township than born AND over 60
+
+ **Final-Table 7** corresponds to the final two columns of *Knodel-Table 1*. 
+ 
+ Additionally, it includes information for those presently living in the same township they were born. 
+ 
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- over 60 years old
+
+N =  4,341,459
+
+`SPSS Syntax` for  **Final-Table 7**: 
+```{r, eval = FALSE}
+COMPUTE filter_$=(p05_age_c2 = 2).
+FILTER BY filter_$.
+exe.
+
+CROSSTABS
+  /TABLES=  p11_birth_township_dummy BY batch_urban_rural  by batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 8**---gender of lifetime rural->urban migrants
+
+**Final-Table 8** corresponds to the gender columns of *Knodel-Table 3*. 
+ 
+
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- Rural to urban move (from birthplace)
+
+N =  1,998,549
+
+`SPSS Syntax` for  **Final-Table 8**: 
+```{r, eval = FALSE}
+COMPUTE filter_$=(Mig_type2 = 3).
+FILTER BY filter_$.
+exe.
+
+CROSSTABS
+  /TABLES= p11_birth_township_dummy BY p04_sex  by batch_state_region
+  /FORMAT=AVALUE TABLES 
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+##  **Final-Table 9**---age group (2) of lifetime rural->urban migrants
+ **Final-Table 9** corresponds to the age columns of *Knodel-Table 3*. 
+ 
+
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- Rural to urban move (from birthplace)
+
+N =  1,998,549
+
+`SPSS Syntax` for  **Final-Table 9**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= p11_birth_township_dummy BY p05_age_c2  by batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 10**---gender of economic lifetime migrants
+**Final-Table 10** corresponds to the gender columns of *Knodel-Table 5*. 
+
+Additionally there is data on people who have stayed in the same township as their birthplace, you can merge those as you please, I wasn't sure which you would want. 
+
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- reason for moving is employment
+
+N =  3,144,247
+
+`SPSS Syntax` for  **Final-Table 10**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES=p11_birth_township_dummy BY p04_sex  by batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+##  **Final-Table 11**---age group(2) of economic lifetime migrants
+
+**Final-Table 11** corresponds to the age group columns of *Knodel-Table 5*. 
+
+Additionally there is data on people who have stayed in the same township as their birthplace, you can merge those as you please, I wasn't sure which you would want. 
+
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- reason for moving is employment
+
+N =  3,144,247
+
+`SPSS Syntax` for  **Final-Table 11**: 
+```{r, eval = FALSE}
+CROSSTABS
+  /TABLES= p11_birth_township_dummy BY p05_age_c2  by batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+
+##  **Final-Table 12**---urban/rural status of economic lifetime migrants
+**Final-Table 12** corresponds to the urban/rural columns of *Knodel-Table 5*. 
+
+Additionally there is data on people who have stayed in the same township as their birthplace, you can merge those as you please, I wasn't sure which you would want. 
+
+**Population**:
+
+- not living in institutions
+- over 15 years old
+- reason for moving is employment
+
+N =  3,144,247
+
+`SPSS Syntax` for  **Final-Table 11**: 
+```{r, eval = FALSE}
+
+CROSSTABS
+  /TABLES= p11_birth_township_dummy BY batch_urban_rural  by batch_state_region
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+```
+
+\newpage
+
+# Appendix 1: List of variables as provided by the census office {-}
   
 As a rule of thumb, variables names beginning with "h" are household level, and ones beginning with "p" are individual level ones. 
   
-The **Notes** column is used to describe the sub-populatins where the question is not asked of all the individuals. 
+The **Notes** column is used to describe the sub-populations where the question is not asked of all the individuals. 
   
 
 ID|Variable Code | Name, description | notes  |
