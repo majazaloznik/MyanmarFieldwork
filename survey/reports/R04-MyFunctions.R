@@ -94,7 +94,6 @@ FunR04Table.region <- function(var) {
   prop.table(x, 2)*100
 }
 
-
 Fun04Barplot.region <- function(var) {
   y <- c(table(data$n152))
   par(mar = c(10,2,1,1), xpd = TRUE)
@@ -107,6 +106,28 @@ Fun04PrintTab.region<- function(var){
   kable(FunR04Table.region(var), digits = 2, booktabs = TRUE, padding = 10)
 }
 
+## 1.5. Categorical variables by age group  and total as well
+###############################################################################
+FunR05Table.age <- function(var) {
+  x <-  cbind(table(var ,data$n151 ))
+  row_sub = apply(x, 1, function(row) !all(row == 0 ))
+  x <- x[row_sub,]
+  cbind(Total = prop.table(table(var))*100,
+  prop.table(x, 2)*100)
+  
+}
+
+FunR05Barplot.age <- function(var) {
+  y <- c(sum(table(data$n151)), table(data$n151))
+  par(mar = c(10,2,1,1), xpd = TRUE)
+  barplot(FunR05Table.age(var), width = y, space=c(1,.5,.5),
+          col = colorRampPalette(brewer.pal(11, "Spectral"))(nrow(FunR05Table.age(var))),
+          legend.text = rownames(FunR05Table.age(var)), args.legend = list(y = -15))
+}
+
+Fun05PrintTab.region<- function(var){
+  kable(FunR05Table.age(var), digits = 2, booktabs = TRUE, padding = 10)
+}
 
 ## 2.2. Interval variables by Region by age and by size of holding
 ###############################################################################

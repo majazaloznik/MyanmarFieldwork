@@ -288,7 +288,7 @@ question\_no & Question No \\
   n40 & N40 - (Q28D) When no longer able to visit my land, I will hand over the management of the farm to another member of my family.(i.e. not children or children-in-law) \\ 
   q28\_e & Q28.E. When you are no longer able to visit your land, what will you do with it? \{I will rent out the land\} \\ 
   q28\_f & Q28.F. When you are no longer able to visit your land, what will you do with it? \{I will try to sell the land\} \\ 
-  q28\_g & Q28.G. When you are no longer able to visit your land, what will you do with it? \{Something else â<U+0080><U+0093> what?\} \\ 
+  q28\_g & Q28.G. When you are no longer able to visit your land, what will you do with it? \{Something else â€“ what?\} \\ 
   q28\_g\_ot\_sp & Q28.G. Other Specify \\ 
   n41 & N41 - (Q28G) When no longer able to visit my land, do something else \\ 
   n42 & N42 - Temporary (Q28) When no longer able to visit my land, two answers \\ 
@@ -296,7 +296,7 @@ question\_no & Question No \\
   n44 & N44 - Temporary (Q28) When no longer able to visit my land, two answers, rent and sell \\ 
   n45 & N45 - Temporary  (Q28) When no longer able to visit my land, two answers, one relative, other rent/sell \\ 
   n46 & N46 - Q28 consolidated - When no longer able to visit my land: \\ 
-  q29a & Q29A. How far away from your home is your land? \{minutes by walking\}â<U+0080><U+008E> \\ 
+  q29a & Q29A. How far away from your home is your land? \{minutes by walking\}â€Ž \\ 
   q29b & Q29.B. How far away from your home is your land? \{Way of going to farm\} \\ 
   q30\_a & Q30.A. Has the size of your farm (including the land you farm yourself) increased in the last five years? \{Yes, bought\} \\ 
   q30\_b & Q30.B. Has the size of your farm (including the land you farm yourself) increased in the last five years? \{Yes, rented\} \\ 
@@ -549,7 +549,7 @@ question\_no & Question No \\
   q40\_f & Q40.F. Tell me which of those sources of your knowledge for faming are? \{Agricultural services\} \\ 
   q40\_g & Q40.G. Tell me which of those sources of your knowledge for faming are? \{Training I have received\} \\ 
   q40\_h & Q40.H. Tell me which of those sources of your knowledge for faming are? \{Village traditions\} \\ 
-  q40\_i & Q40.I. Tell me which of those sources of your knowledge for faming are? \{Otherâ<U+0080>¦.who or what?\} \\ 
+  q40\_i & Q40.I. Tell me which of those sources of your knowledge for faming are? \{Otherâ€¦.who or what?\} \\ 
   q40\_i\_ot\_sp & Q40.I. Tell me which of those sources of your knowledge for faming are? \{Other Specify\} \\ 
   n132 & N132 - fQ40.I. Tell me which of those sources of your knowledge for faming are? \{Others\} \\ 
   q40\_1 & Q40.1. Tell me which of those sources of your knowledge for faming are? And which one is the most important source of your knowledge for farming? \\ 
@@ -599,7 +599,7 @@ question\_no & Question No \\
   q45\_h & Q45.H.Tell me which of those main challenges that You face with farming on Your land are? \{Soil quality\} \\ 
   q45\_i & Q45.I.Tell me which of those main challenges that You face with farming on Your land are? \{Lack of storage capacity after harvest\} \\ 
   q45\_j & Q45.J.Tell me which of those main challenges that You face with farming on Your land are? \{Unpredictable weather\} \\ 
-  q45\_k & Q45.Kâ<U+0080><U+008E>.Tell me which of those main challenges that You face with farming on Your land are? \{New pests\} \\ 
+  q45\_k & Q45.Kâ€Ž.Tell me which of those main challenges that You face with farming on Your land are? \{New pests\} \\ 
   q45\_l & Q45.L.Tell me which of those main challenges that You face with farming on Your land are? \{Distance of land from home\} \\ 
   q45\_m & Q45.M.Tell me which of those main challenges that You face with farming on Your land are? \{Other (specify)\} \\ 
   q45\_n & Q45.M.Tell me which of those main challenges that You face with farming on Your land are? \{No challenge\} \\ 
@@ -644,7 +644,7 @@ question\_no & Question No \\
   q52\_c1 & Q52.C1. We want to know if you have any plans for your land after your death. \{I have no family members who want the land\} \\ 
   q52\_d1 & Q52.D1. We want to know if you have any plans for your land after your death. \{Sold and donate/repay my debt\} \\ 
   q52\_e1 & Q52.E1. We want to know if you have any plans for your land after your death. \{Others (Specify)\} \\ 
-  q52\_f1 & Q52.F1. We want to know if you have any plans for your land after your death. \{Donâ<U+0080><U+0099>t know\} \\ 
+  q52\_f1 & Q52.F1. We want to know if you have any plans for your land after your death. \{Donâ€™t know\} \\ 
   q52\_e1\_ot\_sp & Q52.E1. We want to know if you have any plans for your land after your death. \{Other Specify\} \\ 
   q52\_a & Q52.A. We want to know if you have any plans for your land after your death. \{Leave all my land to one person. Who?\} \\ 
   q52\_b1\_1 & Q52.B1.1. We want to know if you have any plans for your land after your death. \{Divide my land between more than one person. Who?\} \{Spouse\} \\ 
@@ -725,10 +725,10 @@ question\_no & Question No \\
   q56\_f & Q56.F. If yes, where did you hear about the agricultural machinery? \{None\} \\ 
   q56\_e\_ot\_sp & Q56.E. If yes, where did you hear about the agricultural machinery? \{Other Specify\} \\ 
   n150 & N150 - Q56.E. If yes, where did you hear about the agricultural machinery? \{Other Specify\} \\ 
-  q57a & Q57.A. Do you think using agricultural machinery can lead to â<U+0080>¦â<U+0080>¦. \{Higher yields\} \\ 
-  q57b & Q57.B.Do you think using agricultural machinery can lead to  â<U+0080>¦â<U+0080>¦.\{Ease of farming\} \\ 
-  q57c & Q57.C. Do you think using agricultural machinery can lead to  â<U+0080>¦â<U+0080>¦.\{Soil quality\} \\ 
-  q57d & Q57.D.Do you think using agricultural machinery can lead to  â<U+0080>¦â<U+0080>¦. \{Crop quality\} \\ 
+  q57a & Q57.A. Do you think using agricultural machinery can lead to â€¦â€¦. \{Higher yields\} \\ 
+  q57b & Q57.B.Do you think using agricultural machinery can lead to  â€¦â€¦.\{Ease of farming\} \\ 
+  q57c & Q57.C. Do you think using agricultural machinery can lead to  â€¦â€¦.\{Soil quality\} \\ 
+  q57d & Q57.D.Do you think using agricultural machinery can lead to  â€¦â€¦. \{Crop quality\} \\ 
   q58a & Q58.A. When you personally decide about purchasing agricultural machinery how important is the effect on: \{Higher yield\} \\ 
   q58b & Q58.B. When you personally decide about purchasing agricultural machinery how important is the effect on: \{Ease of farming\} \\ 
   q58c & Q58.C. When you personally decide about purchasing agricultural machinery how important is the effect on: \{Soil quality\} \\ 
@@ -795,11 +795,11 @@ question\_no & Question No \\
   q64\_a & Q64.A. Do you think farmers spraying preventatively in your commune can lead to: \{Less pest damage\} \\ 
   q64\_b & Q64.B. Do you think farmers spraying preventatively in your commune can lead to: \{Greater crop yield\} \\ 
   q64\_c & Q64.C. Do you think farmers spraying preventatively in your commune can lead to: \{Chemical pollution \} \\ 
-  q64\_d & Q64.D. Do you think farmers spraying preventatively in your commune can lead to: \{Fewer â<U+0080><U+0098>good animalsâ<U+0080><U+0099>\} \\ 
+  q64\_d & Q64.D. Do you think farmers spraying preventatively in your commune can lead to: \{Fewer â€˜good animalsâ€™\} \\ 
   q65\_a & Q65.A. When you personally decide whether or not to spray preventatively, how important is its effect on: \{Pest damage\} \\ 
   q65\_b & Q65.B. When you personally decide whether or not to spray preventatively, how important is its effect on: \{Crop yield\} \\ 
   q65\_c & Q65.C. When you personally decide whether or not to spray preventatively, how important is its effect on: \{Levels of chemical pollution \} \\ 
-  q65\_d & Q65.D. When you personally decide whether or not to spray preventatively, how important is its effect on: \{Number of â<U+0080><U+0098>good animalsâ<U+0080><U+0099>\} \\ 
+  q65\_d & Q65.D. When you personally decide whether or not to spray preventatively, how important is its effect on: \{Number of â€˜good animalsâ€™\} \\ 
   q66\_a & Q66.A. Do you think in your community correct pesticide application is limited by: \{Insufficient knowledge/Information of farmers\} \\ 
   q66\_b & Q66.B. Do you think in your community correct pesticide application is limited by: \{How frequently farmers check their fields\} \\ 
   q66\_c & Q66.C. Do you think in your community correct pesticide application is limited by: \{How accurate the Agricultural services advice is\} \\ 
@@ -830,5 +830,12 @@ question\_no & Question No \\
   n194 & N194 - Household has  (at least one) son aged 14 or over in HH or in village \\ 
   n195 & N195 - Household has (at least one) son-in-law in HH or in village \\ 
   n196 & N196 - Household access to sons and son-in-laws in HH/village \\ 
+  n197 & N197 - Household manages it's own farmland \\ 
+  n198 & N198 - Farming household's access to sons and son-in-laws in HH/village \\ 
+  n199 & N199 - Head of HH cobmination of working in field and managing the farm \\ 
+  n200 & N200 - HH labour pattern (number of members and head of HHs involvment)  only HH where HoH manages or co-manages, (from N187 and Q24) \\ 
+  n201 & N201 - Single generation or single person households (from N160 and Q7) \\ 
+  n202 & N202 - HH with or without working age children (from N160 and Q7) \\ 
+  n203 & N203 - No of generations and working age children (from N160 and Q7) \\ 
   \hline
 \end{longtable}

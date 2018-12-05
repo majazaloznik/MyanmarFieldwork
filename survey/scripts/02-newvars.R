@@ -362,8 +362,10 @@ hh.gens %>%
   gather(key, value,-question_no) %>%
   group_by(question_no) %>%
   arrange(question_no) %>%
-  mutate(no = n_distinct(value, na_rm = TRUE)) %>%
+  mutate(no = sum(!is.na(unique(value, na_rm = TRUE)))) %>%
   summarize(no = mean(no)) -> hh.gens
+
+
 
 n160 <- hh.gens$no
 labels(n160) <-
@@ -373,6 +375,7 @@ labels(n160) <-
     "Three" = 3,
     "Four" = 4
   )
+
 dataset <- data.set(dataset, n160 = n160)
 description(dataset$n160) <-
   "N160 - NUmber of generations living in household"
@@ -1093,7 +1096,7 @@ description(dataset$n196) <-
 
 # N197 Is farming HH (manage or co-manage)
 dataset$n197 <- ifelse(dataset$q24 =="A tenant", 0, 1)
-abels(dataset$n197) <- c("No" =  0,
+labels(dataset$n197) <- c("No" =  0,
                          "Yes" =  1)
 description(dataset$n197) <-
   "N197 - Household manages it's own farmland"
@@ -1145,6 +1148,85 @@ labels(dataset$n200) <- c("No HH farm labour" =  0,
                           "Two or more non HoH labourers" = 6)
 
 
+
+# N201 - N160 & q7 single generation and single person
+
+dataset$n201 <- ifelse(dataset$q7 == 1, 1,
+                       ifelse(dataset$n160 == 1, 2, 3))
+
+
+description(dataset$n201) <- "N201 - Single generation or single person households (from N160 and Q7)"
+
+labels(dataset$n201) <- c("Single person" =  1,
+                          "Single generation " =  2,
+                          "Two or more generations" =  3)
+
+# N202 number of working age children  and N204 number of working age sons in hh
+
+data %>% 
+  dplyr::select(starts_with("q7_")) %>% 
+  tibble::rownames_to_column() %>% 
+  gather(key, value, -rowname) %>% 
+  separate(key, into = c("var", "id"), sep = "[.]") %>% 
+  spread(key = var, value = value)  %>% 
+  mutate(child_under16 = ifelse(q7_2 == "Children" & q7_4 <=16, 2,
+                                ifelse(q7_2 == "Children", 1, 0)),
+         son_over16 = ifelse(child_under16 == 1 & q7_3 == "Male", 1, 0 )) %>% 
+  group_by(rowname)  %>% 
+  mutate(n202 =ifelse(all(child_under16 == 0, na.rm = TRUE)== TRUE, 0,
+                      ifelse(any(child_under16 == 1, na.rm = TRUE) == TRUE, 1, 2))) %>% 
+  mutate(n204 = ifelse(any(son_over16 == 1, na.rm = TRUE) == TRUE,  2,
+                       ifelse(any(n202 == 1, na.rm = TRUE) == TRUE, 1, 0))) %>% 
+  summarise(n204 = first(n204),
+            n202 = first(n202)) %>% 
+  mutate(rowname = as.numeric(rowname)) %>% 
+  arrange(rowname) %>% 
+  dplyr::select(n202, n204) -> x
+
+
+dataset$n202 <- x$n202
+description(dataset$n202) <- "N202 - HH with or without working age children (from N160 and Q7)"
+
+labels(dataset$n202) <- c("No children" =  0,
+                          "At least one child over 16" =  1,
+                          "Only children 16 or younger" =  2)
+
+
+dataset$n204 <- x$n204
+
+description(dataset$n204) <- "N204 - HH with or without working age children (from N160 and Q7)"
+
+labels(dataset$n204) <- c("No children over 16" =  0,
+                          "At least one son over 16" =  2,
+                          "Only daughters over 16" =  1)
+
+
+
+# N205 - 2 or 3 gen with or without working age children in HH
+
+dataset$n205 <- ifelse(dataset$n201 == 1, 1,
+                       ifelse(dataset$n201 == 2, 2, 
+                              ifelse(dataset$n160 == 2 & dataset$n204 == 0, 3, 
+                                     ifelse(dataset$n160 == 2 & dataset$n204 == 1, 4, 
+                                            ifelse(dataset$n160 == 2 & dataset$n204 == 2, 5, 
+                                                   ifelse(dataset$n204 == 0, 6, 
+                                                          ifelse(dataset$n204 == 1, 7,8))))))) 
+
+
+description(dataset$n205) <- "N205 - No of generations and working age sons (from N160 and Q7)"
+
+labels(dataset$n205) <- c("Single person" =  1,
+                          "Single generation " =  2,
+                          "Two gen no kids of working age" =  3,
+                          "Two gen only daughters of working age" =  4,
+                          "Two gen at least one son of working age" =  5,
+                          "More gen no kids of working age" =  6,
+                          "More gen only daughters of working age" =  7,
+                          "More gen at least one son of working age" =  8)
+
+
+
+
 ## Save in both formats, data and dataset,
 ###############################################################################
 data <- as.data.frame(dataset)
@@ -1155,13 +1237,13 @@ save(data, dataset, file = "survey/data/survey.data03.RData")
 
 # ## 8. print codebook and List all variables in pdf file
 # ###############################################################################
-# write_html(codebook(dataset), file = "survey/reports/CodebookSurveyVariables.html")
-# 
-# library(knitr)
-# library(rmarkdown)
-# knit("survey/reports/old/SurveyListVariables.Rmd",
-#      output= "survey/reports/old/SurveyListVariables.md")
-# render("survey/reports/old/SurveyListVariables.md",
-#        "pdf_document", output_dir ="survey/reports" )
+write_html(codebook(dataset), file = "survey/reports/CodebookSurveyVariables.html")
+
+library(knitr)
+library(rmarkdown)
+knit("survey/reports/old/SurveyListVariables.Rmd",
+     output= "survey/reports/old/SurveyListVariables.md")
+render("survey/reports/old/SurveyListVariables.md",
+       "pdf_document", output_dir ="survey/reports" )
 
 # # 27/2/2017 19:28

@@ -1,0 +1,57 @@
+---
+title: "Ken - extra queries 5.12.18  "
+tables: yes
+output:
+  html_document:
+  css: custom.css
+toc: yes
+---
+  
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(dplyr)
+library(vcd)
+load("../data/survey.data03.RData")
+source("../scripts/R05-MyFunctions.R")
+```
+
+## HH structure and HH labour -- Myanmar survey
+
+### Household structure 
+
+
+`r var <- dataset$n201`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun05PrintTab.region(var)
+FunR05Barplot.age(var) 
+```
+
+
+
+
+`r var <- dataset$n203`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun05PrintTab.region(var)
+FunR05Barplot.age(var) 
+```
+
+`r var <- dataset$n205`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun05PrintTab.region(var)
+FunR05Barplot.age(var) 
+```

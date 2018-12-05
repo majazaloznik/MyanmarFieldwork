@@ -1,0 +1,30 @@
+---
+title: "Journal--Myanmar Data Analysis"
+output:
+  pdf_document:
+  toc: true
+toc_depth: 3
+number_sections: true
+---
+
+# Wednsday 5.12.2018
+
+1. Jesus, this whole project doesn't have a journal! So only starting one now. Nor does it have a makefile. Not sure if I will bother now?
+
+2. Ken's asked for some data, I'll try to get it out after figuring out what is in here to begin with. 
+
+3. OK, so just reran 02-newvars.R to get the SurveyListvariables.pdf file updated, since it was still missing the last 5 or so variables. And there were a few typos in 02-newvars.R, i wonder how I missed them before. 
+
+4. OK, so the questions are household structure questions, have I done any of that? Probably not, no.. Ah, no, number of generations I have already, N160. But I don't have single person households. 
+
+5. Into R04-MyFuncitons add the option of using age group only and totals as well. 
+
+6. Actually looks like the number of generations was wrong. 
+
+7. That's very odd, since it was clearly correct at one point in the past! 
+
+8. OK, N201, single persons and generations. 
+
+9. The 2 generation stuff now. And 3 generations and whether or not there are working age children in the household. n202 looks at working age children, n203 combines that with number of generations. 
+
+10. No add sons as well. 
