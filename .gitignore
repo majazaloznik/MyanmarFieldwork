@@ -12,9 +12,7 @@ survey/questionnaires
 *.docx
 *.doc
 *.xlsx
-*.pdf
-*.html
-*.htm
+
 census/data
 census/data-raw
 reports/HAI-report

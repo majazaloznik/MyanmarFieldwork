@@ -28,3 +28,9 @@ number_sections: true
 9. The 2 generation stuff now. And 3 generations and whether or not there are working age children in the household. n202 looks at working age children, n203 combines that with number of generations. 
 
 10. No add sons as well. 
+
+
+# Thursday 6.12.2018
+
+1. female headed households. Or maybe what he wants is women uder and over 60?
+
