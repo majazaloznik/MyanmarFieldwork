@@ -34,3 +34,14 @@ number_sections: true
 
 1. female headed households. Or maybe what he wants is women uder and over 60?
 
+# Friday 7.12.2018
+
+1. I really don't know how all these variables were first calculated. Like n1-n152!? Looks like it was in the sps file. Why did I do that?
+
+2. OK. so now answer (iii) relationship of co-manager into sons and daughters in-law. So N34 only looks up the relationship of the id,  but not the gender or age. So I need that. Let's repeat n34 just to double check it's correct. 
+
+3. Checked, all good. But question: should I merge co-managers and solo-managers? Is it even either /or properly? It is. I'll stick with co-managers for now
+
+4. sons and daughters are a new var. 
+
+5. OK, same for managers only, and then merge both. 

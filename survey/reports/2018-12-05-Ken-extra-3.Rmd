@@ -3,7 +3,8 @@ title: "Ken - extra queries 5.12.18 - HH structure and HH labour -- Myanmar surv
 tables: yes
 output:
   html_document:
-  toc: yes
+    toc: true
+    toc_depth: 4
 ---
 
 ```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
@@ -90,3 +91,76 @@ Fun06PrintTab.region(var)
 FunR06Barplot.age(var) 
 ```
 
+## Relationship to co-manager by age
+
+`r var <- dataset$n212`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun05PrintTab.region(var)
+FunR05Barplot.age(var) 
+```
+
+`r var <- dataset$n213`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun05PrintTab.region(var)
+FunR05Barplot.age(var) 
+```
+
+
+## Relationship to co-manager by age and gender (Q24_b)
+
+`r var <- dataset$n212`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun06PrintTab.region(var)
+FunR06Barplot.age(var) 
+```
+
+`r var <- dataset$n213`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun06PrintTab.region(var)
+FunR06Barplot.age(var) 
+```
+
+
+## Relationship to manager by age and gender (Q24-c)
+
+`r var <- dataset$n219`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun06PrintTab.region(var)
+FunR06Barplot.age(var) 
+```
+
+`r var <- dataset$n220`
+#### `r description(I(var))`
+
+[N = `r sum(!is.na(var))`] 
+
+```{r results='asis', echo=FALSE, fig.height=6}
+
+Fun06PrintTab.region(var)
+FunR06Barplot.age(var) 
+```

@@ -1200,9 +1200,31 @@ labels(dataset$n204) <- c("No children over 16" =  0,
                           "At least one son over 16" =  2,
                           "Only daughters over 16" =  1)
 
+# N203 - 2 or 3 gen with or without working age children in HH
+
+dataset$n203 <- ifelse(dataset$n201 == 1, 1,
+                       ifelse(dataset$n201 == 2, 2, 
+                              ifelse(dataset$n160 == 2 & dataset$n202 == 0, 3, 
+                                     ifelse(dataset$n160 == 2 & dataset$n202 == 1, 5, 
+                                            ifelse(dataset$n160 == 2 & dataset$n202 == 2, 4, 
+                                                   ifelse(dataset$n202 == 0, 6, 
+                                                          ifelse(dataset$n202 == 1, 8, 7))))))) 
 
 
-# N205 - 2 or 3 gen with or without working age children in HH
+description(dataset$n203) <- "N203 - No of generations and working age children (from N160 and Q7)"
+
+labels(dataset$n203) <- c("Single person" =  1,
+                          "Single generation " =  2,
+                          "Two gen no kids" =  3,
+                          "Two gen only children under 16" =  4,
+                          "Two gen at least one child of working age" =  5,
+                          "More gen no kids of working age" =  6,
+                          "More gen only daughters of working age" =  7,
+                          "More gen at least one son of working age" =  8)
+
+
+
+# N205 - 2 or 3 gen with or without working age sons
 
 dataset$n205 <- ifelse(dataset$n201 == 1, 1,
                        ifelse(dataset$n201 == 2, 2, 
@@ -1224,6 +1246,133 @@ labels(dataset$n205) <- c("Single person" =  1,
                           "More gen only daughters of working age" =  7,
                           "More gen at least one son of working age" =  8)
 
+
+
+#N206 - age and gender of head of hh
+
+dataset$n206 <- ifelse(dataset$q1 == 1 & dataset$n151 == 1, 1,
+                       ifelse(dataset$q1 == 1 & dataset$n151 == 0, 2,
+                              ifelse(dataset$q1 == 2 & dataset$n151 == 1, 3, 4)))
+
+
+
+description(dataset$n206) <- "N206 - Gender and age group of head of HH (from N151and Q6)"
+
+labels(dataset$n206) <- c("M < 60" =  1,
+                          "M > 60 " =  2,
+                          "F < 60" =  3,
+                          "F > 60" = 4)
+
+
+#N207-N211 - info on co-manager. 
+
+data %>% 
+  dplyr::select(q24_b_id, starts_with("q7_") ) %>% 
+  tibble::rownames_to_column() %>% 
+  gather(key, value, -rowname, -q24_b_id) %>% 
+  separate(key, into = c("var", "id"), sep = "[.]") %>% 
+  spread(key = var, value = value) %>% 
+  mutate(id = as.numeric(id),
+         rowname = as.numeric(rowname)) %>% 
+  filter(q24_b_id == id) %>% 
+  arrange(rowname) %>% 
+  dplyr::rename(n207 = q7_2,
+                n208 = q7_3,
+                n209 = q7_4,
+                n210 = q7_5,
+                n211 = q7_6) %>% 
+  right_join(data.frame(rowname = 1:600)) -> x
+
+dataset$n207 <- as.factor(x$n207)
+dataset$n208 <- x$n208
+dataset$n209 <- x$n209
+dataset$n210 <- x$n210
+dataset$n211 <- x$n211
+
+description(dataset$n207) <- "N207 - Relationship of co-manager"
+description(dataset$n208) <- "N209 - Gender of co-manager"
+description(dataset$n209) <- "N209 - Age of co-manager"
+description(dataset$n210) <- "N210 - co-manager seasonal worker"
+description(dataset$n211) <- "N211 - co-manager seasonal work location"
+
+
+# N212 co-manager type
+
+dataset$n212 <- as.data.frame(dataset) %>% 
+  mutate(n212 = ifelse(n207 == "Children" & n208 == "Male", "Son",
+                       ifelse(n207 == "Children" & n208 == "Female", "Daughter",
+                              ifelse(n207 == "Children-in-law" & n208 == "Male", "Son-in-law",
+                                     ifelse(n207 == "Children-in-law" & n208 == "Female", "Daughter-in-law",
+                                            ifelse(n207 == "Spouse" & n208 == "Female", "Wife",
+                                                   ifelse(n207 == "Spouse" & n208 == "Male", "Husband",levels(dataset$n207)[dataset$n207]))))))) %>% 
+  pull(n212)
+  
+description(dataset$n212) <- "N212 - Relationship of co-manager - detailed"
+
+  
+# N213 co-manager type - simple 
+
+dataset$n213 <- as.data.frame(dataset) %>% 
+  mutate(n213 = ifelse(n212 == "Son" | n212 == "Son-in-law", "Son(-in-law)",
+                       ifelse(n212 == "Daughter" | n212 == "Daughter-in-law", "Daughter(-in-law)", "Other"))) %>% 
+  pull(n213)
+
+description(dataset$n213) <- "N213 - Relationship of co-manager - simplified"
+
+#N214-N218 - info on co-manager. 
+
+as.data.frame(dataset) %>% 
+  dplyr::select(q24_c_id, starts_with("q7_") ) %>% 
+  tibble::rownames_to_column() %>% 
+  gather(key, value, -rowname, -q24_c_id) %>% 
+  separate(key, into = c("var", "id"), sep = "[.]") %>% 
+  spread(key = var, value = value) %>% 
+  mutate(id = as.numeric(id),
+         rowname = as.numeric(rowname)) %>% 
+  filter(q24_c_id == id) %>% 
+  arrange(rowname) %>% 
+  dplyr::rename(n214 = q7_2,
+                n215 = q7_3,
+                n216 = q7_4,
+                n217 = q7_5,
+                n218 = q7_6) %>% 
+  right_join(data.frame(rowname = 1:600)) -> x
+
+dataset$n214 <- as.factor(x$n214)
+dataset$n215 <- x$n215
+dataset$n216 <- x$n216
+dataset$n217 <- x$n217
+dataset$n218 <- x$n218
+
+description(dataset$n214) <- "n214 - Relationship of co-manager"
+description(dataset$n215) <- "n215 - Gender of co-manager"
+description(dataset$n216) <- "n216 - Age of co-manager"
+description(dataset$n217) <- "n217 - co-manager seasonal worker"
+description(dataset$n218) <- "n218 - co-manager seasonal work location"
+
+
+# N219 manager type
+
+dataset$n219 <- as.data.frame(dataset) %>% 
+  mutate(n219 = ifelse(n214 == "Children" & n215 == "Male", "Son",
+                       ifelse(n214 == "Children" & n215 == "Female", "Daughter",
+                              ifelse(n214 == "Children-in-law" & n215 == "Male", "Son-in-law",
+                                     ifelse(n214 == "Children-in-law" & n215 == "Female", "Daughter-in-law",
+                                            ifelse(n214 == "Spouse" & n215 == "Female", "Wife",
+                                                   ifelse(n214 == "Spouse" & n215 == "Male", "Husband",levels(dataset$n214)[dataset$n214]))))))) %>% 
+  pull(n219)
+
+description(dataset$n219) <- "N219 - Relationship of manager - detailed"
+
+
+# N220 manager type - simple 
+
+dataset$n220 <- as.data.frame(dataset) %>% 
+  mutate(n220 = ifelse(n219 == "Son" | n219 == "Son-in-law", "Son(-in-law)",
+                       ifelse(n219 == "Daughter" | n219 == "Daughter-in-law", "Daughter(-in-law)", "Other"))) %>% 
+  pull(n220)
+
+description(dataset$n220) <- "n220 - Relationship of manager - simplified"
 
 
 

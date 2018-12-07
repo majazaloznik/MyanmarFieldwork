@@ -836,6 +836,23 @@ question\_no & Question No \\
   n200 & N200 - HH labour pattern (number of members and head of HHs involvment)  only HH where HoH manages or co-manages, (from N187 and Q24) \\ 
   n201 & N201 - Single generation or single person households (from N160 and Q7) \\ 
   n202 & N202 - HH with or without working age children (from N160 and Q7) \\ 
+  n204 & N204 - HH with or without working age children (from N160 and Q7) \\ 
   n203 & N203 - No of generations and working age children (from N160 and Q7) \\ 
+  n205 & N205 - No of generations and working age sons (from N160 and Q7) \\ 
+  n206 & N206 - Gender and age group of head of HH (from N151and Q6) \\ 
+  n207 & N207 - Relationship of co-manager \\ 
+  n208 & N209 - Gender of co-manager \\ 
+  n209 & N209 - Age of co-manager \\ 
+  n210 & N210 - co-manager seasonal worker \\ 
+  n211 & N211 - co-manager seasonal work location \\ 
+  n212 & N212 - Relationship of co-manager - detailed \\ 
+  n213 & N213 - Relationship of co-manager - simplified \\ 
+  n214 & n214 - Relationship of co-manager \\ 
+  n215 & n215 - Gender of co-manager \\ 
+  n216 & n216 - Age of co-manager \\ 
+  n217 & n217 - co-manager seasonal worker \\ 
+  n218 & n218 - co-manager seasonal work location \\ 
+  n219 & N219 - Relationship of manager - detailed \\ 
+  n220 & n220 - Relationship of manager - simplified \\ 
   \hline
 \end{longtable}

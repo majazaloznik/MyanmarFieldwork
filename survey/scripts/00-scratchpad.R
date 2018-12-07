@@ -8,8 +8,9 @@ library(dplyr)
 library(tidyr)
 library(RColorBrewer)
 load("survey/data/survey.data03.RData")
-source("survey/reports/R04-MyFunctions.R")
+source("survey/scripts/R05-MyFunctions.R")
 
+# N221 relationship of manager or co-manager
 
-FunR05Barplot.age(data$n205) 
+table(data$n219, data$n212)
 
